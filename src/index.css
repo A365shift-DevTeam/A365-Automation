@@ -1,47 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  
-  --color-primary-50: #eef2ff;
-  --color-primary-100: #e0e7ff;
-  --color-primary-500: #6366f1;
-  --color-primary-600: #4f46e5;
-  --color-primary-900: #312e81;
-  
-  --color-accent-400: #2dd4bf;
-  --color-accent-500: #14b8a6;
+  --font-sans: "Livvic", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Livvic", ui-sans-serif, system-ui, sans-serif;
+
+  /* Primary Green */
+  --color-primary-50: #e6f7ec;
+  --color-primary-100: #b3e6c7;
+  --color-primary-200: #80d6a1;
+  --color-primary-300: #4dc67c;
+  --color-primary-400: #26b95f;
+  --color-primary-500: #00B050;
+  --color-primary-600: #008c40;
+  --color-primary-700: #006830;
+  --color-primary-800: #004420;
+  --color-primary-900: #002010;
+
+  /* Accent Teal/Blue */
+  --color-accent-300: #45a2c7;
+  --color-accent-400: #308BAF;
+  --color-accent-500: #308BAF;
+  --color-accent-600: #266f8c;
+  --color-accent-700: #1c5369;
 }
 
 body {
   font-family: var(--font-sans);
   background-color: #ffffff;
-  color: #111827;
+  color: #454545;
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
+  color: #212121;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #f9fafb; /* gray-50 */
+  background: #f9fafb;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #d1d5db; /* gray-300 */
+  background: var(--color-primary-500);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af; /* gray-400 */
+  background: var(--color-primary-600);
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -49,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #818cf8, #2dd4bf);
+  background: linear-gradient(to right, #00B050, #308BAF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

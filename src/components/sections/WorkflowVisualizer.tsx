@@ -14,7 +14,7 @@ export default function WorkflowVisualizer() {
           <ul className="space-y-4">
             {['Drag-and-drop interface', 'Real-time testing', 'Version history & rollbacks'].map((item, i) => (
               <li key={i} className="flex items-center gap-3 text-gray-700">
-                <CheckCircle2 className="w-5 h-5 text-teal-500" />
+                <CheckCircle2 className="w-5 h-5 text-accent-500" />
                 {item}
               </li>
             ))}
@@ -30,9 +30,9 @@ export default function WorkflowVisualizer() {
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
-              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white border border-blue-200 flex items-center justify-center shadow-lg shadow-blue-500/10"
+              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white border border-primary-200 flex items-center justify-center shadow-lg shadow-primary-500/10"
             >
-              <Mail className="w-6 h-6 md:w-8 md:h-8 text-blue-500" />
+              <Mail className="w-6 h-6 md:w-8 md:h-8 text-primary-500" />
             </motion.div>
 
             <motion.div
@@ -40,9 +40,9 @@ export default function WorkflowVisualizer() {
               whileInView={{ width: 48 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="h-1 bg-gradient-to-r from-blue-500 to-indigo-500 relative hidden md:block"
+              className="h-1 bg-gradient-to-r from-primary-500 to-primary-500 relative hidden md:block"
             >
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-indigo-400" />
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary-400" />
             </motion.div>
 
             <motion.div
@@ -50,9 +50,9 @@ export default function WorkflowVisualizer() {
               whileInView={{ width: 24 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="h-1 bg-gradient-to-r from-blue-500 to-indigo-500 relative md:hidden"
+              className="h-1 bg-gradient-to-r from-primary-500 to-primary-500 relative md:hidden"
             >
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-indigo-400" />
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary-400" />
             </motion.div>
 
             <motion.div
@@ -60,9 +60,9 @@ export default function WorkflowVisualizer() {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white border border-indigo-200 flex items-center justify-center shadow-lg shadow-indigo-500/10"
+              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white border border-primary-200 flex items-center justify-center shadow-lg shadow-primary-500/10"
             >
-              <Database className="w-6 h-6 md:w-8 md:h-8 text-indigo-500" />
+              <Database className="w-6 h-6 md:w-8 md:h-8 text-primary-500" />
             </motion.div>
 
             <motion.div
@@ -70,9 +70,9 @@ export default function WorkflowVisualizer() {
               whileInView={{ width: 48 }}
               viewport={{ once: true }}
               transition={{ delay: 0.9, duration: 0.5 }}
-              className="h-1 bg-gradient-to-r from-indigo-500 to-teal-500 relative hidden md:block"
+              className="h-1 bg-gradient-to-r from-primary-500 to-accent-500 relative hidden md:block"
             >
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-teal-400" />
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-accent-400" />
             </motion.div>
 
             <motion.div
@@ -80,9 +80,9 @@ export default function WorkflowVisualizer() {
               whileInView={{ width: 24 }}
               viewport={{ once: true }}
               transition={{ delay: 0.9, duration: 0.5 }}
-              className="h-1 bg-gradient-to-r from-indigo-500 to-teal-500 relative md:hidden"
+              className="h-1 bg-gradient-to-r from-primary-500 to-accent-500 relative md:hidden"
             >
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-teal-400" />
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-accent-400" />
             </motion.div>
 
             <motion.div
@@ -90,9 +90,9 @@ export default function WorkflowVisualizer() {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 1.2 }}
-              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white border border-teal-200 flex items-center justify-center shadow-lg shadow-teal-500/10"
+              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white border border-accent-200 flex items-center justify-center shadow-lg shadow-accent-500/10"
             >
-              <Slack className="w-6 h-6 md:w-8 md:h-8 text-teal-500" />
+              <Slack className="w-6 h-6 md:w-8 md:h-8 text-accent-500" />
             </motion.div>
           </div>
         </div>

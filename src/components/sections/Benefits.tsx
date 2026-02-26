@@ -18,7 +18,7 @@ export default function Benefits() {
           >
             <div className="flex items-center justify-between mb-6">
               <h4 className="font-semibold text-gray-900">Weekly Hours Saved</h4>
-              <span className="text-teal-600 font-mono font-bold">+124 hrs</span>
+              <span className="text-accent-600 font-mono font-bold">+124 hrs</span>
             </div>
             <div className="h-48 flex items-end gap-2">
               {[40, 60, 45, 80, 100, 120, 110].map((h, i) => (
@@ -28,7 +28,7 @@ export default function Benefits() {
                   whileInView={{ height: `${(h / 120) * 100}%` }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="flex-1 bg-gradient-to-t from-indigo-600 to-teal-400 rounded-t-md"
+                  className="flex-1 bg-gradient-to-t from-primary-500 to-accent-400 rounded-t-md"
                 />
               ))}
             </div>
@@ -49,7 +49,7 @@ export default function Benefits() {
             ].map((item, i) => (
               <div key={i} className="flex gap-4">
                 <div className="w-12 h-12 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center shrink-0">
-                  <item.icon className="w-6 h-6 text-indigo-600" />
+                  <item.icon className="w-6 h-6 text-primary-500" />
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold mb-1 text-gray-900">{item.title}</h4>

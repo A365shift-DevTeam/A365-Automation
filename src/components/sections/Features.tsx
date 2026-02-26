@@ -71,8 +71,8 @@ export default function Features() {
             variants={itemVariants}
             className="glass-panel p-8 rounded-2xl hover:bg-gray-50 transition-colors group"
           >
-            <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <feature.icon className="w-6 h-6 text-indigo-600" />
+            <div className="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <feature.icon className="w-6 h-6 text-primary-500" />
             </div>
             <h3 className="text-xl font-semibold mb-3 text-gray-900">{feature.title}</h3>
             <p className="text-gray-600 leading-relaxed">{feature.description}</p>

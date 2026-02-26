@@ -5,19 +5,16 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background gradients */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-200/50 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-200/50 rounded-full blur-[120px]" />
-      </div>
+      <div className="absolute inset-0 z-0" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-8 text-sm font-medium text-indigo-700 bg-white/50"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-8 text-sm font-medium text-primary-700 bg-white/50"
         >
-          <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-accent-500 animate-pulse" />
           A365 Automation 2.0 is now live
         </motion.div>
 
@@ -46,7 +43,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <button className="w-full sm:w-auto px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-medium transition-all flex items-center justify-center gap-2 group shadow-md hover:shadow-lg">
+          <button className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-2xl font-medium transition-all flex items-center justify-center gap-2 group shadow-lg shadow-[#4C99A0]/25">
             Get Started Free
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>

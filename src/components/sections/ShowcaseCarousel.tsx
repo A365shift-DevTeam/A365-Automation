@@ -3,21 +3,21 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 
 const TABS = [
-  { id: 'schedule', label: 'Schedule Master' },
-  { id: 'attendance', label: 'Time & Attendance' },
-  { id: 'payroll', label: 'Payroll Sync', badge: 'Beta' },
-  { id: 'compliance', label: 'Compliance Rules', badge: 'WIP' },
-  { id: 'analytics', label: 'Analytics', badge: 'WIP' },
-  { id: 'custom', label: 'Custom Builder', isSpecial: true },
+  { id: 'schedule', label: 'AI Agents' },
+  { id: 'attendance', label: 'Products' },
+  { id: 'payroll', label: 'Website' },
+  { id: 'compliance', label: 'WEB Application' },
+  { id: 'analytics', label: 'Microsoft' },
+  // { id: 'custom', label: '', isSpecial: true },
 ];
 
 const MOCKUP_DATA = {
-  schedule: { color: 'from-orange-100 to-red-100', title: 'Shift Schedule Overview', pages: 5 },
-  attendance: { color: 'from-emerald-100 to-teal-100', title: 'Time Tracking Dashboard', pages: 4 },
-  payroll: { color: 'from-blue-100 to-indigo-100', title: 'Payroll Export & Sync', pages: 3 },
-  compliance: { color: 'from-purple-100 to-pink-100', title: 'Rule Break Warnings', pages: 2 },
+  schedule: { color: 'from-primary-100 to-accent-100', title: 'Shift Schedule Overview', pages: 5 },
+  attendance: { color: 'from-accent-100 to-accent-100', title: 'Time Tracking Dashboard', pages: 4 },
+  payroll: { color: 'from-primary-100 to-primary-100', title: 'Payroll Export & Sync', pages: 3 },
+  compliance: { color: 'from-primary-100 to-pink-100', title: 'Rule Break Warnings', pages: 2 },
   analytics: { color: 'from-slate-100 to-gray-100', title: 'Labor Cost Analysis', pages: 8 },
-  custom: { color: 'from-indigo-100 to-cyan-100', title: 'Custom Workflow Builder', pages: 1 },
+  custom: { color: 'from-primary-100 to-cyan-100', title: 'Custom Workflow Builder', pages: 1 },
 };
 
 export default function ShowcaseCarousel() {
@@ -46,16 +46,16 @@ export default function ShowcaseCarousel() {
                 relative px-5 py-3 rounded-xl font-medium text-sm md:text-base transition-all duration-300
                 flex items-center gap-2
                 ${tab.isSpecial
-                  ? 'border border-dashed border-orange-500/50 text-orange-400 hover:bg-orange-500/10'
+                  ? 'border border-dashed border-primary-500/50 text-primary-500 hover:bg-primary-500/10'
                   : activeTab === tab.id
-                    ? 'bg-[#ea580c] text-white shadow-lg shadow-orange-500/25'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
                 }
               `}
             >
               {tab.label}
               {tab.badge && (
-                <span className={`text-[10px] px-1.5 py-0.5 rounded ${tab.id === 'custom' ? 'bg-indigo-100 text-indigo-700' : 'bg-orange-100 text-orange-700'} font-bold`}>
+                <span className={`text-[10px] px-1.5 py-0.5 rounded ${tab.id === 'custom' ? 'bg-primary-100 text-primary-700' : 'bg-accent-300/20 text-accent-600'} font-bold`}>
                   {tab.badge}
                 </span>
               )}
@@ -70,10 +70,10 @@ export default function ShowcaseCarousel() {
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-400" />
               <div className="w-3 h-3 rounded-full bg-yellow-400" />
-              <div className="w-3 h-3 rounded-full bg-green-400" />
+              <div className="w-3 h-3 rounded-full bg-accent-400" />
             </div>
             <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 text-xs font-mono text-gray-500 shadow-sm">
-              <span className="text-orange-500">~/</span>{activeTab}
+              <span className="text-primary-500">~/</span>{activeTab}
             </div>
           </div>
 
@@ -99,7 +99,7 @@ export default function ShowcaseCarousel() {
                 </div>
                 <div className="flex gap-4">
                   <div className="h-8 w-20 md:w-24 bg-gray-100 border border-gray-200 rounded-md" />
-                  <div className="h-8 w-20 md:w-24 bg-indigo-500/90 text-white rounded-md flex items-center justify-center text-xs font-medium shadow-sm" />
+                  <div className="h-8 w-20 md:w-24 bg-primary-500/90 text-white rounded-md flex items-center justify-center text-xs font-medium shadow-sm" />
                 </div>
               </div>
 
@@ -130,8 +130,8 @@ export default function ShowcaseCarousel() {
                       return (
                         <div key={i} className={`rounded-md border border-gray-100 ${isWeekend ? 'bg-gray-50/50' : 'bg-white hover:bg-gray-50'} p-1.5 sm:p-2 flex flex-col gap-1 transition-colors min-h-[40px] sm:min-h-0`}>
                           <div className="text-[10px] font-medium text-gray-400 mb-1">{i + 1}</div>
-                          {hasEvent1 && <div className="h-1.5 w-full bg-indigo-500/60 rounded-full" />}
-                          {hasEvent2 && <div className="h-1.5 w-3/4 bg-orange-500/60 rounded-full" />}
+                          {hasEvent1 && <div className="h-1.5 w-full bg-primary-500/60 rounded-full" />}
+                          {hasEvent2 && <div className="h-1.5 w-3/4 bg-accent-400/60 rounded-full" />}
                         </div>
                       );
                     })}
@@ -166,7 +166,7 @@ export default function ShowcaseCarousel() {
                       key={i}
                       onClick={() => setCurrentPage(i + 1)}
                       className={`h-1.5 md:h-2 rounded-full transition-all duration-300 ${currentPage === i + 1
-                        ? 'w-4 md:w-6 bg-orange-500'
+                        ? 'w-4 md:w-6 bg-primary-500'
                         : 'w-1.5 md:w-2 bg-gray-300 hover:bg-gray-400'
                         }`}
                     />

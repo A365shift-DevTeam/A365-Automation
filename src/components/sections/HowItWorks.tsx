@@ -9,24 +9,24 @@ const STEPS = [
     title: 'Connect your apps',
     description: 'Securely link your favorite tools with our one-click integrations. We support over 500+ SaaS applications out of the box.',
     icon: Blocks,
-    color: 'text-indigo-400',
-    bg: 'bg-indigo-500/10',
+    color: 'text-primary-400',
+    bg: 'bg-primary-500/10',
   },
   {
     id: '02',
     title: 'Build workflows',
     description: 'Use our intuitive drag-and-drop builder to create complex automation logic without writing a single line of code.',
     icon: Zap,
-    color: 'text-teal-400',
-    bg: 'bg-teal-500/10',
+    color: 'text-accent-400',
+    bg: 'bg-accent-500/10',
   },
   {
     id: '03',
     title: 'Automate & monitor',
     description: 'Set it live and watch the magic happen. Track performance, errors, and savings in real-time on your dashboard.',
     icon: BarChart3,
-    color: 'text-purple-400',
-    bg: 'bg-purple-500/10',
+    color: 'text-primary-400',
+    bg: 'bg-primary-500/10',
   },
 ];
 
@@ -51,7 +51,7 @@ export default function HowItWorks() {
         <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gray-200 -translate-x-1/2" />
 
         <motion.div
-          className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-indigo-500 -translate-x-1/2 origin-top"
+          className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-primary-500 -translate-x-1/2 origin-top"
           style={{ scaleY: scrollYProgress }}
         />
 
@@ -62,8 +62,8 @@ export default function HowItWorks() {
               <div key={step.id} className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-16 ${isEven ? '' : 'md:flex-row-reverse'}`}>
 
                 {/* Center Node */}
-                <div className="absolute left-8 md:left-1/2 w-12 h-12 rounded-full bg-gray-50 border-2 border-indigo-500 -translate-x-1/2 flex items-center justify-center z-10 shadow-sm">
-                  <span className="text-sm font-bold text-indigo-600">{step.id}</span>
+                <div className="absolute left-8 md:left-1/2 w-12 h-12 rounded-full bg-gray-50 border-2 border-primary-500 -translate-x-1/2 flex items-center justify-center z-10 shadow-sm">
+                  <span className="text-sm font-bold text-primary-500">{step.id}</span>
                 </div>
 
                 {/* Content */}

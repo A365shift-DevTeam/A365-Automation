@@ -15,7 +15,7 @@ import Footer from './components/sections/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-white text-gray-900 selection:bg-primary-500/30">
       <main>
         <Hero />
         <ShowcaseCarousel />

@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           <div className="col-span-2 md:col-span-1">
-            <div className="text-2xl font-bold tracking-tighter mb-4 text-gray-900">A365<span className="text-indigo-500">.</span></div>
+            <div className="text-2xl font-bold tracking-tighter mb-4 text-gray-900">A365<span className="text-primary-500">.</span></div>
             <p className="text-gray-600 text-sm">
               The modern automation platform for ambitious teams.
             </p>
@@ -12,28 +12,28 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4 text-gray-900">Product</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Features</a></li>
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Integrations</a></li>
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Changelog</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Features</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Integrations</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Pricing</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Changelog</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-4 text-gray-900">Resources</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Community</a></li>
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Templates</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Documentation</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Blog</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Community</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Templates</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-4 text-gray-900">Company</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-indigo-600 transition-colors">Legal</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">About</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Contact</a></li>
+              <li><a href="#" className="hover:text-primary-500 transition-colors">Legal</a></li>
             </ul>
           </div>
         </div>
