@@ -2,6 +2,54 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import ambotLogo from '../../assets/Ambot logo png.png';
 
+const PHASE_COLORS = [
+  {
+    badge: 'bg-blue-500',
+    title: 'text-blue-700',
+    dot: 'bg-blue-500',
+    outcomeBg: 'bg-blue-50',
+    outcomeText: 'text-blue-700',
+    outcomeBorder: 'border-blue-200',
+    iconColor: 'text-blue-500',
+  },
+  {
+    badge: 'bg-teal-500',
+    title: 'text-teal-700',
+    dot: 'bg-teal-500',
+    outcomeBg: 'bg-teal-50',
+    outcomeText: 'text-teal-700',
+    outcomeBorder: 'border-teal-200',
+    iconColor: 'text-teal-500',
+  },
+  {
+    badge: 'bg-amber-500',
+    title: 'text-amber-700',
+    dot: 'bg-amber-500',
+    outcomeBg: 'bg-amber-50',
+    outcomeText: 'text-amber-700',
+    outcomeBorder: 'border-amber-200',
+    iconColor: 'text-amber-500',
+  },
+  {
+    badge: 'bg-purple-500',
+    title: 'text-purple-700',
+    dot: 'bg-purple-500',
+    outcomeBg: 'bg-purple-50',
+    outcomeText: 'text-purple-700',
+    outcomeBorder: 'border-purple-200',
+    iconColor: 'text-purple-500',
+  },
+  {
+    badge: 'bg-green-500',
+    title: 'text-green-700',
+    dot: 'bg-green-500',
+    outcomeBg: 'bg-green-50',
+    outcomeText: 'text-green-700',
+    outcomeBorder: 'border-green-200',
+    iconColor: 'text-green-500',
+  },
+];
+
 const PHASES = [
   {
     threshold: 0.1,
@@ -9,7 +57,8 @@ const PHASES = [
     title: "Ready to start",
     desc1: "Let's embark on the automation journey.",
     desc2: "We will analyze your current processes.",
-    outcome: "A clear roadmap for automation."
+    outcome: "A clear roadmap for automation.",
+    colorIndex: 0,
   },
   {
     threshold: 0.35,
@@ -17,7 +66,8 @@ const PHASES = [
     title: "Discovery",
     desc1: "We dive deep into your existing workflows and identify bottlenecks.",
     desc2: "Our team maps out the exact processes that need automation.",
-    outcome: "Comprehensive process documentation."
+    outcome: "Comprehensive process documentation.",
+    colorIndex: 1,
   },
   {
     threshold: 0.6,
@@ -25,7 +75,8 @@ const PHASES = [
     title: "BRD",
     desc1: "Business Requirements Document creation.",
     desc2: "We finalize the scope, tools, and expected ROI.",
-    outcome: "Approved blueprint for the bot."
+    outcome: "Approved blueprint for the bot.",
+    colorIndex: 2,
   },
   {
     threshold: 0.85,
@@ -33,7 +84,8 @@ const PHASES = [
     title: "Build & Train",
     desc1: "We develop the platform, configure AI models, integrate systems, and run iterative testing.",
     desc2: "Automation workflows, backend logic, and UI components are implemented.",
-    outcome: "Production-ready AI system."
+    outcome: "Production-ready AI system.",
+    colorIndex: 3,
   },
   {
     threshold: 1.1,
@@ -41,7 +93,8 @@ const PHASES = [
     title: "Go Live",
     desc1: "Deployment to production environment.",
     desc2: "We monitor the bot's performance and make necessary adjustments.",
-    outcome: "Fully automated workflow."
+    outcome: "Fully automated workflow.",
+    colorIndex: 4,
   }
 ];
 
@@ -63,6 +116,8 @@ export default function HowItWorks() {
     });
   }, [scrollYProgress]);
 
+  const colors = PHASE_COLORS[currentPhase.colorIndex];
+
   // The exact path the bot and the progress line will follow
   const pathString = "M 190 280 C 230 280, 270 400, 350 400 C 450 400, 450 250, 550 250 C 650 250, 650 150, 750 150 C 850 150, 850 80, 950 80";
 
@@ -82,12 +137,32 @@ export default function HowItWorks() {
           {/* Left Side: Text & Gauge */}
           <div className="lg:col-span-4 flex flex-col gap-6 justify-center">
             {/* Text Description - fixed height to prevent layout shift */}
-            <div className="h-[250px] overflow-hidden">
-              <h4 className="text-primary-500 font-bold text-sm tracking-wider uppercase mb-2">{currentPhase.week}</h4>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">{currentPhase.title}</h3>
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">{currentPhase.desc1}</p>
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">{currentPhase.desc2}</p>
-              <p className="text-gray-900 font-semibold text-sm">Outcome: {currentPhase.outcome}</p>
+            <div className="h-[280px] overflow-hidden">
+              {/* Week Badge */}
+              <span className={`inline-block px-4 py-1.5 rounded-full text-white text-xs font-bold tracking-wider uppercase mb-3 ${colors.badge}`}>
+                {currentPhase.week}
+              </span>
+
+              {/* Title */}
+              <h3 className={`text-3xl font-bold mb-4 ${colors.title}`}>{currentPhase.title}</h3>
+
+              {/* Descriptions with colored bullet dots */}
+              <div className="flex items-start gap-2 mb-3">
+                <span className={`mt-1.5 w-2 h-2 rounded-full shrink-0 ${colors.dot}`}></span>
+                <p className="text-gray-600 text-sm leading-relaxed">{currentPhase.desc1}</p>
+              </div>
+              <div className="flex items-start gap-2 mb-4">
+                <span className={`mt-1.5 w-2 h-2 rounded-full shrink-0 ${colors.dot}`}></span>
+                <p className="text-gray-600 text-sm leading-relaxed">{currentPhase.desc2}</p>
+              </div>
+
+              {/* Outcome Box */}
+              <div className={`flex items-center gap-2 px-4 py-3 rounded-lg border ${colors.outcomeBg} ${colors.outcomeBorder}`}>
+                <svg className={`w-5 h-5 shrink-0 ${colors.iconColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className={`text-sm font-semibold ${colors.outcomeText}`}>{currentPhase.outcome}</p>
+              </div>
             </div>
 
             {/* Gauge Card */}
