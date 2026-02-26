@@ -4,33 +4,33 @@ import SectionWrapper from '../ui/SectionWrapper';
 
 const FEATURES = [
   {
-    title: 'Workflow Builder',
-    description: 'Visual drag-and-drop interface to map out complex business processes effortlessly.',
+    title: 'AI Agents',
+    description: 'We design enterprise-grade AI agents that think, decide, and execute tasks across workflows. From automation to decision intelligence — fully secure, scalable, and industry-ready.',
     icon: GitMerge,
   },
   {
-    title: 'API Integrations',
-    description: 'Connect to any REST or GraphQL API with our universal connector module.',
+    title: 'AI Microsoft 365 Apps',
+    description: 'Next-gen AI integrations for Excel, PowerPoint, Outlook & Teams. Automate reports, insights, consolidation, and workflows inside your existing Microsoft ecosystem.',
     icon: Network,
   },
   {
-    title: 'Smart Scheduling',
-    description: 'Run automations on a cron schedule, specific intervals, or specific business days.',
+    title: 'OfficeAIbots',
+    description: 'A powerful AI automation layer for Excel & PowerPoint users. Consolidate, split, merge, transform, and generate files in seconds — no coding required..',
     icon: CalendarClock,
   },
   {
-    title: 'AI Automation',
-    description: 'Leverage LLMs to parse unstructured data, draft emails, or make routing decisions.',
+    title: 'Web & Mobile Apps',
+    description: 'We build scalable React-based web and mobile applications powered by AI, real-time data, secure APIs, and intelligent automation.',
     icon: Bot,
   },
   {
-    title: 'Analytics Dashboard',
-    description: 'Track execution times, success rates, and ROI across all your automated workflows.',
+    title: '3D Interactive Website',
+    description: 'Scroll-based 3D websites with motion UI, interactive layers, animated objects, and futuristic visual storytelling — built for high-impact brand presence.',
     icon: LineChart,
   },
   {
-    title: 'Enterprise Security',
-    description: 'Bank-grade encryption, SOC2 compliance, and granular role-based access control.',
+    title: 'Digital & WP Agent',
+    description: 'Smart WordPress automation agents, AI chat systems, dynamic content engines, and digital workflow automation — optimized for performance and growth.',
     icon: ShieldCheck,
   },
 ];

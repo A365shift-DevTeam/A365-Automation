@@ -61,7 +61,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 min-h-[2em]"
+          className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 max-w-3xl mx-auto my-8 min-h-[2em]"
         >
           {typedSubtitle}
           <span className="inline-block w-[2px] h-[1em] bg-gray-400 ml-0.5 animate-pulse align-middle" />
@@ -71,12 +71,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="max-w-2xl mx-auto mb-10 text-center"
+          className="max-w-2xl mx-auto mb-10 pl-4 md:pl-0 flex flex-col items-center"
         >
-          <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">We Design AI for Real Business Impact</h3>
-          <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-            Requirement-driven systems, process-aligned automation, API-connected platforms, and multi-agent enterprise frameworks — built to scale with your operations.
-          </p>
+          <div className="text-left w-fit mx-auto md:ml-auto md:mr-auto">
+            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 text-center md:text-left">We Design AI for Real Business Impact</h3>
+            <ul className="text-base md:text-lg text-gray-700 leading-relaxed space-y-1 font-medium text-[#2d6a8f]">
+              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] font-bold">*</span> Requirement-driven systems</li>
+              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] font-bold">*</span> Process-aligned automation</li>
+              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] font-bold">*</span> API-connected platforms</li>
+              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] font-bold">*</span> Multi-agent enterprise frameworks</li>
+            </ul>
+          </div>
         </motion.div>
 
         <motion.div
