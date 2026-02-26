@@ -12,6 +12,7 @@ import Integrations from './components/sections/Integrations';
 import Benefits from './components/sections/Benefits';
 import CTA from './components/sections/CTA';
 import Footer from './components/sections/Footer';
+import Navbar from './components/layout/Navbar';
 
 function Divider() {
   return (
@@ -24,6 +25,7 @@ function Divider() {
 export default function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900 selection:bg-primary-500/30">
+      <Navbar />
       <main>
         <Hero />
         <Divider />
