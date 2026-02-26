@@ -55,7 +55,7 @@ export default function Navbar() {
                     <ThemeToggle />
                     <a
                         href="#"
-                        className="px-5 py-2.5 bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium rounded-xl transition-all shadow-md shadow-primary-500/20 hover:shadow-lg hover:shadow-primary-500/30 hover:-translate-y-0.5"
+                        className="px-5 py-2.5 bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] text-white text-sm font-medium rounded-xl transition-all shadow-md shadow-[#4C99A0]/25 hover:shadow-lg hover:shadow-[#4C99A0]/40 hover:-translate-y-0.5"
                     >
                         Get Started
                     </a>
@@ -98,7 +98,7 @@ export default function Navbar() {
                             <div className="flex flex-col gap-3 mt-4 pb-4">
                                 <a
                                     href="#"
-                                    className="w-full py-3 text-center text-base font-medium text-white bg-primary-500 rounded-xl hover:bg-primary-600 transition-colors shadow-md shadow-primary-500/20"
+                                    className="w-full py-3 text-center text-base font-medium text-white bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] rounded-xl transition-all shadow-md shadow-[#4C99A0]/25"
                                 >
                                     Get Started
                                 </a>
