@@ -123,56 +123,56 @@ export default function HowItWorks() {
 
   return (
     <section ref={containerRef} id="how-it-works" className="bg-white h-[300vh] relative">
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden py-6">
+      <div className="sticky top-0 h-screen flex flex-col items-center overflow-hidden py-4">
 
-        <div className="text-center mb-4 shrink-0">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">How A365 Works</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+        <div className="text-center mb-2 shrink-0">
+          <h2 className="text-3xl md:text-5xl font-bold mb-2 text-gray-900">How A365 Works</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto text-base">
             Scroll down to see how our AI bot transforms your manual process into a fully automated workflow.
           </p>
         </div>
 
-        <div className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start flex-1 min-h-0">
+        <div className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start flex-1 min-h-0">
 
           {/* Left Side: Text & Gauge */}
-          <div className="lg:col-span-4 flex flex-col gap-6 justify-center">
-            {/* Text Description - fixed height to prevent layout shift */}
-            <div className="h-[280px] overflow-hidden">
+          <div className="lg:col-span-4 flex flex-col gap-3 h-full min-h-0">
+            {/* Text Description - flex-shrink so it can compress */}
+            <div className="shrink overflow-hidden min-h-0">
               {/* Week Badge */}
-              <span className={`inline-block px-4 py-1.5 rounded-full text-white text-xs font-bold tracking-wider uppercase mb-3 ${colors.badge}`}>
+              <span className={`inline-block px-4 py-1 rounded-full text-white text-xs font-bold tracking-wider uppercase mb-2 ${colors.badge}`}>
                 {currentPhase.week}
               </span>
 
               {/* Title */}
-              <h3 className={`text-3xl font-bold mb-4 ${colors.title}`}>{currentPhase.title}</h3>
+              <h3 className={`text-2xl font-bold mb-3 ${colors.title}`}>{currentPhase.title}</h3>
 
               {/* Descriptions with colored bullet dots */}
-              <div className="flex items-start gap-2 mb-3">
+              <div className="flex items-start gap-2 mb-2">
                 <span className={`mt-1.5 w-2 h-2 rounded-full shrink-0 ${colors.dot}`}></span>
                 <p className="text-gray-600 text-sm leading-relaxed">{currentPhase.desc1}</p>
               </div>
-              <div className="flex items-start gap-2 mb-4">
+              <div className="flex items-start gap-2 mb-3">
                 <span className={`mt-1.5 w-2 h-2 rounded-full shrink-0 ${colors.dot}`}></span>
                 <p className="text-gray-600 text-sm leading-relaxed">{currentPhase.desc2}</p>
               </div>
 
               {/* Outcome Box */}
-              <div className={`flex items-center gap-2 px-4 py-3 rounded-lg border ${colors.outcomeBg} ${colors.outcomeBorder}`}>
-                <svg className={`w-5 h-5 shrink-0 ${colors.iconColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className={`flex items-center gap-2 px-3 py-2 rounded-lg border ${colors.outcomeBg} ${colors.outcomeBorder}`}>
+                <svg className={`w-4 h-4 shrink-0 ${colors.iconColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <p className={`text-sm font-semibold ${colors.outcomeText}`}>{currentPhase.outcome}</p>
               </div>
             </div>
 
-            {/* Gauge Card */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl p-6 pb-8">
-              <div className="flex gap-4 mb-6 font-bold text-sm">
+            {/* Gauge Card - shrink-0 so it keeps its size, the text area above will compress instead */}
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl p-4 pb-2 shrink-0">
+              <div className="flex gap-4 mb-2 font-bold text-sm">
                 <span className="text-blue-500">AI Process</span>
                 <span className="text-primary-500">Your Process</span>
               </div>
-              <div className="relative">
-                <svg viewBox="0 0 300 200" className="w-full h-auto overflow-visible">
+              <div>
+                <svg viewBox="0 0 300 230" className="w-full h-auto">
                   <defs>
                     <linearGradient id="gauge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                       <stop offset="0%" stopColor="#00B050" />
@@ -209,12 +209,14 @@ export default function HowItWorks() {
                   </motion.g>
 
                   {/* Labels */}
-                  <text x="30" y="185" textAnchor="middle" className="text-lg font-medium fill-gray-400">0%</text>
-                  <text x="270" y="185" textAnchor="middle" className="text-lg font-medium fill-gray-400">100%</text>
+                  <text x="30" y="180" textAnchor="middle" className="text-lg font-medium fill-gray-400">0%</text>
+                  <text x="270" y="180" textAnchor="middle" className="text-lg font-medium fill-gray-400">100%</text>
+
+                  {/* Percentage Value - inside SVG so it always fits */}
+                  <text x="150" y="220" textAnchor="middle" className="fill-blue-600" style={{ fontSize: '32px', fontWeight: 700 }}>
+                    {percentage}%
+                  </text>
                 </svg>
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-3xl font-bold text-blue-600">
-                  {percentage}%
-                </div>
               </div>
             </div>
           </div>
