@@ -122,12 +122,12 @@ export default function HowItWorks() {
   const pathString = "M 190 280 C 230 280, 270 400, 350 400 C 450 400, 450 250, 550 250 C 650 250, 650 150, 750 150 C 850 150, 850 80, 950 80";
 
   return (
-    <section ref={containerRef} id="how-it-works" className="bg-white h-[300vh] relative">
+    <section ref={containerRef} id="how-it-works" className="bg-white dark:bg-gray-950 h-[300vh] relative">
       <div className="sticky top-0 h-screen flex flex-col items-center overflow-hidden py-4">
 
         <div className="text-center mb-2 shrink-0">
-          <h2 className="text-3xl md:text-5xl font-bold mb-2 text-gray-900">How A365 Works</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-base">
+          <h2 className="text-3xl md:text-5xl font-bold mb-2 text-gray-900 dark:text-gray-50">How A365 Works</h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base">
             Scroll down to see how our AI bot transforms your manual process into a fully automated workflow.
           </p>
         </div>
@@ -149,11 +149,11 @@ export default function HowItWorks() {
               {/* Descriptions with colored bullet dots */}
               <div className="flex items-start gap-2 mb-2">
                 <span className={`mt-1.5 w-2 h-2 rounded-full shrink-0 ${colors.dot}`}></span>
-                <p className="text-gray-600 text-sm leading-relaxed">{currentPhase.desc1}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{currentPhase.desc1}</p>
               </div>
               <div className="flex items-start gap-2 mb-3">
                 <span className={`mt-1.5 w-2 h-2 rounded-full shrink-0 ${colors.dot}`}></span>
-                <p className="text-gray-600 text-sm leading-relaxed">{currentPhase.desc2}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{currentPhase.desc2}</p>
               </div>
 
               {/* Outcome Box */}
@@ -166,9 +166,9 @@ export default function HowItWorks() {
             </div>
 
             {/* Gauge Card - absolutely pinned to bottom so it NEVER moves */}
-            <div className="absolute bottom-0 left-0 right-0 bg-white rounded-2xl border border-gray-100 shadow-xl p-4 pb-2">
+            <div className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl p-4 pb-2">
               <div className="flex gap-4 mb-2 font-bold text-sm">
-                <span className="text-blue-500">AI Process</span>
+                <span className="text-blue-500 dark:text-blue-400">AI Process</span>
                 <span className="text-primary-500">Your Process</span>
               </div>
               <div>
@@ -209,11 +209,11 @@ export default function HowItWorks() {
                   </motion.g>
 
                   {/* Labels */}
-                  <text x="30" y="180" textAnchor="middle" className="text-lg font-medium fill-gray-400">0%</text>
-                  <text x="270" y="180" textAnchor="middle" className="text-lg font-medium fill-gray-400">100%</text>
+                  <text x="30" y="180" textAnchor="middle" className="text-lg font-medium fill-gray-400 dark:fill-gray-500">0%</text>
+                  <text x="270" y="180" textAnchor="middle" className="text-lg font-medium fill-gray-400 dark:fill-gray-500">100%</text>
 
                   {/* Percentage Value - inside SVG so it always fits */}
-                  <text x="150" y="220" textAnchor="middle" className="fill-blue-600" style={{ fontSize: '32px', fontWeight: 700 }}>
+                  <text x="150" y="220" textAnchor="middle" className="fill-blue-600 dark:fill-blue-400" style={{ fontSize: '32px', fontWeight: 700 }}>
                     {percentage}%
                   </text>
                 </svg>
@@ -236,7 +236,7 @@ export default function HowItWorks() {
               </defs>
 
               {/* Base Path */}
-              <path d={pathString} fill="none" stroke="#f3f4f6" strokeWidth="6" strokeLinecap="round" />
+              <path d={pathString} fill="none" stroke="#f3f4f6" className="dark:stroke-gray-800" strokeWidth="6" strokeLinecap="round" />
 
               {/* Animated Progress Path */}
               <motion.path
@@ -255,27 +255,27 @@ export default function HowItWorks() {
               </g>
 
               <g>
-                <circle cx="350" cy="400" r="8" fill="white" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="350" y="435" textAnchor="middle" className="text-sm font-bold fill-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>Week 1</text>
-                <text x="350" y="455" textAnchor="middle" className="text-sm fill-accent-600" style={{ fontFamily: 'Inter, sans-serif' }}>Discovery</text>
+                <circle cx="350" cy="400" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="350" y="435" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 1</text>
+                <text x="350" y="455" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Discovery</text>
               </g>
 
               <g>
-                <circle cx="550" cy="250" r="8" fill="white" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="550" y="210" textAnchor="middle" className="text-sm font-bold fill-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>Week 2</text>
-                <text x="550" y="230" textAnchor="middle" className="text-sm fill-accent-600" style={{ fontFamily: 'Inter, sans-serif' }}>BRD</text>
+                <circle cx="550" cy="250" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="550" y="210" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 2</text>
+                <text x="550" y="230" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>BRD</text>
               </g>
 
               <g>
-                <circle cx="750" cy="150" r="8" fill="white" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="750" y="185" textAnchor="middle" className="text-sm font-bold fill-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>Week 3 to 5</text>
-                <text x="750" y="205" textAnchor="middle" className="text-sm fill-accent-600" style={{ fontFamily: 'Inter, sans-serif' }}>Build</text>
+                <circle cx="750" cy="150" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="750" y="185" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 3 to 5</text>
+                <text x="750" y="205" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Build</text>
               </g>
 
               <g>
-                <circle cx="950" cy="80" r="8" fill="white" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="950" y="40" textAnchor="middle" className="text-sm font-bold fill-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>Week 6 to 8</text>
-                <text x="950" y="60" textAnchor="middle" className="text-sm fill-accent-600" style={{ fontFamily: 'Inter, sans-serif' }}>Go Live</text>
+                <circle cx="950" cy="80" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="950" y="40" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 6 to 8</text>
+                <text x="950" y="60" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Go Live</text>
               </g>
 
               {/* Bot Icon */}

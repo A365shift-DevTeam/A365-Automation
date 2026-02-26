@@ -52,8 +52,8 @@ export default function Features() {
   return (
     <SectionWrapper id="features">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Everything you need to scale</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50">Everything you need to scale</h2>
+        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
           Powerful features designed for modern teams who want to move faster and break fewer things.
         </p>
       </div>
@@ -69,13 +69,13 @@ export default function Features() {
           <motion.div
             key={idx}
             variants={itemVariants}
-            className="glass-panel p-8 rounded-2xl hover:bg-gray-50 transition-colors group"
+            className="glass-panel p-8 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group"
           >
-            <div className="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-xl bg-primary-500/10 dark:bg-primary-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <feature.icon className="w-6 h-6 text-primary-500" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">{feature.title}</h3>
-            <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">{feature.title}</h3>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{feature.description}</p>
           </motion.div>
         ))}
       </motion.div>

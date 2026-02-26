@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 
@@ -10,7 +10,14 @@ import pb4 from '../../assets/Power BI images/Power-BI-web-2025-Dashboard.png';
 import ex1 from '../../assets/Excel image/Excel img 1.png';
 import ex2 from '../../assets/Excel image/excel img 2.png';
 
-const TABS = [
+type TabItem = {
+  id: string;
+  label: string;
+  isSpecial?: boolean;
+  badge?: string;
+};
+
+const TABS: TabItem[] = [
   { id: 'schedule', label: 'AI Agents' },
   { id: 'attendance', label: 'Products' },
   { id: 'payroll', label: 'Website' },
@@ -49,6 +56,16 @@ export default function ShowcaseCarousel() {
 
   const activeData = MOCKUP_DATA[activeTab as keyof typeof MOCKUP_DATA];
 
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (isPlaying && activeData.pages > 1) {
+      interval = setInterval(() => {
+        setCurrentPage((prev) => (prev % activeData.pages) + 1);
+      }, 3000); // Change image every 3 seconds
+    }
+    return () => clearInterval(interval);
+  }, [isPlaying, activeData.pages]);
+
   const handleTabChange = (id: string) => {
     setActiveTab(id);
     setCurrentPage(1);
@@ -68,10 +85,10 @@ export default function ShowcaseCarousel() {
                 relative px-5 py-3 rounded-xl font-medium text-sm md:text-base transition-all duration-300
                 flex items-center gap-2
                 ${tab.isSpecial
-                  ? 'border border-dashed border-primary-500/50 text-primary-500 hover:bg-primary-500/10'
+                  ? 'border border-dashed border-primary-500/50 text-primary-500 hover:bg-primary-500/10 dark:hover:bg-primary-500/20'
                   : activeTab === tab.id
                     ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800'
                 }
               `}
             >
@@ -88,8 +105,8 @@ export default function ShowcaseCarousel() {
         {/* Content Container */}
         <div className="max-w-6xl mx-auto flex flex-col gap-6 lg:gap-8 w-full">
           {/* Main Visual Container */}
-          <div className="glass-panel w-full bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden relative">
-            <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[21/9] bg-white flex flex-col w-full">
+          <div className="glass-panel w-full bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden relative">
+            <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[21/9] bg-white dark:bg-gray-950 flex flex-col w-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`${activeTab}-${currentPage}`}
@@ -113,7 +130,7 @@ export default function ShowcaseCarousel() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 1.02 }}
                       transition={{ duration: 0.3 }}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain p-2 md:p-4"
                     />
                   )}
                 </AnimatePresence>
@@ -123,19 +140,19 @@ export default function ShowcaseCarousel() {
 
           {/* Carousel Controls (Outer) */}
           <div className="flex justify-center mt-2 w-full">
-            <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 px-4 md:px-6 py-2 md:py-3 rounded-full bg-white border border-gray-200 shadow-sm">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 px-4 md:px-6 py-2 md:py-3 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-sm">
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="text-gray-500 hover:text-gray-900 transition-colors flex-shrink-0"
+                className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors flex-shrink-0"
               >
                 {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               </button>
 
-              <div className="w-px h-4 bg-gray-200 hidden sm:block" />
+              <div className="w-px h-4 bg-gray-200 dark:bg-gray-700 hidden sm:block" />
 
               <button
                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                className="text-gray-500 hover:text-gray-900 transition-colors disabled:opacity-30 flex-shrink-0"
+                className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors disabled:opacity-30 disabled:dark:opacity-50 flex-shrink-0"
                 disabled={currentPage === 1}
               >
                 <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -148,7 +165,7 @@ export default function ShowcaseCarousel() {
                     onClick={() => setCurrentPage(i + 1)}
                     className={`h-1.5 md:h-2 rounded-full transition-all duration-300 ${currentPage === i + 1
                       ? 'w-4 md:w-6 bg-primary-500'
-                      : 'w-1.5 md:w-2 bg-gray-300 hover:bg-gray-400'
+                      : 'w-1.5 md:w-2 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                       }`}
                   />
                 ))}
@@ -156,15 +173,15 @@ export default function ShowcaseCarousel() {
 
               <button
                 onClick={() => setCurrentPage(p => Math.min(activeData.pages, p + 1))}
-                className="text-gray-500 hover:text-gray-900 transition-colors disabled:opacity-30 flex-shrink-0"
+                className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors disabled:opacity-30 disabled:dark:opacity-50 flex-shrink-0"
                 disabled={currentPage === activeData.pages}
               >
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
-              <div className="w-px h-4 bg-gray-200 hidden sm:block" />
+              <div className="w-px h-4 bg-gray-200 dark:bg-gray-700 hidden sm:block" />
 
-              <span className="text-xs md:text-sm font-medium text-gray-500 whitespace-nowrap">
+              <span className="text-xs md:text-sm font-medium text-gray-500 dark:text-gray-400 whitespace-nowrap">
                 {currentPage}/{activeData.pages}
               </span>
             </div>

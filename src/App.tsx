@@ -13,6 +13,7 @@ import Benefits from './components/sections/Benefits';
 import CTA from './components/sections/CTA';
 import Footer from './components/sections/Footer';
 import Navbar from './components/layout/Navbar';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function Divider() {
   return (
@@ -24,26 +25,28 @@ function Divider() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 selection:bg-primary-500/30">
-      <Navbar />
-      <main>
-        <Hero />
-        <Divider />
-        <ShowcaseCarousel />
-        <Divider />
-        <HowItWorks />
-        <Divider />
-        <Features />
-        <Divider />
-        <WorkflowVisualizer />
-        <Divider />
-        <Integrations />
-        <Divider />
-        <Benefits />
-        <Divider />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 selection:bg-primary-500/30">
+        <Navbar />
+        <main>
+          <Hero />
+          <Divider />
+          <ShowcaseCarousel />
+          <Divider />
+          <HowItWorks />
+          <Divider />
+          <Features />
+          <Divider />
+          <WorkflowVisualizer />
+          <Divider />
+          <Integrations />
+          <Divider />
+          <Benefits />
+          <Divider />
+          <CTA />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }

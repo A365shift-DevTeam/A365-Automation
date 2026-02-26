@@ -4,16 +4,16 @@ import { Mail, Database, Slack, CheckCircle2 } from 'lucide-react';
 
 export default function WorkflowVisualizer() {
   return (
-    <SectionWrapper className="bg-white overflow-hidden">
+    <SectionWrapper className="bg-white dark:bg-gray-950 overflow-hidden">
       <div className="flex flex-col lg:flex-row items-center gap-16">
         <div className="w-full lg:w-1/2">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Visualize your logic</h2>
-          <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50">Visualize your logic</h2>
+          <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 leading-relaxed">
             Stop writing brittle scripts. Our visual canvas lets you see exactly how data flows between your applications. Add conditional logic, loops, and error handling with a click.
           </p>
           <ul className="space-y-4">
             {['Drag-and-drop interface', 'Real-time testing', 'Version history & rollbacks'].map((item, i) => (
-              <li key={i} className="flex items-center gap-3 text-gray-700">
+              <li key={i} className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
                 <CheckCircle2 className="w-5 h-5 text-accent-500" />
                 {item}
               </li>
@@ -23,14 +23,14 @@ export default function WorkflowVisualizer() {
 
         <div className="w-full lg:w-1/2 relative h-[400px] flex items-center justify-center">
           {/* Mock Canvas */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:24px_24px] rounded-2xl border border-gray-200 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#374151_1px,transparent_1px),linear-gradient(to_bottom,#374151_1px,transparent_1px)] bg-[size:24px_24px] rounded-2xl border border-gray-200 dark:border-gray-800 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)]" />
 
           <div className="relative z-10 flex items-center gap-4 md:gap-8">
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
-              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white border border-primary-200 flex items-center justify-center shadow-lg shadow-primary-500/10"
+              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white dark:bg-gray-900 border border-primary-200 dark:border-primary-500/30 flex items-center justify-center shadow-lg shadow-primary-500/10"
             >
               <Mail className="w-6 h-6 md:w-8 md:h-8 text-primary-500" />
             </motion.div>
@@ -60,7 +60,7 @@ export default function WorkflowVisualizer() {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white border border-primary-200 flex items-center justify-center shadow-lg shadow-primary-500/10"
+              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white dark:bg-gray-900 border border-primary-200 dark:border-primary-500/30 flex items-center justify-center shadow-lg shadow-primary-500/10"
             >
               <Database className="w-6 h-6 md:w-8 md:h-8 text-primary-500" />
             </motion.div>
@@ -90,7 +90,7 @@ export default function WorkflowVisualizer() {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 1.2 }}
-              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white border border-accent-200 flex items-center justify-center shadow-lg shadow-accent-500/10"
+              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white dark:bg-gray-900 border border-accent-200 dark:border-accent-500/30 flex items-center justify-center shadow-lg shadow-accent-500/10"
             >
               <Slack className="w-6 h-6 md:w-8 md:h-8 text-accent-500" />
             </motion.div>

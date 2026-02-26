@@ -51,7 +51,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="text-3xl md:text-5xl font-bold tracking-tight mb-6 leading-tight text-gray-900"
+          className="text-3xl md:text-5xl font-bold tracking-tight mb-6 leading-tight text-gray-900 dark:text-gray-50"
         >
           What Generic AI tools Can't Structure<br className="hidden md:block" />
           We<span className="text-gradient"> Architect , Integrate</span> and <span className="text-gradient">Scale</span>
@@ -61,10 +61,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 max-w-3xl mx-auto my-8 min-h-[2em]"
+          className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200 max-w-3xl mx-auto my-8 min-h-[2em]"
         >
           {typedSubtitle}
-          <span className="inline-block w-[2px] h-[1em] bg-gray-400 ml-0.5 animate-pulse align-middle" />
+          <span className="inline-block w-[2px] h-[1em] bg-gray-400 dark:bg-gray-500 ml-0.5 animate-pulse align-middle" />
         </motion.p>
 
         <motion.div
@@ -74,12 +74,12 @@ export default function Hero() {
           className="max-w-2xl mx-auto mb-10 pl-4 md:pl-0 flex flex-col items-center"
         >
           <div className="text-left w-fit mx-auto md:ml-auto md:mr-auto">
-            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 text-center md:text-left">We Design AI for Real Business Impact</h3>
-            <ul className="text-base md:text-lg text-gray-700 leading-relaxed space-y-1 font-medium text-[#2d6a8f]">
-              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] font-bold">*</span> Requirement-driven systems</li>
-              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] font-bold">*</span> Process-aligned automation</li>
-              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] font-bold">*</span> API-connected platforms</li>
-              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] font-bold">*</span> Multi-agent enterprise frameworks</li>
+            <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 text-center md:text-left">We Design AI for Real Business Impact</h3>
+            <ul className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed space-y-1 font-medium text-[#2d6a8f] dark:text-[#53a2d1]">
+              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] dark:text-[#53a2d1] font-bold">*</span> Requirement-driven systems</li>
+              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] dark:text-[#53a2d1] font-bold">*</span> Process-aligned automation</li>
+              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] dark:text-[#53a2d1] font-bold">*</span> API-connected platforms</li>
+              <li className="flex items-center gap-2"><span className="text-[#2d6a8f] dark:text-[#53a2d1] font-bold">*</span> Multi-agent enterprise frameworks</li>
             </ul>
           </div>
         </motion.div>
@@ -94,7 +94,7 @@ export default function Hero() {
             Connect US
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
-          <button className="w-full sm:w-auto px-8 py-4 glass-panel hover:bg-gray-50 text-gray-700 rounded-xl font-medium transition-all flex items-center justify-center gap-2">
+          <button className="w-full sm:w-auto px-8 py-4 glass-panel hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-xl font-medium transition-all flex items-center justify-center gap-2">
             <Play className="w-4 h-4 fill-current" />
             View Demo
           </button>
@@ -102,7 +102,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-gray-950 to-transparent z-10 pointer-events-none" />
     </section>
   );
 }
