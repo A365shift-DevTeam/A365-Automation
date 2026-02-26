@@ -1,93 +1,221 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
-import { Blocks, Zap, BarChart3 } from 'lucide-react';
-import SectionWrapper from '../ui/SectionWrapper';
+import { useRef, useState, useEffect } from 'react';
+import ambotLogo from '../../assets/Ambot logo png.png';
 
-const STEPS = [
+const PHASES = [
   {
-    id: '01',
-    title: 'Connect your apps',
-    description: 'Securely link your favorite tools with our one-click integrations. We support over 500+ SaaS applications out of the box.',
-    icon: Blocks,
-    color: 'text-primary-400',
-    bg: 'bg-primary-500/10',
+    threshold: 0.1,
+    week: "WEEK 0",
+    title: "Ready to start",
+    desc1: "Let's embark on the automation journey.",
+    desc2: "We will analyze your current processes.",
+    outcome: "A clear roadmap for automation."
   },
   {
-    id: '02',
-    title: 'Build workflows',
-    description: 'Use our intuitive drag-and-drop builder to create complex automation logic without writing a single line of code.',
-    icon: Zap,
-    color: 'text-accent-400',
-    bg: 'bg-accent-500/10',
+    threshold: 0.35,
+    week: "WEEK 1",
+    title: "Discovery",
+    desc1: "We dive deep into your existing workflows and identify bottlenecks.",
+    desc2: "Our team maps out the exact processes that need automation.",
+    outcome: "Comprehensive process documentation."
   },
   {
-    id: '03',
-    title: 'Automate & monitor',
-    description: 'Set it live and watch the magic happen. Track performance, errors, and savings in real-time on your dashboard.',
-    icon: BarChart3,
-    color: 'text-primary-400',
-    bg: 'bg-primary-500/10',
+    threshold: 0.6,
+    week: "WEEK 2",
+    title: "BRD",
+    desc1: "Business Requirements Document creation.",
+    desc2: "We finalize the scope, tools, and expected ROI.",
+    outcome: "Approved blueprint for the bot."
   },
+  {
+    threshold: 0.85,
+    week: "WEEK 3-5",
+    title: "Build & Train",
+    desc1: "We develop the platform, configure AI models, integrate systems, and run iterative testing.",
+    desc2: "Automation workflows, backend logic, and UI components are implemented.",
+    outcome: "Production-ready AI system."
+  },
+  {
+    threshold: 1.1,
+    week: "WEEK 6-8",
+    title: "Go Live",
+    desc1: "Deployment to production environment.",
+    desc2: "We monitor the bot's performance and make necessary adjustments.",
+    outcome: "Fully automated workflow."
+  }
 ];
 
 export default function HowItWorks() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start center", "end center"]
+    offset: ["start start", "end end"]
   });
 
+  const [percentage, setPercentage] = useState(0);
+  const [currentPhase, setCurrentPhase] = useState(PHASES[0]);
+
+  useEffect(() => {
+    return scrollYProgress.on("change", (latest) => {
+      setPercentage(Math.round(latest * 100));
+      const phase = PHASES.find(p => latest < p.threshold) || PHASES[PHASES.length - 1];
+      setCurrentPhase(phase);
+    });
+  }, [scrollYProgress]);
+
+  // The exact path the bot and the progress line will follow
+  const pathString = "M 190 280 C 230 280, 270 400, 350 400 C 450 400, 450 250, 550 250 C 650 250, 650 150, 750 150 C 850 150, 850 80, 950 80";
+
   return (
-    <SectionWrapper id="how-it-works" className="bg-gray-50">
-      <div className="text-center mb-20">
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">How A365 Works</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-          Three simple steps to transform your business operations from manual chaos to automated harmony.
-        </p>
-      </div>
+    <section ref={containerRef} id="how-it-works" className="bg-white h-[300vh] relative">
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden py-12">
 
-      <div ref={containerRef} className="relative max-w-4xl mx-auto">
-        {/* Vertical Line */}
-        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gray-200 -translate-x-1/2" />
+        <div className="text-center mb-8 shrink-0">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">How A365 Works</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            Scroll down to see how our AI bot transforms your manual process into a fully automated workflow.
+          </p>
+        </div>
 
-        <motion.div
-          className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-primary-500 -translate-x-1/2 origin-top"
-          style={{ scaleY: scrollYProgress }}
-        />
+        <div className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center flex-1 min-h-0">
 
-        <div className="space-y-24">
-          {STEPS.map((step, index) => {
-            const isEven = index % 2 === 0;
-            return (
-              <div key={step.id} className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-16 ${isEven ? '' : 'md:flex-row-reverse'}`}>
+          {/* Left Side: Text & Gauge */}
+          <div className="lg:col-span-4 flex flex-col gap-6 h-full justify-center">
+            {/* Text Description */}
+            <div className="min-h-[180px]">
+              <h4 className="text-primary-500 font-bold text-sm tracking-wider uppercase mb-2">{currentPhase.week}</h4>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">{currentPhase.title}</h3>
+              <p className="text-gray-600 mb-4 text-sm leading-relaxed">{currentPhase.desc1}</p>
+              <p className="text-gray-600 mb-4 text-sm leading-relaxed">{currentPhase.desc2}</p>
+              <p className="text-gray-900 font-semibold text-sm">Outcome: {currentPhase.outcome}</p>
+            </div>
 
-                {/* Center Node */}
-                <div className="absolute left-8 md:left-1/2 w-12 h-12 rounded-full bg-gray-50 border-2 border-primary-500 -translate-x-1/2 flex items-center justify-center z-10 shadow-sm">
-                  <span className="text-sm font-bold text-primary-500">{step.id}</span>
-                </div>
-
-                {/* Content */}
-                <motion.div
-                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6 }}
-                  className={`w-full md:w-1/2 pl-24 md:pl-0 ${isEven ? 'md:text-right' : 'md:text-left'}`}
-                >
-                  <div className={`inline-flex p-3 rounded-xl ${step.bg} ${step.color} mb-6`}>
-                    <step.icon className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900">{step.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
-                </motion.div>
-
-                {/* Empty space for the other side */}
-                <div className="hidden md:block w-1/2" />
+            {/* Gauge Card */}
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl p-6 pb-8">
+              <div className="flex gap-4 mb-6 font-bold text-sm">
+                <span className="text-blue-500">AI Process</span>
+                <span className="text-primary-500">Your Process</span>
               </div>
-            );
-          })}
+              <div className="relative">
+                <svg viewBox="0 0 300 200" className="w-full h-auto overflow-visible">
+                  <defs>
+                    <linearGradient id="gauge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#00B050" />
+                      <stop offset="100%" stopColor="#308BAF" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Background Arc */}
+                  <path d="M 30 140 A 120 120 0 0 1 270 140" fill="none" stroke="#e5e7eb" strokeWidth="24" strokeLinecap="round" />
+
+                  {/* Foreground Arc */}
+                  <motion.path
+                    d="M 30 140 A 120 120 0 0 1 270 140"
+                    fill="none"
+                    stroke="url(#gauge-gradient)"
+                    strokeWidth="24"
+                    strokeLinecap="round"
+                    strokeDasharray={377}
+                    style={{ strokeDashoffset: useTransform(scrollYProgress, [0, 1], [377, 0]) }}
+                  />
+
+                  {/* Needle */}
+                  <motion.g
+                    style={{
+                      rotate: useTransform(scrollYProgress, [0, 1], [-90, 90]),
+                      originX: 0.5,
+                      originY: 0.5
+                    }}
+                  >
+                    {/* Transparent bounding box to force the rotation center to exactly 150,140 */}
+                    <circle cx="150" cy="140" r="90" fill="transparent" />
+                    <line x1="150" y1="140" x2="150" y2="50" stroke="#2563eb" strokeWidth="6" strokeLinecap="round" />
+                    <circle cx="150" cy="140" r="12" fill="#2563eb" />
+                  </motion.g>
+
+                  {/* Labels */}
+                  <text x="30" y="185" textAnchor="middle" className="text-lg font-medium fill-gray-400">0%</text>
+                  <text x="270" y="185" textAnchor="middle" className="text-lg font-medium fill-gray-400">100%</text>
+                </svg>
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-3xl font-bold text-blue-600">
+                  {percentage}%
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side: Timeline SVG */}
+          <div className="lg:col-span-8 flex items-center justify-center h-full">
+            <svg viewBox="50 0 950 500" className="w-full h-auto drop-shadow-sm overflow-visible max-h-[80vh]">
+              <defs>
+                <linearGradient id="btn-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#308BAF" />
+                  <stop offset="100%" stopColor="#00B050" />
+                </linearGradient>
+                <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#308BAF" />
+                  <stop offset="100%" stopColor="#00B050" />
+                </linearGradient>
+              </defs>
+
+              {/* Base Path */}
+              <path d={pathString} fill="none" stroke="#f3f4f6" strokeWidth="6" strokeLinecap="round" />
+
+              {/* Animated Progress Path */}
+              <motion.path
+                d={pathString}
+                fill="none"
+                stroke="url(#path-gradient)"
+                strokeWidth="6"
+                strokeLinecap="round"
+                style={{ pathLength: scrollYProgress }}
+              />
+
+              {/* Nodes */}
+              <g transform="translate(80, 260)">
+                <rect width="110" height="40" rx="20" fill="url(#btn-gradient)" className="drop-shadow-md" />
+                <text x="55" y="25" textAnchor="middle" className="text-sm font-medium fill-white" style={{ fontFamily: 'Inter, sans-serif' }}>Get started</text>
+              </g>
+
+              <g>
+                <circle cx="350" cy="400" r="8" fill="white" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="350" y="435" textAnchor="middle" className="text-sm font-bold fill-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>Week 1</text>
+                <text x="350" y="455" textAnchor="middle" className="text-sm fill-accent-600" style={{ fontFamily: 'Inter, sans-serif' }}>Discovery</text>
+              </g>
+
+              <g>
+                <circle cx="550" cy="250" r="8" fill="white" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="550" y="210" textAnchor="middle" className="text-sm font-bold fill-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>Week 2</text>
+                <text x="550" y="230" textAnchor="middle" className="text-sm fill-accent-600" style={{ fontFamily: 'Inter, sans-serif' }}>BRD</text>
+              </g>
+
+              <g>
+                <circle cx="750" cy="150" r="8" fill="white" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="750" y="185" textAnchor="middle" className="text-sm font-bold fill-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>Week 3 to 5</text>
+                <text x="750" y="205" textAnchor="middle" className="text-sm fill-accent-600" style={{ fontFamily: 'Inter, sans-serif' }}>Build</text>
+              </g>
+
+              <g>
+                <circle cx="950" cy="80" r="8" fill="white" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="950" y="40" textAnchor="middle" className="text-sm font-bold fill-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>Week 6 to 8</text>
+                <text x="950" y="60" textAnchor="middle" className="text-sm fill-accent-600" style={{ fontFamily: 'Inter, sans-serif' }}>Go Live</text>
+              </g>
+
+              {/* Bot Icon */}
+              <motion.g
+                style={{
+                  offsetPath: `path('${pathString}')`,
+                  offsetDistance: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
+                  offsetRotate: "0deg"
+                }}
+              >
+                <image href={ambotLogo} x="-24" y="-24" width="48" height="48" />
+              </motion.g>
+
+            </svg>
+          </div>
         </div>
       </div>
-    </SectionWrapper>
+    </section>
   );
 }

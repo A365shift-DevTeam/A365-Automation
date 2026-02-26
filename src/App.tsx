@@ -13,17 +13,32 @@ import Benefits from './components/sections/Benefits';
 import CTA from './components/sections/CTA';
 import Footer from './components/sections/Footer';
 
+function Divider() {
+  return (
+    <div className="w-full px-8 md:px-16">
+      <div className="h-px bg-gradient-to-r from-transparent via-[#65A859]/30 to-transparent" />
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900 selection:bg-primary-500/30">
       <main>
         <Hero />
+        <Divider />
         <ShowcaseCarousel />
+        <Divider />
         <HowItWorks />
+        <Divider />
         <Features />
+        <Divider />
         <WorkflowVisualizer />
+        <Divider />
         <Integrations />
+        <Divider />
         <Benefits />
+        <Divider />
         <CTA />
       </main>
       <Footer />
