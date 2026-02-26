@@ -135,9 +135,9 @@ export default function HowItWorks() {
         <div className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start flex-1 min-h-0">
 
           {/* Left Side: Text & Gauge */}
-          <div className="lg:col-span-4 flex flex-col gap-3 h-full min-h-0">
-            {/* Text Description - flex-shrink so it can compress */}
-            <div className="shrink overflow-hidden min-h-0">
+          <div className="lg:col-span-4 relative h-full">
+            {/* Text Description - sits at the top */}
+            <div>
               {/* Week Badge */}
               <span className={`inline-block px-4 py-1 rounded-full text-white text-xs font-bold tracking-wider uppercase mb-2 ${colors.badge}`}>
                 {currentPhase.week}
@@ -165,8 +165,8 @@ export default function HowItWorks() {
               </div>
             </div>
 
-            {/* Gauge Card - shrink-0 so it keeps its size, the text area above will compress instead */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl p-4 pb-2 shrink-0">
+            {/* Gauge Card - absolutely pinned to bottom so it NEVER moves */}
+            <div className="absolute bottom-0 left-0 right-0 bg-white rounded-2xl border border-gray-100 shadow-xl p-4 pb-2">
               <div className="flex gap-4 mb-2 font-bold text-sm">
                 <span className="text-blue-500">AI Process</span>
                 <span className="text-primary-500">Your Process</span>
