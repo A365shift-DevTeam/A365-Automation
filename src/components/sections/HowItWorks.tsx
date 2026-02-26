@@ -68,21 +68,21 @@ export default function HowItWorks() {
 
   return (
     <section ref={containerRef} id="how-it-works" className="bg-white h-[300vh] relative">
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden py-12">
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden py-6">
 
-        <div className="text-center mb-8 shrink-0">
+        <div className="text-center mb-4 shrink-0">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">How A365 Works</h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             Scroll down to see how our AI bot transforms your manual process into a fully automated workflow.
           </p>
         </div>
 
-        <div className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center flex-1 min-h-0">
+        <div className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start flex-1 min-h-0">
 
           {/* Left Side: Text & Gauge */}
-          <div className="lg:col-span-4 flex flex-col gap-6 h-full justify-center">
-            {/* Text Description */}
-            <div className="min-h-[180px]">
+          <div className="lg:col-span-4 flex flex-col gap-6 justify-center">
+            {/* Text Description - fixed height to prevent layout shift */}
+            <div className="h-[250px] overflow-hidden">
               <h4 className="text-primary-500 font-bold text-sm tracking-wider uppercase mb-2">{currentPhase.week}</h4>
               <h3 className="text-3xl font-bold text-gray-900 mb-4">{currentPhase.title}</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">{currentPhase.desc1}</p>
