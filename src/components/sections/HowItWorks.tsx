@@ -119,7 +119,8 @@ export default function HowItWorks() {
   const colors = PHASE_COLORS[currentPhase.colorIndex];
 
   // The exact path the bot and the progress line will follow
-  const pathString = "M 190 280 C 230 280, 270 400, 350 400 C 450 400, 450 250, 550 250 C 650 250, 650 150, 750 150 C 850 150, 850 80, 950 80";
+  // Quadratic bezier creating a smooth exponential-like curve from bottom-left to top-right
+  const pathString = "M 150 420 Q 550 420, 950 80";
 
   return (
     <section ref={containerRef} id="how-it-works" className="bg-white dark:bg-gray-950 h-[300vh] relative">
@@ -249,33 +250,33 @@ export default function HowItWorks() {
               />
 
               {/* Nodes */}
-              <g transform="translate(80, 260)">
+              <g transform="translate(95, 400)">
                 <rect width="110" height="40" rx="20" fill="url(#btn-gradient)" className="drop-shadow-md" />
                 <text x="55" y="25" textAnchor="middle" className="text-sm font-medium fill-white" style={{ fontFamily: 'Inter, sans-serif' }}>Get started</text>
               </g>
 
               <g>
-                <circle cx="350" cy="400" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="350" y="435" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 1</text>
-                <text x="350" y="455" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Discovery</text>
+                <circle cx="350" cy="399" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="350" y="434" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 1</text>
+                <text x="350" y="454" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Discovery</text>
               </g>
 
               <g>
-                <circle cx="550" cy="250" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="550" y="210" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 2</text>
-                <text x="550" y="230" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>BRD</text>
+                <circle cx="550" cy="335" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="550" y="370" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 2</text>
+                <text x="550" y="390" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>BRD</text>
               </g>
 
               <g>
-                <circle cx="750" cy="150" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="750" y="185" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 3 to 5</text>
-                <text x="750" y="205" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Build</text>
+                <circle cx="750" cy="229" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
+                <text x="750" y="264" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 3 to 5</text>
+                <text x="750" y="284" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Build</text>
               </g>
 
               <g>
                 <circle cx="950" cy="80" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="950" y="40" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 6 to 8</text>
-                <text x="950" y="60" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Go Live</text>
+                <text x="950" y="45" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 6 to 8</text>
+                <text x="950" y="65" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Go Live</text>
               </g>
 
               {/* Bot Icon */}
