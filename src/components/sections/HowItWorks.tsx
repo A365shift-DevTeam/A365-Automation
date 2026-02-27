@@ -98,6 +98,38 @@ const PHASES = [
   }
 ];
 
+// Chart configuration
+const CHART = {
+  // Chart area bounds (inside axes)
+  left: 80,
+  right: 520,
+  top: 40,
+  bottom: 340,
+  // Y-axis values
+  yLabels: ['stage 1 ', 'stage 2', 'stage 3', 'stage 4', 'stage 5'],
+  // X-axis week labels
+  xLabels: ['Week 1', 'Week 2', 'Week 3-5', 'Week 6-8'],
+};
+
+// Exponential curve path (bottom-left to top-right)
+const CURVE_PATH = `M ${CHART.left} ${CHART.bottom} C ${CHART.left + 60} ${CHART.bottom}, ${CHART.left + 100} ${CHART.bottom - 20}, ${CHART.left + 150} ${CHART.bottom - 40} C ${CHART.left + 200} ${CHART.bottom - 60}, ${CHART.left + 240} ${CHART.bottom - 80}, ${CHART.left + 280} ${CHART.bottom - 130} C ${CHART.left + 320} ${CHART.bottom - 180}, ${CHART.left + 360} ${CHART.bottom - 230}, ${CHART.right} ${CHART.top + 20}`;
+
+// Area fill path (curve + close along bottom)
+const AREA_PATH = `${CURVE_PATH} L ${CHART.right} ${CHART.bottom} L ${CHART.left} ${CHART.bottom} Z`;
+
+// Exact intersection points where the curve crosses each stage horizontal line
+// Solved from the cubic bezier equations at each yPosition
+const STAGE_HIT_POINTS = [
+  { x: 135, y: 334 },  // Week 1 (start of curve)
+  { x: 276, y: 280 },  // Stage 1
+  { x: 352, y: 220 },  // Stage 2
+  { x: 461, y: 100 },  // Stage 4
+  { x: 520, y: 60 },   // Stage 5 (curve endpoint)
+];
+
+const yPositions = [280, 220, 160, 100, 60];
+const xPositions = [135, 264, 393, 520];
+
 export default function HowItWorks() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -117,10 +149,6 @@ export default function HowItWorks() {
   }, [scrollYProgress]);
 
   const colors = PHASE_COLORS[currentPhase.colorIndex];
-
-  // The exact path the bot and the progress line will follow
-  // Quadratic bezier creating a smooth exponential-like curve from bottom-left to top-right
-  const pathString = "M 150 420 Q 550 420, 950 80";
 
   return (
     <section ref={containerRef} id="how-it-works" className="bg-white dark:bg-gray-950 h-[300vh] relative">
@@ -222,75 +250,147 @@ export default function HowItWorks() {
             </div>
           </div>
 
-          {/* Right Side: Timeline SVG */}
+          {/* Right Side: Exponential Growth Chart */}
           <div className="lg:col-span-8 flex items-center justify-center h-full">
-            <svg viewBox="50 0 950 500" className="w-full h-auto drop-shadow-sm overflow-visible max-h-[80vh]">
-              <defs>
-                <linearGradient id="btn-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#308BAF" />
-                  <stop offset="100%" stopColor="#00B050" />
-                </linearGradient>
-                <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#308BAF" />
-                  <stop offset="100%" stopColor="#00B050" />
-                </linearGradient>
-              </defs>
+            <div className="w-full bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-xl p-6 max-h-[80vh]">
+              <svg viewBox="20 0 560 400" className="w-full h-auto overflow-visible">
+                <defs>
+                  {/* Green gradient for area fill under the curve */}
+                  <linearGradient id="area-gradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#22C55E" stopOpacity="0.25" />
+                    <stop offset="60%" stopColor="#22C55E" stopOpacity="0.08" />
+                    <stop offset="100%" stopColor="#22C55E" stopOpacity="0" />
+                  </linearGradient>
+                  {/* Glow filter for the endpoint dot */}
+                  <filter id="dot-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="6" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                  {/* Shadow filter for tooltip */}
+                  <filter id="tooltip-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#22C55E" floodOpacity="0.15" />
+                  </filter>
+                </defs>
 
-              {/* Base Path */}
-              <path d={pathString} fill="none" stroke="#f3f4f6" className="dark:stroke-gray-800" strokeWidth="6" strokeLinecap="round" />
+                {/* Vertical grid lines */}
+                {xPositions.map((x, i) => (
+                  <line
+                    key={`vgrid-${i}`}
+                    x1={x}
+                    y1={CHART.top}
+                    x2={x}
+                    y2={CHART.bottom}
+                    stroke="#f3f4f6"
+                    className="dark:stroke-gray-800"
+                    strokeWidth="1"
+                    strokeDasharray="4 4"
+                  />
+                ))}
 
-              {/* Animated Progress Path */}
-              <motion.path
-                d={pathString}
-                fill="none"
-                stroke="url(#path-gradient)"
-                strokeWidth="6"
-                strokeLinecap="round"
-                style={{ pathLength: scrollYProgress }}
-              />
+                {/* Horizontal grid lines */}
+                {yPositions.map((y, i) => (
+                  <line
+                    key={`hgrid-${i}`}
+                    x1={CHART.left}
+                    y1={y}
+                    x2={CHART.right}
+                    y2={y}
+                    stroke="#f3f4f6"
+                    className="dark:stroke-gray-800"
+                    strokeWidth="1"
+                  />
+                ))}
+                {/* Bottom axis line */}
+                <line x1={CHART.left} y1={CHART.bottom} x2={CHART.right} y2={CHART.bottom} stroke="#e5e7eb" className="dark:stroke-gray-700" strokeWidth="1.5" />
 
-              {/* Nodes */}
-              <g transform="translate(95, 400)">
-                <rect width="110" height="40" rx="20" fill="url(#btn-gradient)" className="drop-shadow-md" />
-                <text x="55" y="25" textAnchor="middle" className="text-sm font-medium fill-white" style={{ fontFamily: 'Inter, sans-serif' }}>Get started</text>
-              </g>
+                {/* Y-axis labels */}
+                {CHART.yLabels.map((label, i) => (
+                  <text
+                    key={`ylabel-${i}`}
+                    x={CHART.left - 16}
+                    y={yPositions[i] + 5}
+                    textAnchor="end"
+                    className="fill-gray-400 dark:fill-gray-500"
+                    style={{ fontSize: '13px', fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}
+                  >
+                    {label}
+                  </text>
+                ))}
 
-              <g>
-                <circle cx="350" cy="399" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="350" y="434" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 1</text>
-                <text x="350" y="454" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Discovery</text>
-              </g>
+                {/* X-axis labels */}
+                {CHART.xLabels.map((label, i) => {
+                  // Map phase colorIndex to x-axis label index: colorIndex 1→0, 2→1, 3→2, 4→3
+                  const activeIndex = currentPhase.colorIndex - 1;
+                  const isActive = i === activeIndex;
+                  const isPast = i < activeIndex;
+                  return (
+                    <text
+                      key={`xlabel-${i}`}
+                      x={xPositions[i]}
+                      y={CHART.bottom + 30}
+                      textAnchor="middle"
+                      className={
+                        isActive ? 'fill-green-500' :
+                          isPast ? 'fill-green-300 dark:fill-green-700' :
+                            'fill-gray-400 dark:fill-gray-500'
+                      }
+                      style={{
+                        fontSize: '13px',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontWeight: isActive ? 700 : 500,
+                        transition: 'fill 0.3s ease',
+                      }}
+                    >
+                      {label}
+                    </text>
+                  );
+                })}
 
-              <g>
-                <circle cx="550" cy="335" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="550" y="370" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 2</text>
-                <text x="550" y="390" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>BRD</text>
-              </g>
+                {/* Area fill under curve (animated opacity) */}
+                <motion.path
+                  d={AREA_PATH}
+                  fill="url(#area-gradient)"
+                  style={{ opacity: useTransform(scrollYProgress, [0, 0.3], [0, 1]) }}
+                />
 
-              <g>
-                <circle cx="750" cy="229" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="750" y="264" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 3 to 5</text>
-                <text x="750" y="284" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Build</text>
-              </g>
+                {/* Base curve (light ghost) */}
+                <path
+                  d={CURVE_PATH}
+                  fill="none"
+                  stroke="#dcfce7"
+                  className="dark:stroke-green-900/30"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
 
-              <g>
-                <circle cx="950" cy="80" r="8" fill="white" className="dark:fill-gray-900 dark:stroke-gray-600" stroke="#e5e7eb" strokeWidth="4" />
-                <text x="950" y="45" textAnchor="middle" className="text-sm font-bold fill-gray-900 dark:fill-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>Week 6 to 8</text>
-                <text x="950" y="65" textAnchor="middle" className="text-sm fill-accent-600 dark:fill-accent-400" style={{ fontFamily: 'Inter, sans-serif' }}>Go Live</text>
-              </g>
+                {/* Animated curve (draws on scroll) */}
+                <motion.path
+                  d={CURVE_PATH}
+                  fill="none"
+                  stroke="#22C55E"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  style={{ pathLength: scrollYProgress }}
+                />
 
-              {/* Bot Icon */}
-              <motion.g
-                style={{
-                  offsetPath: `path('${pathString}')`,
-                  offsetDistance: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
-                  offsetRotate: "0deg"
-                }}
-              >
-                <image href={ambotLogo} x="-24" y="-24" width="48" height="48" />
-              </motion.g>
 
-            </svg>
+
+                {/* Bot Icon */}
+                <motion.g
+                  style={{
+                    offsetPath: `path('${CURVE_PATH}')`,
+                    offsetDistance: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
+                    offsetRotate: "0deg"
+                  }}
+                >
+                  <image href={ambotLogo} x="-16" y="-16" width="32" height="32" />
+                </motion.g>
+
+              </svg>
+            </div>
           </div>
         </div>
       </div>
