@@ -7,6 +7,7 @@ import Hero from './components/sections/Hero';
 import ShowcaseCarousel from './components/sections/ShowcaseCarousel';
 import HowItWorks from './components/sections/HowItWorks';
 import Features from './components/sections/Features';
+import Flowchart from './components/sections/Flowchart';
 import WorkflowVisualizer from './components/sections/WorkflowVisualizer';
 import Integrations from './components/sections/Integrations';
 import Benefits from './components/sections/Benefits';
@@ -36,6 +37,8 @@ export default function App() {
           <HowItWorks />
           <Divider />
           <Features />
+          <Divider />
+          <Flowchart />
           <Divider />
           <WorkflowVisualizer />
           <Divider />
