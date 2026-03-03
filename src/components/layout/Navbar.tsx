@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import AIChatFullScreen from '../chat/AIChatFullScreen';
+import logoPath from '../../assets/AmBot 365-Logo.png';
 
 const NAV_LINKS = [
     { name: 'Solutions', href: '#solutions-overview' },
@@ -35,7 +36,7 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
                 <a href="#" className="flex items-center gap-2 text-xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
-                    Ambot365
+                    <img src={logoPath} alt="AmBot 365 Logo" className="h-8 w-auto" />
                 </a>
 
                 {/* Desktop Nav */}

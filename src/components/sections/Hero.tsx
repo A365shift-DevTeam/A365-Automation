@@ -91,9 +91,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight text-gray-900 dark:text-gray-50"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight"
         >
-          Enterprise operations.
+          <span className="text-[#002060] dark:text-white">Enterprise operations.</span>
           <br />
           <span className="inline-block text-2xl md:text-4xl lg:text-5xl mt-1 min-h-[1.2em]">
             <span className="bg-gradient-to-r from-[#4C99A0] to-[#65A859] bg-clip-text text-transparent">{typed}</span>
