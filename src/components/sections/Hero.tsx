@@ -64,13 +64,13 @@ export default function Hero() {
           animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         />
-        {/* Subtle grid pattern */}
+        {/* Grid pattern - higher contrast in light theme */}
         <div
-          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06]"
+          className="absolute inset-0 opacity-[0.04] dark:opacity-[0.06]"
           style={{
             backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px),
                              linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-            backgroundSize: '48px 48px',
+            backgroundSize: '75px 75px',
           }}
         />
       </div>
