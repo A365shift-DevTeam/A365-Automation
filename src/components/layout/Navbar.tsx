@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Send } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
+import AIChatFullScreen from '../chat/AIChatFullScreen';
 
 const NAV_LINKS = [
-    { name: 'Solutions', href: '#agents-in-action' },
+    { name: 'Solutions', href: '#solutions-overview' },
     { name: 'Agents in Action', href: '#agents-in-action' },
     { name: 'How It Works', href: '#how-it-works' },
     { name: 'Security & FAQ', href: '#security-faq' },
@@ -55,8 +56,9 @@ export default function Navbar() {
                 <div className="hidden md:flex items-center gap-4">
                     <ThemeToggle />
                     <button
-                        onClick={() => setIsAIChatOpen(!isAIChatOpen)}
-                        className="px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium rounded-xl transition-all shadow-md shadow-orange-500/25 hover:shadow-lg hover:shadow-orange-500/40 hover:-translate-y-0.5"
+                        type="button"
+                        onClick={() => setIsAIChatOpen(true)}
+                        className="px-5 py-2.5 bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] text-white text-sm font-medium rounded-xl transition-all shadow-md shadow-[#4C99A0]/25 hover:shadow-lg hover:shadow-[#4C99A0]/40 hover:-translate-y-0.5"
                     >
                         Ask AI
                     </button>
@@ -72,8 +74,9 @@ export default function Navbar() {
                 <div className="md:hidden flex items-center gap-4">
                     <ThemeToggle />
                     <button
-                        onClick={() => setIsAIChatOpen(!isAIChatOpen)}
-                        className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium rounded-xl transition-all"
+                        type="button"
+                        onClick={() => setIsAIChatOpen(true)}
+                        className="px-4 py-2 bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] text-white text-sm font-medium rounded-xl transition-all"
                     >
                         Ask AI
                     </button>
@@ -110,11 +113,12 @@ export default function Navbar() {
                             ))}
                             <div className="flex flex-col gap-3 mt-4 pb-4">
                                 <button
+                                    type="button"
                                     onClick={() => {
-                                        setIsAIChatOpen(!isAIChatOpen);
+                                        setIsAIChatOpen(true);
                                         setIsMobileMenuOpen(false);
                                     }}
-                                    className="w-full py-3 text-center text-base font-medium text-white bg-orange-500 hover:bg-orange-600 rounded-xl transition-all shadow-md"
+                                    className="w-full py-3 text-center text-base font-medium text-white bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] rounded-xl transition-all shadow-md"
                                 >
                                     Ask AI
                                 </button>
@@ -130,53 +134,9 @@ export default function Navbar() {
                 )}
             </AnimatePresence>
 
-            {/* AI Chat Interface */}
+            {/* Full-screen AI Chat (Gemini/ChatGPT style) */}
             <AnimatePresence>
-                {isAIChatOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 20 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed bottom-0 right-0 w-full md:w-96 h-[600px] bg-gray-800 dark:bg-gray-900 rounded-t-2xl shadow-2xl z-[60] flex flex-col"
-                    >
-                        {/* Header */}
-                        <div className="bg-gray-700 dark:bg-gray-800 px-6 py-4 rounded-t-2xl flex items-center justify-between">
-                            <h3 className="text-white font-semibold">A365 AI Assistant</h3>
-                            <button
-                                onClick={() => setIsAIChatOpen(false)}
-                                className="text-gray-400 hover:text-white transition-colors"
-                            >
-                                <X className="w-5 h-5" />
-                            </button>
-                        </div>
-
-                        {/* Chat Area */}
-                        <div className="flex-1 bg-gray-900 dark:bg-gray-950 p-6 overflow-y-auto">
-                            <div className="flex items-start gap-3 mb-4">
-                                <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl rounded-tl-none px-4 py-3 max-w-[80%]">
-                                    <p className="text-white text-sm">
-                                        Hi, I am your AI assistant. Ask me anything about our services.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Input Bar */}
-                        <div className="bg-gray-700 dark:bg-gray-800 px-4 py-4 rounded-b-2xl">
-                            <div className="flex items-center gap-2">
-                                <input
-                                    type="text"
-                                    placeholder="Ask about services, pricing, timeline..."
-                                    className="flex-1 bg-gray-600 dark:bg-gray-700 text-white placeholder-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
-                                />
-                                <button className="bg-orange-500 hover:bg-orange-600 text-white rounded-xl px-4 py-3 transition-colors flex items-center justify-center">
-                                    <Send className="w-4 h-4" />
-                                </button>
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
+                {isAIChatOpen && <AIChatFullScreen onClose={() => setIsAIChatOpen(false)} />}
             </AnimatePresence>
         </header>
     );

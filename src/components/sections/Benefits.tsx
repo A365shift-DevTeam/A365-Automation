@@ -38,7 +38,7 @@ export default function Benefits() {
         <div className="w-full lg:w-1/2">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50">The ROI of Automation</h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 leading-relaxed">
-            Stop wasting human potential on robotic tasks. A365 agents pay for themselves by reclaiming thousands of hours of manual work—typically at 20–50% of staff cost.
+            Whether you use our Intelligent AI Agents, Microsoft 365 automation, Office Suite tools, or scalable industry products—A365 pays for itself by reclaiming thousands of hours of manual work.
           </p>
 
           <div className="space-y-6">

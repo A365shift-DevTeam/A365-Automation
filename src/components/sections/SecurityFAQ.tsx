@@ -73,10 +73,10 @@ export default function SecurityFAQ() {
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50">Built for enterprise. Secured by design.</h2>
             </div>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">Security isn't an afterthought. Every agent is architected for your compliance requirements from day one.</p>
+          <p className="text-gray-600 dark:text-gray-400 mb-8">Security isn't an afterthought. Every A365 solution—agents, Microsoft 365 integrations, Office Suite, and scalable products—is architected for your compliance from day one.</p>
           <div className="section-card p-6">
             <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Your infrastructure. Your rules.</p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Every A365 agent is deployed within your security perimeter.</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">A365 solutions are deployed within your security perimeter.</p>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li className="flex items-center gap-2"><Server className="w-4 h-4 text-primary-500" /> On premise · Private cloud</li>
               <li className="flex items-center gap-2"><Lock className="w-4 h-4 text-primary-500" /> No data egress</li>

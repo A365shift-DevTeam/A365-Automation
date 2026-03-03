@@ -24,7 +24,7 @@ export default function AgentsInAction() {
   return (
     <SectionWrapper id="agents-in-action" className="section-bg">
       <div className="text-center mb-12">
-        <p className="text-sm font-semibold tracking-wider text-primary-500 uppercase mb-2">Purpose-built agentic AI for enterprise operations</p>
+        <p className="text-sm font-semibold tracking-wider text-primary-500 uppercase mb-2">Intelligent AI Agents · Microsoft ecosystem · Office Suite · Scalable products</p>
         <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">Agents in Production</h2>
       </div>
 

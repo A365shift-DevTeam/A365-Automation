@@ -13,15 +13,14 @@ function TickerRow({ items, direction = 1 }: { items: string[]; direction?: numb
   const duplicated = [...items, ...items];
   return (
     <motion.div
-      className="flex gap-8 shrink-0"
+      className="flex gap-5 shrink-0"
       animate={{ x: direction > 0 ? '-50%' : '0%' }}
       transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
     >
       {duplicated.map((text, i) => (
-        <span key={i} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
-          <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
+        <span key={i} className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-400 whitespace-nowrap">
           {text}
-          <span className="text-gray-400 dark:text-gray-500 text-xs">2m ago ·</span>
+          <span className="text-gray-400 dark:text-gray-500 text-[10px]">2m ago ·</span>
         </span>
       ))}
     </motion.div>
@@ -30,10 +29,10 @@ function TickerRow({ items, direction = 1 }: { items: string[]; direction?: numb
 
 export default function CommandCenterLive() {
   return (
-    <section className="py-6 border-y border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 mb-4">
-        <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
-          <Activity className="w-4 h-4 text-primary-500" />
+    <section className="py-4 border-y border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-2">
+        <div className="flex items-center gap-2 text-xs font-semibold text-gray-700 dark:text-gray-300">
+          <Activity className="w-3 h-3 text-primary-500" />
           Command Center — Live
         </div>
       </div>

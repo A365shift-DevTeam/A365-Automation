@@ -6,14 +6,14 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="text-2xl font-bold tracking-tighter mb-4 text-gray-900 dark:text-gray-50">A365</div>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              Agents as a Service · Built for enterprise operations · Deployed on your infrastructure.
+              Intelligent AI Agents · Microsoft AI Ecosystem · Office Suite · Scalable Industry Products.
             </p>
           </div>
           <div>
             <h4 className="font-semibold mb-4 text-gray-900 dark:text-gray-100">Platform</h4>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li><a href="#agents-in-action" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">Agents in Action</a></li>
-              <li><a href="#agents-in-action" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">Solutions</a></li>
+              <li><a href="#solutions-overview" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">Solutions</a></li>
               <li><a href="#how-it-works" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">How It Works</a></li>
             </ul>
           </div>

@@ -8,6 +8,7 @@ import CommandCenterLive from './components/sections/CommandCenterLive';
 import AgentsInAction from './components/sections/AgentsInAction';
 import BeforeAfter from './components/sections/BeforeAfter';
 import WhyAgent from './components/sections/WhyAgent';
+import SolutionsOverview from './components/sections/SolutionsOverview';
 import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import Integrations from './components/sections/Integrations';
 import Benefits from './components/sections/Benefits';
@@ -40,6 +41,8 @@ export default function App() {
           <BeforeAfter />
           <Divider />
           <WhyAgent />
+          <Divider />
+          <SolutionsOverview />
           <Divider />
           <HowEngagementsWork />
           <Divider />
