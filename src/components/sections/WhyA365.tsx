@@ -16,7 +16,7 @@ export default function WhyA365() {
   return (
     <SectionWrapper id="about" className="section-bg">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">Why A365</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">Why Ambot365</h2>
         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">Intelligent AI Agents, Microsoft AI Ecosystem, Office Suite, and Scalable Industry Products—built by people who've lived inside enterprise systems.</p>
       </div>
 
@@ -47,7 +47,7 @@ export default function WhyA365() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="section-card p-6">
             <Building2 className="w-10 h-10 text-primary-500 mb-4" />
-            <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">A365</h4>
+            <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Coreshift</h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">Intelligent AI Agents, Microsoft AI Ecosystem, Office Suite, and Scalable Industry Products. We deliver it all.</p>
           </div>
           <div className="section-card p-6">

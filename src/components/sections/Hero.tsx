@@ -1,8 +1,50 @@
+import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Zap, Shield, Clock } from 'lucide-react';
 
+const TYPING_TEXT = 'Now agent-powered.';
+const TYPING_SPEED_MS = 85;
+const CURSOR_BLINK_MS = 530;
+const PAUSE_AFTER_TYPING_MS = 2500;
+const PAUSE_BEFORE_RETYPE_MS = 400;
+
 export default function Hero() {
   const reduceMotion = useReducedMotion();
+  const [typed, setTyped] = useState(reduceMotion ? TYPING_TEXT : '');
+  const [cursorOn, setCursorOn] = useState(true);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    let timeoutId: ReturnType<typeof setTimeout>;
+    let intervalId: ReturnType<typeof setInterval>;
+
+    const runTypingCycle = () => {
+      setTyped('');
+      timeoutId = setTimeout(() => {
+        let i = 0;
+        intervalId = setInterval(() => {
+          i += 1;
+          setTyped(TYPING_TEXT.slice(0, i));
+          if (i >= TYPING_TEXT.length) {
+            clearInterval(intervalId);
+            timeoutId = setTimeout(runTypingCycle, PAUSE_AFTER_TYPING_MS + PAUSE_BEFORE_RETYPE_MS);
+          }
+        }, TYPING_SPEED_MS);
+      }, PAUSE_BEFORE_RETYPE_MS);
+    };
+
+    runTypingCycle();
+    return () => {
+      clearTimeout(timeoutId);
+      clearInterval(intervalId);
+    };
+  }, [reduceMotion]);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const id = setInterval(() => setCursorOn((c) => !c), CURSOR_BLINK_MS);
+    return () => clearInterval(id);
+  }, [reduceMotion]);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-r from-[#EDEEF3] to-[#FFFFFF] dark:from-gray-900 dark:to-gray-950">
       {/* Soft gradient orbs - subtle enterprise motion (respects reduced motion) */}
@@ -51,8 +93,20 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight text-gray-900 dark:text-gray-50"
         >
-          Enterprise operations.<br />
-          <span className="bg-gradient-to-r from-[#4C99A0] to-[#65A859] bg-clip-text text-transparent">Now agent-powered.</span>
+          Enterprise operations.
+          <br />
+          <span className="inline-block text-2xl md:text-4xl lg:text-5xl mt-1 min-h-[1.2em]">
+            <span className="bg-gradient-to-r from-[#4C99A0] to-[#65A859] bg-clip-text text-transparent">{typed}</span>
+            {!reduceMotion && (
+              <span
+                className="inline-block w-0.5 h-[0.9em] align-middle bg-[#4C99A0] ml-0.5 transition-opacity duration-75"
+                style={{
+                  opacity: typed.length < TYPING_TEXT.length ? 1 : cursorOn ? 1 : 0,
+                }}
+                aria-hidden
+              />
+            )}
+          </span>
         </motion.h1>
 
         <motion.p

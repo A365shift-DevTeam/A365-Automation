@@ -35,7 +35,7 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
                 <a href="#" className="flex items-center gap-2 text-xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
-                    A365
+                    Ambot365
                 </a>
 
                 {/* Desktop Nav */}
