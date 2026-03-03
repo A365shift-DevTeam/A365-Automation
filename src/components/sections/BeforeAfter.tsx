@@ -31,7 +31,9 @@ export default function BeforeAfter() {
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="section-card p-8"
+          whileHover={{ y: -4, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="section-card p-8 transition-smooth"
         >
           <div className="flex items-center gap-2 mb-6">
             <User className="w-5 h-5 text-gray-500" />
@@ -61,7 +63,9 @@ export default function BeforeAfter() {
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="section-card p-8 border-2 border-primary-500/30 dark:border-primary-500/30 bg-primary-500/5 dark:bg-primary-500/5"
+          whileHover={{ y: -4, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="section-card p-8 border-2 border-primary-500/30 dark:border-primary-500/30 bg-primary-500/5 dark:bg-primary-500/5 transition-smooth"
         >
           <div className="flex items-center gap-2 mb-6">
             <Zap className="w-5 h-5 text-primary-500" />

@@ -29,8 +29,8 @@ function TickerRow({ items, direction = 1 }: { items: string[]; direction?: numb
 
 export default function CommandCenterLive() {
   return (
-    <section className="py-4 border-y border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 mb-2">
+    <section className="py-2 border-y border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-1">
         <div className="flex items-center gap-2 text-xs font-semibold text-gray-700 dark:text-gray-300">
           <Activity className="w-3 h-3 text-primary-500" />
           Command Center — Live

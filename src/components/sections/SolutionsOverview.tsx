@@ -54,9 +54,10 @@ export default function SolutionsOverview() {
             key={col.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08 }}
-            className="section-card p-6 flex flex-col"
+            viewport={{ once: true, margin: "-40px", amount: 0.2 }}
+            transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -4, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+            className="section-card p-6 flex flex-col transition-smooth cursor-default"
           >
             <div className="w-12 h-12 rounded-xl bg-primary-500/15 dark:bg-primary-500/20 flex items-center justify-center mb-4">
               <col.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />

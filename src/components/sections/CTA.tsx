@@ -6,9 +6,10 @@ export default function CTA() {
   return (
     <SectionWrapper>
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="relative rounded-3xl overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-accent-500 opacity-90" />
@@ -19,13 +20,25 @@ export default function CTA() {
             From Intelligent AI Agents and Microsoft 365 to Office Suite and scalable products—clear scope, production-ready in weeks.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4" id="cta">
-            <a href="#solutions-overview" className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-100 text-gray-900 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group shadow-md hover:shadow-lg">
+            <motion.a
+              href="#solutions-overview"
+              className="w-full sm:w-auto px-8 py-4 bg-white text-gray-900 rounded-xl font-bold flex items-center justify-center gap-2 group shadow-md"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
               Explore solutions
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="#" className="w-full sm:w-auto px-8 py-4 bg-black/20 hover:bg-black/30 text-white border border-white/20 rounded-xl font-medium transition-all">
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+            </motion.a>
+            <motion.a
+              href="#"
+              className="w-full sm:w-auto px-8 py-4 bg-black/20 text-white border border-white/20 rounded-xl font-medium"
+              whileHover={{ scale: 1.02, backgroundColor: 'rgba(0,0,0,0.3)' }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+            >
               Get Custom Pricing
-            </a>
+            </motion.a>
           </div>
         </div>
       </motion.div>

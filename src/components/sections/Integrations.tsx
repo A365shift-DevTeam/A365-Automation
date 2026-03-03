@@ -28,9 +28,10 @@ export default function Integrations() {
             key={card.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.05 }}
-            className="section-card p-5 flex flex-col"
+            viewport={{ once: true, margin: "-40px", amount: 0.2 }}
+            transition={{ delay: i * 0.06, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -4, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+            className="section-card p-5 flex flex-col transition-smooth cursor-default"
           >
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">{card.title}</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400 flex-1 leading-relaxed">{card.description}</p>
