@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Send } from 'lucide-react';
-import ambotLogo from '../../assets/Ambot logo png.png';
 import { ThemeToggle } from '../ui/ThemeToggle';
 
 const NAV_LINKS = [
-    { name: 'Features', href: '#features' },
-    { name: 'How it Works', href: '#how-it-works' },
-    { name: 'Integrations', href: '#integrations' },
-    { name: 'Pricing', href: '#pricing' },
+    { name: 'Solutions', href: '#agents-in-action' },
+    { name: 'Agents in Action', href: '#agents-in-action' },
+    { name: 'How It Works', href: '#how-it-works' },
+    { name: 'Security & FAQ', href: '#security-faq' },
+    { name: 'About', href: '#about' },
 ];
 
 export default function Navbar() {
@@ -33,8 +33,8 @@ export default function Navbar() {
         >
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
-                <a href="#" className="flex items-center gap-2">
-                    <img src={ambotLogo} alt="Ambot Logo" className="h-10 w-auto" />
+                <a href="#" className="flex items-center gap-2 text-xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
+                    A365
                 </a>
 
                 {/* Desktop Nav */}
@@ -61,10 +61,10 @@ export default function Navbar() {
                         Ask AI
                     </button>
                     <a
-                        href="#"
+                        href="#cta"
                         className="px-5 py-2.5 bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] text-white text-sm font-medium rounded-xl transition-all shadow-md shadow-[#4C99A0]/25 hover:shadow-lg hover:shadow-[#4C99A0]/40 hover:-translate-y-0.5"
                     >
-                        Get Started
+                        Get in Touch
                     </a>
                 </div>
 
@@ -119,10 +119,10 @@ export default function Navbar() {
                                     Ask AI
                                 </button>
                                 <a
-                                    href="#"
+                                    href="#cta"
                                     className="w-full py-3 text-center text-base font-medium text-white bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] rounded-xl transition-all shadow-md shadow-[#4C99A0]/25"
                                 >
-                                    Get Started
+                                    Get in Touch
                                 </a>
                             </div>
                         </div>
@@ -142,7 +142,7 @@ export default function Navbar() {
                     >
                         {/* Header */}
                         <div className="bg-gray-700 dark:bg-gray-800 px-6 py-4 rounded-t-2xl flex items-center justify-between">
-                            <h3 className="text-white font-semibold">CoreShift AI Assistant</h3>
+                            <h3 className="text-white font-semibold">A365 AI Assistant</h3>
                             <button
                                 onClick={() => setIsAIChatOpen(false)}
                                 className="text-gray-400 hover:text-white transition-colors"

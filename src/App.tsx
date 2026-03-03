@@ -4,13 +4,15 @@
  */
 
 import Hero from './components/sections/Hero';
-import ShowcaseCarousel from './components/sections/ShowcaseCarousel';
-import HowItWorks from './components/sections/HowItWorks';
-import Features from './components/sections/Features';
-import Flowchart from './components/sections/Flowchart';
-import WorkflowVisualizer from './components/sections/WorkflowVisualizer';
+import CommandCenterLive from './components/sections/CommandCenterLive';
+import AgentsInAction from './components/sections/AgentsInAction';
+import BeforeAfter from './components/sections/BeforeAfter';
+import WhyAgent from './components/sections/WhyAgent';
+import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import Integrations from './components/sections/Integrations';
 import Benefits from './components/sections/Benefits';
+import SecurityFAQ from './components/sections/SecurityFAQ';
+import WhyA365 from './components/sections/WhyA365';
 import CTA from './components/sections/CTA';
 import Footer from './components/sections/Footer';
 import Navbar from './components/layout/Navbar';
@@ -31,20 +33,23 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
+          <CommandCenterLive />
           <Divider />
-          <ShowcaseCarousel />
+          <AgentsInAction />
           <Divider />
-          <HowItWorks />
+          <BeforeAfter />
           <Divider />
-          <Features />
+          <WhyAgent />
           <Divider />
-          <Flowchart />
-          <Divider />
-          <WorkflowVisualizer />
+          <HowEngagementsWork />
           <Divider />
           <Integrations />
           <Divider />
           <Benefits />
+          <Divider />
+          <SecurityFAQ />
+          <Divider />
+          <WhyA365 />
           <Divider />
           <CTA />
         </main>

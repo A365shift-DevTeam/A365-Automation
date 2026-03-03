@@ -1,13 +1,9 @@
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import Globe from '../ui/Globe';
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Rotating 3D Globe Background */}
-      <Globe />
-
       <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
 
         <motion.p
@@ -44,10 +40,13 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <button className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-2xl font-medium transition-all flex items-center justify-center gap-2 group shadow-lg shadow-[#4C99A0]/25">
-            Get Started
+          <a href="#agents-in-action" className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-2xl font-medium transition-all flex items-center justify-center gap-2 group shadow-lg shadow-[#4C99A0]/25 hover:shadow-xl hover:-translate-y-0.5">
+            Deploy Your First Agent
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </a>
+          <a href="#agents-in-action" className="text-gray-500 dark:text-gray-400 hover:text-primary-500 font-medium text-sm">
+            Agents in Action ↓
+          </a>
         </motion.div>
       </div>
 
