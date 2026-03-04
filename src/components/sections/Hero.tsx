@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Zap, Shield, Clock } from 'lucide-react';
 
-const TYPING_TEXT = 'Now agent-powered.';
+const TYPING_TEXT = 'Automate Tasks-Streamline Workflows. Boost Productivity';
 const TYPING_SPEED_MS = 85;
 const CURSOR_BLINK_MS = 530;
 const PAUSE_AFTER_TYPING_MS = 2500;
@@ -93,9 +93,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight"
         >
-          <span className="text-[#002060] dark:text-white">Enterprise operations.</span>
+          <span className="text-[#002060] dark:text-white">AI Agents for Individuals and Professionals.</span>
           <br />
-          <span className="inline-block text-2xl md:text-4xl lg:text-5xl mt-1 min-h-[1.2em]">
+          <span className="inline-block text-xl md:text-2xl lg:text-3xl mt-1 min-h-[1.2em]">
             <span className="bg-gradient-to-r from-[#4C99A0] to-[#65A859] bg-clip-text text-transparent">{typed}</span>
             {!reduceMotion && (
               <span
@@ -115,7 +115,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-10"
         >
-          We build it. You run it. We maintain it.
+          We Build. You Operate. We Transform.
         </motion.p>
 
         <motion.div

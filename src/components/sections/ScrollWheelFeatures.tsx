@@ -67,7 +67,12 @@ const SEGMENTS = [
   },
 ];
 
+/* Half circle: 6 segments on right arc from -90° (top) to 90° (bottom) */
+const ARC_START = -90;
+const ARC_END = 90;
 const RADIUS_PERCENT = 38;
+const CENTER_X = 50; // center of circle
+const CENTER_Y = 50;
 
 function Segment({
   index,
@@ -80,10 +85,11 @@ function Segment({
   icon: LucideIcon;
   color: string;
 }) {
-  const angleDeg = (index / total) * 360;
+  const angleDeg = ARC_START + (index / (total - 1)) * (ARC_END - ARC_START);
   const rad = (angleDeg * Math.PI) / 180;
-  const x = 50 + RADIUS_PERCENT * Math.sin(rad);
-  const y = 50 - RADIUS_PERCENT * Math.cos(rad);
+  // Standard Math -> CSS coord transform: x is cos, y is sin (positive goes down)
+  const x = CENTER_X + RADIUS_PERCENT * Math.cos(rad);
+  const y = CENTER_Y + RADIUS_PERCENT * Math.sin(rad);
   return (
     <div
       className={`absolute w-14 h-14 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-lg border-2 border-white/30`}
@@ -107,16 +113,28 @@ export default function ScrollWheelFeatures() {
     offset: ['start start', 'end end'],
   });
 
-  const rotation = useTransform(scrollYProgress, [0, 1], [0, 360 * 2]);
+  // Map 0 -> 1 scroll to -90 -> 270 (one full rotation starting at Top)
+  const rotation = useTransform(scrollYProgress, [0, 1], [-90, -90 + 360]);
 
+  // Arrow points to nearest segment
   useMotionValueEvent(rotation, 'change', (v) => {
+    // Normalize to -180 to 180 or 0 to 360 for matching
     const normalized = ((v % 360) + 360) % 360;
-    const segmentAngle = 360 / SEGMENTS.length;
-    const idx = Math.min(
-      Math.floor(normalized / segmentAngle),
-      SEGMENTS.length - 1
-    );
-    setActiveIndex(idx);
+    const segmentAngles = SEGMENTS.map((_, i) => {
+      const ang = ARC_START + (i / (SEGMENTS.length - 1)) * (ARC_END - ARC_START);
+      return ((ang % 360) + 360) % 360; // Normalize the target angle
+    });
+    let best = 0;
+    let bestDiff = 360;
+    segmentAngles.forEach((angle, i) => {
+      let diff = Math.abs(normalized - angle);
+      if (diff > 180) diff = 360 - diff;
+      if (diff < bestDiff) {
+        bestDiff = diff;
+        best = i;
+      }
+    });
+    setActiveIndex(best);
   });
 
   const active = SEGMENTS[activeIndex];
@@ -128,10 +146,28 @@ export default function ScrollWheelFeatures() {
       className="relative py-24 min-h-[250vh] section-bg"
     >
       <div className="sticky top-24 z-10 min-h-[70vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 px-6 md:px-12 max-w-7xl mx-auto">
-        {/* Left: static ring + segments; only center rotates with arrow */}
-        <div className="flex-shrink-0 w-full max-w-[320px] lg:max-w-[380px] aspect-square relative">
-          {/* Static outer ring and segment icons */}
-          <div className="relative w-full aspect-square rounded-full border-[14px] border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-xl">
+        {/* Left: half circle (arc) on the left + segments on arc; center wheel rotates with scroll */}
+        <div className="flex-shrink-0 w-full max-w-[320px] lg:max-w-[380px] aspect-square relative flex items-center justify-end">
+          {/* Half circle arc – left side only (curve from top to bottom) */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <svg
+              className="absolute w-full h-full text-gray-200 dark:text-gray-600"
+              viewBox="0 0 100 100"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="14"
+              strokeLinecap="round"
+              aria-hidden
+            >
+              {/* Left half arc: from 12 o'clock (90°) to 6 o'clock (270°) */}
+              <path
+                d="M 50 5 A 45 45 0 0 1 50 95"
+                strokeWidth="14"
+              />
+            </svg>
+          </div>
+          {/* Segment icons along the left half arc */}
+          <div className="absolute inset-0">
             {SEGMENTS.map((seg, i) => (
               <Fragment key={seg.id}>
                 <Segment
@@ -142,31 +178,39 @@ export default function ScrollWheelFeatures() {
                 />
               </Fragment>
             ))}
-            {/* Only the center icon + arrow rotate with scroll; fixed size so rotation is around circle center */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          </div>
+          {/* Center wheel overlay with arrow pointer */}
+          <div className="absolute left-[50%] top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none z-20">
+            {/* Rotating Arrow Pointer - tracks with scroll */}
+            <motion.div
+              className="relative w-32 h-32 md:w-40 md:h-40 bg-white rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex items-center justify-center dark:bg-gray-50 border border-gray-100"
+              style={{
+                rotate: rotation,
+                transformOrigin: '50% 50%',
+              }}
+            >
+              {/* Arrow head pointing Right when unrotated (rotate=0) */}
+              {/* The arrow is a simple polygon sticking out of the right side */}
+              <div className="absolute right-[-14px] top-1/2 -translate-y-1/2">
+                <svg width="18" height="40" viewBox="0 0 18 40" fill="none" className="text-white dark:text-gray-50 drop-shadow-sm">
+                  <path
+                    d="M0 0 L18 20 L0 40 Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+
+              {/* Inner Logo/Text inside the rotating bubble. (Counter-rotate so text stays upright) */}
               <motion.div
-                className="relative w-24 h-24 overflow-visible"
-                style={{
-                  rotate: rotation,
-                  transformOrigin: '50% 50%',
-                }}
+                className="relative z-10 flex flex-col items-center justify-center pointer-events-auto"
+                style={{ rotate: useTransform(rotation, r => -r) }}
               >
-                {/* Circle fills the rotating box so it stays visually centered */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#002060] to-[#4C99A0] flex items-center justify-center shadow-inner border-4 border-white dark:border-gray-700">
-                  <span className="text-white font-bold text-lg">A365</span>
-                </div>
-                {/* Arrow positioned above circle, rotates with center */}
-                <div
-                  className="absolute left-1/2 -translate-x-1/2 w-0 h-0 border-l-[12px] border-r-[12px] border-b-[18px] border-l-transparent border-r-transparent border-b-white dark:border-b-gray-200"
-                  style={{
-                    bottom: '100%',
-                    marginBottom: '2px',
-                    filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.2))',
-                  }}
-                  aria-hidden
-                />
+                {/* Styled logo like the reference image (A365 split/stacked) */}
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-400 to-rose-500 font-extrabold text-3xl md:text-4xl tracking-tighter" style={{ fontFamily: 'monospace', letterSpacing: '-0.1em', transform: 'scale(1, 1.3)' }}>
+                  A365
+                </span>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         </div>
 

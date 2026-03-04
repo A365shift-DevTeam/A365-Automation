@@ -9,7 +9,6 @@ import AgentsInAction from './components/sections/AgentsInAction';
 import WhyAgent from './components/sections/WhyAgent';
 import SolutionsOverview from './components/sections/SolutionsOverview';
 import HowEngagementsWork from './components/sections/HowEngagementsWork';
-import ScrollWheelFeatures from './components/sections/ScrollWheelFeatures';
 import Integrations from './components/sections/Integrations';
 import Benefits from './components/sections/Benefits';
 import SecurityFAQ from './components/sections/SecurityFAQ';
@@ -41,8 +40,6 @@ export default function App() {
           <WhyAgent />
           <Divider />
           <SolutionsOverview />
-          <Divider />
-          <ScrollWheelFeatures />
           <Divider />
           <HowEngagementsWork />
           <Divider />
