@@ -71,37 +71,6 @@ const SEGMENTS = [
   },
 ];
 
-const RADIUS_PERCENT = 38;
-
-function Segment({
-  index,
-  total,
-  icon: Icon,
-  color,
-}: {
-  index: number;
-  total: number;
-  icon: LucideIcon;
-  color: string;
-}) {
-  const angleDeg = (index / total) * 360;
-  const rad = (angleDeg * Math.PI) / 180;
-  const x = 50 + RADIUS_PERCENT * Math.sin(rad);
-  const y = 50 - RADIUS_PERCENT * Math.cos(rad);
-  return (
-    <div
-      className={`absolute w-14 h-14 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-lg border-2 border-white/30`}
-      style={{
-        left: `${x}%`,
-        top: `${y}%`,
-        transform: 'translate(-50%, -50%)',
-      }}
-    >
-      <Icon className="w-6 h-6 text-white" />
-    </div>
-  );
-}
-
 export default function ScrollWheelFeatures() {
   const containerRef = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -112,17 +81,7 @@ export default function ScrollWheelFeatures() {
     offset: ['start start', 'end end'],
   });
 
-  const rotation = useTransform(scrollYProgress, [0, 1], [-90, -90 + 360]);
-
-  useMotionValueEvent(rotation, 'change', (v) => {
-    // Normalize to -180 to 180 or 0 to 360 for matching
-    const normalized = ((v % 360) + 360) % 360;
-    const segmentAngles = SEGMENTS.map((_, i) => {
-      // The segments are placed evenly along the 180 degree left boundary.
-      // Top is 0, bottom is 180, so we just use scroll progression.
-      return ((i / (SEGMENTS.length - 1)) * 180);
-    });
-    // This isn't actually rotating the circle anymore, just tracking scroll.
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     // Map scroll progress (0 to 1) to segment index (0 to 5)
     // We add a tiny offset so the last item remains active at 1.0 progress
     const idx = Math.min(

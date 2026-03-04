@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Zap, Shield, Clock } from 'lucide-react';
 
-const TYPING_TEXT = 'Automate Tasks-Streamline Workflows. Boost Productivity';
+const TYPING_TEXT = 'Automate Tasks. Streamline Workflows. Boost Productivity';
 const TYPING_SPEED_MS = 85;
 const CURSOR_BLINK_MS = 530;
 const PAUSE_AFTER_TYPING_MS = 2500;
