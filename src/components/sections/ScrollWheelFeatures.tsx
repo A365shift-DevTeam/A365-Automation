@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform, useMotionValueEvent } from 'motion/react';
-import { useRef, useState, Fragment } from 'react';
+import { motion, useScroll, useMotionValueEvent } from 'motion/react';
+import { useRef, useState } from 'react';
 import {
   FileText,
   Presentation,
@@ -7,7 +7,6 @@ import {
   Layers,
   Split,
   Merge,
-  type LucideIcon,
 } from 'lucide-react';
 
 const SEGMENTS = [
@@ -15,237 +14,230 @@ const SEGMENTS = [
     id: 0,
     title: 'DocCraft',
     description:
-      'Automate Excel to PDF, PPT & Image conversions for certificates, reports, and documents. Reduce manual export work and keep branding consistent.',
+      'Automate Excel to PDF, PPT & Image conversions for certificates, reports, and documents.',
     icon: FileText,
-    color: 'from-[#4C99A0] to-[#3d8a91]',
-    lightBg: 'bg-[#4C99A0]/10 dark:bg-[#4C99A0]/20',
+    color: 'from-[#FF6B6B] to-[#FF8E8B]', // Red/Orange tone
+    lightBg: 'bg-[#FF6B6B]/10 dark:bg-[#FF6B6B]/20',
+    arcColor: '#FF6B6B',
   },
   {
     id: 1,
     title: 'Sheets to Slides',
     description:
-      'Create presentations from Excel in one click—weekly reports, proposals, and dashboards. Data stays in sync with your spreadsheets.',
+      'Create presentations from Excel in one click—weekly reports, proposals, and dashboards.',
     icon: Presentation,
-    color: 'from-[#65A859] to-[#55904b]',
-    lightBg: 'bg-[#65A859]/10 dark:bg-[#65A859]/20',
+    color: 'from-[#FF8E8B] to-[#FFA3A1]',
+    lightBg: 'bg-[#FF8E8B]/10 dark:bg-[#FF8E8B]/20',
+    arcColor: '#FF8E8B',
   },
   {
     id: 2,
     title: 'Image Compressor',
     description:
-      'Compress images up to 90% without noticeable quality loss. Optimize for web, email, and storage while keeping visuals sharp.',
+      'Compress images up to 90% without noticeable quality loss. Optimize for web, email, and storage.',
     icon: Image,
-    color: 'from-[#002060] to-[#001a50]',
-    lightBg: 'bg-[#002060]/10 dark:bg-[#002060]/20',
+    color: 'from-[#A162F7] to-[#B684F9]', // Purple tone
+    lightBg: 'bg-[#A162F7]/10 dark:bg-[#A162F7]/20',
+    arcColor: '#A162F7',
   },
   {
     id: 3,
     title: 'Consolidation',
     description:
-      'Combine multiple files into a single file by column. Merge data from different sources with consistent structure and no manual copy-paste.',
+      'Combine multiple files into a single file by column. Merge data from different sources.',
     icon: Layers,
-    color: 'from-[#4C99A0] to-[#65A859]',
-    lightBg: 'bg-[#4C99A0]/10 dark:bg-[#4C99A0]/20',
+    color: 'from-[#5584FF] to-[#7199FF]', // Blue tone
+    lightBg: 'bg-[#5584FF]/10 dark:bg-[#5584FF]/20',
+    arcColor: '#5584FF',
   },
   {
     id: 4,
     title: 'File Splitter',
     description:
-      'Split large files into sheets and workbooks based on criteria. Break down exports by date, region, or category for easier handling.',
+      'Split large files into sheets and workbooks based on criteria. Break down exports easily.',
     icon: Split,
-    color: 'from-[#65A859] to-[#4C99A0]',
-    lightBg: 'bg-[#65A859]/10 dark:bg-[#65A859]/20',
+    color: 'from-[#1DD0A9] to-[#4BE0C0]', // Green tone
+    lightBg: 'bg-[#1DD0A9]/10 dark:bg-[#1DD0A9]/20',
+    arcColor: '#1DD0A9',
   },
   {
     id: 5,
     title: 'Merge Master',
     description:
-      'Combine multiple files into one by multiple ranges. Flexible merging for complex workflows and consolidated reporting.',
+      'Combine multiple files into one by multiple ranges. Flexible merging for complex workflows.',
     icon: Merge,
-    color: 'from-[#002060] to-[#4C99A0]',
-    lightBg: 'bg-[#002060]/10 dark:bg-[#002060]/20',
+    color: 'from-[#4C99A0] to-[#60B0B8]', // Darker cyan tone
+    lightBg: 'bg-[#4C99A0]/10 dark:bg-[#4C99A0]/20',
+    arcColor: '#4C99A0',
   },
 ];
 
-/* Half circle: 6 segments on right arc from -90° (top) to 90° (bottom) */
-const ARC_START = -90;
-const ARC_END = 90;
-const RADIUS_PERCENT = 38;
-const CENTER_X = 50; // center of circle
-const CENTER_Y = 50;
-
-function Segment({
-  index,
-  total,
-  icon: Icon,
-  color,
-}: {
-  index: number;
-  total: number;
-  icon: LucideIcon;
-  color: string;
-}) {
-  const angleDeg = ARC_START + (index / (total - 1)) * (ARC_END - ARC_START);
-  const rad = (angleDeg * Math.PI) / 180;
-  // Standard Math -> CSS coord transform: x is cos, y is sin (positive goes down)
-  const x = CENTER_X + RADIUS_PERCENT * Math.cos(rad);
-  const y = CENTER_Y + RADIUS_PERCENT * Math.sin(rad);
-  return (
-    <div
-      className={`absolute w-14 h-14 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-lg border-2 border-white/30`}
-      style={{
-        left: `${x}%`,
-        top: `${y}%`,
-        transform: 'translate(-50%, -50%)',
-      }}
-    >
-      <Icon className="w-6 h-6 text-white" />
-    </div>
-  );
-}
-
 export default function ScrollWheelFeatures() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Track scroll progress within this tall section
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
+    target: containerRef,
     offset: ['start start', 'end end'],
   });
 
-  // Map 0 -> 1 scroll to -90 -> 270 (one full rotation starting at Top)
-  const rotation = useTransform(scrollYProgress, [0, 1], [-90, -90 + 360]);
-
-  // Arrow points to nearest segment
-  useMotionValueEvent(rotation, 'change', (v) => {
-    // Normalize to -180 to 180 or 0 to 360 for matching
-    const normalized = ((v % 360) + 360) % 360;
-    const segmentAngles = SEGMENTS.map((_, i) => {
-      const ang = ARC_START + (i / (SEGMENTS.length - 1)) * (ARC_END - ARC_START);
-      return ((ang % 360) + 360) % 360; // Normalize the target angle
-    });
-    let best = 0;
-    let bestDiff = 360;
-    segmentAngles.forEach((angle, i) => {
-      let diff = Math.abs(normalized - angle);
-      if (diff > 180) diff = 360 - diff;
-      if (diff < bestDiff) {
-        bestDiff = diff;
-        best = i;
-      }
-    });
-    setActiveIndex(best);
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    // Map scroll progress (0 to 1) to segment index (0 to 5)
+    // We add a tiny offset so the last item remains active at 1.0 progress
+    const idx = Math.min(
+      Math.floor(latest * (SEGMENTS.length + 0.01)),
+      SEGMENTS.length - 1
+    );
+    if (idx !== activeIndex) {
+      setActiveIndex(idx);
+    }
   });
 
-  const active = SEGMENTS[activeIndex];
+  const activeSegment = SEGMENTS[activeIndex];
 
   return (
     <section
-      ref={sectionRef}
-      id="products-wheel"
-      className="relative py-24 min-h-[250vh] section-bg"
+      id="products-features"
+      ref={containerRef}
+      className="relative bg-gray-50 dark:bg-[#0B0F19] transition-colors duration-300"
+      style={{ height: `${(SEGMENTS.length + 1) * 100}vh` }}
     >
-      <div className="sticky top-24 z-10 min-h-[70vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 px-6 md:px-12 max-w-7xl mx-auto">
-        {/* Left: half circle (arc) on the left + segments on arc; center wheel rotates with scroll */}
-        <div className="flex-shrink-0 w-full max-w-[320px] lg:max-w-[380px] aspect-square relative flex items-center justify-end">
-          {/* Half circle arc – left side only (curve from top to bottom) */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <svg
-              className="absolute w-full h-full text-gray-200 dark:text-gray-600"
-              viewBox="0 0 100 100"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="14"
-              strokeLinecap="round"
-              aria-hidden
-            >
-              {/* Left half arc: from 12 o'clock (90°) to 6 o'clock (270°) */}
-              <path
-                d="M 50 5 A 45 45 0 0 1 50 95"
-                strokeWidth="14"
-              />
-            </svg>
-          </div>
-          {/* Segment icons along the left half arc */}
-          <div className="absolute inset-0">
-            {SEGMENTS.map((seg, i) => (
-              <Fragment key={seg.id}>
-                <Segment
-                  index={i}
-                  total={SEGMENTS.length}
-                  icon={seg.icon}
-                  color={seg.color}
-                />
-              </Fragment>
-            ))}
-          </div>
-          {/* Center wheel overlay with arrow pointer */}
-          <div className="absolute left-[50%] top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none z-20">
-            {/* Rotating Arrow Pointer - tracks with scroll */}
-            <motion.div
-              className="relative w-32 h-32 md:w-40 md:h-40 bg-white rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex items-center justify-center dark:bg-gray-50 border border-gray-100"
-              style={{
-                rotate: rotation,
-                transformOrigin: '50% 50%',
-              }}
-            >
-              {/* Arrow head pointing Right when unrotated (rotate=0) */}
-              {/* The arrow is a simple polygon sticking out of the right side */}
-              <div className="absolute right-[-14px] top-1/2 -translate-y-1/2">
-                <svg width="18" height="40" viewBox="0 0 18 40" fill="none" className="text-white dark:text-gray-50 drop-shadow-sm">
-                  <path
-                    d="M0 0 L18 20 L0 40 Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-12 relative h-full flex items-center">
 
-              {/* Inner Logo/Text inside the rotating bubble. (Counter-rotate so text stays upright) */}
-              <motion.div
-                className="relative z-10 flex flex-col items-center justify-center pointer-events-auto"
-                style={{ rotate: useTransform(rotation, r => -r) }}
-              >
-                {/* Styled logo like the reference image (A365 split/stacked) */}
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-400 to-rose-500 font-extrabold text-3xl md:text-4xl tracking-tighter" style={{ fontFamily: 'monospace', letterSpacing: '-0.1em', transform: 'scale(1, 1.3)' }}>
-                  A365
-                </span>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
+          {/* TRUE HALF-CIRCLE GRAPHIC - anchored strictly to the left edge */}
+          {/* We use width N and height 2N, with rounded-r-full to create a D-shape */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] h-[600px] lg:w-[400px] lg:h-[800px] pointer-events-none overflow-hidden">
 
-        {/* Right: expanding info panel */}
-        <div className="flex-1 w-full max-w-xl min-h-[280px] flex flex-col justify-center">
-          <p className="text-sm font-semibold tracking-wider text-[#4C99A0] uppercase mb-2">
-            Products & features
-          </p>
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className={`rounded-2xl p-6 md:p-8 border-2 border-gray-200 dark:border-gray-700 ${active.lightBg}`}
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <div
-                className={`w-12 h-12 rounded-xl bg-gradient-to-br ${active.color} flex items-center justify-center`}
-              >
-                <active.icon className="w-6 h-6 text-white" />
+            {/* Outer Background Base (Half-Circle) - Made fully transparent */}
+            <div className="absolute inset-y-0 left-0 right-0 bg-transparent rounded-r-full border-y border-r border-gray-200 dark:border-gray-800 shadow-[20px_0_100px_rgba(0,0,0,0.05)] dark:shadow-[20px_0_100px_rgba(0,0,0,0.2)] transition-colors duration-300" />
+
+            {/* Inner rings (Half-Circles) */}
+            {/* 60px padding mobile, 80px desktop */}
+            <div className="absolute top-[60px] bottom-[60px] left-0 right-[60px] lg:top-[80px] lg:bottom-[80px] lg:right-[80px] border-y border-r border-gray-200 dark:border-gray-800 rounded-r-full transition-colors duration-300" />
+            {/* 130px padding mobile, 180px desktop */}
+            <div className="absolute top-[130px] bottom-[130px] left-0 right-[130px] lg:top-[180px] lg:bottom-[180px] lg:right-[180px] border-y border-r border-gray-100 dark:border-gray-800/50 rounded-r-full transition-colors duration-300" />
+
+            {/* SVG ring for colors representing segments */}
+            {/* Placed inside the first inner ring area */}
+            <div className="absolute top-[60px] bottom-[60px] left-0 right-[60px] lg:top-[80px] lg:bottom-[80px] lg:right-[80px]">
+              {/* 
+                 ViewBox is 50x100 (a half-box). 
+                 The cy is 50, cx is 0 (circle center is on the left edge). 
+                 Radius is 48 to stay within the 50 width.
+               */}
+              <svg width="100%" height="100%" viewBox="0 0 50 100" className="overflow-visible">
+                {/* Base Track */}
+                <path d="M 0 2 A 48 48 0 0 1 0 98" fill="transparent" stroke="currentColor" strokeWidth="4" className="text-gray-200 dark:text-gray-800 transition-colors duration-300" />
+
+                {SEGMENTS.map((seg, i) => {
+                  // Let's use SVG Path geometry directly for each segment slice (30 degrees each)
+                  // Math for points on a circle: x = cx + r * cos(a), y = cy + r * sin(a)
+                  // Angles start at top (-90deg/270deg in standard math, but let's use standard radians from center)
+                  // Let top be -PI/2, bottom be PI/2.
+                  const r = 48;
+                  const cx = 0;
+                  const cy = 50;
+
+                  const sliceAngle = Math.PI / SEGMENTS.length; // 180 degrees / 6
+                  const startAngle = -Math.PI / 2 + (i * sliceAngle);
+                  // Add gap by slightly adjusting end angle
+                  const gap = 1.0;
+                  const endAngle = startAngle + sliceAngle - (gap / r);
+
+                  const startX = cx + r * Math.cos(startAngle);
+                  const startY = cy + r * Math.sin(startAngle);
+                  const endX = cx + r * Math.cos(endAngle);
+                  const endY = cy + r * Math.sin(endAngle);
+
+                  // Dynamic styling: Highlight the active segment
+                  const isActive = i === activeIndex;
+                  const strokeWidth = isActive ? "5" : "3";
+                  const opacity = isActive ? 1 : 0.5;
+
+                  return (
+                    <path
+                      key={seg.id}
+                      d={`M ${startX} ${startY} A ${r} ${r} 0 0 1 ${endX} ${endY}`}
+                      fill="transparent"
+                      stroke={isActive ? seg.arcColor : "currentColor"}
+                      strokeWidth={strokeWidth}
+                      strokeLinecap="round" // Gives nicer rounded ends to segments
+                      className={`transition-all duration-500 ease-out ${isActive ? '' : 'text-gray-200 dark:text-gray-800'}`}
+                      style={{ opacity }}
+                    />
+                  );
+                })}
+              </svg>
+
+              {/* Static Pointer Arrow pointing out from the outermost edge of the half circle */}
+              {/* Fixed at vertically centered, rightmost point */}
+              <div className="absolute top-1/2 right-[0px] -translate-y-1/2 translate-x-1/2 z-20 flex items-center justify-center pointer-events-none">
+                {/* Styled arrow matching reference image precisely */}
+                <div className="w-[45px] h-[28px] bg-[#2A6B8A] relative flex items-center justify-center shadow-[left_inset_0_0_10px_rgba(0,0,0,0.5)]">
+                  {/* The triangle tip of the arrow */}
+                  <div className="absolute left-[100%] border-y-[14px] border-y-transparent border-l-[18px] border-l-[#2A6B8A]" />
+                  {/* Inner indented tail cut out from the left */}
+                  <div className="absolute right-[100%] border-y-[14px] border-y-transparent border-l-[12px] border-l-gray-50 dark:border-l-gray-900 transition-colors duration-300" />
+                </div>
               </div>
-              <span className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                Step {String(active.id + 1).padStart(2, '0')}
+            </div>
+
+            {/* Center Logo/Icon - Half-Circle flush to the left wall */}
+            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-16 h-32 md:w-20 md:h-40 bg-gray-100 dark:bg-gray-900 rounded-r-full shadow-[inset_10px_0_20px_rgba(0,0,0,0.1)] dark:shadow-[inset_10px_0_20px_rgba(0,0,0,0.5)] flex items-center justify-start pl-1 md:pl-2 z-10 border-y border-r border-gray-200 dark:border-gray-800 transition-colors duration-300">
+              <span className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-300 transition-colors duration-300">
+                A<span className="text-[#a162f7]">365</span>
               </span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50 mb-3">
-              {active.title}
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              {active.description}
-            </p>
-          </motion.div>
-          <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-            Scroll to rotate and explore more features
-          </p>
+          </div>
+
+          {/* Right Content */}
+          <div className="w-full pl-[50%] md:pl-[45%] lg:pl-[45%] flex flex-col justify-center h-full relative z-10">
+
+            {/* Singular Active Feature Card */}
+            <div className="relative h-[220px] md:h-[260px] w-full max-w-xl">
+              {SEGMENTS.map((seg, idx) => (
+                <motion.div
+                  key={seg.id}
+                  initial={{ opacity: 0, scale: 0.98, y: 10 }}
+                  animate={{
+                    opacity: activeIndex === idx ? 1 : 0,
+                    scale: activeIndex === idx ? 1 : 0.98,
+                    y: activeIndex === idx ? 0 : 10,
+                    pointerEvents: activeIndex === idx ? 'auto' : 'none'
+                  }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  // Premium dark glassmorphic styling
+                  className="absolute inset-0 flex flex-col p-8 md:p-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-[32px] rounded-br-none border border-gray-200/50 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden transition-colors duration-300"
+                >
+                  {/* Faint color glow reflecting the active item's color */}
+                  <div
+                    className="absolute -top-32 -right-32 w-64 h-64 rounded-full blur-[80px] pointer-events-none opacity-20"
+                    style={{ backgroundColor: seg.arcColor }}
+                  />
+
+                  <div className="flex items-center gap-6 mb-6 relative z-10">
+                    {/* Solid color rounded square icon background */}
+                    <div className={`w-14 h-14 md:w-16 md:h-16 rounded-[16px] bg-gradient-to-br ${seg.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                      <seg.icon className="w-7 h-7 text-white" />
+                    </div>
+                    {/* Title */}
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white tracking-wide transition-colors duration-300">
+                      {seg.title}
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed max-w-[95%] relative z-10 font-medium transition-colors duration-300">
+                    {seg.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+          </div>
+
         </div>
       </div>
     </section>
