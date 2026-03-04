@@ -119,7 +119,7 @@ export default function ScrollWheelFeatures() {
             <div className="absolute top-[60px] bottom-[60px] left-0 right-[60px] lg:top-[80px] lg:bottom-[80px] lg:right-[80px]">
               <svg width="100%" height="100%" viewBox="0 0 50 100" className="overflow-visible">
                 {/* Base Track */}
-                <path d="M 0 2 A 48 48 0 0 1 0 98" fill="transparent" stroke="currentColor" strokeWidth="4" className="text-gray-200 dark:text-gray-800 transition-colors duration-300" />
+                <path d="M 0 2 A 48 48 0 0 1 0 98" fill="none" stroke="currentColor" strokeWidth="4" className="text-gray-200 dark:text-gray-800 transition-colors duration-300" />
 
                 {SEGMENTS.map((seg, i) => {
                   const r = 48;
@@ -144,7 +144,7 @@ export default function ScrollWheelFeatures() {
                     <path
                       key={seg.id}
                       d={`M ${startX} ${startY} A ${r} ${r} 0 0 1 ${endX} ${endY}`}
-                      fill="transparent"
+                      fill="none"
                       stroke={isActive ? seg.arcColor : "currentColor"}
                       strokeWidth={strokeWidth}
                       strokeLinecap="round"
