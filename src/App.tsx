@@ -5,12 +5,12 @@
 
 import Hero from './components/sections/Hero';
 import CommandCenterLive from './components/sections/CommandCenterLive';
+import ShowcaseCarousel from './components/sections/ShowcaseCarousel';
 import AgentsInAction from './components/sections/AgentsInAction';
 import WhyAgent from './components/sections/WhyAgent';
 import SolutionsOverview from './components/sections/SolutionsOverview';
 import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import Integrations from './components/sections/Integrations';
-import Benefits from './components/sections/Benefits';
 import SecurityFAQ from './components/sections/SecurityFAQ';
 import WhyA365 from './components/sections/WhyA365';
 import CTA from './components/sections/CTA';
@@ -35,6 +35,8 @@ export default function App() {
           <Hero />
           <CommandCenterLive />
           <Divider />
+          <ShowcaseCarousel />
+          <Divider />
           <AgentsInAction />
           <Divider />
           <WhyAgent />
@@ -44,8 +46,6 @@ export default function App() {
           <HowEngagementsWork />
           <Divider />
           <Integrations />
-          <Divider />
-          <Benefits />
           <Divider />
           <SecurityFAQ />
           <Divider />

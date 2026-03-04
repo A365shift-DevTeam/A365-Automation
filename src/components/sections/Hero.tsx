@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Zap, Shield, Clock } from 'lucide-react';
+import botLogo from '../../assets/Ambot logo png.png';
 
 const TYPING_TEXT = 'Automate Tasks. Streamline Workflows. Boost Productivity';
 const TYPING_SPEED_MS = 85;
@@ -76,6 +77,49 @@ export default function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+
+        {/* Floating Bot on the left */}
+        <div className="hidden lg:flex absolute left-0 top-1/2 -translate-y-[60%] flex-col items-center justify-center pointer-events-none">
+          {/* Heartbeat rings */}
+          {[1, 2, 3].map((ring) => (
+            <motion.div
+              key={ring}
+              className="absolute rounded-full border border-[#65A859]/50 dark:border-[#65A859]/50"
+              style={{
+                width: '100px',
+                height: '100px',
+              }}
+              animate={reduceMotion ? undefined : {
+                scale: [0.8, 3.5],
+                opacity: [0.7, 0],
+              }}
+              transition={{
+                duration: 4.5,
+                repeat: Infinity,
+                ease: "easeOut",
+                delay: ring * 1.5,
+              }}
+            />
+          ))}
+          {/* Heartbeat Bot Icon */}
+          <motion.div
+            className="relative z-10 w-24 h-24 flex items-center justify-center"
+            animate={reduceMotion ? undefined : {
+              scale: [1, 1.08, 1],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <img
+              src={botLogo}
+              alt="AmBot"
+              className="w-16 h-16 object-contain drop-shadow-lg"
+            />
+          </motion.div>
+        </div>
 
         <motion.span
           initial={{ opacity: 0, y: 20 }}
