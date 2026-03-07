@@ -18,10 +18,10 @@ type TabItem = {
 };
 
 const TABS: TabItem[] = [
-  { id: 'schedule', label: 'AI Agents' },
-  { id: 'attendance', label: 'Products' },
-  { id: 'payroll', label: 'Website' },
-  { id: 'compliance', label: 'WEB Application' },
+  { id: 'schedule', label: 'Agents' },
+  { id: 'attendance', label: 'BI' },
+  { id: 'payroll', label: 'Excel' },
+  { id: 'compliance', label: 'Products' },
   { id: 'microsoft', label: 'Microsoft' },
   // { id: 'custom', label: '', isSpecial: true },
 ];

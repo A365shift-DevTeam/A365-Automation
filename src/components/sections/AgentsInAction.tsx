@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import SectionWrapper from '../ui/SectionWrapper';
-import { ArrowRight, Zap, LayoutTemplate, Code2, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Zap, LayoutTemplate, Code2, CheckCircle2, Package } from 'lucide-react';
 
 const AGENTS = [
   { name: 'GRN Reconciliation', stat: '~100%', statLabel: 'Automation rate', desc: 'Logs into 19+ portals daily, zero manual touch', stack: 'SAP ECC · Playwright', lastRun: 'Today 06:03 AM', status: '0 errors', live: true },
@@ -13,9 +13,10 @@ const AGENTS = [
 ];
 
 const TABS = [
-  { id: 'live', label: 'Live Agents', icon: Zap, subtitle: 'Proven agents running in production. Adaptable to your stack, deployable in weeks.' },
-  { id: 'blueprints', label: 'Agent Blueprints', icon: LayoutTemplate, subtitle: "We've solved this class of problem before. Faster build, lower risk, known patterns." },
-  { id: 'custom', label: 'Custom Agents', icon: Code2, subtitle: 'Any operation. Any system. Scoped after a 2 week Discovery Sprint.' },
+  { id: 'live', label: 'AI Agents', icon: Zap, subtitle: 'Proven agents running in production. Adaptable to your stack, deployable in weeks.' },
+  { id: 'blueprints', label: 'Microsoft', icon: LayoutTemplate, subtitle: "We've solved this class of problem before. Faster build, lower risk, known patterns." },
+  { id: 'custom', label: 'Office Suite', icon: Code2, subtitle: 'Any operation. Any system. Scoped after a 2 week Discovery Sprint.' },
+  { id: 'products', label: 'Products', icon: Package, subtitle: 'Ready-to-use, scalable AI products built for your enterprise workflows.' },
 ];
 
 export default function AgentsInAction() {
@@ -33,11 +34,10 @@ export default function AgentsInAction() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all ${
-              activeTab === tab.id
-                ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
+            className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all ${activeTab === tab.id
+              ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
           >
             <tab.icon className="w-4 h-4" />
             {tab.label}
@@ -132,7 +132,7 @@ export default function AgentsInAction() {
                 <span className="text-sm text-gray-400 ml-2">agent.py</span>
               </div>
               <pre className="p-6 text-sm text-gray-300 font-mono overflow-x-auto">
-{`1  # Custom agent scaffold
+                {`1  # Custom agent scaffold
 2  # Run · Deploy →
 3
 4  # Use tabs to explore more`}
@@ -141,6 +141,30 @@ export default function AgentsInAction() {
                 <button className="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg text-sm font-medium">Run</button>
                 <button className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm font-medium">Deploy →</button>
               </div>
+            </div>
+          </motion.div>
+        )}
+
+        {activeTab === 'products' && (
+          <motion.div
+            key="products"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="max-w-2xl mx-auto"
+          >
+            <p className="text-center text-gray-600 dark:text-gray-400 mb-10">{TABS[3].subtitle}</p>
+            <div className="section-card p-8 text-center">
+              <div className="w-16 h-16 bg-primary-50 dark:bg-primary-900/30 text-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Package className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Enterprise AI Products</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
+                Discover our suite of pre-packaged AI solutions designed to streamline complex business operations instantly.
+              </p>
+              <button className="px-6 py-3 bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-xl font-medium flex items-center gap-2 mx-auto shadow-lg shadow-[#4C99A0]/25 hover:shadow-[#4C99A0]/40 transition-shadow">
+                Explore Products <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
           </motion.div>
         )}

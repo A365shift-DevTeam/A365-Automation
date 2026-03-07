@@ -4,7 +4,6 @@
  */
 
 import Hero from './components/sections/Hero';
-import CommandCenterLive from './components/sections/CommandCenterLive';
 import ShowcaseCarousel from './components/sections/ShowcaseCarousel';
 import AgentsInAction from './components/sections/AgentsInAction';
 import WhyAgent from './components/sections/WhyAgent';
@@ -33,11 +32,10 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
-          <CommandCenterLive />
-          <Divider />
-          <ShowcaseCarousel />
           <Divider />
           <AgentsInAction />
+          <Divider />
+          <ShowcaseCarousel />
           <Divider />
           <WhyAgent />
           <Divider />

@@ -2,33 +2,53 @@ import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Zap, Shield, Clock } from 'lucide-react';
 import botLogo from '../../assets/Ambot logo png.png';
+import worldMap from '../../assets/World Map.png';
 
-const TYPING_TEXT = 'Automate Tasks. Streamline Workflows. Boost Productivity';
+const TYPING_TEXTS = [
+  'Rapid Deployment',
+  'Runs on Your Infrastructure',
+  '24×7 Support',
+];
 const TYPING_SPEED_MS = 85;
+const DELETING_SPEED_MS = 40;
 const CURSOR_BLINK_MS = 530;
 const PAUSE_AFTER_TYPING_MS = 2500;
 const PAUSE_BEFORE_RETYPE_MS = 400;
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
-  const [typed, setTyped] = useState(reduceMotion ? TYPING_TEXT : '');
+  const [typed, setTyped] = useState(reduceMotion ? TYPING_TEXTS[0] : '');
   const [cursorOn, setCursorOn] = useState(true);
 
   useEffect(() => {
     if (reduceMotion) return;
     let timeoutId: ReturnType<typeof setTimeout>;
     let intervalId: ReturnType<typeof setInterval>;
+    let currentTextIndex = 0;
 
     const runTypingCycle = () => {
+      const currentText = TYPING_TEXTS[currentTextIndex];
       setTyped('');
+
       timeoutId = setTimeout(() => {
         let i = 0;
         intervalId = setInterval(() => {
           i += 1;
-          setTyped(TYPING_TEXT.slice(0, i));
-          if (i >= TYPING_TEXT.length) {
+          setTyped(currentText.slice(0, i));
+          if (i >= currentText.length) {
             clearInterval(intervalId);
-            timeoutId = setTimeout(runTypingCycle, PAUSE_AFTER_TYPING_MS + PAUSE_BEFORE_RETYPE_MS);
+            timeoutId = setTimeout(() => {
+              let j = currentText.length;
+              intervalId = setInterval(() => {
+                j -= 1;
+                setTyped(currentText.slice(0, j));
+                if (j === 0) {
+                  clearInterval(intervalId);
+                  currentTextIndex = (currentTextIndex + 1) % TYPING_TEXTS.length;
+                  runTypingCycle();
+                }
+              }, DELETING_SPEED_MS);
+            }, PAUSE_AFTER_TYPING_MS);
           }
         }, TYPING_SPEED_MS);
       }, PAUSE_BEFORE_RETYPE_MS);
@@ -65,13 +85,14 @@ export default function Hero() {
           animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         />
-        {/* Grid pattern - higher contrast in light theme */}
+        {/* World Map background */}
         <div
-          className="absolute inset-0 opacity-[0.04] dark:opacity-[0.06]"
+          className="absolute inset-0 opacity-90 dark:opacity-80 pointer-events-none"
           style={{
-            backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px),
-                             linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-            backgroundSize: '75px 75px',
+            backgroundImage: `url(${worldMap})`,
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
           }}
         />
       </div>
@@ -135,9 +156,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-6 leading-tight" style={{ fontFamily: "var(--font-hero)" }}
         >
-          <span className="text-[#002060] dark:text-white">AI Agents for Individuals and Professionals.</span>
+          <span className="text-[#002060] dark:text-white">AI Agent-Driven Solutions for Your Business</span>
           <br />
           <span className="inline-block text-xl md:text-2xl lg:text-3xl mt-1 min-h-[1.2em]">
             <span className="bg-gradient-to-r from-[#4C99A0] to-[#65A859] bg-clip-text text-transparent">{typed}</span>
@@ -145,7 +166,7 @@ export default function Hero() {
               <span
                 className="inline-block w-0.5 h-[0.9em] align-middle bg-[#4C99A0] ml-0.5 transition-opacity duration-75"
                 style={{
-                  opacity: typed.length < TYPING_TEXT.length ? 1 : cursorOn ? 1 : 0,
+                  opacity: cursorOn ? 1 : 0,
                 }}
                 aria-hidden
               />
@@ -159,7 +180,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-10"
         >
-          We Build. You Operate. We Transform.
+          We Build It .
+          You Operate It.
+          We Transform It.
         </motion.p>
 
         <motion.div
@@ -175,11 +198,11 @@ export default function Hero() {
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            Deploy Your First Agent
+            Connect AI Agent
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
           </motion.a>
           <a href="#agents-in-action" className="text-gray-500 dark:text-gray-400 hover:text-primary-500 font-medium text-sm">
-            Agents in Action ↓
+            Scroll ↓
           </a>
         </motion.div>
 
@@ -220,3 +243,4 @@ export default function Hero() {
     </section>
   );
 }
+
