@@ -159,7 +159,7 @@ export default function Hero() {
           className="text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-semibold tracking-tight mb-6 leading-tight" style={{ fontFamily: "var(--font-hero)" }}
         >
           <span className="text-[#002060] dark:text-white block pb-2">We Build AI Agents – Driven Solutions</span>
-          <span className="text-[#002060] dark:text-white block text-4xl md:text-5xl lg:text-[52px] xl:text-5xl leading-tight">to Automate and Scale your Business</span>
+          <span className="text-[#002060] dark:text-white block text-4xl md:text-5xl lg:text-[52px] xl:text-5xl leading-tight font-medium" style={{ fontFamily: "'Dubai', sans-serif" }}>to Automate and Scale your Business</span>
           <span className="inline-block text-xl md:text-2xl lg:text-3xl mt-1 min-h-[1.2em]">
             <span className="text-[#002060] dark:text-white mr-2 font-semibold">Agents</span>
             <span className="bg-gradient-to-r from-[#4C99A0] to-[#65A859] bg-clip-text text-transparent">{typed}</span>
