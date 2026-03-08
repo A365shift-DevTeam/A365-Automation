@@ -187,7 +187,7 @@ export default function ShowcaseCarousel() {
                   ? 'border border-dashed border-primary-500/50 text-primary-500 hover:bg-primary-500/10 dark:hover:bg-primary-500/20'
                   : activeTab === tab.id
                     ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
-                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800'
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
                 }
               `}
             >

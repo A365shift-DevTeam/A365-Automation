@@ -29,7 +29,7 @@ export default function AgentsInAction() {
     <SectionWrapper id="agents-in-action" className="section-bg">
       <div className="text-center mb-12">
         <p className="text-sm font-semibold tracking-wider text-primary-500 uppercase mb-2">Intelligent AI Agents · Microsoft ecosystem · Office Suite · Scalable products</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">Agents in Production</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">Our Digital Services</h2>
       </div>
 
       <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -39,7 +39,7 @@ export default function AgentsInAction() {
             onClick={() => setActiveTab(tab.id)}
             className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all ${activeTab === tab.id
               ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+              : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
           >
             <tab.icon className="w-4 h-4" />
