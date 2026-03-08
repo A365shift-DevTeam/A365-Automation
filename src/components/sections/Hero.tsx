@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ArrowRight, Zap, Shield, Clock } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Clock, User } from 'lucide-react';
 import botLogo from '../../assets/Ambot logo png.png';
 import worldMap from '../../assets/World Map.png';
 
 const TYPING_TEXTS = [
-  'Rapid Deployment',
-  'Runs on Your Infrastructure',
-  '24×7 Support',
+  'Deployed in Days',
+  'run Securely in your network',
+  'Monitor 24*7',
 ];
 const TYPING_SPEED_MS = 85;
 const DELETING_SPEED_MS = 40;
@@ -142,7 +142,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <motion.span
+        {/* <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
@@ -150,17 +150,18 @@ export default function Hero() {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" aria-hidden />
           AGENTS AS A SERVICE
-        </motion.span>
+        </motion.span> */}
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-6 leading-tight" style={{ fontFamily: "var(--font-hero)" }}
+          className="text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-semibold tracking-tight mb-6 leading-tight" style={{ fontFamily: "var(--font-hero)" }}
         >
-          <span className="text-[#002060] dark:text-white">AI Agent-Driven Solutions for Your Business</span>
-          <br />
+          <span className="text-[#002060] dark:text-white block pb-2">We Build AI Agents – Driven Solutions</span>
+          <span className="text-[#4C99A0] dark:text-[#65A859] block text-3xl md:text-4xl lg:text-4xl text-[#002060]/80 dark:text-white/80">to Automate and Scale your Business</span>
           <span className="inline-block text-xl md:text-2xl lg:text-3xl mt-1 min-h-[1.2em]">
+            <span className="text-[#002060] dark:text-white mr-2 font-semibold">Agents</span>
             <span className="bg-gradient-to-r from-[#4C99A0] to-[#65A859] bg-clip-text text-transparent">{typed}</span>
             {!reduceMotion && (
               <span
@@ -198,12 +199,12 @@ export default function Hero() {
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            Connect AI Agent
+            Build Agent
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
           </motion.a>
-          <a href="#agents-in-action" className="text-gray-500 dark:text-gray-400 hover:text-primary-500 font-medium text-sm">
+          {/* <a href="#agents-in-action" className="text-gray-500 dark:text-gray-400 hover:text-primary-500 font-medium text-sm">
             Scroll ↓
-          </a>
+          </a> */}
         </motion.div>
 
         {/* Trust / value pills - adds visual interest */}
@@ -214,9 +215,10 @@ export default function Hero() {
           className="mt-16 flex flex-wrap items-center justify-center gap-4 md:gap-8"
         >
           {[
-            { icon: Zap, label: 'Deploy in weeks', sub: 'Not months' },
-            { icon: Shield, label: 'Your infrastructure', sub: 'Data stays in-house' },
-            { icon: Clock, label: '24/7 monitoring', sub: 'We maintain it' },
+            { icon: User, label: ' Ambrose Denny ', sub: 'Founder of Ambot365' },
+            { icon: Zap, label: '40+ Years ', sub: 'Combined Digital Experties' },
+            { icon: Shield, label: '50+ Clients', sub: 'Global Experience' },
+            { icon: Clock, label: 'Digital Partners ', sub: 'Ambot365 & Coreshift' },
           ].map((item, i) => (
             <motion.div
               key={i}

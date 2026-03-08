@@ -22,7 +22,7 @@ const TABS: TabItem[] = [
   { id: 'attendance', label: 'BI' },
   { id: 'payroll', label: 'Excel' },
   { id: 'compliance', label: 'Products' },
-  { id: 'microsoft', label: 'Microsoft' },
+  // { id: 'microsoft', label: 'Microsoft' },
   // { id: 'custom', label: '', isSpecial: true },
 ];
 
