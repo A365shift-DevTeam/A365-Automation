@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ArrowRight, Zap, Shield, Clock, User } from 'lucide-react';
+import { ArrowRight, User, Award, Globe, Handshake } from 'lucide-react';
 import botLogo from '../../assets/Ambot logo png.png';
 import worldMap from '../../assets/World Map.png';
 
 const TYPING_TEXTS = [
   'Deployed in Days',
   'run Securely in your network',
-  'Monitor 24*7',
+  'Monitor 24/7',
 ];
 const TYPING_SPEED_MS = 85;
 const DELETING_SPEED_MS = 40;
@@ -216,9 +216,9 @@ export default function Hero() {
         >
           {[
             { icon: User, label: ' Ambrose Denny ', sub: 'Founder of Ambot365' },
-            { icon: Zap, label: '40+ Years ', sub: 'Combined Digital Experties' },
-            { icon: Shield, label: '50+ Clients', sub: 'Global Experience' },
-            { icon: Clock, label: 'Digital Partners ', sub: 'Ambot365 & Coreshift' },
+            { icon: Award, label: '40+ Years ', sub: 'Combined Digital Expertise' },
+            { icon: Globe, label: '50+ Clients', sub: 'Global Experience' },
+            { icon: Handshake, label: 'Digital Partners ', sub: 'Ambot365 & Coreshift' },
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -226,14 +226,14 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-gray-200/80 dark:border-gray-700/80 shadow-sm backdrop-blur-sm cursor-default"
+              className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white dark:bg-gray-800 border-2 border-transparent dark:border-gray-700 shadow-sm transition-all cursor-default"
             >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#4C99A0]/20 to-[#65A859]/20 dark:from-[#4C99A0]/30 dark:to-[#65A859]/30 flex items-center justify-center">
-                <item.icon className="w-5 h-5 text-[#4C99A0] dark:text-[#65A859]" />
+              <div className="w-12 h-12 rounded-lg bg-[#E5F1ED] dark:bg-[#4C99A0]/20 flex items-center justify-center shrink-0">
+                <item.icon className="w-6 h-6 text-[#589E92] dark:text-[#65A859]" strokeWidth={1.5} />
               </div>
               <div className="text-left">
-                <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">{item.label}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{item.sub}</p>
+                <p className="text-[15px] font-bold text-[#1a2f4c] dark:text-gray-100 leading-tight">{item.label}</p>
+                <p className="text-[13px] font-medium text-gray-500 dark:text-gray-400 mt-0.5">{item.sub}</p>
               </div>
             </motion.div>
           ))}
