@@ -6,11 +6,11 @@ import AIChatFullScreen from '../chat/AIChatFullScreen';
 import logoPath from '../../assets/AmBot 365-Logo.png';
 
 const NAV_LINKS = [
-    { name: 'Solutions', href: '#solutions-overview' },
-    { name: 'Agents in Action', href: '#agents-in-action' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Security & FAQ', href: '#security-faq' },
-    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#solutions-overview' },
+    { name: 'AI Solutions', href: '#agents-in-action' },
+    { name: 'Process', href: '#how-it-works' },
+    { name: 'FAQ', href: '#security-faq' },
+    { name: 'Why Us', href: '#about' },
 ];
 
 export default function Navbar() {

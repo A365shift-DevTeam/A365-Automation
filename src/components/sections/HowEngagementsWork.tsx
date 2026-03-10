@@ -7,25 +7,33 @@ const PHASES = [
     step: '01',
     weeks: '0–2 weeks',
     title: 'Discovery Sprint',
-    desc: 'We embed with your team to understand your needs—whether Intelligent AI Agents, Microsoft 365, Office Suite, or scalable products—and scope the solution.',
-    included: ['Process mapping sessions', 'Edge case documentation', 'Technical feasibility assessment', 'Solution scope & spec document'],
-    outcome: 'Clear scope and fixed quote for build',
+    desc: 'We understand your business processes and identify automation opportunities.',
+    included: ['Process mapping', 'Requirement analysis', 'Technical feasibility', 'Solution scope document'],
+    outcome: 'Clear roadmap and project scope.',
   },
   {
     step: '02',
-    weeks: '4–8 weeks',
-    title: 'Agent Build',
-    desc: 'We build your solution—agents, Microsoft 365 automation, Office Suite tools, or scalable products—integrate with your systems, and test until it works.',
-    included: ['Custom development (agents, Copilot, Office Suite)', 'System integrations (SAP, Salesforce, Microsoft 365, etc.)', 'Testing with production data', 'UAT and sign-off'],
-    outcome: 'Production-ready solution on your infrastructure',
+    weeks: '2–4 weeks',
+    title: 'Solution Design',
+    desc: 'We design the AI agent architecture, integrations, and workflow.',
+    included: ['Agent workflow design', 'System integration planning', 'UI/UX prototype', 'Architecture design'],
+    outcome: 'Approved design ready for development.',
   },
   {
     step: '03',
+    weeks: '4–8 weeks',
+    title: 'Agent Build & Deployment',
+    desc: 'We build, integrate, and deploy AI agents within your systems.',
+    included: ['AI agent development', 'Microsoft 365 & API integrations', 'Testing with real data', 'UAT & production deployment'],
+    outcome: 'Production-ready AI automation.',
+  },
+  {
+    step: '04',
     weeks: 'Ongoing',
-    title: 'Monthly Operations',
-    desc: 'Solution goes live. We monitor 24/7, handle issues, and ship updates. You get a single monthly invoice.',
-    included: ['24/7 monitoring & alerting', 'Bug fixes & maintenance', 'Monthly performance reports', 'Ongoing optimization'],
-    outcome: 'One subscription. Zero ops burden.',
+    title: 'Continuous Operations',
+    desc: 'We monitor, optimize, and improve the system continuously.',
+    included: ['24/7 monitoring', 'Bug fixes & maintenance', 'Performance reports', 'Continuous optimization'],
+    outcome: 'Stable system with continuous improvements.',
   },
 ];
 
@@ -42,11 +50,12 @@ export default function HowEngagementsWork() {
   const logoPositionPercent = useTransform(scrollYProgress, [0, 0.15, 0.5, 0.85, 1], [0, 25, 50, 75, 100]);
   const logoLeft = useTransform(logoPositionPercent, (v) => `${v}%`);
 
-  // Which card to glow: logo at 0–33% → card 0, 33–66% → card 1, 66–100% → card 2
+  // Which card to glow: logo at 0–25% → card 0, 25–50% → card 1, 50-75% -> card 2, 75-100% -> card 3
   useMotionValueEvent(logoPositionPercent, 'change', (v) => {
-    if (v <= 33) setActiveCardIndex(0);
-    else if (v <= 66) setActiveCardIndex(1);
-    else setActiveCardIndex(2);
+    if (v <= 25) setActiveCardIndex(0);
+    else if (v <= 50) setActiveCardIndex(1);
+    else if (v <= 75) setActiveCardIndex(2);
+    else setActiveCardIndex(3);
   });
 
   return (
@@ -71,7 +80,7 @@ export default function HowEngagementsWork() {
               aria-hidden
             />
             {/* Nodes on the line */}
-            {[0, 50, 100].map((pct) => (
+            {[0, 33.33, 66.66, 100].map((pct) => (
               <div
                 key={pct}
                 className="absolute top-1/2 w-3 h-3 rounded-full bg-gray-800 dark:bg-gray-700 border-2 border-white dark:border-gray-900 shadow z-[1]"
@@ -92,11 +101,11 @@ export default function HowEngagementsWork() {
               />
             </motion.div>
           </div>
-          <div className="grid grid-cols-3 gap-1 mt-1">
+          <div className="grid grid-cols-4 gap-1 mt-1">
             {PHASES.map((phase, i) => (
               <span
                 key={phase.step}
-                className={`text-xs md:text-sm font-bold text-[#65A859] dark:text-[#4C99A0] ${i === 0 ? 'text-left' : i === 2 ? 'text-right' : 'text-center'}`}
+                className={`text-xs md:text-sm font-bold text-[#65A859] dark:text-[#4C99A0] ${i === 0 ? 'text-left' : i === 3 ? 'text-right' : 'text-center'}`}
               >
                 {phase.weeks}
               </span>
@@ -105,20 +114,19 @@ export default function HowEngagementsWork() {
         </div>
 
         {/* Cards – no scroll; content flows with section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 flex-1 min-h-0">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 flex-1 min-h-0">
           {PHASES.map((phase, i) => (
             <motion.div
               key={phase.step}
-              className={`section-card p-4 rounded-xl flex flex-col min-w-0 transition-all duration-300 shrink-0 ${
-                activeCardIndex === i
+              className={`section-card p-4 rounded-xl flex flex-col min-w-0 transition-all duration-300 shrink-0 ${activeCardIndex === i
                   ? 'ring-2 ring-[#65A859] dark:ring-[#4C99A0] ring-offset-2 dark:ring-offset-gray-900'
                   : ''
-              }`}
+                }`}
               style={
                 activeCardIndex === i
                   ? {
-                      boxShadow: '0 0 28px rgba(101, 168, 89, 0.35), 0 0 56px rgba(76, 153, 160, 0.25)',
-                    }
+                    boxShadow: '0 0 28px rgba(101, 168, 89, 0.35), 0 0 56px rgba(76, 153, 160, 0.25)',
+                  }
                   : undefined
               }
             >

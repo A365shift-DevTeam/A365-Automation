@@ -55,7 +55,7 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     customContent: (
       <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-          <div className="bg-gradient-to-r from-[#69a84f] to-[#a0c563] text-white font-semibold px-4 py-1.5 text-center text-sm">AI Features</div>
+          <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">AI Features</div>
           <ul className="space-y-1 p-3 text-[13px] leading-snug">
             <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Chatbot: Real-time chat with reports.</span></li>
             <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>AI Tree: Visual decision trees.</span></li>
@@ -64,7 +64,7 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
           </ul>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-          <div className="bg-gradient-to-r from-[#69a84f] to-[#a0c563] text-white font-semibold px-4 py-1.5 text-center text-sm">Features</div>
+          <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Features</div>
           <ul className="space-y-1 p-3 text-[13px] leading-snug">
             <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Live Updates: Get the latest information with each refresh.</span></li>
             <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Interactive Filters: Custom views and drilldowns.</span></li>
@@ -73,7 +73,7 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
           </ul>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-          <div className="bg-gradient-to-r from-[#5a9bd5] to-[#7fb2dd] text-white font-semibold px-4 py-1.5 text-center text-sm">Benefits</div>
+          <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Benefits</div>
           <ul className="space-y-1 p-3 text-[13px] leading-snug">
             <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Monitor Business: Keep track of key metrics.</span></li>
             <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Identify Trends: Spot patterns and insights.</span></li>
@@ -92,7 +92,7 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     customContent: (
       <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-          <div className="bg-gradient-to-r from-[#69a84f] to-[#a0c563] text-white font-semibold px-4 py-1.5 text-center text-sm">Microsoft 365 Integrations</div>
+          <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Microsoft 365 Integrations</div>
           <div className="p-3">
             <p className="text-[13px] leading-snug mb-3">
               Seamlessly connect across the Microsoft ecosystem, leveraging <strong>Desktop, Cloud, and AI</strong> capabilities for:
@@ -109,7 +109,7 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
           </div>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-          <div className="bg-gradient-to-r from-[#5a9bd5] to-[#7fb2dd] text-white font-semibold px-4 py-1.5 text-center text-sm">Key Benefits: Microsoft 365</div>
+          <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Key Benefits: Microsoft 365</div>
           <ul className="space-y-1 p-3 text-[13px] leading-snug">
             <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Low-Code Apps:</strong> Create custom solutions effortlessly.</span></li>
             <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Cloud Integration:</strong> Enhance collaboration and accessibility from anywhere.</span></li>
@@ -290,9 +290,7 @@ export default function ShowcaseCarousel() {
           </div>
 
           {/* Right Side: 40% Information */}
-          <div className="w-full lg:w-[40%] flex flex-col justify-start p-6 lg:p-8 glass-panel bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden relative">
-            <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${activeData.color} rounded-bl-full opacity-20`} />
-            <div className={`absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr ${activeData.color} rounded-tr-full opacity-10`} />
+          <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-2 relative">
 
             <AnimatePresence mode="wait">
               <motion.div

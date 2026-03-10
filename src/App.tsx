@@ -6,7 +6,6 @@
 import Hero from './components/sections/Hero';
 import ShowcaseCarousel from './components/sections/ShowcaseCarousel';
 import AgentsInAction from './components/sections/AgentsInAction';
-import WhyAgent from './components/sections/WhyAgent';
 import SolutionsOverview from './components/sections/SolutionsOverview';
 import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import Integrations from './components/sections/Integrations';
@@ -33,23 +32,21 @@ export default function App() {
         <main>
           <Hero />
           <Divider />
+          <SolutionsOverview />
+          <Divider />
           <AgentsInAction />
           <Divider />
           <ShowcaseCarousel />
           <Divider />
-          <WhyAgent />
-          <Divider />
-          <SolutionsOverview />
-          <Divider />
           <HowEngagementsWork />
           <Divider />
-          <Integrations />
-          <Divider />
+          {/* <Integrations />
+          <Divider /> */}
           <SecurityFAQ />
           <Divider />
           <WhyA365 />
           <Divider />
-          <CTA />
+          {/* <CTA /> */}
         </main>
         <Footer />
       </div>

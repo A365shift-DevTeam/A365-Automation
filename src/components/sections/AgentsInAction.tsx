@@ -28,7 +28,7 @@ export default function AgentsInAction() {
   return (
     <SectionWrapper id="agents-in-action" className="section-bg">
       <div className="text-center mb-12">
-        <p className="text-sm font-semibold tracking-wider text-primary-500 uppercase mb-2">Intelligent AI Agents · Microsoft ecosystem · Office Suite · Scalable products</p>
+        {/* <p className="text-sm font-semibold tracking-wider text-primary-500 uppercase mb-2">Intelligent AI Agents · Microsoft ecosystem · Office Suite · Scalable products</p> */}
         <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">Our Digital Services</h2>
       </div>
 
@@ -59,7 +59,35 @@ export default function AgentsInAction() {
           >
             <p className="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">{TABS[0].subtitle}</p>
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 w-full">
-              {/* Left: 60% Card Swap */}
+              {/* Left: 40% Info */}
+              <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-2 relative">
+
+                <div className="relative z-10 flex flex-col gap-4">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">AI Agents</h3>
+                  <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">What They Do</div>
+                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
+                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Automate repetitive workflows end-to-end.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Connect to any ERP, CRM, or data source.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Run 24/7 with zero manual intervention.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Full audit trails and error handling built-in.</span></li>
+                      </ul>
+                    </div>
+                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Key Benefits</div>
+                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
+                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Production Proven:</strong> Running live in enterprise environments.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Deploy in Weeks:</strong> Adaptable to your stack, not months.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Zero Errors:</strong> Monitored 24/7 with real-time alerts.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Cost Savings:</strong> Eliminate manual effort and reduce costs.</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-2">All agents deployed on your infrastructure · Monitored 24/7</p>
+                </div>
+              </div>
+              {/* Right: 60% Card Swap */}
               <div className="w-full lg:w-[60%] flex justify-center items-center h-[500px]">
                 <CardSwap width={400} height={350} pauseOnHover={true} visibleStack={4}>
                   {AGENTS.map((agent, i) => (
@@ -86,35 +114,6 @@ export default function AgentsInAction() {
                   ))}
                 </CardSwap>
               </div>
-              {/* Right: 40% Info */}
-              <div className="w-full lg:w-[40%] flex flex-col justify-start p-6 lg:p-8 glass-panel bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary-100 to-accent-100 rounded-bl-full opacity-20" />
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary-100 to-accent-100 rounded-tr-full opacity-10" />
-                <div className="relative z-10 flex flex-col gap-4">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">AI Agents</h3>
-                  <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gradient-to-r from-[#69a84f] to-[#a0c563] text-white font-semibold px-4 py-1.5 text-center text-sm">What They Do</div>
-                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Automate repetitive workflows end-to-end.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Connect to any ERP, CRM, or data source.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Run 24/7 with zero manual intervention.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Full audit trails and error handling built-in.</span></li>
-                      </ul>
-                    </div>
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gradient-to-r from-[#5a9bd5] to-[#7fb2dd] text-white font-semibold px-4 py-1.5 text-center text-sm">Key Benefits</div>
-                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Production Proven:</strong> Running live in enterprise environments.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Deploy in Weeks:</strong> Adaptable to your stack, not months.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Zero Errors:</strong> Monitored 24/7 with real-time alerts.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Cost Savings:</strong> Eliminate manual effort and reduce costs.</span></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-2">All agents deployed on your infrastructure · Monitored 24/7</p>
-                </div>
-              </div>
             </div>
           </motion.div>
         )}
@@ -134,17 +133,16 @@ export default function AgentsInAction() {
                 <OrbitalApps />
               </div>
               {/* Right: 40% Info */}
-              <div className="w-full lg:w-[40%] flex flex-col justify-start p-6 lg:p-8 glass-panel bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary-100 to-accent-100 rounded-bl-full opacity-20" />
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary-100 to-accent-100 rounded-tr-full opacity-10" />
+              <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-2 relative">
+
                 <div className="relative z-10 flex flex-col gap-4">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">Microsoft 365</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">Microsoft</h3>
                   <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
                     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gradient-to-r from-[#69a84f] to-[#a0c563] text-white font-semibold px-4 py-1.5 text-center text-sm">Ecosystem</div>
+                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Ecosystem</div>
                       <div className="p-3">
                         <p className="text-[13px] leading-snug mb-3">
-                          Deep integration across the <strong>Microsoft 365</strong> platform — Desktop, Cloud, and AI-powered tools.
+                          Deep integration across the <strong>Microsoft</strong> platform — Desktop, Cloud, and AI-powered tools.
                         </p>
                         <div className="flex flex-wrap gap-1.5">
                           <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Word</span>
@@ -161,7 +159,7 @@ export default function AgentsInAction() {
                       </div>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gradient-to-r from-[#5a9bd5] to-[#7fb2dd] text-white font-semibold px-4 py-1.5 text-center text-sm">Why Microsoft?</div>
+                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Why Microsoft?</div>
                       <ul className="space-y-1 p-3 text-[13px] leading-snug">
                         <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Proven Patterns:</strong> We've solved this class of problem before.</span></li>
                         <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Faster Builds:</strong> Lower risk with known, tested architectures.</span></li>
@@ -191,14 +189,13 @@ export default function AgentsInAction() {
                 <img src={SuitcaseImage} alt="Office Suite Integration" className="w-full h-full object-cover" />
               </div>
               {/* Right: 40% Info */}
-              <div className="w-full lg:w-[40%] flex flex-col justify-start p-6 lg:p-8 glass-panel bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary-100 to-accent-100 rounded-bl-full opacity-20" />
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary-100 to-accent-100 rounded-tr-full opacity-10" />
+              <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-2 relative">
+
                 <div className="relative z-10 flex flex-col gap-4">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">Office Suite</h3>
                   <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
                     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gradient-to-r from-[#69a84f] to-[#a0c563] text-white font-semibold px-4 py-1.5 text-center text-sm">Capabilities</div>
+                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Capabilities</div>
                       <ul className="space-y-1 p-3 text-[13px] leading-snug">
                         <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Excel automation with VBA and Office Scripts.</span></li>
                         <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Word document generation and templating.</span></li>
@@ -207,7 +204,7 @@ export default function AgentsInAction() {
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gradient-to-r from-[#5a9bd5] to-[#7fb2dd] text-white font-semibold px-4 py-1.5 text-center text-sm">Why Office Suite?</div>
+                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Why Office Suite?</div>
                       <ul className="space-y-1 p-3 text-[13px] leading-snug">
                         <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Any Operation:</strong> Custom scoped after a 2 week Discovery Sprint.</span></li>
                         <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Any System:</strong> Integrates with your existing tools and platforms.</span></li>
@@ -270,14 +267,13 @@ export default function AgentsInAction() {
                 </div>
               </div>
               {/* Right: 40% Info */}
-              <div className="w-full lg:w-[40%] flex flex-col justify-start p-6 lg:p-8 glass-panel bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary-100 to-accent-100 rounded-bl-full opacity-20" />
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary-100 to-accent-100 rounded-tr-full opacity-10" />
+              <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-2 relative">
+
                 <div className="relative z-10 flex flex-col gap-4">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">Our Products</h3>
                   <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
                     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gradient-to-r from-[#69a84f] to-[#a0c563] text-white font-semibold px-4 py-1.5 text-center text-sm">Product Suite</div>
+                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Product Suite</div>
                       <ul className="space-y-1 p-3 text-[13px] leading-snug">
                         <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Document automation and conversion tools.</span></li>
                         <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>File management: split, merge, compare.</span></li>
@@ -286,7 +282,7 @@ export default function AgentsInAction() {
                       </ul>
                     </div>
                     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gradient-to-r from-[#5a9bd5] to-[#7fb2dd] text-white font-semibold px-4 py-1.5 text-center text-sm">Why Our Products?</div>
+                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Why Our Products?</div>
                       <ul className="space-y-1 p-3 text-[13px] leading-snug">
                         <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Ready to Use:</strong> No custom development needed.</span></li>
                         <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Scalable:</strong> Built for enterprise-level workloads.</span></li>
