@@ -230,40 +230,40 @@ export default function AgentsInAction() {
             <p className="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">{TABS[3].subtitle}</p>
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 w-full">
               {/* Left: 60% Product Grid */}
-              <div className="w-full lg:w-[60%] bg-gray-50 dark:bg-gray-900 p-6 md:p-8 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl">
+              <div className="w-full lg:w-[60%] bg-gray-50 dark:bg-gray-900 p-6 md:p-8 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                    <h4 className="text-gray-900 dark:text-gray-100 font-bold text-sm mb-2">DocCraft</h4>
-                    <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">Automate Excel to PDF, PPT & Image Like Certificates, Reports.</p>
-                  </div>
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                    <h4 className="text-gray-900 dark:text-gray-100 font-bold text-sm mb-2">Sheets to Slides</h4>
-                    <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">Creating Excel to Presentation like Weekly Report, Proposals.</p>
-                  </div>
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                    <h4 className="text-gray-900 dark:text-gray-100 font-bold text-sm mb-2">Image Compressor</h4>
-                    <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">Compress your image up to 90% without compromising quality</p>
-                  </div>
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                    <h4 className="text-gray-900 dark:text-gray-100 font-bold text-sm mb-2">Consolidation</h4>
-                    <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">Combine multiple files into single file (by Column)</p>
-                  </div>
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                    <h4 className="text-gray-900 dark:text-gray-100 font-bold text-sm mb-2">File Splitter</h4>
-                    <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">Split large files into sheets and workbook, based on criteria</p>
-                  </div>
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                    <h4 className="text-gray-900 dark:text-gray-100 font-bold text-sm mb-2">Merge Master</h4>
-                    <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">Combine multiple files into single file (by Multiple Range)</p>
-                  </div>
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                    <h4 className="text-gray-900 dark:text-gray-100 font-bold text-sm mb-2">File Comparison</h4>
-                    <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">Compare between files and Highlight changes.</p>
-                  </div>
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                    <h4 className="text-gray-900 dark:text-gray-100 font-bold text-sm mb-2">Work Allocation</h4>
-                    <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">Allocate tasks equally or Randomly based on User</p>
-                  </div>
+                  {[
+                    { title: "DocCraft", desc: "Automate Excel to PDF, PPT & Image Like Certificates, Reports." },
+                    { title: "Sheets to Slides", desc: "Creating Excel to Presentation like Weekly Report, Proposals." },
+                    { title: "Image Compressor", desc: "Compress your image up to 90% without compromising quality" },
+                    { title: "Consolidation", desc: "Combine multiple files into single file (by Column)" },
+                    { title: "File Splitter", desc: "Split large files into sheets and workbook, based on criteria" },
+                    { title: "Merge Master", desc: "Combine multiple files into single file (by Multiple Range)" },
+                    { title: "File Comparison", desc: "Compare between files and Highlight changes." },
+                    { title: "Work Allocation", desc: "Allocate tasks equally or Randomly based on User" }
+                  ].map((product, i) => (
+                    <motion.div
+                      key={product.title}
+                      initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                      animate={{
+                        opacity: [0, 1, 1, 0, 0],
+                        y: [15, 0, 0, -15, 15],
+                        scale: [0.95, 1, 1, 0.95, 0.95]
+                      }}
+                      transition={{
+                        duration: 5,
+                        times: [0, 0.08, 0.85, 0.95, 1],
+                        repeat: Infinity,
+                        repeatType: 'loop',
+                        delay: i * 0.15,
+                        ease: "easeOut"
+                      }}
+                      className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700"
+                    >
+                      <h4 className="text-gray-900 dark:text-gray-100 font-bold text-sm mb-2">{product.title}</h4>
+                      <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">{product.desc}</p>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
               {/* Right: 40% Info */}

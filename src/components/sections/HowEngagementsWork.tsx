@@ -119,8 +119,8 @@ export default function HowEngagementsWork() {
             <motion.div
               key={phase.step}
               className={`section-card p-4 rounded-xl flex flex-col min-w-0 transition-all duration-300 shrink-0 ${activeCardIndex === i
-                  ? 'ring-2 ring-[#65A859] dark:ring-[#4C99A0] ring-offset-2 dark:ring-offset-gray-900'
-                  : ''
+                ? 'ring-2 ring-[#65A859] dark:ring-[#4C99A0] ring-offset-2 dark:ring-offset-gray-900'
+                : ''
                 }`}
               style={
                 activeCardIndex === i
