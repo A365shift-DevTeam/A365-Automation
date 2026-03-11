@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import SectionWrapper from '../ui/SectionWrapper';
-import { ArrowRight, Zap, LayoutTemplate, Code2, CheckCircle2, Package } from 'lucide-react';
+import { ArrowRight, Zap, LayoutTemplate, Code2, CheckCircle2, Package, Activity, Layers, Box, ShieldCheck, Settings, Cpu, Settings2, LineChart, Clock, Database, TrendingUp, Shield } from 'lucide-react';
 import OrbitalApps from './OrbitalApps';
 import CardSwap, { Card } from './CardSwap';
 import SuitcaseImage from '../../assets/image.png';
@@ -63,28 +63,32 @@ export default function AgentsInAction() {
               <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-2 relative">
 
                 <div className="relative z-10 flex flex-col gap-4">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">AI Agents</h3>
-                  <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">What They Do</div>
-                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Automate repetitive workflows end-to-end.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Connect to any ERP, CRM, or data source.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Run 24/7 with zero manual intervention.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Full audit trails and error handling built-in.</span></li>
-                      </ul>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight mb-2">AI Agents</h3>
+                  <p className="text-gray-500 dark:text-gray-400 mb-8 text-sm md:text-base pr-4">Enterprise-grade automation replacing manual workflows seamlessly.</p>
+                  
+                  <div className="flex flex-col gap-6">
+                    <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-gray-900 dark:text-gray-100">
+                      <Activity className="w-4 h-4" /> Capabilities
                     </div>
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Key Benefits</div>
-                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Production Proven:</strong> Running live in enterprise environments.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Deploy in Weeks:</strong> Adaptable to your stack, not months.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Zero Errors:</strong> Monitored 24/7 with real-time alerts.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Cost Savings:</strong> Eliminate manual effort and reduce costs.</span></li>
-                      </ul>
-                    </div>
+                    <ul className="space-y-4">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-[#65A859] shrink-0 mt-0.5" />
+                        <span className="text-gray-700 dark:text-gray-300 text-sm">Automate repetitive workflows end-to-end across multiple platforms.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-[#65A859] shrink-0 mt-0.5" />
+                        <span className="text-gray-700 dark:text-gray-300 text-sm">Connect seamlessly to any ERP, CRM, or custom data source.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-[#65A859] shrink-0 mt-0.5" />
+                        <span className="text-gray-700 dark:text-gray-300 text-sm">Run 24/7 with zero manual intervention required.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-[#65A859] shrink-0 mt-0.5" />
+                        <span className="text-gray-700 dark:text-gray-300 text-sm">Full audit trails and sophisticated error handling built-in.</span>
+                      </li>
+                    </ul>
                   </div>
-                  <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-2">All agents deployed on your infrastructure · Monitored 24/7</p>
                 </div>
               </div>
               {/* Right: 60% Card Swap */}
@@ -136,36 +140,19 @@ export default function AgentsInAction() {
               <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-2 relative">
 
                 <div className="relative z-10 flex flex-col gap-4">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">Microsoft</h3>
-                  <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Ecosystem</div>
-                      <div className="p-3">
-                        <p className="text-[13px] leading-snug mb-3">
-                          Deep integration across the <strong>Microsoft</strong> platform — Desktop, Cloud, and AI-powered tools.
-                        </p>
-                        <div className="flex flex-wrap gap-1.5">
-                          <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Word</span>
-                          <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Excel</span>
-                          <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">PowerPoint</span>
-                          <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">SharePoint</span>
-                          <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Teams</span>
-                          <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">OneDrive</span>
-                          <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Outlook</span>
-                          <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Power BI</span>
-                          <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Power Apps</span>
-                          <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Azure</span>
-                        </div>
-                      </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight mb-2">Microsoft</h3>
+                  <p className="text-gray-500 dark:text-gray-400 mb-8 text-sm md:text-base pr-4">Deep integration across the Microsoft platform — Desktop, Cloud, and AI.</p>
+
+                  <div className="flex flex-col gap-6">
+                    <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-gray-900 dark:text-gray-100">
+                      <Layers className="w-4 h-4" /> Ecosystem Scope
                     </div>
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Why Microsoft?</div>
-                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Proven Patterns:</strong> We've solved this class of problem before.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Faster Builds:</strong> Lower risk with known, tested architectures.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Enterprise Ready:</strong> Security, compliance, and scalability built-in.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">AI-Powered:</strong> Leverage Copilot and AI across your workflows.</span></li>
-                      </ul>
+                    <div className="flex flex-wrap gap-2">
+                      {['Word', 'Excel', 'PowerPoint', 'SharePoint', 'Teams', 'OneDrive', 'Outlook', 'Power BI', 'Power Apps', 'Azure'].map(tag => (
+                        <span key={tag} className="px-3 py-1.5 text-xs font-medium bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm text-gray-700 dark:text-gray-300">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -192,26 +179,21 @@ export default function AgentsInAction() {
               <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-2 relative">
 
                 <div className="relative z-10 flex flex-col gap-4">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">Office Suite</h3>
-                  <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Capabilities</div>
-                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Excel automation with VBA and Office Scripts.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Word document generation and templating.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>PowerPoint deck creation from data sources.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Outlook email workflows and scheduling.</span></li>
-                      </ul>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight mb-2">Office Suite</h3>
+                  <p className="text-gray-500 dark:text-gray-400 mb-8 text-sm md:text-base pr-4">Convert daily manual reporting and emails into seamless automation.</p>
+
+                  <div className="flex flex-col gap-6">
+                    <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-gray-900 dark:text-gray-100">
+                      <Activity className="w-4 h-4" /> Capabilities
                     </div>
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Why Office Suite?</div>
-                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Any Operation:</strong> Custom scoped after a 2 week Discovery Sprint.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Any System:</strong> Integrates with your existing tools and platforms.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">End-to-End:</strong> From data input to polished output, fully automated.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Time Savings:</strong> Hours of manual work reduced to minutes.</span></li>
-                      </ul>
-                    </div>
+                    <ul className="space-y-4">
+                      {['Excel automation with VBA and Office Scripts.', 'Word document generation and templating.', 'PowerPoint deck creation from data sources.', 'Outlook email workflows and scheduling.'].map((text, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-[#65A859] shrink-0 mt-0.5" />
+                          <span className="text-gray-700 dark:text-gray-300 text-sm">{text}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -270,26 +252,21 @@ export default function AgentsInAction() {
               <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-2 relative">
 
                 <div className="relative z-10 flex flex-col gap-4">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">Our Products</h3>
-                  <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Product Suite</div>
-                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Document automation and conversion tools.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>File management: split, merge, compare.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Image compression without quality loss.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Smart work allocation and task distribution.</span></li>
-                      </ul>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight mb-2">Our Products</h3>
+                  <p className="text-gray-500 dark:text-gray-400 mb-8 text-sm md:text-base pr-4">Ready-to-deploy solutions for common enterprise bottlenecks.</p>
+
+                  <div className="flex flex-col gap-6">
+                    <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-gray-900 dark:text-gray-100">
+                      <Activity className="w-4 h-4" /> Product Suite
                     </div>
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Why Our Products?</div>
-                      <ul className="space-y-1 p-3 text-[13px] leading-snug">
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Ready to Use:</strong> No custom development needed.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Scalable:</strong> Built for enterprise-level workloads.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Plug & Play:</strong> Integrate with existing workflows instantly.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Cost Effective:</strong> Standard licensing, no consulting fees.</span></li>
-                      </ul>
-                    </div>
+                    <ul className="space-y-4">
+                      {['Document automation and conversion tools.', 'File management: split, merge, compare.', 'Image compression without quality loss.', 'Smart work allocation and task distribution.'].map((text, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-[#65A859] shrink-0 mt-0.5" />
+                          <span className="text-gray-700 dark:text-gray-300 text-sm">{text}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
