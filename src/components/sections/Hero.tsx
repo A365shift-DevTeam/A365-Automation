@@ -212,13 +212,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-          className="mt-16 flex flex-wrap items-center justify-center gap-4 md:gap-8"
+          className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto"
         >
           {[
-            { icon: User, label: ' Ambrose Denny ', sub: 'Founder of Ambot365' },
-            { icon: Award, label: '40+ Years ', sub: 'Combined Digital Expertise' },
+            { icon: User, label: 'Ambrose Denny', sub: 'Founder of Ambot365' },
+            { icon: Award, label: '40+ Years', sub: 'Combined Digital Expertise' },
             { icon: Globe, label: '50+ Clients', sub: 'Global Experience' },
-            { icon: Handshake, label: 'Digital Partners ', sub: 'Ambot365 & Coreshift' },
+            { icon: Handshake, label: 'Digital Partners', sub: 'Ambot365 & Coreshift' },
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -226,12 +226,12 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white dark:bg-gray-800 border-2 border-transparent dark:border-gray-700 shadow-sm transition-all cursor-default"
+              className="w-full flex items-center gap-4 px-5 py-5 rounded-xl bg-white dark:bg-gray-800 border-2 border-transparent dark:border-gray-700 shadow-sm hover:shadow-md transition-all cursor-default h-full"
             >
               <div className="w-12 h-12 rounded-lg bg-[#E5F1ED] dark:bg-[#4C99A0]/20 flex items-center justify-center shrink-0">
                 <item.icon className="w-6 h-6 text-[#589E92] dark:text-[#65A859]" strokeWidth={1.5} />
               </div>
-              <div className="text-left">
+              <div className="text-left flex-1 min-w-0">
                 <p className="text-[15px] font-bold text-[#1a2f4c] dark:text-gray-100 leading-tight">{item.label}</p>
                 <p className="text-[13px] font-medium text-gray-500 dark:text-gray-400 mt-0.5">{item.sub}</p>
               </div>
