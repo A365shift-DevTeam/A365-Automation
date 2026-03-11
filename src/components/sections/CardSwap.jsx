@@ -127,14 +127,16 @@ const CardSwap = forwardRef(({
 
             const elFront = refs[front].current;
 
-            // 1. Move the front card out (drop down and fade/scale)
+            // 1. Move the front card out (slide right and slightly down)
             tl.set(elFront, { zIndex: refs.length + 5 }); // Bring to very front temporarily
             tl.to(elFront, {
-                y: '+=150', // Drop down more significantly
-                z: -100,
-                opacity: 0, // Fade out to ensure it doesn't visually clutter
-                rotationX: -10,
-                scale: 0.9,
+                x: '+=150', // Slide out to the right
+                y: '+=30', // Drop down slightly
+                z: -50,
+                opacity: 1, // Keep visible
+                rotationZ: 5, // Slight tilt
+                rotationX: -5,
+                scale: 0.95,
                 duration: config.durDrop,
                 ease: config.ease,
                 pointerEvents: 'none'
@@ -169,20 +171,23 @@ const CardSwap = forwardRef(({
             // 3. Bring the old front card to the very back
             const backSlot = makeSlot(refs.length - 1, cardDistance, verticalDistance, refs.length);
 
-            tl.call(() => {
-                // Reset immediately before animating in at the back (invisible)
-                gsap.set(elFront, {
-                    zIndex: backSlot.zIndex,
-                    x: backSlot.x,
-                    y: backSlot.y,
-                    z: backSlot.z,
-                    rotationX: 0,
-                    opacity: 0, // Start invisible at back
-                    pointerEvents: 'none'
-                });
-            }, undefined, `promote+=${config.durMove}`);
+            tl.set(elFront, { zIndex: backSlot.zIndex }, 'promote');
 
-            // No need to animate elFront back to opacity 1, it should stay invisible until it moves up to index < 5
+            const isVisibleAtBack = (refs.length - 1) < visibleStack;
+
+            tl.to(elFront, {
+                x: backSlot.x,
+                y: backSlot.y,
+                z: backSlot.z,
+                rotationX: 0,
+                rotationZ: 0,
+                scale: 1,
+                opacity: isVisibleAtBack ? 1 : 0, 
+                pointerEvents: isVisibleAtBack ? 'auto' : 'none',
+                duration: config.durMove,
+                ease: config.ease
+            }, 'promote');
+
             tl.call(() => {
                 order.current = [...rest, front];
             });
@@ -219,12 +224,24 @@ const CardSwap = forwardRef(({
             tl.set(elLast, { zIndex: refs.length + 10 }, 0);
 
             tl.fromTo(elLast,
-                { opacity: 0, y: '+=100', pointerEvents: 'none' },
+                { 
+                    x: '+=150',
+                    y: '+=30',
+                    z: -50,
+                    opacity: 1,
+                    rotationZ: 5,
+                    rotationX: -5,
+                    scale: 0.95,
+                    pointerEvents: 'none'
+                },
                 {
                     x: frontSlot.x,
                     y: frontSlot.y,
                     z: frontSlot.z,
-                    opacity: 1, // Fade in
+                    opacity: 1,
+                    scale: 1,
+                    rotationZ: 0,
+                    rotationX: 0,
                     pointerEvents: 'auto',
                     duration: config.durReturn,
                     ease: config.ease
