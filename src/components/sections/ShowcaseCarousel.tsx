@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause, CheckCircle2, Activity, Code2 } from 'lucide-react';
 
 // Import Microsoft Images
 import pb1 from '../../assets/Power BI images/pic1.png';
@@ -54,30 +54,30 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     images: [pb1, pb2, pb3, pb4],
     customContent: (
       <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-          <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">AI Features</div>
-          <ul className="space-y-1 p-3 text-[13px] leading-snug">
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Chatbot: Real-time chat with reports.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>AI Tree: Visual decision trees.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Narrative: Automated insights.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Key Influencer: Identifying key business factors.</span></li>
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-[#4C99A0] dark:text-[#65A859]">AI FEATURES</div>
+          <ul className="space-y-3 pt-2">
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Chatbot: Real-time chat with reports.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">AI Tree: Visual decision trees.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Narrative: Automated insights.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Key Influencer: Identifying key business factors.</span></li>
           </ul>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-          <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Features</div>
-          <ul className="space-y-1 p-3 text-[13px] leading-snug">
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Live Updates: Get the latest information with each refresh.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Interactive Filters: Custom views and drilldowns.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Data Visualization: Create compelling visuals to represent data.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Collaboration Tools: Share insights and reports with your team.</span></li>
+        <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+          <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-[#4C99A0] dark:text-[#65A859]">FEATURES</div>
+          <ul className="space-y-3 pt-2">
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Live Updates: Get the latest information with each refresh.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Interactive Filters: Custom views and drilldowns.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Data Visualization: Create compelling visuals to represent data.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Collaboration Tools: Share insights and reports with your team.</span></li>
           </ul>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-          <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Benefits</div>
-          <ul className="space-y-1 p-3 text-[13px] leading-snug">
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Monitor Business: Keep track of key metrics.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Identify Trends: Spot patterns and insights.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span>Enhance Efficiency: Streamline operations with data-driven insights.</span></li>
+        <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+          <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-[#4C99A0] dark:text-[#65A859]">BENEFITS</div>
+          <ul className="space-y-3 pt-2">
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Monitor Business: Keep track of key metrics.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Identify Trends: Spot patterns and insights.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Enhance Efficiency: Streamline operations with data-driven insights.</span></li>
           </ul>
         </div>
       </div>
@@ -91,31 +91,33 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     images: [ex1, ex2],
     customContent: (
       <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-          <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Microsoft 365 Integrations</div>
-          <div className="p-3">
-            <p className="text-[13px] leading-snug mb-3">
-              Seamlessly connect across the Microsoft ecosystem, leveraging <strong>Desktop, Cloud, and AI</strong> capabilities for:
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Excel</span>
-              <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Office Script</span>
-              <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Power Automate</span>
-              <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">VBA</span>
-              <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Power BI</span>
-              <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">SharePoint</span>
-              <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">Teams</span>
-            </div>
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">Microsoft 365 Integrations</div>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 mb-4">
+            Seamlessly connect across the Microsoft ecosystem, leveraging <strong>Desktop, Cloud, and AI</strong> capabilities for:
+          </p>
+          <div className="flex flex-wrap gap-2.5">
+            {['Excel', 'Office Script', 'Power Automate', 'VBA', 'Power BI', 'SharePoint', 'Teams'].map((tag, i) => (
+              <motion.span
+                key={tag}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.1 + i * 0.05 }}
+                className="px-4 py-2 text-xs font-semibold bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-sm hover:shadow-md hover:border-[#4C99A0]/50 dark:hover:border-[#65A859]/50 text-gray-700 dark:text-gray-300 transition-all duration-300"
+              >
+                {tag}
+              </motion.span>
+            ))}
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-          <div className="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white font-semibold px-4 py-2 text-center text-sm border-b border-gray-100 dark:border-gray-700">Key Benefits: Microsoft 365</div>
-          <ul className="space-y-1 p-3 text-[13px] leading-snug">
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Low-Code Apps:</strong> Create custom solutions effortlessly.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Cloud Integration:</strong> Enhance collaboration and accessibility from anywhere.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Automation:</strong> Streamline tasks, saving time and reducing errors.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">AI Insights:</strong> Make smarter decisions with powerful AI tools.</span></li>
-            <li className="flex items-start gap-2"><span className="text-[#f1c232] font-bold text-[10px] mt-[3px]">▶</span> <span><strong className="text-gray-900 dark:text-gray-100">Enhanced Desktop:</strong> Boost efficiency with advanced desktop applications.</span></li>
+        <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+          <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">Key Benefits: Microsoft 365</div>
+          <ul className="space-y-3 pt-2">
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><strong className="text-gray-900 dark:text-gray-100">Low-Code Apps:</strong> Create custom solutions effortlessly.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><strong className="text-gray-900 dark:text-gray-100">Cloud Integration:</strong> Enhance collaboration and accessibility from anywhere.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><strong className="text-gray-900 dark:text-gray-100">Automation:</strong> Streamline tasks, saving time and reducing errors.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><strong className="text-gray-900 dark:text-gray-100">AI Insights:</strong> Make smarter decisions with powerful AI tools.</span></li>
+            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><strong className="text-gray-900 dark:text-gray-100">Enhanced Desktop:</strong> Boost efficiency with advanced desktop applications.</span></li>
           </ul>
         </div>
       </div>
@@ -340,14 +342,15 @@ export default function ShowcaseCarousel() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="relative z-10 flex flex-col gap-6"
+                className="relative z-10 flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl"
               >
-                <div>
-                  {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-bold mb-4">
-                    <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
-                    Agent Insight
-                  </div> */}
-                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white leading-tight">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
+                    {activeTab === 'attendance' && <Activity className="w-6 h-6 text-white" />}
+                    {activeTab === 'payroll' && <Code2 className="w-6 h-6 text-white" />}
+                    {activeTab !== 'attendance' && activeTab !== 'payroll' && <CheckCircle2 className="w-6 h-6 text-white" />}
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight">
                     {activeData.title}
                   </h3>
                 </div>
@@ -361,13 +364,17 @@ export default function ShowcaseCarousel() {
                     </p>
 
                     {activeData.features && (
-                      <div className="mt-4 pt-6 border-t border-gray-100 dark:border-gray-800">
-                        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-4">Key Capabilities</h4>
-                        <ul className="space-y-3">
+                      <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+                        <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859] mb-4">
+                          Key Capabilities
+                        </div>
+                        <ul className="space-y-4">
                           {activeData.features.map((feature, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                              <div className={`mt-1.5 w-1.5 h-1.5 rounded-full bg-gradient-to-r ${activeData.color} shrink-0`} />
-                              <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">{feature}</span>
+                            <li key={i} className="flex items-start gap-3 group">
+                              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform">
+                                <CheckCircle2 className="w-3 h-3 text-white" />
+                              </div>
+                              <span className="text-sm text-gray-700 dark:text-gray-300 font-medium group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors">{feature}</span>
                             </li>
                           ))}
                         </ul>
