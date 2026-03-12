@@ -369,7 +369,7 @@ export default function ShowcaseCarousel() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="relative z-10 flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl lg:overflow-y-auto"
+                className="relative z-10 flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl lg:overflow-y-auto no-scrollbar"
                 style={visualCardHeight ? { height: visualCardHeight } : undefined}
               >
                 <div className="flex items-center gap-3 mb-2">
