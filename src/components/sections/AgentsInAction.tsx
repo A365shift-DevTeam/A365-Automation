@@ -128,8 +128,8 @@ export default function AgentsInAction() {
                 {/* Decorative accent line */}
                 <div className="hidden lg:block absolute left-[40%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
                 {/* Left: 40% Info */}
-                <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-8 relative">
-                  <div className="relative z-10 flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
+                <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
+                  <div className="relative z-10 h-full flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <Zap className="w-6 h-6 text-white" />
@@ -170,7 +170,7 @@ export default function AgentsInAction() {
                 <div className="w-full lg:w-[60%] flex justify-center items-center h-[500px] relative">
                   {/* Glowing background effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#4C99A0]/5 via-transparent to-[#65A859]/5 rounded-3xl blur-2xl" />
-                  <div className="relative z-10">
+                  <div className="relative z-10 translate-y-10 lg:translate-y-14">
                     <CardSwap width={400} height={350} pauseOnHover={true} visibleStack={4}>
                       {AGENTS.map((agent, i) => (
                         <Card
@@ -242,8 +242,8 @@ export default function AgentsInAction() {
                   </div>
                 </div>
                 {/* Right: 40% Info */}
-                <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-8 relative">
-                  <div className="relative z-10 flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
+                <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
+                  <div className="relative z-10 h-full flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <LayoutTemplate className="w-6 h-6 text-white" />
@@ -302,8 +302,8 @@ export default function AgentsInAction() {
                   <img src={SuitcaseImage} alt="Office Suite Integration" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 {/* Right: 40% Info */}
-                <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-8 relative">
-                  <div className="relative z-10 flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
+                <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
+                  <div className="relative z-10 h-full flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <Code2 className="w-6 h-6 text-white" />
@@ -400,8 +400,8 @@ export default function AgentsInAction() {
                   </div>
                 </div>
                 {/* Right: 40% Info */}
-                <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-8 relative">
-                  <div className="relative z-10 flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
+                <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
+                  <div className="relative z-10 h-full flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <Package className="w-6 h-6 text-white" />
@@ -442,3 +442,4 @@ export default function AgentsInAction() {
     </section>
   );
 }
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { ChevronLeft, ChevronRight, Play, Pause, CheckCircle2, Activity, Code2 } from 'lucide-react';
 
@@ -155,6 +155,8 @@ export default function ShowcaseCarousel() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
   const reduceMotion = useReducedMotion();
+  const visualCardRef = useRef<HTMLDivElement | null>(null);
+  const [visualCardHeight, setVisualCardHeight] = useState<number | null>(null);
 
   const activeData = MOCKUP_DATA[activeTab as keyof typeof MOCKUP_DATA];
 
@@ -167,6 +169,31 @@ export default function ShowcaseCarousel() {
     }
     return () => clearInterval(interval);
   }, [isPlaying, activeData.pages]);
+
+  useEffect(() => {
+    const syncRightPanelHeight = () => {
+      const isDesktop = window.innerWidth >= 1024;
+      if (!isDesktop || !visualCardRef.current) {
+        setVisualCardHeight(null);
+        return;
+      }
+
+      setVisualCardHeight(visualCardRef.current.getBoundingClientRect().height);
+    };
+
+    syncRightPanelHeight();
+    window.addEventListener('resize', syncRightPanelHeight);
+
+    const observer = new ResizeObserver(syncRightPanelHeight);
+    if (visualCardRef.current) {
+      observer.observe(visualCardRef.current);
+    }
+
+    return () => {
+      window.removeEventListener('resize', syncRightPanelHeight);
+      observer.disconnect();
+    };
+  }, [activeTab, currentPage]);
 
   const handleTabChange = (id: string) => {
     setActiveTab(id);
@@ -249,7 +276,7 @@ export default function ShowcaseCarousel() {
           {/* Left Side: 60% Carousel */}
           <div className="w-full lg:w-[60%] flex flex-col gap-6">
             {/* Main Visual Container */}
-            <div className="glass-panel w-full bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden relative">
+            <div ref={visualCardRef} className="glass-panel w-full bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden relative">
               <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/11] bg-white dark:bg-gray-950 flex flex-col w-full">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -333,7 +360,7 @@ export default function ShowcaseCarousel() {
           </div>
 
           {/* Right Side: 40% Information */}
-          <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-2 relative">
+          <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-0 lg:py-0 relative">
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -342,7 +369,8 @@ export default function ShowcaseCarousel() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="relative z-10 flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl"
+                className="relative z-10 flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl lg:overflow-y-auto"
+                style={visualCardHeight ? { height: visualCardHeight } : undefined}
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
@@ -391,3 +419,4 @@ export default function ShowcaseCarousel() {
     </section>
   );
 }
+
