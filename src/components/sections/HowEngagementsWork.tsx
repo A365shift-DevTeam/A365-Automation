@@ -27,14 +27,6 @@ const PHASES = [
     included: ['AI agent development', 'Microsoft 365 & API integrations', 'Testing with real data', 'UAT & production deployment'],
     outcome: 'Production-ready AI automation.',
   },
-  {
-    step: '04',
-    weeks: 'Ongoing',
-    title: 'Continuous Operations',
-    desc: 'We monitor, optimize, and improve the system continuously.',
-    included: ['24/7 monitoring', 'Bug fixes & maintenance', 'Performance reports', 'Continuous optimization'],
-    outcome: 'Stable system with continuous improvements.',
-  },
 ];
 
 export default function HowEngagementsWork() {
@@ -47,15 +39,14 @@ export default function HowEngagementsWork() {
   });
 
   // Logo moves along the line from 0% to 100% as user scrolls through the section
-  const logoPositionPercent = useTransform(scrollYProgress, [0, 0.15, 0.5, 0.85, 1], [0, 25, 50, 75, 100]);
+  const logoPositionPercent = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [0, 50, 100, 100]);
   const logoLeft = useTransform(logoPositionPercent, (v) => `${v}%`);
 
-  // Which card to glow: logo at 0–25% → card 0, 25–50% → card 1, 50-75% -> card 2, 75-100% -> card 3
+  // Which card to glow: logo at 0-33% → card 0, 33-66% → card 1, 66-100% -> card 2
   useMotionValueEvent(logoPositionPercent, 'change', (v) => {
-    if (v <= 25) setActiveCardIndex(0);
-    else if (v <= 50) setActiveCardIndex(1);
-    else if (v <= 75) setActiveCardIndex(2);
-    else setActiveCardIndex(3);
+    if (v <= 33) setActiveCardIndex(0);
+    else if (v <= 66) setActiveCardIndex(1);
+    else setActiveCardIndex(2);
   });
 
   return (
@@ -80,7 +71,7 @@ export default function HowEngagementsWork() {
               aria-hidden
             />
             {/* Nodes on the line */}
-            {[0, 33.33, 66.66, 100].map((pct) => (
+            {[0, 50, 100].map((pct) => (
               <div
                 key={pct}
                 className="absolute top-1/2 w-3 h-3 rounded-full bg-gray-800 dark:bg-gray-700 border-2 border-white dark:border-gray-900 shadow z-[1]"
@@ -101,11 +92,11 @@ export default function HowEngagementsWork() {
               />
             </motion.div>
           </div>
-          <div className="grid grid-cols-4 gap-1 mt-1">
+          <div className="grid grid-cols-3 gap-1 mt-1">
             {PHASES.map((phase, i) => (
               <span
                 key={phase.step}
-                className={`text-xs md:text-sm font-bold text-[#65A859] dark:text-[#4C99A0] ${i === 0 ? 'text-left' : i === 3 ? 'text-right' : 'text-center'}`}
+                className={`text-xs md:text-sm font-bold text-[#65A859] dark:text-[#4C99A0] ${i === 0 ? 'text-left' : i === 2 ? 'text-right' : 'text-center'}`}
               >
                 {phase.weeks}
               </span>
@@ -114,7 +105,7 @@ export default function HowEngagementsWork() {
         </div>
 
         {/* Cards – no scroll; content flows with section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 flex-1 min-h-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 flex-1 min-h-0">
           {PHASES.map((phase, i) => (
             <motion.div
               key={phase.step}
