@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import SectionWrapper from '../ui/SectionWrapper';
 import { ArrowRight, Zap, LayoutTemplate, Code2, CheckCircle2, Package, Activity, Layers, Box, ShieldCheck, Settings, Cpu, Settings2, LineChart, Clock, Database, TrendingUp, Shield } from 'lucide-react';
 import OrbitalApps from './OrbitalApps';
 import CardSwap, { Card } from './CardSwap';
@@ -27,12 +26,12 @@ export default function AgentsInAction() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <SectionWrapper id="agents-in-action" className="section-bg relative overflow-hidden">
+    <section id="agents-in-action" className="section-bg relative overflow-hidden py-4">
       {/* Professional Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle gradient orbs - matching site theme */}
         <motion.div
-          className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#4C99A0]/30 dark:bg-[#4C99A0]/15 blur-3xl"
+          className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#4C99A0]/45 dark:bg-[#4C99A0]/30 blur-3xl"
           animate={reduceMotion ? undefined : {
             y: [0, -12, 0],
             opacity: [0.9, 1, 0.9],
@@ -44,7 +43,7 @@ export default function AgentsInAction() {
           }}
         />
         <motion.div
-          className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full bg-[#65A859]/25 dark:bg-[#65A859]/15 blur-3xl"
+          className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full bg-[#65A859]/40 dark:bg-[#65A859]/25 blur-3xl"
           animate={reduceMotion ? undefined : {
             y: [0, 10, 0],
             x: [0, 8, 0],
@@ -56,7 +55,7 @@ export default function AgentsInAction() {
           }}
         />
         <motion.div
-          className="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full bg-[#4C99A0]/20 dark:bg-[#4C99A0]/10 blur-3xl"
+          className="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full bg-[#4C99A0]/35 dark:bg-[#4C99A0]/20 blur-3xl"
           animate={reduceMotion ? undefined : {
             y: [0, -8, 0],
           }}
@@ -68,17 +67,17 @@ export default function AgentsInAction() {
         />
 
         {/* Subtle abstract patterns */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.12] dark:opacity-[0.06]" preserveAspectRatio="none">
+        <svg className="absolute inset-0 w-full h-full opacity-[0.22] dark:opacity-[0.14]" preserveAspectRatio="none">
           <defs>
             <linearGradient id="bgCurve1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#4C99A0" stopOpacity="0.5" />
-              <stop offset="50%" stopColor="#65A859" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#4C99A0" stopOpacity="0.15" />
+              <stop offset="0%" stopColor="#4C99A0" stopOpacity="0.7" />
+              <stop offset="50%" stopColor="#65A859" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#4C99A0" stopOpacity="0.3" />
             </linearGradient>
             <linearGradient id="bgCurve2" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#65A859" stopOpacity="0.4" />
-              <stop offset="50%" stopColor="#4C99A0" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#65A859" stopOpacity="0.12" />
+              <stop offset="0%" stopColor="#65A859" stopOpacity="0.6" />
+              <stop offset="50%" stopColor="#4C99A0" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#65A859" stopOpacity="0.25" />
             </linearGradient>
           </defs>
           {/* Subtle flowing curves */}
@@ -103,26 +102,33 @@ export default function AgentsInAction() {
         </svg>
       </div>
 
-      <div className="relative z-10">
-        <div className="text-center mb-12 px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px", amount: 0.2 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-7xl mx-auto px-6 md:px-12 relative z-10"
+      >
+        <div className="relative z-10">
+          <div className="text-center mb-4 px-4">
           {/* <p className="text-sm font-semibold tracking-wider text-primary-500 uppercase mb-2">Intelligent AI Agents · Microsoft ecosystem · Office Suite · Scalable products</p> */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50"
+            className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50"
           >
             Our Digital Services
           </motion.h2>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12 px-4">
+        <div className="flex flex-wrap justify-center gap-2 mb-4 px-4">
           {TABS.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-medium text-sm transition-colors duration-200 ${activeTab === tab.id
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-xs md:text-sm transition-colors duration-200 ${activeTab === tab.id
                   ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white'
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
                 }`}
@@ -147,7 +153,7 @@ export default function AgentsInAction() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12 text-lg font-medium"
+                className="text-center text-gray-600 dark:text-gray-400 mb-4 max-w-2xl mx-auto text-sm md:text-base font-medium"
               >
                 {TABS[0].subtitle}
               </motion.p>
@@ -254,7 +260,7 @@ export default function AgentsInAction() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-center text-gray-600 dark:text-gray-400 mb-12 text-lg font-medium max-w-2xl mx-auto"
+                className="text-center text-gray-600 dark:text-gray-400 mb-4 text-sm md:text-base font-medium max-w-2xl mx-auto"
               >
                 {TABS[1].subtitle}
               </motion.p>
@@ -316,7 +322,7 @@ export default function AgentsInAction() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12 text-lg font-medium"
+                className="text-center text-gray-600 dark:text-gray-400 mb-4 max-w-2xl mx-auto text-sm md:text-base font-medium"
               >
                 {TABS[2].subtitle}
               </motion.p>
@@ -379,7 +385,7 @@ export default function AgentsInAction() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12 text-lg font-medium"
+                className="text-center text-gray-600 dark:text-gray-400 mb-4 max-w-2xl mx-auto text-sm md:text-base font-medium"
               >
                 {TABS[3].subtitle}
               </motion.p>
@@ -464,7 +470,8 @@ export default function AgentsInAction() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </SectionWrapper>
+        </div>
+      </motion.div>
+    </section>
   );
 }
