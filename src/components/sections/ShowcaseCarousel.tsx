@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 
 // Import Microsoft Images
@@ -152,6 +152,7 @@ export default function ShowcaseCarousel() {
   const [activeTab, setActiveTab] = useState('schedule');
   const [currentPage, setCurrentPage] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   const activeData = MOCKUP_DATA[activeTab as keyof typeof MOCKUP_DATA];
 
@@ -171,8 +172,48 @@ export default function ShowcaseCarousel() {
   };
 
   return (
-    <section className="py-24 relative z-20 w-full overflow-hidden">
-      <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8 xl:px-12">
+    <section className="section-bg relative w-full overflow-hidden py-4">
+      {/* Professional Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Subtle gradient orbs - matching site theme */}
+        <motion.div
+          className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#65A859]/45 dark:bg-[#65A859]/30 blur-3xl"
+          animate={reduceMotion ? undefined : {
+            y: [0, -12, 0],
+            opacity: [0.9, 1, 0.9],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full bg-[#4C99A0]/40 dark:bg-[#4C99A0]/25 blur-3xl"
+          animate={reduceMotion ? undefined : {
+            y: [0, 10, 0],
+            x: [0, 8, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full bg-[#65A859]/35 dark:bg-[#65A859]/20 blur-3xl"
+          animate={reduceMotion ? undefined : {
+            y: [0, -8, 0],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8 xl:px-12">
 
         {/* Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-8">

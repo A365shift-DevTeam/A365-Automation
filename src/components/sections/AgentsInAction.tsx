@@ -66,40 +66,7 @@ export default function AgentsInAction() {
           }}
         />
 
-        {/* Subtle abstract patterns */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.22] dark:opacity-[0.14]" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="bgCurve1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#4C99A0" stopOpacity="0.7" />
-              <stop offset="50%" stopColor="#65A859" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="#4C99A0" stopOpacity="0.3" />
-            </linearGradient>
-            <linearGradient id="bgCurve2" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#65A859" stopOpacity="0.6" />
-              <stop offset="50%" stopColor="#4C99A0" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#65A859" stopOpacity="0.25" />
-            </linearGradient>
-          </defs>
-          {/* Subtle flowing curves */}
-          <path
-            d="M 0,150 Q 250,50 500,150 T 1000,150 T 1500,150"
-            fill="none"
-            stroke="url(#bgCurve1)"
-            strokeWidth="1.5"
-          />
-          <path
-            d="M 0,350 Q 300,250 600,350 T 1200,350 T 1800,350"
-            fill="none"
-            stroke="url(#bgCurve2)"
-            strokeWidth="1.5"
-          />
-          <path
-            d="M 0,550 Q 200,450 400,550 T 800,550 T 1200,550"
-            fill="none"
-            stroke="url(#bgCurve1)"
-            strokeWidth="1"
-          />
-        </svg>
+        {/* Faint lines removed per user request */}
       </div>
 
       <motion.div
