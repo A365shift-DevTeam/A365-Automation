@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { CheckCircle2, XCircle, Clock, Zap, ArrowRight, Timer, AlertTriangle, Shield, TrendingUp, Activity, RotateCw } from 'lucide-react';
 
 export default function ProcessComparison() {
@@ -205,25 +205,18 @@ export default function ProcessComparison() {
               </div>
 
               {/* Elapsed Timer */}
-              <div className="mb-6 flex items-center gap-2">
-                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-bold ${
-                  manualFinished
+              <div className="mb-6 flex items-center gap-2 h-8">
+                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors duration-300 ${manualFinished
                     ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
                     : 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400'
-                }`}>
+                  }`}>
                   <span className={`w-2 h-2 rounded-full ${manualFinished ? 'bg-red-500' : 'bg-orange-500 animate-pulse'}`} />
                   {manualFinished ? 'TIMED OUT' : 'RUNNING'} {formatTime(Math.min(manualElapsed, 600))}
                 </div>
-                {manualFinished && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="flex items-center gap-1 text-xs text-red-500 font-medium"
-                  >
-                    <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: '2s' }} />
-                    Restarting...
-                  </motion.div>
-                )}
+                <div className={`flex items-center gap-1 text-xs text-red-500 font-medium transition-opacity duration-300 ${manualFinished ? 'opacity-100' : 'opacity-0'}`}>
+                  <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: '2s' }} />
+                  Restarting...
+                </div>
               </div>
 
               {/* Timeline Steps */}
@@ -246,13 +239,12 @@ export default function ProcessComparison() {
                     return (
                       <div key={i} className="flex items-start gap-4 relative">
                         {/* Node */}
-                        <div className={`w-6 h-6 rounded-full border-2 shrink-0 flex items-center justify-center z-10 transition-all duration-500 ${
-                          isDone
+                        <div className={`w-6 h-6 rounded-full border-2 shrink-0 flex items-center justify-center z-10 transition-all duration-500 ${isDone
                             ? 'bg-blue-500 border-blue-500'
                             : isCurrent
                               ? 'bg-white dark:bg-gray-800 border-orange-400 shadow-md shadow-orange-200 dark:shadow-orange-900/30'
                               : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600'
-                        }`}>
+                          }`}>
                           {isDone && <CheckCircle2 className="w-3.5 h-3.5 text-white" />}
                           {isCurrent && (
                             <motion.div
@@ -266,25 +258,23 @@ export default function ProcessComparison() {
                         {/* Content */}
                         <div className={`flex-1 pb-1 transition-all duration-500 ${isPending ? 'opacity-30' : ''}`}>
                           <div className="flex items-center justify-between">
-                            <p className={`text-sm font-semibold transition-colors duration-500 ${
-                              isDone ? 'text-gray-800 dark:text-gray-200' : isCurrent ? 'text-orange-600 dark:text-orange-400' : 'text-gray-400 dark:text-gray-600'
-                            }`}>
+                            <p className={`text-sm font-semibold transition-colors duration-500 ${isDone ? 'text-gray-800 dark:text-gray-200' : isCurrent ? 'text-orange-600 dark:text-orange-400' : 'text-gray-400 dark:text-gray-600'
+                              }`}>
                               {step.name}
                             </p>
-                            <span className={`text-xs font-mono font-bold ml-2 transition-colors duration-500 ${
-                              isDone ? 'text-gray-500' : isCurrent ? 'text-orange-500' : 'text-gray-300 dark:text-gray-700'
-                            }`}>
+                            <span className={`text-xs font-mono font-bold ml-2 transition-colors duration-500 ${isDone ? 'text-gray-500' : isCurrent ? 'text-orange-500' : 'text-gray-300 dark:text-gray-700'
+                              }`}>
                               {step.duration}
                             </span>
                           </div>
-                          {isCurrent && (
+                          {/* Always rendered to prevent height shift */}
+                          <div className="h-1 mt-2 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
                             <motion.div
-                              initial={{ width: 0 }}
-                              animate={{ width: '100%' }}
-                              transition={{ duration: 2.5, ease: 'linear' }}
-                              className="h-1 mt-2 rounded-full bg-gradient-to-r from-orange-300 to-orange-400 dark:from-orange-500/40 dark:to-orange-400/60"
+                              animate={{ width: isCurrent ? '100%' : isDone ? '100%' : '0%' }}
+                              transition={{ duration: isCurrent ? 2.5 : 0.3, ease: isCurrent ? 'linear' : 'easeOut' }}
+                              className={`h-full rounded-full transition-colors duration-300 ${isCurrent ? 'bg-gradient-to-r from-orange-300 to-orange-400 dark:from-orange-500/60 dark:to-orange-400/80' : isDone ? 'bg-blue-400/40' : 'bg-transparent'}`}
                             />
-                          )}
+                          </div>
                         </div>
                       </div>
                     );
@@ -348,28 +338,18 @@ export default function ProcessComparison() {
               </div>
 
               {/* Elapsed Timer */}
-              <div className="mb-6 flex items-center gap-2 relative z-10">
-                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-bold ${
-                  autoFinished
+              <div className="mb-6 flex items-center gap-2 relative z-10 h-8">
+                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors duration-300 ${autoFinished
                     ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
                     : 'bg-[#4C99A0]/15 text-[#4C99A0] dark:text-[#65A859]'
-                }`}>
+                  }`}>
                   <span className={`w-2 h-2 rounded-full ${autoFinished ? 'bg-green-500' : 'bg-[#4C99A0] animate-pulse'}`} />
                   {autoFinished ? 'COMPLETED' : 'RUNNING'} {formatTime(Math.min(autoElapsed, 180))}
                 </div>
-                <AnimatePresence>
-                  {autoFinished && (
-                    <motion.div
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0 }}
-                      className="flex items-center gap-1 text-xs text-green-600 dark:text-green-400 font-semibold"
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      All tasks done!
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div className={`flex items-center gap-1 text-xs text-green-600 dark:text-green-400 font-semibold transition-opacity duration-300 ${autoFinished ? 'opacity-100' : 'opacity-0'}`}>
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  All tasks done!
+                </div>
               </div>
 
               {/* Timeline Steps */}
@@ -394,13 +374,12 @@ export default function ProcessComparison() {
                         <motion.div
                           animate={isDone ? { scale: [0.8, 1.2, 1] } : {}}
                           transition={{ duration: 0.3 }}
-                          className={`w-6 h-6 rounded-full border-2 shrink-0 flex items-center justify-center z-10 transition-all duration-400 ${
-                            isDone
+                          className={`w-6 h-6 rounded-full border-2 shrink-0 flex items-center justify-center z-10 transition-all duration-400 ${isDone
                               ? 'bg-[#65A859] border-[#65A859] shadow-md shadow-[#65A859]/30'
                               : isCurrent
                                 ? 'bg-white dark:bg-gray-800 border-[#4C99A0] shadow-md shadow-[#4C99A0]/20'
                                 : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600'
-                          }`}
+                            }`}
                         >
                           {isDone && <CheckCircle2 className="w-3.5 h-3.5 text-white" />}
                           {isCurrent && (
@@ -415,25 +394,23 @@ export default function ProcessComparison() {
                         {/* Content */}
                         <div className={`flex-1 pb-1 transition-all duration-500 ${isDone || isCurrent ? 'opacity-100' : 'opacity-30'}`}>
                           <div className="flex items-center justify-between">
-                            <p className={`text-sm font-semibold transition-colors duration-400 ${
-                              isDone ? 'text-gray-900 dark:text-white' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-400 dark:text-gray-600'
-                            }`}>
+                            <p className={`text-sm font-semibold transition-colors duration-400 ${isDone ? 'text-gray-900 dark:text-white' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-400 dark:text-gray-600'
+                              }`}>
                               {step.name}
                             </p>
-                            <span className={`text-xs font-mono font-bold ml-2 transition-colors duration-400 ${
-                              isDone ? 'text-[#65A859]' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-300 dark:text-gray-700'
-                            }`}>
+                            <span className={`text-xs font-mono font-bold ml-2 transition-colors duration-400 ${isDone ? 'text-[#65A859]' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-300 dark:text-gray-700'
+                              }`}>
                               {step.duration}
                             </span>
                           </div>
-                          {isCurrent && (
+                          {/* Always rendered to prevent height shift */}
+                          <div className="h-1 mt-2 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
                             <motion.div
-                              initial={{ width: 0 }}
-                              animate={{ width: '100%' }}
-                              transition={{ duration: 0.7, ease: 'easeOut' }}
-                              className="h-1 mt-2 rounded-full bg-gradient-to-r from-[#4C99A0] to-[#65A859]"
+                              animate={{ width: isCurrent ? '100%' : isDone ? '100%' : '0%' }}
+                              transition={{ duration: isCurrent ? 0.7 : 0.3, ease: 'easeOut' }}
+                              className={`h-full rounded-full transition-colors duration-300 ${isCurrent ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859]' : isDone ? 'bg-[#65A859]/30' : 'bg-transparent'}`}
                             />
-                          )}
+                          </div>
                         </div>
                       </div>
                     );

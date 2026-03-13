@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import AIChatFullScreen from '../chat/AIChatFullScreen';
 import logoPath from '../../assets/AmBot 365-Logo.png';
@@ -69,6 +71,15 @@ export default function Navbar() {
                     >
                         Get in Touch
                     </a>
+                    <a
+                        href="https://api.whatsapp.com/send/?phone=919113602689&text=0&type=phone_number&app_absent=0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Chat on WhatsApp"
+                        className="text-2xl transition-all hover:-translate-y-0.5 flex items-center"
+                    >
+                        <FontAwesomeIcon icon={faWhatsapp} style={{color: "rgb(40, 209, 70)"}} />
+                    </a>
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -128,6 +139,16 @@ export default function Navbar() {
                                     className="w-full py-3 text-center text-base font-medium text-white bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] rounded-xl transition-all shadow-md shadow-[#4C99A0]/25"
                                 >
                                     Get in Touch
+                                </a>
+                                <a
+                                    href="https://api.whatsapp.com/send/?phone=919113602689&text=0&type=phone_number&app_absent=0"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Chat on WhatsApp"
+                                    className="w-full py-3 flex items-center justify-center gap-2 text-base font-medium text-white bg-[#25D366] hover:bg-[#1ebe57] rounded-xl transition-all shadow-md shadow-[#25D366]/25"
+                                >
+                                    <FontAwesomeIcon icon={byPrefixAndName.fab['whatsapp']} style={{color: "rgb(40, 209, 70)"}} />
+                                    WhatsApp
                                 </a>
                             </div>
                         </div>

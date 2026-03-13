@@ -9,6 +9,7 @@ import pb3 from '../../assets/Power BI images/Picture3.png';
 import pb4 from '../../assets/Power BI images/Power-BI-web-2025-Dashboard.png';
 import ex1 from '../../assets/Excel image/Excel img 1.png';
 import ex2 from '../../assets/Excel image/excel img 2.png';
+import productImg from '../../assets/Product img.png';
 
 type TabItem = {
   id: string;
@@ -126,9 +127,10 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
   compliance: {
     color: 'from-primary-100 to-pink-100',
     title: 'Rule Break Warnings',
-    pages: 2,
-    type: 'mock',
-    descriptions: ['Stay ahead of compliance issues with automated rule break detection and immediate alerting.', 'Detailed audit trails and reporting for regulatory requirements.'],
+    pages: 1,
+    type: 'image',
+    images: [productImg],
+    descriptions: ['Stay ahead of compliance issues with automated rule break detection and immediate alerting.'],
     features: ['Proactive compliance monitoring', 'Automated audit logs', 'Configurable rule engines']
   },
   microsoft: {
