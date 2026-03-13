@@ -27,60 +27,80 @@ export default function ProcessComparison() {
     { name: 'Exception Report Generated', duration: '30s', seconds: 30 },
   ];
 
-  const CYCLE_MS = 10000; // 10s per cycle
+  const MANUAL_CYCLE_MS = 10000; // 10s per manual cycle
+  const AUTO_CYCLE_MS = 4000;   // 4s per auto cycle — resets immediately
 
-  const resetCycle = useCallback(() => {
+  const resetManual = useCallback(() => {
     setManualStep(-1);
-    setAutoStep(-1);
     setManualElapsed(0);
-    setAutoElapsed(0);
-    setAutoFinished(false);
     setManualFinished(false);
   }, []);
 
+  const resetAuto = useCallback(() => {
+    setAutoStep(-1);
+    setAutoElapsed(0);
+    setAutoFinished(false);
+  }, []);
+
+  // Manual cycle — slow, never finishes
   useEffect(() => {
     if (!isInView) return;
 
     const timers: ReturnType<typeof setTimeout>[] = [];
 
-    function runCycle() {
-      resetCycle();
-
-      // --- AUTOMATION (fast): finishes all 4 steps in ~3.5s ---
-      timers.push(setTimeout(() => setAutoStep(0), 200));
-      timers.push(setTimeout(() => setAutoStep(1), 900));
-      timers.push(setTimeout(() => setAutoStep(2), 1800));
-      timers.push(setTimeout(() => setAutoStep(3), 2700));
-      timers.push(setTimeout(() => {
-        setAutoStep(4);
-        setAutoFinished(true);
-      }, 3500));
-
-      // --- MANUAL (slow): only reaches step 2-3, never finishes ---
+    function runManualCycle() {
+      resetManual();
       timers.push(setTimeout(() => setManualStep(0), 400));
       timers.push(setTimeout(() => setManualStep(1), 2500));
       timers.push(setTimeout(() => setManualStep(2), 5500));
-      // step 3 barely starts near end
       timers.push(setTimeout(() => setManualStep(3), 8500));
-      // never finishes step 4
-
-      // Mark manual as "timed out" at end of cycle
       timers.push(setTimeout(() => setManualFinished(true), 9500));
     }
 
-    runCycle();
-    const cycleInterval = setInterval(() => {
+    runManualCycle();
+    const interval = setInterval(() => {
       timers.forEach(clearTimeout);
       timers.length = 0;
       setCycleCount(c => c + 1);
-      runCycle();
-    }, CYCLE_MS);
+      runManualCycle();
+    }, MANUAL_CYCLE_MS);
 
     return () => {
       timers.forEach(clearTimeout);
-      clearInterval(cycleInterval);
+      clearInterval(interval);
     };
-  }, [isInView, resetCycle]);
+  }, [isInView, resetManual]);
+
+  // Automation cycle — fast, resets immediately after finishing
+  useEffect(() => {
+    if (!isInView) return;
+
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    function runAutoCycle() {
+      resetAuto();
+      timers.push(setTimeout(() => setAutoStep(0), 200));
+      timers.push(setTimeout(() => setAutoStep(1), 900));
+      timers.push(setTimeout(() => setAutoStep(2), 1600));
+      timers.push(setTimeout(() => setAutoStep(3), 2300));
+      timers.push(setTimeout(() => {
+        setAutoStep(4);
+        setAutoFinished(true);
+      }, 3000));
+    }
+
+    runAutoCycle();
+    const interval = setInterval(() => {
+      timers.forEach(clearTimeout);
+      timers.length = 0;
+      runAutoCycle();
+    }, AUTO_CYCLE_MS);
+
+    return () => {
+      timers.forEach(clearTimeout);
+      clearInterval(interval);
+    };
+  }, [isInView, resetAuto]);
 
   // Elapsed time counters
   useEffect(() => {
