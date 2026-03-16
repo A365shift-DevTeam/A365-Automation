@@ -45,9 +45,9 @@ export default function App() {
           <Divider />
           {/* <Integrations />
           <Divider /> */}
-          <SecurityFAQ />
-          <Divider />
           <WhyA365 />
+          <Divider />
+          <SecurityFAQ />
           <Divider />
           {/* <CTA /> */}
         </main>

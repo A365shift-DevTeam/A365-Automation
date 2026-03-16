@@ -228,32 +228,34 @@ export default function ShowcaseCarousel() {
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8 xl:px-12">
 
-        {/* Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-8">
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => handleTabChange(tab.id)}
-              className={`
-                relative px-5 py-3 rounded-xl font-medium text-sm md:text-base transition-all duration-300
-                flex items-center gap-2
-                ${activeTab === tab.id
-                  ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
-                }
-              `}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        {/* Unified Card Container */}
+        <div className="max-w-[1400px] mx-auto bg-white dark:bg-gray-950 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden flex flex-col w-full">
+          
+          {/* Tabs Inside Card */}
+          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 p-4 lg:p-6 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
+            {TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => handleTabChange(tab.id)}
+                className={`
+                  relative px-5 py-3 rounded-xl font-medium text-sm md:text-base transition-all duration-300
+                  flex items-center gap-2
+                  ${activeTab === tab.id
+                    ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  }
+                `}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
 
-        {/* Content Container */}
-        <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-0 w-full">
-          {/* Left Side: 60% Dashboard Preview */}
-          <div className="w-full lg:w-[60%] flex flex-col">
-            <div ref={visualCardRef} className="w-full rounded-l-2xl lg:rounded-r-none rounded-2xl lg:rounded-bl-2xl overflow-hidden relative bg-white dark:bg-gray-950 shadow-2xl border border-gray-200 dark:border-gray-800">
-              {/* Dashboard Image Area */}
+          <div className="flex flex-col lg:flex-row w-full">
+            {/* Left Side: 60% Dashboard Preview */}
+            <div className="w-full lg:w-[60%] flex flex-col border-b lg:border-b-0 lg:border-r border-gray-100 dark:border-gray-800">
+              <div ref={visualCardRef} className="w-full overflow-hidden relative bg-white dark:bg-gray-950">
+                {/* Dashboard Image Area */}
               <div className="relative w-full bg-gray-50 dark:bg-[#0B1120]/50" style={{ aspectRatio: '16/10' }}>
                 <AnimatePresence mode="wait">
                   {activeData.type === 'image' && activeData.images && (
@@ -381,7 +383,7 @@ export default function ShowcaseCarousel() {
           </div>
 
           {/* Right Side: 40% — WHAT IT DOES + OUTCOME */}
-          <div className="w-full lg:w-[40%] flex flex-col">
+          <div className="w-full lg:w-[40%] flex flex-col bg-white dark:bg-gray-900">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -389,15 +391,15 @@ export default function ShowcaseCarousel() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="h-full flex flex-col justify-between bg-white dark:bg-gray-900 rounded-r-2xl lg:rounded-l-none rounded-2xl lg:rounded-tr-2xl lg:rounded-br-2xl border border-gray-200 dark:border-gray-700 lg:border-l-0 shadow-xl overflow-y-auto no-scrollbar"
+                className="h-full flex flex-col justify-between"
                 style={visualCardHeight ? { height: visualCardHeight } : undefined}
               >
                 {/* WHAT IT DOES */}
-                <div className="px-6 md:px-8 pt-6 md:pt-8 pb-4 flex-1">
-                  <div className="text-xs font-bold tracking-[0.2em] text-gray-400 dark:text-gray-500 uppercase mb-5">
+                <div className="px-5 md:px-6 pt-5 md:pt-6 pb-2 flex-auto flex flex-col justify-center">
+                  <div className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-gray-400 dark:text-gray-500 uppercase mb-3 md:mb-4">
                     What It Does
                   </div>
-                  <ul className="space-y-3.5">
+                  <ul className="space-y-2 md:space-y-2.5">
                     {activeData.whatItDoes.map((item, i) => (
                       <motion.li
                         key={i}
@@ -407,22 +409,22 @@ export default function ShowcaseCarousel() {
                         className="flex items-start gap-3 group"
                       >
                         <div className="mt-0.5 shrink-0">
-                          <CheckCircle2 className="w-[18px] h-[18px] text-[#65A859]" />
+                          <CheckCircle2 className="w-4 h-4 md:w-[18px] md:h-[18px] text-[#65A859]" />
                         </div>
-                        <span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{item}</span>
+                        <span className="text-gray-700 dark:text-gray-300 text-xs md:text-sm leading-snug md:leading-relaxed">{item}</span>
                       </motion.li>
                     ))}
                   </ul>
                 </div>
 
                 {/* OUTCOME */}
-                <div className="px-6 md:px-8 pb-6 md:pb-8">
-                  <div className="border-t border-gray-100 dark:border-gray-800 pt-5">
-                    <div className="flex items-center gap-2 mb-3">
-                      <TrendingUp className="w-4 h-4 text-[#65A859]" />
-                      <span className="text-xs font-bold tracking-[0.15em] text-[#65A859] uppercase">Outcome</span>
+                <div className="px-5 md:px-6 pb-5 md:pb-6 mt-auto">
+                  <div className="border-t border-gray-100 dark:border-gray-800 pt-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <TrendingUp className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#65A859]" />
+                      <span className="text-[10px] md:text-xs font-bold tracking-[0.15em] text-[#65A859] uppercase">Outcome</span>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-3">
+                    <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm leading-snug md:leading-relaxed mb-2 md:mb-3">
                       {activeData.outcome.text}
                     </p>
                     {activeData.outcome.footer && (
@@ -435,6 +437,7 @@ export default function ShowcaseCarousel() {
               </motion.div>
             </AnimatePresence>
           </div>
+        </div>
         </div>
 
       </div>
