@@ -11,6 +11,7 @@ import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import Integrations from './components/sections/Integrations';
 import SecurityFAQ from './components/sections/SecurityFAQ';
 import WhyA365 from './components/sections/WhyA365';
+import ContactUs from './components/sections/ContactUs';
 import CTA from './components/sections/CTA';
 import Footer from './components/sections/Footer';
 import Navbar from './components/layout/Navbar';
@@ -39,6 +40,7 @@ export default function App() {
           <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           <SecurityFAQ />
           <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
+          <ContactUs />
           {/* <CTA /> */}
         </main>
         <Footer />
