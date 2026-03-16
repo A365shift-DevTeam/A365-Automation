@@ -6,7 +6,6 @@
 import Hero from './components/sections/Hero';
 import ShowcaseCarousel from './components/sections/ShowcaseCarousel';
 import AgentsInAction from './components/sections/AgentsInAction';
-import ProcessComparison from './components/sections/ProcessComparison';
 import SolutionsOverview from './components/sections/SolutionsOverview';
 import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import Integrations from './components/sections/Integrations';
@@ -16,14 +15,7 @@ import CTA from './components/sections/CTA';
 import Footer from './components/sections/Footer';
 import Navbar from './components/layout/Navbar';
 import { ThemeProvider } from './contexts/ThemeContext';
-
-function Divider() {
-  return (
-    <div className="w-full px-8 md:px-16">
-      <div className="h-px bg-gradient-to-r from-transparent via-[#65A859]/30 to-transparent" />
-    </div>
-  );
-}
+import { SectionSeparator } from './components/SectionSeparator';
 
 export default function App() {
   return (
@@ -32,23 +24,21 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
-          <Divider />
+          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           <SolutionsOverview />
-          <Divider />
+          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           <AgentsInAction />
-          <Divider />
-          <ProcessComparison />
-          <Divider />
+          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           <ShowcaseCarousel />
-          <Divider />
+          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           <HowEngagementsWork />
-          <Divider />
+          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           {/* <Integrations />
-          <Divider /> */}
+          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} /> */}
           <WhyA365 />
-          <Divider />
+          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           <SecurityFAQ />
-          <Divider />
+          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           {/* <CTA /> */}
         </main>
         <Footer />

@@ -3,13 +3,10 @@ import SectionWrapper from '../ui/SectionWrapper';
 import { Building2, Globe, Bot, Zap } from 'lucide-react';
 
 const STATS = [
-  { value: '20+', label: 'Years enterprise background across SAP, IBM, HCL, HP, Talend' },
-  { value: 'Global', label: 'Delivery built for enterprises across time zones' },
-  { value: 'Discovery-first', label: 'Process deep-dive before a single line of code' },
-  { value: '6', label: 'Agents live in production' },
-  { value: '19+', label: 'Enterprise systems integrated' },
-  { value: '8 weeks', label: 'Average time to first agent live' },
-  { value: '24/7', label: 'Monitoring and support' },
+  { value: '70%', label: 'Manual Work Reduction' },
+  { value: '3-6 Weeks', label: 'Typical Deployement Window' },
+  { value: '24/7', label: 'Always on agent Operations' },
+  { value: 'Enterprise', label: 'Enterprise Level Solutions' },
 ];
 
 export default function WhyA365() {
