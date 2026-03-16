@@ -190,8 +190,7 @@ export default function ShowcaseCarousel() {
     <section
       className="relative w-full overflow-hidden py-4 dark:bg-gray-950"
       style={{
-        backgroundColor: '#F6F8FB',
-        backgroundImage: 'linear-gradient(to bottom, #FFFFFF 0%, #EEF3F8 100%)'
+        background: 'linear-gradient(135deg, #e8f5ee 0%, #f0faf4 30%, #f7fdfa 60%, #ffffff 100%)'
       }}
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}

@@ -42,21 +42,26 @@ export default function WhyA365() {
         <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-6">When the engagement needs more</p>
         <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">For larger engagements, we bring the whole group.</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="section-card p-6">
-            <Building2 className="w-10 h-10 text-primary-500 mb-4" />
-            <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Coreshift</h4>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Intelligent AI Agents, Microsoft AI Ecosystem, Office Suite, and Scalable Industry Products. We deliver it all.</p>
-          </div>
-          <div className="section-card p-6">
-            <Globe className="w-10 h-10 text-primary-500 mb-4" />
-            <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">A365Shift</h4>
-            <p className="text-sm text-gray-600 dark:text-gray-400">The group. When engagements span both enterprise and individual automation, we deliver as one.</p>
-          </div>
+         
+
           <div className="section-card p-6">
             <Bot className="w-10 h-10 text-primary-500 mb-4" />
             <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Ambot365</h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">AI agents for individuals and professionals. Personal productivity, task automation, daily workflows.</p>
           </div>
+
+           <div className="section-card p-6">
+            <Building2 className="w-10 h-10 text-primary-500 mb-4" />
+            <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Coreshift</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Intelligent AI Agents, Microsoft AI Ecosystem, Office Suite, and Scalable Industry Products. We deliver it all.</p>
+          </div>
+            <div className="section-card p-6">
+            <Building2 className="w-10 h-10 text-primary-500 mb-4" />
+            <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Group Of Companies</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Intelligent AI Agents, Microsoft AI Ecosystem, Office Suite, and Scalable Industry Products. We deliver it all.</p>
+          </div>
+
+          
         </div>
         <div className="mt-8 text-center">
           <a href="#cta" className="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 font-medium hover:underline">
