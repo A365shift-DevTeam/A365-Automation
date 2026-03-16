@@ -9,6 +9,7 @@ const SIDEBAR_MENUS = [
   'Microsoft AI Ecosystem',
   'Office Suite',
   'Scalable Industry Products',
+  'Contact Us',
 ];
 
 const MENU_SUGGESTIONS: Record<string, string[]> = {
@@ -31,6 +32,13 @@ const MENU_SUGGESTIONS: Record<string, string[]> = {
     'What Scalable Industry Products do you have?',
     'What is Office AI Bots?',
     'Is there a pilot or trial option?',
+  ],
+  'Contact Us': [
+    'Email Us',
+    'LinkedIn',
+    'Instagram',
+    'Facebook',
+    'YouTube',
   ],
 };
 
@@ -55,6 +63,34 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
   const handleSend = (text: string = input.trim()) => {
     if (!text) return;
     setInput('');
+
+    // Handle "Contact Us" suggestions immediately
+    if (text === 'LinkedIn') {
+      window.open('https://linkedin.com/in/ambrose-denny-39320692', '_blank');
+      return;
+    }
+    if (text === 'Instagram') {
+      window.open('https://www.instagram.com/ambot_365/', '_blank');
+      return;
+    }
+    if (text === 'Facebook') {
+      window.open('https://www.facebook.com/people/AmBot-365/100092347833674/', '_blank');
+      return;
+    }
+    if (text === 'YouTube') {
+      window.open('https://www.youtube.com/@Ambot365Digibots', '_blank');
+      return;
+    }
+
+    if (text === 'Email Us') {
+      setMessages((m) => [
+        ...m,
+        { role: 'user', content: text },
+        { role: 'assistant', content: 'SHOW_CONTACT_FORM' },
+      ]);
+      return;
+    }
+
     const reply = localAnswer(text);
     setMessages((m) => [
       ...m,
@@ -75,6 +111,80 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
         {li < arr.length - 1 && <br />}
       </span>
     ));
+
+  const ContactForm = () => {
+    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+    const sub = async (e: any) => {
+      e.preventDefault();
+      setStatus('sending');
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+        if (res.ok) setStatus('success');
+        else setStatus('error');
+      } catch {
+        setStatus('error');
+      }
+    };
+
+    if (status === 'success') {
+      return (
+        <div className="bg-green-500/10 border border-green-500/20 text-green-400 p-4 rounded-xl text-sm">
+          Message sent successfully! We'll get back to you soon.
+        </div>
+      );
+    }
+
+    return (
+      <form onSubmit={sub} className="w-full max-w-md bg-gray-800 border border-gray-700 rounded-2xl p-4 space-y-3">
+        <h3 className="text-white font-medium text-sm">Send us a message</h3>
+        <input
+          required
+          type="text"
+          placeholder="Name"
+          className="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#4C99A0]"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        />
+        <input
+          required
+          type="email"
+          placeholder="Email"
+          className="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#4C99A0]"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        />
+        <input
+          required
+          type="text"
+          placeholder="Subject"
+          className="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#4C99A0]"
+          value={formData.subject}
+          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+        />
+        <textarea
+          required
+          placeholder="Message"
+          rows={3}
+          className="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#4C99A0]"
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+        />
+        <button
+          disabled={status === 'sending'}
+          className="w-full py-2 bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white text-sm font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
+        >
+          {status === 'sending' ? 'Sending...' : 'Send Message'}
+        </button>
+        {status === 'error' && <p className="text-red-400 text-[10px]">Failed to send. Please try again.</p>}
+      </form>
+    );
+  };
 
   const chatUI = (
     <AnimatePresence>
@@ -117,11 +227,10 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
                 <button
                   key={menu}
                   onClick={() => setSelectedMenu(menu)}
-                  className={`text-left px-3 py-2.5 rounded-lg transition-colors text-sm ${
-                    selectedMenu === menu
+                  className={`text-left px-3 py-2.5 rounded-lg transition-colors text-sm ${selectedMenu === menu
                       ? 'text-white bg-[#4C99A0]/30 border border-[#4C99A0]/50'
                       : 'text-gray-300 hover:text-white hover:bg-gray-700/80'
-                  }`}
+                    }`}
                 >
                   {menu}
                 </button>
@@ -142,25 +251,6 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
                 <p className="text-gray-400 text-sm mb-8">
                   Ask me anything about A365 solutions, products, pricing, or getting started.
                 </p>
-
-                {selectedMenu && currentSuggestions.length > 0 && (
-                  <>
-                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-3">
-                      Suggested questions for {selectedMenu}
-                    </p>
-                    <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8">
-                      {currentSuggestions.map((q, i) => (
-                        <button
-                          key={i}
-                          onClick={() => handleSend(q)}
-                          className="text-left px-4 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-gray-600 text-gray-200 text-sm transition-colors"
-                        >
-                          {q}
-                        </button>
-                      ))}
-                    </div>
-                  </>
-                )}
 
                 {!selectedMenu && (
                   <p className="text-gray-500 text-sm mb-8">
@@ -198,45 +288,58 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
             ) : (
               /* Chat state */
               <>
-                <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
-                  {messages.map((msg, i) => (
-                    <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div
-                        className={`max-w-[85%] md:max-w-[70%] rounded-2xl px-4 py-3 ${
-                          msg.role === 'user'
-                            ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-br-md'
-                            : 'bg-gray-800 text-gray-100 rounded-bl-md'
-                        }`}
-                      >
-                        <p className="text-sm whitespace-pre-wrap leading-relaxed">
-                          {renderText(msg.content)}
-                        </p>
+                <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-6 space-y-6">
+                  {messages.map((msg, i) => {
+                    const isLast = i === messages.length - 1;
+                    const showSuggestions = isLast && msg.role === 'assistant' && selectedMenu && currentSuggestions.length > 0;
+
+                    return (
+                      <div key={i} className="space-y-4">
+                        <div className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                          {msg.content === 'SHOW_CONTACT_FORM' ? (
+                            <ContactForm />
+                          ) : (
+                            <div
+                              className={`max-w-[85%] md:max-w-[70%] rounded-2xl px-4 py-3 ${msg.role === 'user'
+                                ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-br-md'
+                                : 'bg-gray-800 text-gray-100 rounded-bl-md'
+                                }`}
+                            >
+                              <p className="text-sm whitespace-pre-wrap leading-relaxed">
+                                {renderText(msg.content)}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+
+                        {showSuggestions && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="flex flex-col items-start gap-3 ml-2"
+                          >
+                            <p className="text-gray-500 text-[10px] uppercase tracking-widest font-bold">Suggested</p>
+                            <div className="flex flex-wrap gap-2">
+                              {currentSuggestions.map((q, i) => (
+                                <button
+                                  key={i}
+                                  onClick={() => handleSend(q)}
+                                  className="px-4 py-2 rounded-xl bg-gray-800/50 hover:bg-gray-700/80 border border-gray-700/50 hover:border-[#4C99A0]/50 text-gray-300 hover:text-white text-xs transition-all duration-200 shadow-sm"
+                                >
+                                  {q}
+                                </button>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 {/* Bottom bar */}
                 <div className="shrink-0 border-t border-gray-800 bg-gray-900 px-4 py-4">
-                  {selectedMenu && currentSuggestions.length > 0 && (
-                    <>
-                      <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">
-                        Suggested for {selectedMenu}
-                      </p>
-                      <div className="max-w-2xl mx-auto flex flex-wrap gap-2 mb-4">
-                        {currentSuggestions.map((q, i) => (
-                          <button
-                            key={i}
-                            onClick={() => handleSend(q)}
-                            className="px-3 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-300 text-xs transition-colors"
-                          >
-                            {q}
-                          </button>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                  <div className="max-w-2xl mx-auto flex items-center gap-2 bg-gray-800 border border-gray-700 rounded-2xl px-4 py-3">
+                  <div className="max-w-2xl flex items-center gap-2 bg-gray-800 border border-gray-700 rounded-2xl px-4 py-3">
                     <button type="button" className="p-1.5 text-gray-400 hover:text-white rounded-lg" aria-label="Attach">
                       <Plus className="w-5 h-5" />
                     </button>
