@@ -9,6 +9,7 @@ import pb3 from '../../assets/Power BI images/Picture3.png';
 import pb4 from '../../assets/Power BI images/Power-BI-web-2025-Dashboard.png';
 import ex1 from '../../assets/Excel image/Excel img 1.png';
 import ex2 from '../../assets/Excel image/excel img 2.png';
+import productImg from '../../assets/Product img.png';
 
 type TabItem = {
   id: string;
@@ -54,82 +55,82 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     images: [pb1, pb2, pb3, pb4],
     customContent: (
       <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-[#4C99A0] dark:text-[#65A859]">AI FEATURES</div>
-          <ul className="space-y-3 pt-2">
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Chatbot: Real-time chat with reports.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">AI Tree: Visual decision trees.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Narrative: Automated insights.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Key Influencer: Identifying key business factors.</span></li>
-          </ul>
-        </div>
-        <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
-          <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-[#4C99A0] dark:text-[#65A859]">FEATURES</div>
-          <ul className="space-y-3 pt-2">
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Live Updates: Get the latest information with each refresh.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Interactive Filters: Custom views and drilldowns.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Data Visualization: Create compelling visuals to represent data.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Collaboration Tools: Share insights and reports with your team.</span></li>
-          </ul>
-        </div>
-        <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
-          <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-[#4C99A0] dark:text-[#65A859]">BENEFITS</div>
-          <ul className="space-y-3 pt-2">
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Monitor Business: Keep track of key metrics.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Identify Trends: Spot patterns and insights.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Enhance Efficiency: Streamline operations with data-driven insights.</span></li>
-          </ul>
-        </div>
+        <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-[#4C99A0] dark:text-[#65A859]">KEY CAPABILITIES</div>
+        <ul className="space-y-3 pt-1">
+          {[
+            'AI Chatbot for real-time report conversations.',
+            'Automated narratives and smart insights.',
+            'Interactive filters with custom drilldowns.',
+            'Live dashboards with auto-refresh.',
+            'Key Influencer analysis for business factors.',
+            'Visual decision trees for data exploration.',
+            'Data visualization with compelling charts.',
+            'Team collaboration and report sharing.',
+            'Track KPIs and spot trends instantly.',
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{item}</span></li>
+          ))}
+        </ul>
       </div>
     )
   },
   payroll: {
-    color: 'from-primary-100 to-primary-100',
+    color: 'from-white to-white',
     title: 'Excel Automation',
     pages: 2,
     type: 'image',
     images: [ex1, ex2],
     customContent: (
       <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">Microsoft 365 Integrations</div>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 mb-4">
-            Seamlessly connect across the Microsoft ecosystem, leveraging <strong>Desktop, Cloud, and AI</strong> capabilities for:
-          </p>
-          <div className="flex flex-wrap gap-2.5">
-            {['Excel', 'Office Script', 'Power Automate', 'VBA', 'Power BI', 'SharePoint', 'Teams'].map((tag, i) => (
-              <motion.span
-                key={tag}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.1 + i * 0.05 }}
-                className="px-4 py-2 text-xs font-semibold bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-sm hover:shadow-md hover:border-[#4C99A0]/50 dark:hover:border-[#65A859]/50 text-gray-700 dark:text-gray-300 transition-all duration-300"
-              >
-                {tag}
-              </motion.span>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
-          <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">Key Benefits: Microsoft 365</div>
-          <ul className="space-y-3 pt-2">
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><strong className="text-gray-900 dark:text-gray-100">Low-Code Apps:</strong> Create custom solutions effortlessly.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><strong className="text-gray-900 dark:text-gray-100">Cloud Integration:</strong> Enhance collaboration and accessibility from anywhere.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><strong className="text-gray-900 dark:text-gray-100">Automation:</strong> Streamline tasks, saving time and reducing errors.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><strong className="text-gray-900 dark:text-gray-100">AI Insights:</strong> Make smarter decisions with powerful AI tools.</span></li>
-            <li className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"><strong className="text-gray-900 dark:text-gray-100">Enhanced Desktop:</strong> Boost efficiency with advanced desktop applications.</span></li>
-          </ul>
-        </div>
+        <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">KEY CAPABILITIES</div>
+        <ul className="space-y-3 pt-1">
+          {[
+            'Seamless Microsoft 365 integration — Excel, Power BI, SharePoint & more.',
+            'Low-code apps for custom solutions without developer support.',
+            'Cloud-based workflows accessible from anywhere.',
+            'AI-powered insights for smarter decisions.',
+            'VBA & Office Script automation out of the box.',
+            'Power Automate for end-to-end process flows.',
+            'Cross-app data sync between Excel, Teams & SharePoint.',
+            'Enhanced desktop apps for maximum productivity.',
+            'Secure data handling with enterprise compliance.',
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3 group"><div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform"><CheckCircle2 className="w-3 h-3 text-white" /></div><span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{item}</span></li>
+          ))}
+        </ul>
       </div>
     )
   },
   compliance: {
-    color: 'from-primary-100 to-pink-100',
-    title: 'Rule Break Warnings',
-    pages: 2,
-    type: 'mock',
-    descriptions: ['Stay ahead of compliance issues with automated rule break detection and immediate alerting.', 'Detailed audit trails and reporting for regulatory requirements.'],
-    features: ['Proactive compliance monitoring', 'Automated audit logs', 'Configurable rule engines']
+    color: 'from-white to-white',
+    title: 'Your Digital Dreams Delivered',
+    pages: 1,
+    type: 'image',
+    images: [productImg],
+    customContent: (
+      <div className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 w-full">
+        <ul className="space-y-3">
+          {[
+            'Automate routine office tasks within minutes.',
+            'Build bots without coding — no developer needed.',
+            'Save up to 90% of your time on repetitive work.',
+            'Works with Excel, PowerPoint & Microsoft 365.',
+            'Schedule bots with alerts to prevent rework.',
+            'Scale across all verticals and domains.',
+            'Handle higher volumes with streamlined workflows.',
+            'Deploy quickly from concept to execution.',
+            'Fully compatible with desktop and cloud processes.',
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3 group">
+              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:scale-110 transition-transform">
+                <CheckCircle2 className="w-3 h-3 text-white" />
+              </div>
+              <span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
   },
   microsoft: {
     color: 'from-slate-100 to-gray-100',
