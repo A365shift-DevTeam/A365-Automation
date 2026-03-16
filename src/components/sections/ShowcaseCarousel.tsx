@@ -188,14 +188,19 @@ export default function ShowcaseCarousel() {
 
   return (
     <section
-      className="section-bg relative w-full overflow-hidden py-4"
+      className="relative w-full overflow-hidden py-4 dark:bg-gray-950"
+      style={{
+        backgroundColor: '#F6F8FB',
+        backgroundImage: 'linear-gradient(to bottom, #FFFFFF 0%, #EEF3F8 100%)'
+      }}
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
       {/* Professional Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#65A859]/45 dark:bg-[#65A859]/30 blur-3xl"
+          className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
+          style={{ backgroundColor: 'rgba(16,185,129,0.08)' }}
           animate={reduceMotion ? undefined : {
             y: [0, -12, 0],
             opacity: [0.9, 1, 0.9],
@@ -207,7 +212,8 @@ export default function ShowcaseCarousel() {
           }}
         />
         <motion.div
-          className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full bg-[#4C99A0]/40 dark:bg-[#4C99A0]/25 blur-3xl"
+          className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
+          style={{ backgroundColor: 'rgba(59,130,246,0.08)' }}
           animate={reduceMotion ? undefined : {
             y: [0, 10, 0],
             x: [0, 8, 0],
@@ -219,7 +225,8 @@ export default function ShowcaseCarousel() {
           }}
         />
         <motion.div
-          className="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full bg-[#65A859]/35 dark:bg-[#65A859]/20 blur-3xl"
+          className="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full blur-3xl pointer-events-none"
+          style={{ backgroundColor: 'rgba(16,185,129,0.08)' }}
           animate={reduceMotion ? undefined : {
             y: [0, -8, 0],
           }}
@@ -244,7 +251,7 @@ export default function ShowcaseCarousel() {
                 onClick={() => handleTabChange(tab.id)}
                 className={`
                   relative px-5 py-3 rounded-xl font-medium text-sm md:text-base transition-all duration-300
-                  flex items-center gap-2
+                  flex items-center justify-center gap-2 min-w-[100px]
                   ${activeTab === tab.id
                     ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
