@@ -67,7 +67,7 @@ export default function HowEngagementsWork() {
           <div className="relative h-14 md:h-16">
             {/* Horizontal line – vertical center of track */}
             <div
-              className="absolute left-0 right-0 top-1/2 h-0.5 md:h-1 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4C99A0]/20 via-[#65A859]/40 to-[#4C99A0]/20 dark:from-[#4C99A0]/30 dark:via-[#65A859]/50 dark:to-[#4C99A0]/30"
+              className="absolute left-0 right-0 top-1/2 h-px md:h-0.5 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4C99A0]/20 via-[#65A859]/40 to-[#4C99A0]/20 dark:from-[#4C99A0]/30 dark:via-[#65A859]/50 dark:to-[#4C99A0]/30"
               aria-hidden
             />
             {/* Nodes on the line */}

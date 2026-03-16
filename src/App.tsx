@@ -6,7 +6,6 @@
 import Hero from './components/sections/Hero';
 import ShowcaseCarousel from './components/sections/ShowcaseCarousel';
 import AgentsInAction from './components/sections/AgentsInAction';
-import ProcessComparison from './components/sections/ProcessComparison';
 import SolutionsOverview from './components/sections/SolutionsOverview';
 import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import Integrations from './components/sections/Integrations';
@@ -36,8 +35,6 @@ export default function App() {
           <SolutionsOverview />
           <Divider />
           <AgentsInAction />
-          <Divider />
-          <ProcessComparison />
           <Divider />
           <ShowcaseCarousel />
           <Divider />
