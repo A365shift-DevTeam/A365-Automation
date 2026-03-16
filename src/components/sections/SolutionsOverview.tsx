@@ -5,21 +5,29 @@ import { Bot, Sparkles, LayoutTemplate, Package } from 'lucide-react';
 const COLUMNS = [
   {
     title: 'Intelligent AI Agents',
+    badge: 'Finance & Operations',
     icon: Bot,
-    items: ['AP Agent', 'AR Agent', 'SAP Reconcile Agent', 'Reconcile Agent'],
+    items: [
+      'AP Automation Agent',
+      'AR Automation Agent',
+      'SAP Reconcile Agent',
+      'Finance Reconcile Agent',
+    ],
   },
   {
     title: 'Microsoft AI Ecosystem',
+    badge: 'Copilot & 365',
     icon: Sparkles,
     items: [
       'Microsoft Copilot Solutions',
-      'Microsoft Agents (Custom Agent Development)',
+      'Custom Microsoft Agents',
       'Microsoft 365 Desktop Automation',
       'Microsoft 365 Cloud Automation',
     ],
   },
   {
     title: 'Office Suite',
+    badge: 'Business Apps',
     icon: LayoutTemplate,
     items: [
       'Web | Mobile Apps with BI',
@@ -32,6 +40,7 @@ const COLUMNS = [
   },
   {
     title: 'Scalable Industry Products',
+    badge: 'Products',
     icon: Package,
     items: ['Office AI Bots', 'Customer Satisfaction'],
   },
@@ -41,10 +50,15 @@ export default function SolutionsOverview() {
   return (
     <SectionWrapper id="solutions-overview" className="section-bg">
       <div className="text-center mb-16">
-        <p className="text-sm font-semibold tracking-wider text-primary-500 uppercase mb-2">What we offer</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">Solutions & products</h2>
-        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Intelligent AI Agents, Microsoft AI Ecosystem, Office Suite, and Scalable Industry Products—everything you need in one place.
+        <p className="text-sm font-semibold tracking-[0.2em] text-primary-500 uppercase mb-4">
+          What we offer
+        </p>
+        <h2 className="text-3xl md:text-5xl font-bold mb-5 text-gray-900 dark:text-gray-50">
+          Solutions &  Products
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-base leading-relaxed">
+          AI agents, Microsoft automation, business applications, and scalable products
+          designed for enterprise-grade operations, visibility, and growth.
         </p>
       </div>
 
@@ -54,22 +68,37 @@ export default function SolutionsOverview() {
             key={col.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px", amount: 0.2 }}
+            viewport={{ once: true, margin: '-40px', amount: 0.2 }}
             transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
-            className="section-card p-6 flex flex-col transition-smooth cursor-default"
+            className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md p-6 flex flex-col transition-smooth cursor-default"
           >
-            <div className="w-12 h-12 rounded-xl bg-primary-500/15 dark:bg-primary-500/20 flex items-center justify-center mb-4">
-              <col.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+            {/* Icon + Badge row */}
+            <div className="flex items-start justify-between mb-5">
+              <div className="w-12 h-12 rounded-xl bg-primary-500/10 dark:bg-primary-500/20 flex items-center justify-center">
+                <col.icon className="w-6 h-6 text-primary-500" />
+              </div>
+              <span className="text-[11px] font-medium tracking-wider uppercase text-gray-400 dark:text-gray-500 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 whitespace-nowrap">
+                {col.badge}
+              </span>
             </div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">{col.title}</h3>
-            <ul className="space-y-2 flex-1">
+
+            {/* Title */}
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+              {col.title}
+            </h3>
+
+            {/* Separator */}
+            <div className="h-px bg-gray-100 dark:bg-gray-800 mb-5" />
+
+            {/* Items */}
+            <ul className="space-y-3.5 flex-1">
               {col.items.map((item) => (
                 <li
                   key={item}
-                  className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2"
+                  className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-3"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-primary-500 shrink-0" />
                   {item}
                 </li>
               ))}
