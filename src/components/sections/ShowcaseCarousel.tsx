@@ -42,18 +42,18 @@ type MockupItem = {
 const MOCKUP_DATA: Record<string, MockupItem> = {
   schedule: {
     color: 'from-primary-100 to-accent-100',
-    title: 'Shift Schedule Overview',
-    pages: 5,
+    title: 'Invoice Processing Agent',
+    pages: 1,
     type: 'mock',
-    agentName: 'Shift Scheduling Agent',
+    agentName: 'AP Automation Agent',
     whatItDoes: [
-      'Optimize your shift planning with intelligent scheduling that adapts to real-time needs and constraints.',
-      'View comprehensive schedules across all departments at a glance.',
-      'Automatically detect and resolve scheduling conflicts before they occur.',
+      'Automatically extracts line items and header data from multi-format vendor invoices.',
+      'Performs 3-way matching against Purchase Orders and Goods Receipts in real-time.',
+      'Identifies anomalies and assigns exceptions to specific approvers instantly.',
     ],
     outcome: {
-      text: 'Shift planning that used to require hours of manual coordination now runs automatically. Zero conflicts, full coverage guaranteed.',
-      footer: 'Enterprise Workforce Management · Multi-department',
+      text: 'Accounts Payable workflows that took days are now instantaneous. Over 96% touchless processing with zero data entry errors.',
+      footer: 'Enterprise Finance · SAP Integration · Multi-Region',
     },
   },
   attendance: {
@@ -142,7 +142,7 @@ export default function ShowcaseCarousel() {
 
     const timer = setTimeout(() => {
       const currentData = MOCKUP_DATA[activeTab as keyof typeof MOCKUP_DATA];
-      
+
       if (currentPage < currentData.pages) {
         setCurrentPage((prev) => prev + 1);
       } else {
@@ -283,21 +283,21 @@ export default function ShowcaseCarousel() {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center">
-                              <span className="text-white text-xs font-bold">FO</span>
+                              <span className="text-white text-xs font-bold">AP</span>
                             </div>
                             <div>
-                              <div className="text-gray-900 dark:text-white text-sm font-semibold">Shift Schedule Overview</div>
-                              <div className="text-gray-400 dark:text-gray-500 text-xs">Q3 2024 · 15 Depts · 2,400 Employees</div>
+                              <div className="text-gray-900 dark:text-white text-sm font-semibold">Invoice Processing Queue</div>
+                              <div className="text-gray-400 dark:text-gray-500 text-xs">Q3 2024 · 4 Regions · 12,000 Vendors</div>
                             </div>
                           </div>
-                          <span className="px-2 py-1 rounded-md bg-[#65A859]/10 dark:bg-[#65A859]/20 text-[#65A859] text-xs font-semibold">100% on track</span>
+                          <span className="px-2 py-1 rounded-md bg-[#65A859]/10 dark:bg-[#65A859]/20 text-[#65A859] text-xs font-semibold">96.8% Auto-Match</span>
                         </div>
                         {/* Fake stats row */}
                         <div className="grid grid-cols-3 gap-3">
                           {[
-                            { label: 'TOTAL SHIFTS', value: '2,847', color: 'text-gray-900 dark:text-white' },
-                            { label: 'COVERAGE', value: '99.2%', color: 'text-[#4C99A0]' },
-                            { label: 'CONFLICTS', value: '0', color: 'text-[#65A859]' },
+                            { label: 'INVOICES PROCESSED', value: '45,230', color: 'text-gray-900 dark:text-white' },
+                            { label: 'AUTO-MATCH RATE', value: '96.8%', color: 'text-[#4C99A0]' },
+                            { label: 'EXCEPTIONS', value: '142', color: 'text-[#65A859]' },
                           ].map((stat, i) => (
                             <div key={i} className="bg-gray-50 dark:bg-[#1a2332] rounded-lg p-3 border border-gray-100 dark:border-gray-800">
                               <div className="text-gray-400 dark:text-gray-500 text-[10px] tracking-wider mb-1">{stat.label}</div>
@@ -362,7 +362,7 @@ export default function ShowcaseCarousel() {
                           className={`h-1.5 rounded-full transition-all duration-300 ${currentPage === i + 1
                             ? 'w-5 bg-[#65A859]'
                             : 'w-1.5 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
-                          }`}
+                            }`}
                         />
                       ))}
                     </div>
