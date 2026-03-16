@@ -48,7 +48,10 @@ const COLUMNS = [
 
 export default function SolutionsOverview() {
   return (
-    <SectionWrapper id="solutions-overview" className="section-bg">
+    <SectionWrapper
+      id="solutions-overview"
+      style={{ background: 'linear-gradient(135deg, #e8f5ee 0%, #f0faf4 30%, #f7fdfa 60%, #ffffff 100%)' }}
+    >
       <div className="text-center mb-16">
         <p className="text-sm font-semibold tracking-[0.2em] text-primary-500 uppercase mb-4">
           What we offer
