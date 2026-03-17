@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { ChevronLeft, ChevronRight, Play, Pause, CheckCircle2, TrendingUp } from 'lucide-react';
 import ProcessAnimationCard from '../ui/ProcessAnimationCard';
+import WebMobileAnimation from '../ui/WebMobileAnimation';
 
 // Import Microsoft Images
 import pb1 from '../../assets/Power BI images/pic1.png';
@@ -33,7 +34,7 @@ type MockupItem = {
   color: string;
   title: string;
   pages: number;
-  type: 'mock' | 'image';
+  type: 'mock' | 'image' | 'webmobile';
   images?: string[];
   agentName: string;
   whatItDoes: string[];
@@ -133,8 +134,8 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     color: 'from-blue-50 to-indigo-50',
     title: 'Web & Mobile Applications',
     pages: 1,
-    type: 'image',
-    images: [productImg],
+    type: 'webmobile',
+    images: [],
     agentName: 'Web & Mobile Solutions',
     whatItDoes: [
       'Custom web applications with modern frameworks — React, Next.js, Angular.',
@@ -154,7 +155,7 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
   websites: {
     color: 'from-emerald-50 to-teal-50',
     title: 'Professional Websites',
-    pages: 1,
+    pages: 5,
     type: 'image',
     images: [productImg],
     agentName: 'Website Solutions',
@@ -365,6 +366,18 @@ export default function ShowcaseCarousel() {
                         className="absolute inset-0 p-3 md:p-4 lg:p-6 bg-gray-50/50 dark:bg-gray-950/20 flex flex-col items-center justify-center"
                       >
                         <ProcessAnimationCard />
+                      </motion.div>
+                    )}
+                    {activeData.type === 'webmobile' && (
+                      <motion.div
+                        key={`${activeTab}-webmobile`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="absolute inset-0"
+                      >
+                        <WebMobileAnimation />
                       </motion.div>
                     )}
                   </AnimatePresence>
