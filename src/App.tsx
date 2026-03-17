@@ -15,6 +15,7 @@ import WhyA365 from './components/sections/WhyA365';
 import ContactUs from './components/sections/ContactUs';
 import CTA from './components/sections/CTA';
 import Footer from './components/sections/Footer';
+import StickyFooter from './components/ui/StickyFooter';
 import Navbar from './components/layout/Navbar';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { SectionSeparator } from './components/SectionSeparator';
@@ -46,7 +47,7 @@ export default function App() {
           <ContactUs />
           {/* <CTA /> */}
         </main>
-        <Footer />
+        <StickyFooter />
       </div>
     </ThemeProvider>
   );
