@@ -11,6 +11,7 @@ import pb4 from '../../assets/Power BI images/Power-BI-web-2025-Dashboard.png';
 import ex1 from '../../assets/Excel image/Excel img 1.png';
 import ex2 from '../../assets/Excel image/excel img 2.png';
 import productImg from '../../assets/Product img.png';
+import webImg from '../../assets/Web 13.png';
 
 type TabItem = {
   id: string;
@@ -23,6 +24,8 @@ const TABS: TabItem[] = [
   { id: 'schedule', label: 'Agents' },
   { id: 'attendance', label: 'BI' },
   { id: 'payroll', label: 'Excel' },
+  { id: 'webmobile', label: 'Web & Mobile' },
+  { id: 'websites', label: 'Websites' },
   { id: 'compliance', label: 'Products' },
 ];
 
@@ -124,6 +127,50 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     outcome: {
       text: 'Enterprise-grade automation products ready to deploy. From document processing to task allocation — all handled seamlessly.',
       footer: 'DocCraft · Sheets to Slides · File Splitter · Merge Master',
+    },
+  },
+  webmobile: {
+    color: 'from-blue-50 to-indigo-50',
+    title: 'Web & Mobile Applications',
+    pages: 1,
+    type: 'image',
+    images: [productImg],
+    agentName: 'Web & Mobile Solutions',
+    whatItDoes: [
+      'Custom web applications with modern frameworks — React, Next.js, Angular.',
+      'Cross-platform mobile apps for iOS and Android.',
+      'Progressive Web Apps (PWA) for offline-ready experiences.',
+      'API development and third-party integrations.',
+      'Real-time dashboards and data-driven UIs.',
+      'Cloud-native deployment on Azure, AWS, or GCP.',
+      'Performance-optimized, scalable architecture.',
+      'End-to-end development from design to deployment.',
+    ],
+    outcome: {
+      text: 'Enterprise-grade web and mobile applications delivered with modern tech stacks. From concept to production in weeks, not months.',
+      footer: 'React · Next.js · React Native · Azure · REST APIs',
+    },
+  },
+  websites: {
+    color: 'from-emerald-50 to-teal-50',
+    title: 'Professional Websites',
+    pages: 1,
+    type: 'image',
+    images: [productImg],
+    agentName: 'Website Solutions',
+    whatItDoes: [
+      'Corporate and brand websites with premium design.',
+      'E-commerce platforms with payment integrations.',
+      'Landing pages optimized for lead generation.',
+      'SEO-optimized content architecture.',
+      'CMS integration — WordPress, Headless CMS.',
+      'Responsive design for all screen sizes.',
+      'Analytics and conversion tracking built-in.',
+      'Fast hosting with CDN and SSL security.',
+    ],
+    outcome: {
+      text: 'Stunning, high-performance websites that convert visitors into customers. Mobile-first design with enterprise-level security and speed.',
+      footer: 'WordPress · Headless CMS · SEO · Analytics · E-commerce',
     },
   },
 };
@@ -243,14 +290,14 @@ export default function ShowcaseCarousel() {
         <div className="max-w-[1400px] mx-auto bg-white dark:bg-gray-950 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden flex flex-col w-full">
 
           {/* Tabs Inside Card */}
-          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 p-4 lg:p-6 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
+          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 p-4 lg:p-6 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
             {TABS.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
                 className={`
-                  relative px-5 py-3 rounded-xl font-medium text-sm md:text-base transition-all duration-300
-                  flex items-center justify-center gap-2 min-w-[100px]
+                  relative px-4 py-2.5 md:px-5 md:py-3 rounded-xl font-medium text-xs md:text-sm transition-all duration-300
+                  flex items-center justify-center min-w-[110px]
                   ${activeTab === tab.id
                     ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'

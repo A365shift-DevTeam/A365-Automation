@@ -7,6 +7,7 @@ import Hero from './components/sections/Hero';
 import ShowcaseCarousel from './components/sections/ShowcaseCarousel';
 import AgentsInAction from './components/sections/AgentsInAction';
 import SolutionsOverview from './components/sections/SolutionsOverview';
+import ProcessComparison from './components/sections/ProcessComparison';
 import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import Integrations from './components/sections/Integrations';
 import SecurityFAQ from './components/sections/SecurityFAQ';
@@ -31,6 +32,8 @@ export default function App() {
           <AgentsInAction />
           <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           <ShowcaseCarousel />
+          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
+          <ProcessComparison />
           <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           <HowEngagementsWork />
           <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
