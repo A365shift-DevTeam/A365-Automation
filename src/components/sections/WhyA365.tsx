@@ -13,7 +13,7 @@ export default function WhyA365() {
   return (
     <SectionWrapper id="about" className="section-bg">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">Why Ambot365</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-[#002060] dark:text-white">Why Ambot365</h2>
         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">Intelligent AI Agents, Microsoft AI Ecosystem, Office Suite, and Scalable Industry Products—built by people who've lived inside enterprise systems.</p>
       </div>
 

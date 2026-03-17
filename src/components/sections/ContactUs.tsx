@@ -32,7 +32,7 @@ export default function ContactUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter text-[#0B1E3F] dark:text-white">
+            <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter text-[#002060] dark:text-white">
               Contact Us
             </h2>
           </motion.div>

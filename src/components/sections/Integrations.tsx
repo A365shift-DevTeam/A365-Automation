@@ -16,7 +16,7 @@ export default function Integrations() {
   return (
     <SectionWrapper id="integrations" className="section-bg">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50">Products & features</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#002060] dark:text-white">Products & features</h2>
         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
           Part of our Office Suite and Scalable Industry Products—DocCraft, consolidation, file tools, and more.
         </p>

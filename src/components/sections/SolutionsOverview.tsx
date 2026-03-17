@@ -63,7 +63,7 @@ export default function SolutionsOverview() {
         <p className="text-sm font-semibold tracking-[0.2em] text-primary-500 uppercase mb-4">
           What we offer
         </p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-5 text-gray-900 dark:text-gray-50">
+        <h2 className="text-3xl md:text-5xl font-bold mb-5 text-[#002060] dark:text-white">
           Solutions &  Products
         </h2>
         <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-base leading-relaxed">

@@ -22,7 +22,7 @@ const TRAINING_SUPPORT_SECURITY_FAQ = [
   { q: 'Are there any inaugural offers available?', a: 'We occasionally run launch and promotional offers. Check our website or contact sales for current inaugural or special pricing.' },
 ];
 
-function AccordionItem({ question, answer, isOpen, onToggle }: { question: string; answer: string; isOpen: boolean; onToggle: () => void }) {
+function AccordionItem({ question, answer, isOpen, onToggle }: { key?: string; question: string; answer: string; isOpen: boolean; onToggle: () => void }) {
   return (
     <div className="section-card rounded-xl overflow-hidden mb-4 last:mb-0">
       <button
@@ -57,7 +57,7 @@ export default function SecurityFAQ() {
   return (
     <SectionWrapper id="security-faq" className="section-bg">
       <div className="text-center mb-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#002060] dark:text-white">
           Office Bots{' '}
           <span className="relative inline-block">
             Desktop Application
