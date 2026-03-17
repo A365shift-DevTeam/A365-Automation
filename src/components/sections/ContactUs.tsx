@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Facebook, Linkedin, Youtube, Instagram, MessageCircle, Mail, MapPin } from 'lucide-react';
 import qrCode from '../../assets/QR-code.png';
+import contactBg from '../../assets/Contact-Us- 1.jpg';
 import SectionWrapper from '../ui/SectionWrapper';
 
 const SOCIAL_LINKS = [
@@ -13,8 +14,16 @@ const SOCIAL_LINKS = [
 
 export default function ContactUs() {
   return (
-    <SectionWrapper id="contact" className="bg-white dark:bg-gray-950 overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <SectionWrapper 
+      id="contact" 
+      className="relative overflow-hidden group"
+      style={{
+        backgroundImage: `url(${contactBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left: Contact Details (Mobile: 1st) */}
         <div className="text-center lg:text-left order-1">
           <motion.div
@@ -23,7 +32,7 @@ export default function ContactUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tighter text-[#0B1E3F] dark:text-white">
+            <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter text-[#0B1E3F] dark:text-white">
               Contact Us
             </h2>
           </motion.div>
