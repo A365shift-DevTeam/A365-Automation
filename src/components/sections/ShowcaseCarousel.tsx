@@ -14,6 +14,13 @@ import ex2 from '../../assets/Excel image/excel img 2.png';
 import productImg from '../../assets/Product img.png';
 import webImg from '../../assets/Web 13.png';
 
+// Website GIFs
+import gifCar from '../../assets/Website gif/Car.gif';
+import gifHome from '../../assets/Website gif/Home.gif';
+import gifJwelery from '../../assets/Website gif/Jwelery.gif';
+import gifPerfume from '../../assets/Website gif/Perfume.gif';
+import gifPC from '../../assets/Website gif/PC.gif';
+
 type TabItem = {
   id: string;
   label: string;
@@ -34,8 +41,10 @@ type MockupItem = {
   color: string;
   title: string;
   pages: number;
-  type: 'mock' | 'image' | 'webmobile';
+  type: 'mock' | 'image' | 'webmobile' | 'iframe';
   images?: string[];
+  video?: string;
+  iframeUrl?: string;
   agentName: string;
   whatItDoes: string[];
   outcome: {
@@ -157,7 +166,7 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     title: 'Professional Websites',
     pages: 5,
     type: 'image',
-    images: [productImg],
+    images: [gifHome, gifCar, gifJwelery, gifPerfume, gifPC],
     agentName: 'Website Solutions',
     whatItDoes: [
       'Corporate and brand websites with premium design.',
@@ -378,6 +387,24 @@ export default function ShowcaseCarousel() {
                         className="absolute inset-0"
                       >
                         <WebMobileAnimation />
+                      </motion.div>
+                    )}
+                    {activeData.type === 'iframe' && activeData.iframeUrl && (
+                      <motion.div
+                        key={`${activeTab}-iframe`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="absolute inset-0"
+                      >
+                        <iframe
+                          src={activeData.iframeUrl}
+                          title={activeData.title}
+                          className="w-full h-full border-0"
+                          loading="lazy"
+                          sandbox="allow-scripts allow-same-origin"
+                        />
                       </motion.div>
                     )}
                   </AnimatePresence>
