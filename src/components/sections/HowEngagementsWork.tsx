@@ -53,13 +53,13 @@ export default function HowEngagementsWork() {
     <section
       ref={sectionRef}
       id="how-it-works"
-      className="relative py-12 md:py-16 min-h-[200vh] section-bg"
+      className="relative py-12 md:py-16 md:min-h-[200vh] section-bg"
     >
-      {/* Sticky viewport-sized block so at 100% zoom everything fits in one screen */}
-      <div className="sticky top-20 z-10 flex flex-col max-w-7xl mx-auto px-4 md:px-8 max-h-[calc(100vh-6rem)] min-h-0">
-        <div className="text-center mb-3 md:mb-4 shrink-0">
-          <h2 className="text-2xl md:text-4xl font-bold mb-1 md:mb-2 text-gray-900 dark:text-gray-50">How Engagements Work</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base">Transparent process. Predictable investment. Every engagement follows the same proven path.</p>
+      {/* Sticky viewport-sized block – only sticky on md+ so mobile content flows naturally */}
+      <div className="md:sticky md:top-20 z-10 flex flex-col max-w-7xl mx-auto px-4 md:px-8 md:max-h-[calc(100vh-6rem)] min-h-0">
+        <div className="text-center mb-6 md:mb-4 shrink-0">
+          <h2 className="text-2xl md:text-4xl font-bold mb-2 text-gray-900 dark:text-gray-50">How Engagements Work</h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base px-2">Transparent process. Predictable investment. Every engagement follows the same proven path.</p>
         </div>
 
         {/* Line + logo + nodes – bot centered ON the line (line runs through bot) */}
@@ -96,7 +96,7 @@ export default function HowEngagementsWork() {
             {PHASES.map((phase, i) => (
               <span
                 key={phase.step}
-                className={`text-xs md:text-sm font-bold text-[#65A859] dark:text-[#4C99A0] ${i === 0 ? 'text-left' : i === 2 ? 'text-right' : 'text-center'}`}
+                className={`text-[10px] md:text-sm font-bold text-[#65A859] dark:text-[#4C99A0] ${i === 0 ? 'text-left' : i === 2 ? 'text-right' : 'text-center'}`}
               >
                 {phase.weeks}
               </span>
@@ -105,11 +105,11 @@ export default function HowEngagementsWork() {
         </div>
 
         {/* Cards – no scroll; content flows with section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 flex-1 min-h-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 flex-1 min-h-0 mt-4 md:mt-0">
           {PHASES.map((phase, i) => (
             <motion.div
               key={phase.step}
-              className={`section-card p-4 rounded-xl flex flex-col min-w-0 transition-all duration-300 shrink-0 ${activeCardIndex === i
+              className={`section-card p-5 md:p-4 rounded-xl flex flex-col min-w-0 transition-all duration-300 shrink-0 ${activeCardIndex === i
                 ? 'ring-2 ring-[#65A859] dark:ring-[#4C99A0] ring-offset-2 dark:ring-offset-gray-900'
                 : ''
                 }`}
@@ -121,21 +121,21 @@ export default function HowEngagementsWork() {
                   : undefined
               }
             >
-              <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">{phase.step}</span>
-              <h3 className="text-base md:text-lg font-bold text-gray-900 dark:text-gray-100 mt-1">{phase.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm mt-1 flex-1">{phase.desc}</p>
-              <p className="text-xs font-semibold text-[#65A859] dark:text-[#4C99A0] mt-2 uppercase tracking-wider">What's included</p>
-              <ul className="space-y-0.5 mt-1">
+              <span className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">{phase.step}</span>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mt-1 md:mt-2">{phase.title}</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm mt-2 md:mt-1 flex-1">{phase.desc}</p>
+              <p className="text-[11px] md:text-xs font-semibold text-[#65A859] dark:text-[#4C99A0] mt-4 md:mt-2 uppercase tracking-wider">What's included</p>
+              <ul className="space-y-1 md:space-y-0.5 mt-2 md:mt-1 mb-4 md:mb-0">
                 {phase.included.map((item, j) => (
-                  <li key={j} className="flex items-center gap-1.5 text-xs md:text-sm text-gray-700 dark:text-gray-300">
-                    <span className="w-1 h-1 rounded-full bg-[#65A859] shrink-0" />
-                    {item}
+                  <li key={j} className="flex items-start md:items-center gap-2 md:gap-1.5 text-xs md:text-sm text-gray-700 dark:text-gray-300">
+                    <span className="w-1.5 h-1.5 md:w-1 md:h-1 rounded-full bg-[#65A859] mt-1 md:mt-0 shrink-0" />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+              <div className="mt-auto pt-3 md:pt-2 border-t border-gray-200 dark:border-gray-700">
                 <p className="text-[10px] md:text-xs font-bold text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider">Outcome</p>
-                <p className="text-xs text-gray-700 dark:text-gray-300 mt-0.5">{phase.outcome}</p>
+                <p className="text-xs md:text-sm text-gray-700 dark:text-gray-300 mt-1 md:mt-0.5 font-medium">{phase.outcome}</p>
               </div>
             </motion.div>
           ))}

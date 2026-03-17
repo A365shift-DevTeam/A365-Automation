@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import SectionWrapper from '../ui/SectionWrapper';
 import { Bot, Sparkles, LayoutTemplate, Package } from 'lucide-react';
 
 const COLUMNS = [
@@ -48,10 +47,18 @@ const COLUMNS = [
 
 export default function SolutionsOverview() {
   return (
-    <SectionWrapper
+    <section
       id="solutions-overview"
+      className="py-24 relative"
       style={{ background: 'linear-gradient(135deg, #e8f5ee 0%, #f0faf4 30%, #f7fdfa 60%, #ffffff 100%)' }}
     >
+      <motion.div
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px", amount: 0.2 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-[1400px] mx-auto px-6 md:px-8 xl:px-12 relative z-10"
+      >
       <div className="text-center mb-16">
         <p className="text-sm font-semibold tracking-[0.2em] text-primary-500 uppercase mb-4">
           What we offer
@@ -65,7 +72,7 @@ export default function SolutionsOverview() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6">
         {COLUMNS.map((col, i) => (
           <motion.div
             key={col.title}
@@ -74,7 +81,7 @@ export default function SolutionsOverview() {
             viewport={{ once: true, margin: '-40px', amount: 0.2 }}
             transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
-            className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md p-6 flex flex-col transition-smooth cursor-default"
+            className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md px-5 py-6 xl:p-6 flex flex-col transition-smooth cursor-default"
           >
             {/* Icon + Badge row */}
             <div className="flex items-start justify-between mb-5">
@@ -87,7 +94,7 @@ export default function SolutionsOverview() {
             </div>
 
             {/* Title */}
-            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h3 className="text-lg xl:text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 whitespace-nowrap overflow-hidden text-ellipsis">
               {col.title}
             </h3>
 
@@ -109,6 +116,7 @@ export default function SolutionsOverview() {
           </motion.div>
         ))}
       </div>
-    </SectionWrapper>
+      </motion.div>
+    </section>
   );
 }

@@ -32,7 +32,7 @@ export const SectionSeparator: React.FC<SeparatorProps> = ({
 
   return (
     <div className={`w-full flex justify-center overflow-hidden ${className}`}>
-      <div 
+      <div
         className={`
           ${getColorClass()} rounded-full
           ${shadow ? 'shadow-[0_2px_10px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)]' : ''}

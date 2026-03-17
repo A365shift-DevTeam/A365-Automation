@@ -106,6 +106,7 @@ export default function AgentsInAction() {
           ))}
         </div>
 
+        <div className="min-h-[600px] md:min-h-[550px]">
         <AnimatePresence mode="wait">
           {activeTab === 'live' && (
             <motion.div
@@ -376,11 +377,9 @@ export default function AgentsInAction() {
                       ].map((product, i) => (
                         <motion.div
                           key={product.title}
-                          initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                          initial={{ opacity: 0 }}
                           animate={{
                             opacity: [0, 1, 1, 0, 0],
-                            y: [15, 0, 0, -15, 15],
-                            scale: [0.95, 1, 1, 0.95, 0.95]
                           }}
                           transition={{
                             duration: 5,
@@ -437,6 +436,7 @@ export default function AgentsInAction() {
             </motion.div>
           )}
         </AnimatePresence>
+        </div>
         </div>
       </motion.div>
     </section>

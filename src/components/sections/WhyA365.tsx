@@ -27,8 +27,8 @@ export default function WhyA365() {
             transition={{ delay: i * 0.05 }}
             className="section-card rounded-xl p-6 text-center"
           >
-            <p className="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400">{stat.value}</p>
-            <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mt-1">{stat.label}</p>
+            <p className="text-xl md:text-3xl font-bold text-primary-600 dark:text-primary-400">{stat.value}</p>
+            <p className="text-[11px] md:text-sm text-gray-600 dark:text-gray-400 mt-1 leading-tight">{stat.label}</p>
           </motion.div>
         ))}
       </div>
