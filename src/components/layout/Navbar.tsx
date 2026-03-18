@@ -78,7 +78,7 @@ export default function Navbar() {
                         aria-label="Chat on WhatsApp"
                         className="text-2xl transition-all hover:-translate-y-0.5 flex items-center"
                     >
-                        <FontAwesomeIcon icon={faWhatsapp} style={{color: "rgb(40, 209, 70)"}} />
+                        <FontAwesomeIcon icon={faWhatsapp} style={{ color: "rgb(40, 209, 70)" }} />
                     </a>
                 </div>
 
@@ -147,7 +147,7 @@ export default function Navbar() {
                                     aria-label="Chat on WhatsApp"
                                     className="w-full py-3 flex items-center justify-center gap-2 text-base font-medium text-white bg-[#25D366] hover:bg-[#1ebe57] rounded-xl transition-all shadow-md shadow-[#25D366]/25"
                                 >
-                                    <FontAwesomeIcon icon={faWhatsapp} style={{color: "rgb(40, 209, 70)"}} />
+                                    <FontAwesomeIcon icon={faWhatsapp} style={{ color: "rgb(40, 209, 70)" }} />
                                     WhatsApp
                                 </a>
                             </div>

@@ -88,7 +88,7 @@ export default function SolutionsOverview() {
               <div className="w-12 h-12 rounded-xl bg-primary-500/10 dark:bg-primary-500/20 flex items-center justify-center">
                 <col.icon className="w-6 h-6 text-primary-500" />
               </div>
-              <span className="text-[11px] font-medium tracking-wider uppercase text-gray-400 dark:text-gray-500 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 whitespace-nowrap">
+              <span className="text-[11px] font-medium tracking-wider uppercase section-badge border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 whitespace-nowrap">
                 {col.badge}
               </span>
             </div>
