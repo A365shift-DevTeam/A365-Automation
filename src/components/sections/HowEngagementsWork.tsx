@@ -78,7 +78,7 @@ export default function HowEngagementsWork() {
               key={phase.step}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="section-card p-6 rounded-2xl flex flex-col h-full hover:ring-2 hover:ring-[#65A859] dark:hover:ring-[#4C99A0] hover:ring-offset-2 dark:hover:ring-offset-gray-900 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
             >

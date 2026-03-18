@@ -28,7 +28,7 @@ export default function Integrations() {
             key={card.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px", amount: 0.2 }}
+            viewport={{ once: true }}
             transition={{ delay: i * 0.06, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
             className="section-card p-5 flex flex-col transition-smooth cursor-default"

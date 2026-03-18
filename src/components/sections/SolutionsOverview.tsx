@@ -55,7 +55,7 @@ export default function SolutionsOverview() {
       <motion.div
         initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px", amount: 0.2 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         className="max-w-[1400px] mx-auto px-6 md:px-8 xl:px-12 relative z-10"
       >
@@ -78,7 +78,7 @@ export default function SolutionsOverview() {
             key={col.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px', amount: 0.2 }}
+            viewport={{ once: true }}
             transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
             className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md px-5 py-6 xl:p-6 flex flex-col transition-smooth cursor-default"
