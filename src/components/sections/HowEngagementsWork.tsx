@@ -62,9 +62,9 @@ export default function HowEngagementsWork() {
   });
 
   return (
-    <section 
-      id="how-it-works" 
-      className="relative md:h-[250vh] bg-white dark:bg-gray-950" 
+    <section
+      id="how-it-works"
+      className="relative md:h-[250vh] bg-white dark:bg-gray-950"
       style={{
         background: 'linear-gradient(135deg, #e8f5ee 0%, #f0faf4 30%, #f7fdfa 60%, #ffffff 100%)'
       }}
@@ -126,8 +126,8 @@ export default function HowEngagementsWork() {
               <div
                 key={i}
                 className={`absolute top-1/2 w-4 h-4 rounded-full border-2 shadow-sm z-10 transition-all duration-300 ${activeCardIndex >= i
-                    ? `${PHASES[i].bgClass} border-white scale-110`
-                    : 'bg-gray-200 border-white'
+                  ? `${PHASES[i].bgClass} border-white scale-110`
+                  : 'bg-gray-200 border-white'
                   }`}
                 style={{ left: `${pct}%`, transform: 'translate(-50%, -50%)' }}
                 aria-hidden
