@@ -52,7 +52,7 @@ export default function Features() {
   return (
     <SectionWrapper id="features">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#002060] dark:text-white">Everything you need to scale</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 section-title">Everything you need to scale</h2>
         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
           Powerful features designed for modern teams who want to move faster and break fewer things.
         </p>

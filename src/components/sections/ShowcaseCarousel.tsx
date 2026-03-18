@@ -296,6 +296,22 @@ export default function ShowcaseCarousel() {
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8 xl:px-12">
 
+        {/* Section Title */}
+        <div className="text-center mb-8 px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl md:text-3xl font-bold mb-3 section-title"
+          >
+            Digital Solutions
+          </motion.h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-xs md:text-sm font-medium">
+            Explore our automated agents and interactive dashboards designed to scale your business.
+          </p>
+        </div>
+
         {/* Unified Card Container */}
         <div className="max-w-[1400px] mx-auto bg-white dark:bg-gray-950 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden flex flex-col w-full">
 

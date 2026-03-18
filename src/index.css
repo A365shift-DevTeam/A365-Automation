@@ -62,6 +62,14 @@ h6 {
   color: #212121;
 }
 
+.section-title {
+  color: #002060 !important;
+}
+
+.dark .section-title {
+  color: #ffffff !important;
+}
+
 .dark h1,
 .dark h2,
 .dark h3,

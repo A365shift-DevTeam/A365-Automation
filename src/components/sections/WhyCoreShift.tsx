@@ -16,7 +16,7 @@ export default function WhyA365() {
   return (
     <SectionWrapper id="about" className="section-bg">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-[#002060] dark:text-white">Why A365</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-4 section-title">Why A365</h2>
         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">Built by people who've lived inside enterprise systems.</p>
       </div>
 

@@ -57,7 +57,7 @@ export default function SecurityFAQ() {
   return (
     <SectionWrapper id="security-faq" className="section-bg">
       <div className="text-center mb-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-[#002060] dark:text-white">
+        <h2 className="text-2xl md:text-3xl font-bold section-title">
           Office Bots{' '}
           <span className="relative inline-block">
             Desktop Application

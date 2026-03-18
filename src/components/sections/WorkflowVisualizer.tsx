@@ -7,7 +7,7 @@ export default function WorkflowVisualizer() {
     <SectionWrapper className="bg-white dark:bg-gray-950 overflow-hidden">
       <div className="flex flex-col lg:flex-row items-center gap-16">
         <div className="w-full lg:w-1/2">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#002060] dark:text-white">Visualize your logic</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 section-title">Visualize your logic</h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 leading-relaxed">
             Stop writing brittle scripts. Our visual canvas lets you see exactly how data flows between your applications. Add conditional logic, loops, and error handling with a click.
           </p>

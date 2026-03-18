@@ -159,7 +159,7 @@ export default function ProcessComparison() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-bold mb-4 text-[#002060] dark:text-white"
+            className="text-2xl md:text-3xl font-bold mb-4 section-title"
           >
             Manual Process vs <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859]">A365 Automation</span>
           </motion.h2>

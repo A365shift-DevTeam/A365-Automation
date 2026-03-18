@@ -58,7 +58,7 @@ export default function HowEngagementsWork() {
       {/* Sticky viewport-sized block – only sticky on md+ so mobile content flows naturally */}
       <div className="md:sticky md:top-20 z-10 flex flex-col max-w-7xl mx-auto px-4 md:px-8 md:max-h-[calc(100vh-6rem)] min-h-0">
         <div className="text-center mb-6 md:mb-4 shrink-0">
-          <h2 className="text-2xl md:text-4xl font-bold mb-2 text-[#002060] dark:text-white">How Engagements Work</h2>
+          <h2 className="text-2xl md:text-4xl font-bold mb-2 section-title">How Engagements Work</h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base px-2">Transparent process. Predictable investment. Every engagement follows the same proven path.</p>
         </div>
 
