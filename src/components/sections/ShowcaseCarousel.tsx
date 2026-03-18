@@ -245,7 +245,7 @@ export default function ShowcaseCarousel() {
 
   return (
     <section
-      className="relative w-full overflow-hidden py-4 dark:bg-gray-950"
+      className="relative w-full overflow-hidden py-16 md:py-24 dark:bg-gray-950"
       style={{
         background: 'linear-gradient(135deg, #e8f5ee 0%, #f0faf4 30%, #f7fdfa 60%, #ffffff 100%)'
       }}

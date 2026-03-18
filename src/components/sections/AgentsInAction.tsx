@@ -26,7 +26,7 @@ export default function AgentsInAction() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="agents-in-action" className="section-bg relative overflow-hidden py-4">
+    <section id="agents-in-action" className="section-bg relative overflow-hidden py-16 md:py-24">
       {/* Professional Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle gradient orbs - matching site theme */}
