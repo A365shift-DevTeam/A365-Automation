@@ -65,7 +65,7 @@ export default function HowEngagementsWork() {
     <section id="how-it-works" className="relative py-16 md:py-24 bg-white dark:bg-gray-950" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">How Engagements Work</h2>
+          <h2 className="text-2xl md:text-4xl mb-4 section-title">How Engagements Work</h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light">
             Transparent process. Predictable investment. Every engagement follows the same proven path.
           </p>
