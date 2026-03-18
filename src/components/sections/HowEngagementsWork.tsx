@@ -122,7 +122,9 @@ export default function HowEngagementsWork() {
               }
             >
               <span className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">{phase.step}</span>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mt-1 md:mt-2">{phase.title}</h3>
+              <h3 className="text-lg md:text-xl font-bold section-subtitle mt-1 md:mt-2">
+                {phase.title}
+              </h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm mt-2 md:mt-1 flex-1">{phase.desc}</p>
               <p className="text-[11px] md:text-xs font-semibold text-[#65A859] dark:text-[#4C99A0] mt-4 md:mt-2 uppercase tracking-wider">What's included</p>
               <ul className="space-y-1 md:space-y-0.5 mt-2 md:mt-1 mb-4 md:mb-0">

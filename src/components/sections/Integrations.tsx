@@ -33,7 +33,9 @@ export default function Integrations() {
             whileHover={{ y: -4, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
             className="section-card p-5 flex flex-col transition-smooth cursor-default"
           >
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">{card.title}</h3>
+            <h3 className="text-lg font-bold section-subtitle mb-2">
+              {card.title}
+            </h3>
             <p className="text-sm text-gray-600 dark:text-gray-400 flex-1 leading-relaxed">{card.description}</p>
           </motion.div>
         ))}

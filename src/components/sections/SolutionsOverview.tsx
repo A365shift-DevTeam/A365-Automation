@@ -94,7 +94,7 @@ export default function SolutionsOverview() {
             </div>
 
             {/* Title */}
-            <h3 className="text-lg xl:text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 whitespace-nowrap overflow-hidden text-ellipsis">
+            <h3 className="text-lg xl:text-xl font-bold section-subtitle mb-4 whitespace-nowrap overflow-hidden text-ellipsis">
               {col.title}
             </h3>
 

@@ -70,6 +70,14 @@ h6 {
   color: #ffffff !important;
 }
 
+.section-subtitle {
+  color: #002060 !important;
+}
+
+.dark .section-subtitle {
+  color: #ffffff !important;
+}
+
 .dark h1,
 .dark h2,
 .dark h3,

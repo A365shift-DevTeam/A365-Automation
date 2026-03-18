@@ -135,7 +135,7 @@ export default function AgentsInAction() {
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <Zap className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight">AI Agents</h3>
+                      <h3 className="text-2xl md:text-3xl font-bold section-subtitle leading-tight">AI Agents</h3>
                     </div>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-base pr-4 leading-relaxed">Enterprise-grade automation replacing manual workflows seamlessly.</p>
 
@@ -249,7 +249,7 @@ export default function AgentsInAction() {
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <LayoutTemplate className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight">Microsoft</h3>
+                      <h3 className="text-2xl md:text-3xl font-bold section-subtitle leading-tight">Microsoft</h3>
                     </div>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-base pr-4 leading-relaxed">Deep integration across the Microsoft platform — Desktop, Cloud, and AI.</p>
 
@@ -309,7 +309,7 @@ export default function AgentsInAction() {
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <Code2 className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight">Office Suite</h3>
+                      <h3 className="text-2xl md:text-3xl font-bold section-subtitle leading-tight">Office Suite</h3>
                     </div>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-base pr-4 leading-relaxed">Convert daily manual reporting and emails into seamless automation.</p>
 
@@ -405,7 +405,7 @@ export default function AgentsInAction() {
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <Package className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight">Our Products</h3>
+                      <h3 className="text-2xl md:text-3xl font-bold section-subtitle leading-tight">Our Products</h3>
                     </div>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-base pr-4 leading-relaxed">Ready-to-deploy solutions for common enterprise bottlenecks.</p>
 

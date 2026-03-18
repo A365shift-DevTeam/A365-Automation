@@ -84,7 +84,9 @@ export default function WhyAgent() {
               }`} />
             </div>
             <p className="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase mb-1">{col.subtitle}</p>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{col.title}</h3>
+            <h3 className="text-xl font-bold section-subtitle mb-2">
+              {col.title}
+            </h3>
             <p className={`text-sm font-semibold mb-6 ${
               col.theme === 'primary' ? 'text-primary-600 dark:text-primary-400' : 'text-gray-600 dark:text-gray-400'
             }`}>{col.cost}</p>
