@@ -11,10 +11,10 @@ const PHASES = [
     desc: 'We understand your business processes and identify automation opportunities.',
     included: ['Process mapping', 'Requirement analysis', 'Technical feasibility', 'Solution scope document'],
     outcome: 'Clear roadmap and project scope.',
-    colorClass: 'text-teal-500',
-    bgClass: 'bg-teal-500',
-    lightBgClass: 'bg-teal-50',
-    accentColor: '#0ea5e9' // teal-500
+    colorClass: 'text-[#4C99A0]',
+    bgClass: 'bg-gradient-to-r from-[#4C99A0] to-[#65A859]',
+    lightBgClass: 'bg-[#4C99A0]/10',
+    accentColor: '#4C99A0' // teal-500
   },
   {
     step: '02',
@@ -23,10 +23,10 @@ const PHASES = [
     desc: 'We design the AI agent architecture, integrations, and workflow.',
     included: ['Agent workflow design', 'System integration planning', 'UI/UX prototype', 'Architecture design'],
     outcome: 'Approved design ready for development.',
-    colorClass: 'text-blue-500',
-    bgClass: 'bg-blue-500',
-    lightBgClass: 'bg-blue-50',
-    accentColor: '#3b82f6' // blue-500
+    colorClass: 'text-[#4C99A0]',
+    bgClass: 'bg-gradient-to-r from-[#4C99A0] to-[#65A859]',
+    lightBgClass: 'bg-[#4C99A0]/10',
+    accentColor: '#4C99A0' // blue-500
   },
   {
     step: '03',
@@ -35,10 +35,10 @@ const PHASES = [
     desc: 'We build, integrate, and deploy AI agents within your systems.',
     included: ['AI agent development', 'Microsoft 365 & API integrations', 'Testing with real data', 'UAT & production deployment'],
     outcome: 'Production-ready AI automation.',
-    colorClass: 'text-purple-500',
-    bgClass: 'bg-purple-500',
-    lightBgClass: 'bg-purple-50',
-    accentColor: '#8b5cf6' // purple-500
+    colorClass: 'text-[#4C99A0]',
+    bgClass: 'bg-gradient-to-r from-[#4C99A0] to-[#65A859]',
+    lightBgClass: 'bg-[#4C99A0]/10',
+    accentColor: '#4C99A0' // purple-500
   },
 ];
 
@@ -50,7 +50,7 @@ export default function HowEngagementsWork() {
     target: sectionRef,
     offset: ['start start', 'end end']
   });
-  
+
   const botLeftPercent = useTransform(scrollYProgress, [0, 0.5, 1], [16.6, 50, 83.3]);
   const botLeft = useTransform(botLeftPercent, (v) => `${v}%`);
   const progressWidth = useTransform(botLeftPercent, (v) => `${v - 16.6}%`);
@@ -62,7 +62,43 @@ export default function HowEngagementsWork() {
   });
 
   return (
-    <section id="how-it-works" className="relative md:h-[250vh] bg-white dark:bg-gray-950" ref={sectionRef}>
+    <section 
+      id="how-it-works" 
+      className="relative md:h-[250vh] bg-white dark:bg-gray-950" 
+      style={{
+        background: 'linear-gradient(135deg, #e8f5ee 0%, #f0faf4 30%, #f7fdfa 60%, #ffffff 100%)'
+      }}
+      ref={sectionRef}
+    >
+      {/* Professional Background Glows */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
+          style={{ backgroundColor: 'rgba(16,185,129,0.08)' }}
+          animate={{
+            y: [0, -12, 0],
+            opacity: [0.9, 1, 0.9],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
+          style={{ backgroundColor: 'rgba(59,130,246,0.08)' }}
+          animate={{
+            y: [0, 10, 0],
+            x: [0, 8, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
       <div className="md:sticky md:top-[80px] flex flex-col justify-start pt-8 pb-4 max-w-7xl mx-auto px-6 lg:px-8 overflow-visible">
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-4xl mb-4 section-title">How Engagements Work</h2>
@@ -89,11 +125,10 @@ export default function HowEngagementsWork() {
             {[16.6, 50, 83.3].map((pct, i) => (
               <div
                 key={i}
-                className={`absolute top-1/2 w-4 h-4 rounded-full border-2 shadow-sm z-10 transition-all duration-300 ${
-                  activeCardIndex >= i 
-                    ? `${PHASES[i].bgClass} border-white scale-110` 
+                className={`absolute top-1/2 w-4 h-4 rounded-full border-2 shadow-sm z-10 transition-all duration-300 ${activeCardIndex >= i
+                    ? `${PHASES[i].bgClass} border-white scale-110`
                     : 'bg-gray-200 border-white'
-                }`}
+                  }`}
                 style={{ left: `${pct}%`, transform: 'translate(-50%, -50%)' }}
                 aria-hidden
               />
@@ -103,23 +138,21 @@ export default function HowEngagementsWork() {
               className="absolute top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 pointer-events-none"
               style={{ left: botLeft, x: '-50%' }}
             >
-              <img 
-                src={botLogo} 
-                alt="Ambot365" 
-                className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(101,168,89,0.5)] bg-white dark:bg-gray-900 rounded-full p-1 border border-gray-100 dark:border-gray-800" 
+              <img
+                src={botLogo}
+                alt="Ambot365"
+                className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(101,168,89,0.5)] bg-white dark:bg-gray-900 rounded-full p-1 border border-gray-100 dark:border-gray-800"
               />
             </motion.div>
           </div>
-          
+
           <div className="flex justify-between px-[16.6%] mt-1">
             {PHASES.map((phase, i) => (
               <span
                 key={phase.step}
-                className={`text-sm tracking-widest font-bold transition-colors duration-300 ${
-                  activeCardIndex >= i ? phase.colorClass : 'text-gray-300'
-                } ${
-                  i === 0 ? '-ml-8' : i === 2 ? '-mr-8' : ''
-                }`}
+                className={`text-sm tracking-widest font-bold transition-colors duration-300 ${activeCardIndex >= i ? phase.colorClass : 'text-gray-300'
+                  } ${i === 0 ? '-ml-8' : i === 2 ? '-mr-8' : ''
+                  }`}
               >
                 {phase.weeks}
               </span>
@@ -136,13 +169,12 @@ export default function HowEngagementsWork() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className={`bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-xl overflow-hidden flex flex-col h-full transition-all duration-500 ${
-                activeCardIndex === i ? 'ring-2 ring-offset-4 ring-opacity-50 ring-gray-200' : ''
-              }`}
+              className={`bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-xl overflow-hidden flex flex-col h-full transition-all duration-500 ${activeCardIndex === i ? 'ring-2 ring-offset-4 ring-opacity-50 ring-gray-200' : ''
+                }`}
             >
               {/* Colored top bar accent */}
               <div className={`h-1.5 w-full ${phase.bgClass}`} />
-              
+
               <div className="p-8 flex flex-col h-full">
                 {/* Step indicator pill */}
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-white mb-6 ${phase.bgClass} shadow-lg shadow-${phase.colorClass.split('-')[1]}-200 dark:shadow-none`}>
@@ -152,11 +184,11 @@ export default function HowEngagementsWork() {
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
                   {phase.title}
                 </h3>
-                
+
                 <p className="text-gray-500 dark:text-gray-400 text-base leading-relaxed mb-8 flex-1 font-light">
                   {phase.desc}
                 </p>
-                
+
                 <div>
                   <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${phase.colorClass}`}>
                     WHAT'S INCLUDED
@@ -172,7 +204,7 @@ export default function HowEngagementsWork() {
                     ))}
                   </ul>
                 </div>
-                
+
                 <div className={`mt-auto p-5 rounded-2xl ${phase.lightBgClass} dark:bg-gray-800/50`}>
                   <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${phase.colorClass}`}>
                     OUTCOME
@@ -186,17 +218,17 @@ export default function HowEngagementsWork() {
           ))}
         </div>
 
-          <div className="mt-4 text-center">
-            <motion.a 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              href="#cta" 
-              className="inline-flex items-center gap-2 px-8 py-3 text-sm bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              Get Custom Pricing
-            </motion.a>
-          </div>
+        <div className="mt-4 text-center">
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            href="#cta"
+            className="inline-flex items-center gap-2 px-8 py-3 text-sm bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            Get Custom Pricing
+          </motion.a>
         </div>
+      </div>
     </section>
   );
 }
