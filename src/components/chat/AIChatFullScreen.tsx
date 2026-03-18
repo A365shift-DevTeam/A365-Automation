@@ -206,7 +206,7 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-[#4C99A0] animate-pulse" />
             <h2
-              className="font-bold text-xl tracking-tight"
+              className=" text-xl tracking-tight"
               style={{ color: '#ffffff', textShadow: '0 0 1px rgba(255,255,255,0.5)' }}
             >
               Ambot365  AI Assistant
@@ -285,7 +285,7 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
                               animate={{ opacity: 1, y: 0 }}
                               className="flex flex-col items-start gap-3 ml-2"
                             >
-                              <p className="text-gray-500 text-[10px] uppercase tracking-widest font-bold">Suggested</p>
+                              <p className="text-gray-500 text-[10px] uppercase tracking-widest ">Suggested</p>
                               <div className="flex flex-wrap gap-2">
                                 {currentSuggestions.map((q, i) => (
                                   <button

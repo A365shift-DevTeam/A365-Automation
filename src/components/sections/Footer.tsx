@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           <div className="col-span-2 md:col-span-1">
-            <div className="text-2xl font-bold tracking-tighter mb-4 text-gray-900 dark:text-gray-50">A365</div>
+            <div className="text-2xl  tracking-tighter mb-4 text-gray-900 dark:text-gray-50">A365</div>
             <p className="text-gray-600 dark:text-gray-400 text-sm pr-4">
               Intelligent AI Agents · Microsoft AI Ecosystem · Office Suite · Scalable Industry Products.
             </p>

@@ -112,7 +112,7 @@ export default function WebMobileAnimation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="text-sm md:text-base text-gray-600 dark:text-gray-300 font-bold tracking-wide"
+            className="text-sm md:text-base text-gray-600 dark:text-gray-300  tracking-wide"
           >
             {showMobile ? "Native Mobile Application" : "Responsive Web Application"}
           </motion.p>

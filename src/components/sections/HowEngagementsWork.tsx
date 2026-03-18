@@ -1,6 +1,5 @@
-import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useMotionValueEvent } from 'motion/react';
-import ambotLogo from '../../assets/Ambot logo png.png';
+import { motion } from 'motion/react';
+import SectionWrapper from '../ui/SectionWrapper';
 
 const PHASES = [
   {
@@ -30,73 +29,41 @@ const PHASES = [
 ];
 
 export default function HowEngagementsWork() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [activeCardIndex, setActiveCardIndex] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end end'],
-  });
-
-  // Logo moves along the line from 0% to 100% as user scrolls through the section
-  const logoPositionPercent = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [0, 50, 100, 100]);
-  const logoLeft = useTransform(logoPositionPercent, (v) => `${v}%`);
-
-  // Which card to glow: logo at 0-33% → card 0, 33-66% → card 1, 66-100% -> card 2
-  useMotionValueEvent(logoPositionPercent, 'change', (v) => {
-    if (v <= 33) setActiveCardIndex(0);
-    else if (v <= 66) setActiveCardIndex(1);
-    else setActiveCardIndex(2);
-  });
-
   return (
-    <section
-      ref={sectionRef}
-      id="how-it-works"
-      className="relative py-12 md:py-16 md:min-h-[200vh] section-bg"
-    >
-      {/* Sticky viewport-sized block – only sticky on md+ so mobile content flows naturally */}
-      <div className="md:sticky md:top-20 z-10 flex flex-col max-w-7xl mx-auto px-4 md:px-8 md:max-h-[calc(100vh-6rem)] min-h-0">
-        <div className="text-center mb-6 md:mb-4 shrink-0">
-          <h2 className="text-2xl md:text-4xl font-bold mb-2 section-title">How Engagements Work</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base px-2">Transparent process. Predictable investment. Every engagement follows the same proven path.</p>
+    <section id="how-it-works" className="relative py-16 md:py-24 section-bg">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-4xl mb-4 section-title">How Engagements Work</h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base md:text-lg">
+            Transparent process. Predictable investment. Every engagement follows the same proven path.
+          </p>
         </div>
 
-        {/* Line + logo + nodes – bot centered ON the line (line runs through bot) */}
-        <div className="relative w-full mb-3 md:mb-4 shrink-0">
-          <div className="relative h-14 md:h-16">
-            {/* Horizontal line – vertical center of track */}
+        {/* Timeline header for desktop only, to show flow */}
+        <div className="hidden md:block relative w-full mb-8">
+          <div className="relative h-8">
+            {/* Horizontal line */}
             <div
-              className="absolute left-0 right-0 top-1/2 h-px md:h-0.5 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4C99A0]/20 via-[#65A859]/40 to-[#4C99A0]/20 dark:from-[#4C99A0]/30 dark:via-[#65A859]/50 dark:to-[#4C99A0]/30"
+              className="absolute left-[16.6%] right-[16.6%] top-1/2 h-0.5 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4C99A0]/20 via-[#65A859]/40 to-[#4C99A0]/20 dark:from-[#4C99A0]/30 dark:via-[#65A859]/50 dark:to-[#4C99A0]/30"
               aria-hidden
             />
-            {/* Nodes on the line */}
-            {[0, 50, 100].map((pct) => (
+            {/* Nodes */}
+            {[16.6, 50, 83.3].map((pct, i) => (
               <div
-                key={pct}
-                className="absolute top-1/2 w-3 h-3 rounded-full bg-gray-800 dark:bg-gray-700 border-2 border-white dark:border-gray-900 shadow z-[1]"
+                key={i}
+                className="absolute top-1/2 w-3 h-3 rounded-full bg-gray-800 dark:bg-gray-700 border-2 border-white dark:border-gray-900 shadow z-10"
                 style={{ left: `${pct}%`, transform: 'translate(-50%, -50%)' }}
                 aria-hidden
               />
             ))}
-            {/* Bot logo: vertically centered on the line so it sits IN the line */}
-            <motion.div
-              className="absolute top-1/2 left-0 w-10 h-10 md:w-14 md:h-14 -translate-y-1/2 z-10 pointer-events-none"
-              style={{ left: logoLeft, x: '-50%' }}
-              aria-hidden
-            >
-              <img
-                src={ambotLogo}
-                alt=""
-                className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(101,168,89,0.5)]"
-              />
-            </motion.div>
           </div>
-          <div className="grid grid-cols-3 gap-1 mt-1">
+          <div className="flex justify-between px-[16.6%]">
             {PHASES.map((phase, i) => (
               <span
                 key={phase.step}
-                className={`text-[10px] md:text-sm font-bold text-[#65A859] dark:text-[#4C99A0] ${i === 0 ? 'text-left' : i === 2 ? 'text-right' : 'text-center'}`}
+                className={`text-sm tracking-wider uppercase font-semibold text-[#65A859] dark:text-[#4C99A0] ${
+                  i === 0 ? '-ml-8' : i === 2 ? '-mr-8' : ''
+                }`}
               >
                 {phase.weeks}
               </span>
@@ -104,52 +71,57 @@ export default function HowEngagementsWork() {
           </div>
         </div>
 
-        {/* Cards – no scroll; content flows with section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 flex-1 min-h-0 mt-4 md:mt-0">
-          {PHASES.map((phase, i) => (
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {PHASES.map((phase) => (
             <motion.div
               key={phase.step}
-              className={`section-card p-5 md:p-4 rounded-xl flex flex-col min-w-0 transition-all duration-300 shrink-0 ${activeCardIndex === i
-                ? 'ring-2 ring-[#65A859] dark:ring-[#4C99A0] ring-offset-2 dark:ring-offset-gray-900'
-                : ''
-                }`}
-              style={
-                activeCardIndex === i
-                  ? {
-                    boxShadow: '0 0 28px rgba(101, 168, 89, 0.35), 0 0 56px rgba(76, 153, 160, 0.25)',
-                  }
-                  : undefined
-              }
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6 }}
+              className="section-card p-6 md:p-8 rounded-2xl flex flex-col h-full hover:ring-2 hover:ring-[#65A859] dark:hover:ring-[#4C99A0] hover:ring-offset-2 dark:hover:ring-offset-gray-900 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
             >
-              <span className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">{phase.step}</span>
-              <h3 className="text-lg md:text-xl font-bold section-subtitle mt-1 md:mt-2">
+              <div className="md:hidden text-xs font-semibold text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider mb-2">
+                {phase.weeks}
+              </div>
+              <span className="text-3xl md:text-4xl text-gray-900 dark:text-gray-100">{phase.step}</span>
+              <h3 className="text-xl md:text-2xl section-subtitle mt-2">
                 {phase.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm mt-2 md:mt-1 flex-1">{phase.desc}</p>
-              <p className="text-[11px] md:text-xs font-semibold text-[#65A859] dark:text-[#4C99A0] mt-4 md:mt-2 uppercase tracking-wider">What's included</p>
-              <ul className="space-y-1 md:space-y-0.5 mt-2 md:mt-1 mb-4 md:mb-0">
-                {phase.included.map((item, j) => (
-                  <li key={j} className="flex items-start md:items-center gap-2 md:gap-1.5 text-xs md:text-sm text-gray-700 dark:text-gray-300">
-                    <span className="w-1.5 h-1.5 md:w-1 md:h-1 rounded-full bg-[#65A859] mt-1 md:mt-0 shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-3 md:pt-2 border-t border-gray-200 dark:border-gray-700">
-                <p className="text-[10px] md:text-xs font-bold text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider">Outcome</p>
-                <p className="text-xs md:text-sm text-gray-700 dark:text-gray-300 mt-1 md:mt-0.5 font-medium">{phase.outcome}</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base mt-3 flex-1">
+                {phase.desc}
+              </p>
+              
+              <div className="mt-8 mb-4">
+                <p className="text-xs text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider mb-4">What's included</p>
+                <ul className="space-y-3">
+                  {phase.included.map((item, j) => (
+                    <li key={j} className="flex items-start gap-3 text-sm text-gray-700 dark:text-gray-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#65A859] mt-1.5 shrink-0" />
+                      <span className="leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div className="mt-8 pt-5 border-t border-gray-200 dark:border-gray-700">
+                <p className="text-xs text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider mb-2">Outcome</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300 font-medium leading-relaxed">{phase.outcome}</p>
               </div>
             </motion.div>
           ))}
         </div>
 
-        <div className="shrink-0 mt-3 md:mt-4">
-          {/* <p className="text-center text-gray-500 dark:text-gray-400 text-xs md:text-sm">Scroll to move along the journey · Pricing depends on complexity, integrations, and SLA requirements.</p> */}
-          <div className="text-center mt-3">
-            <a href="#cta" className="inline-flex items-center gap-2 px-5 py-2.5 text-sm bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-xl font-medium hover:shadow-lg transition-all">
-              Get Custom Pricing
-            </a>
-          </div>
+        <div className="mt-12 text-center">
+          <motion.a 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            href="#cta" 
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-base md:text-lg bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            Get Custom Pricing
+          </motion.a>
         </div>
       </div>
     </section>

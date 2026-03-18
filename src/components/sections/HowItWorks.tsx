@@ -155,7 +155,7 @@ export default function HowItWorks() {
       <div className="sticky top-0 h-screen flex flex-col items-center overflow-hidden py-4">
 
         <div className="text-center mb-2 shrink-0">
-          <h2 className="text-3xl md:text-5xl font-bold mb-2 section-title">How A365 Works</h2>
+          <h2 className="text-2xl md:text-4xl mb-2 section-title">How A365 Works</h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base">
             Scroll down to see how our AI bot transforms your manual process into a fully automated workflow.
           </p>
@@ -168,12 +168,12 @@ export default function HowItWorks() {
             {/* Text Description - sits below the gauge now */}
             <div>
               {/* Week Badge */}
-              <span className={`inline-block px-4 py-1 rounded-full text-white text-xs font-bold tracking-wider uppercase mb-2 ${colors.badge}`}>
+              <span className={`inline-block px-4 py-1 rounded-full text-white text-xs  tracking-wider uppercase mb-2 ${colors.badge}`}>
                 {currentPhase.week}
               </span>
 
               {/* Title */}
-              <h3 className={`text-2xl font-bold mb-3 ${colors.title}`}>{currentPhase.title}</h3>
+              <h3 className={`text-2xl  mb-3 ${colors.title}`}>{currentPhase.title}</h3>
 
               {/* Descriptions with colored bullet dots */}
               <div className="flex items-start gap-2 mb-2">
@@ -196,7 +196,7 @@ export default function HowItWorks() {
 
             {/* Gauge Card - now sits above text */}
             <div className="relative bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl p-4 pb-2 z-10 w-full mb-4">
-              <div className="flex gap-4 mb-2 font-bold text-sm">
+              <div className="flex gap-4 mb-2  text-sm">
                 <span className="text-blue-500 dark:text-blue-400">AI Process</span>
                 <span className="text-primary-500">Your Process</span>
               </div>

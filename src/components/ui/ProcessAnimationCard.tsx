@@ -95,7 +95,7 @@ export default function ProcessAnimationCard() {
               <Zap className="w-4 h-4 md:w-5 md:h-5 text-white" />
             </div>
             <div>
-              <h3 className="text-sm md:text-base font-bold text-gray-900 dark:text-white leading-tight">A365 Agent</h3>
+              <h3 className="text-sm md:text-base  text-gray-900 dark:text-white leading-tight">A365 Agent</h3>
               <p className="text-[10px] md:text-xs text-gray-500 dark:text-gray-400">Fully automated</p>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function ProcessAnimationCard() {
         </div>
 
         <div className="mb-4 md:mb-6 flex items-center gap-2 h-6 md:h-8">
-          <div className={`flex items-center gap-1.5 md:gap-2 px-2 py-1 md:px-3 md:py-1.5 rounded-md text-[10px] md:text-xs font-mono font-bold transition-colors duration-300 ${autoFinished ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400' : 'bg-[#4C99A0]/15 text-[#4C99A0] dark:text-[#65A859]'}`}>
+          <div className={`flex items-center gap-1.5 md:gap-2 px-2 py-1 md:px-3 md:py-1.5 rounded-md text-[10px] md:text-xs font-mono  transition-colors duration-300 ${autoFinished ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400' : 'bg-[#4C99A0]/15 text-[#4C99A0] dark:text-[#65A859]'}`}>
             <span className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${autoFinished ? 'bg-green-500' : 'bg-[#4C99A0] animate-pulse'}`} />
             <span className="hidden sm:inline">{autoFinished ? 'COMPLETED' : 'RUNNING'}</span> {formatTime(Math.min(autoElapsed, 180))}
           </div>
@@ -135,7 +135,7 @@ export default function ProcessAnimationCard() {
                       <p className={`text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight transition-colors duration-400 ${isDone ? 'text-gray-900 dark:text-white' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-400 dark:text-gray-600'}`}>
                         {step.name}
                       </p>
-                      <span className={`text-[9px] md:text-[10px] lg:text-xs font-mono font-bold ml-1 transition-colors duration-400 ${isDone ? 'text-[#65A859]' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-300 dark:text-gray-700'}`}>
+                      <span className={`text-[9px] md:text-[10px] lg:text-xs font-mono  ml-1 transition-colors duration-400 ${isDone ? 'text-[#65A859]' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-300 dark:text-gray-700'}`}>
                         {step.duration}
                       </span>
                     </div>

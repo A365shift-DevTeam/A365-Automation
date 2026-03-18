@@ -166,7 +166,7 @@ export default function ScrollWheelFeatures() {
 
             {/* Center Logo/Icon - Half-Circle flush to the left wall */}
             <div className="absolute top-1/2 left-0 -translate-y-1/2 w-16 h-32 md:w-20 md:h-40 bg-gray-100 dark:bg-gray-900 rounded-r-full shadow-[inset_10px_0_20px_rgba(0,0,0,0.1)] dark:shadow-[inset_10px_0_20px_rgba(0,0,0,0.5)] flex items-center justify-start pl-1 md:pl-2 z-10 border-y border-r border-gray-200 dark:border-gray-800 transition-colors duration-300">
-              <span className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-300 transition-colors duration-300">
+              <span className="text-xl md:text-2xl  text-gray-700 dark:text-gray-300 transition-colors duration-300">
                 A<span className="text-[#a162f7]">365</span>
               </span>
             </div>
@@ -201,7 +201,7 @@ export default function ScrollWheelFeatures() {
                     <div className={`w-14 h-14 md:w-16 md:h-16 rounded-[16px] bg-gradient-to-br ${seg.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
                       <seg.icon className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white tracking-wide transition-colors duration-300">
+                    <h3 className="text-2xl md:text-3xl  text-gray-900 dark:text-white tracking-wide transition-colors duration-300">
                       {seg.title}
                     </h3>
                   </div>

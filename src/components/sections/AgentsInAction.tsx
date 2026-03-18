@@ -83,7 +83,7 @@ export default function AgentsInAction() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-bold mb-4 section-title"
+            className="text-2xl md:text-4xl mb-4 section-title"
           >
             Our Digital Services
           </motion.h2>
@@ -135,12 +135,12 @@ export default function AgentsInAction() {
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <Zap className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-bold section-subtitle leading-tight">AI Agents</h3>
+                      <h3 className="text-2xl md:text-3xl  section-subtitle leading-tight">AI Agents</h3>
                     </div>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-base pr-4 leading-relaxed">Enterprise-grade automation replacing manual workflows seamlessly.</p>
 
                     <div className="flex flex-col gap-6">
-                      <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">
+                      <div className="flex items-center gap-2 text-xs  tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">
                         <Activity className="w-4 h-4" /> Capabilities
                       </div>
                       <ul className="space-y-4">
@@ -179,14 +179,14 @@ export default function AgentsInAction() {
                           customClass="section-card p-6 !w-full !h-full border-2 border-gray-200 dark:border-gray-800 !bg-white dark:!bg-[#0B0F19] hover:border-[#4C99A0]/50 dark:hover:border-[#65A859]/50 transition-all duration-300 group !items-start !justify-start text-left shadow-xl hover:shadow-2xl hover:scale-[1.02]"
                         >
                           <div className="flex items-start justify-between w-full mb-4">
-                            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{agent.name}</h3>
+                            <h3 className="text-lg  text-gray-900 dark:text-gray-100">{agent.name}</h3>
                             <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white text-xs font-semibold shadow-md flex items-center gap-1.5">
                               <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                               Live
                             </span>
                           </div>
                           <div className="mb-4">
-                            <p className="text-3xl font-bold bg-gradient-to-r from-[#4C99A0] to-[#65A859] bg-clip-text text-transparent mb-1">{agent.stat}</p>
+                            <p className="text-3xl  bg-gradient-to-r from-[#4C99A0] to-[#65A859] bg-clip-text text-transparent mb-1">{agent.stat}</p>
                             <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">{agent.statLabel}</p>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 text-left w-full leading-relaxed">{agent.desc}</p>
@@ -249,12 +249,12 @@ export default function AgentsInAction() {
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <LayoutTemplate className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-bold section-subtitle leading-tight">Microsoft</h3>
+                      <h3 className="text-2xl md:text-3xl  section-subtitle leading-tight">Microsoft</h3>
                     </div>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-base pr-4 leading-relaxed">Deep integration across the Microsoft platform — Desktop, Cloud, and AI.</p>
 
                     <div className="flex flex-col gap-6">
-                      <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">
+                      <div className="flex items-center gap-2 text-xs  tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">
                         <Layers className="w-4 h-4" /> Ecosystem Scope
                       </div>
                       <div className="flex flex-wrap gap-2.5">
@@ -309,12 +309,12 @@ export default function AgentsInAction() {
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <Code2 className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-bold section-subtitle leading-tight">Office Suite</h3>
+                      <h3 className="text-2xl md:text-3xl  section-subtitle leading-tight">Office Suite</h3>
                     </div>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-base pr-4 leading-relaxed">Convert daily manual reporting and emails into seamless automation.</p>
 
                     <div className="flex flex-col gap-6">
-                      <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">
+                      <div className="flex items-center gap-2 text-xs  tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">
                         <Activity className="w-4 h-4" /> Capabilities
                       </div>
                       <ul className="space-y-4">
@@ -391,7 +391,7 @@ export default function AgentsInAction() {
                           }}
                           className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 dark:border-gray-700 hover:border-[#4C99A0]/50 dark:hover:border-[#65A859]/50"
                         >
-                          <h4 className="text-gray-900 dark:text-gray-100 font-bold text-sm mb-2">{product.title}</h4>
+                          <h4 className="text-gray-900 dark:text-gray-100  text-sm mb-2">{product.title}</h4>
                           <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">{product.desc}</p>
                         </motion.div>
                       ))}
@@ -405,12 +405,12 @@ export default function AgentsInAction() {
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
                         <Package className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-bold section-subtitle leading-tight">Our Products</h3>
+                      <h3 className="text-2xl md:text-3xl  section-subtitle leading-tight">Our Products</h3>
                     </div>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-base pr-4 leading-relaxed">Ready-to-deploy solutions for common enterprise bottlenecks.</p>
 
                     <div className="flex flex-col gap-6">
-                      <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">
+                      <div className="flex items-center gap-2 text-xs  tracking-widest uppercase text-[#4C99A0] dark:text-[#65A859]">
                         <Activity className="w-4 h-4" /> Product Suite
                       </div>
                       <ul className="space-y-4">

@@ -159,7 +159,7 @@ export default function ProcessComparison() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-bold mb-4 section-title"
+            className="text-2xl md:text-4xl mb-4 section-title"
           >
             Manual Process vs <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859]">A365 Automation</span>
           </motion.h2>
@@ -194,7 +194,7 @@ export default function ProcessComparison() {
                     <Timer className="w-5 h-5 text-red-500" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">Manual</h3>
+                    <h3 className="text-lg  text-gray-900 dark:text-white">Manual</h3>
                     <p className="text-xs text-gray-500 dark:text-gray-400">Traditional process</p>
                   </div>
                 </div>
@@ -206,7 +206,7 @@ export default function ProcessComparison() {
 
               {/* Elapsed Timer */}
               <div className="mb-6 flex items-center gap-2 h-8">
-                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors duration-300 ${manualFinished
+                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono  transition-colors duration-300 ${manualFinished
                     ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
                     : 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400'
                   }`}>
@@ -262,7 +262,7 @@ export default function ProcessComparison() {
                               }`}>
                               {step.name}
                             </p>
-                            <span className={`text-xs font-mono font-bold ml-2 transition-colors duration-500 ${isDone ? 'text-gray-500' : isCurrent ? 'text-orange-500' : 'text-gray-300 dark:text-gray-700'
+                            <span className={`text-xs font-mono  ml-2 transition-colors duration-500 ${isDone ? 'text-gray-500' : isCurrent ? 'text-orange-500' : 'text-gray-300 dark:text-gray-700'
                               }`}>
                               {step.duration}
                             </span>
@@ -327,7 +327,7 @@ export default function ProcessComparison() {
                     <Zap className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">A365 Agent</h3>
+                    <h3 className="text-lg  text-gray-900 dark:text-white">A365 Agent</h3>
                     <p className="text-xs text-gray-500 dark:text-gray-400">Fully automated</p>
                   </div>
                 </div>
@@ -339,7 +339,7 @@ export default function ProcessComparison() {
 
               {/* Elapsed Timer */}
               <div className="mb-6 flex items-center gap-2 relative z-10 h-8">
-                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors duration-300 ${autoFinished
+                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono  transition-colors duration-300 ${autoFinished
                     ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
                     : 'bg-[#4C99A0]/15 text-[#4C99A0] dark:text-[#65A859]'
                   }`}>
@@ -398,7 +398,7 @@ export default function ProcessComparison() {
                               }`}>
                               {step.name}
                             </p>
-                            <span className={`text-xs font-mono font-bold ml-2 transition-colors duration-400 ${isDone ? 'text-[#65A859]' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-300 dark:text-gray-700'
+                            <span className={`text-xs font-mono  ml-2 transition-colors duration-400 ${isDone ? 'text-[#65A859]' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-300 dark:text-gray-700'
                               }`}>
                               {step.duration}
                             </span>
@@ -448,7 +448,7 @@ export default function ProcessComparison() {
             <div className="bg-red-50/60 dark:bg-red-900/10 border border-red-200/50 dark:border-red-800/30 rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-3">
                 <Timer className="w-4 h-4 text-red-500" />
-                <h4 className="text-sm font-bold text-red-600 dark:text-red-400">Manual Process</h4>
+                <h4 className="text-sm  text-red-600 dark:text-red-400">Manual Process</h4>
               </div>
               <ul className="space-y-2">
                 {[
@@ -469,7 +469,7 @@ export default function ProcessComparison() {
             <div className="bg-[#65A859]/5 dark:bg-green-900/10 border border-[#65A859]/20 dark:border-green-800/30 rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-3">
                 <Zap className="w-4 h-4 text-[#65A859]" />
-                <h4 className="text-sm font-bold text-[#65A859]">A365 Automation</h4>
+                <h4 className="text-sm  text-[#65A859]">A365 Automation</h4>
               </div>
               <ul className="space-y-2">
                 {[
@@ -503,7 +503,7 @@ export default function ProcessComparison() {
                 Save <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859] font-black text-lg">7+ minutes</span> per transaction with A365 agents
               </p>
             </div>
-            <div className="flex items-center gap-6 text-xs font-bold tracking-wide uppercase text-gray-500 dark:text-gray-400">
+            <div className="flex items-center gap-6 text-xs  tracking-wide uppercase text-gray-500 dark:text-gray-400">
               <span>No code changes</span>
               <span className="w-1 h-1 rounded-full bg-gray-400" />
               <span>Deploy in weeks</span>

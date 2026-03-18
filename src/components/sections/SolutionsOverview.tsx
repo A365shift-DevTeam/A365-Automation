@@ -63,7 +63,7 @@ export default function SolutionsOverview() {
         <p className="text-sm font-semibold tracking-[0.2em] text-primary-500 uppercase mb-4">
           What we offer
         </p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-5 section-title">
+        <h2 className="text-2xl md:text-4xl mb-5 section-title">
           Solutions &  Products
         </h2>
         <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-base leading-relaxed">
@@ -94,7 +94,7 @@ export default function SolutionsOverview() {
             </div>
 
             {/* Title */}
-            <h3 className="text-lg xl:text-xl font-bold section-subtitle mb-4 whitespace-nowrap overflow-hidden text-ellipsis">
+            <h3 className="text-lg xl:text-xl  section-subtitle mb-4 whitespace-nowrap overflow-hidden text-ellipsis">
               {col.title}
             </h3>
 

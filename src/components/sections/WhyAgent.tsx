@@ -56,7 +56,7 @@ export default function WhyAgent() {
   return (
     <SectionWrapper className="section-bg">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 section-title">Why an agent, specifically?</h2>
+        <h2 className="text-2xl md:text-4xl mb-4 section-title">Why an agent, specifically?</h2>
         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">From Intelligent AI Agents to Microsoft 365 and Office Suite—see how A365 compares to hiring or generic automation.</p>
       </div>
 
@@ -84,7 +84,7 @@ export default function WhyAgent() {
               }`} />
             </div>
             <p className="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase mb-1">{col.subtitle}</p>
-            <h3 className="text-xl font-bold section-subtitle mb-2">
+            <h3 className="text-xl  section-subtitle mb-2">
               {col.title}
             </h3>
             <p className={`text-sm font-semibold mb-6 ${

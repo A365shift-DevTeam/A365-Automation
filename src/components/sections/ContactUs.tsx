@@ -32,7 +32,7 @@ export default function ContactUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter section-title">
+            <h2 className="text-2xl md:text-4xl mb-8 leading-tight tracking-tighter section-title">
               Contact Us
             </h2>
           </motion.div>
@@ -44,7 +44,7 @@ export default function ContactUs() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="space-y-8"
           >
-            <div className="flex items-center justify-center lg:justify-start gap-3 text-xl md:text-2xl font-bold text-gray-600 dark:text-gray-400">
+            <div className="flex items-center justify-center lg:justify-start gap-3 text-xl md:text-2xl  text-gray-600 dark:text-gray-400">
                <MapPin className="w-6 h-6 text-[#65A859]" />
                <span className="italic">United Arab Emirates | India</span>
             </div>
@@ -88,7 +88,7 @@ export default function ContactUs() {
                     style={{ color: social.color }}
                   />
                 </div>
-                <span className="text-xs font-bold text-gray-400 dark:text-gray-500 group-hover:text-gray-900 dark:group-hover:text-gray-200 uppercase tracking-tighter transition-colors">
+                <span className="text-xs  text-gray-400 dark:text-gray-500 group-hover:text-gray-900 dark:group-hover:text-gray-200 uppercase tracking-tighter transition-colors">
                   {social.label}
                 </span>
               </motion.a>

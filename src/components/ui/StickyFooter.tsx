@@ -102,7 +102,7 @@ const NavSection: React.FC<{ title: string; links: { label: string; href: string
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-      className="mb-2 uppercase text-gray-500 dark:text-gray-400 text-xs font-bold tracking-[0.2em] border-b border-gray-100 dark:border-gray-800 pb-2"
+      className="mb-2 uppercase text-gray-500 dark:text-gray-400 text-xs  tracking-[0.2em] border-b border-gray-100 dark:border-gray-800 pb-2"
     >
       {title}
     </motion.h3>
@@ -218,7 +218,7 @@ export default function StickyFooter() {
                   <div className="relative">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500" />
-                      <p className="text-primary-600 dark:text-primary-400 text-sm font-bold uppercase tracking-[0.3em]">
+                      <p className="text-primary-600 dark:text-primary-400 text-sm  uppercase tracking-[0.3em]">
                         {footerData.subtitle}
                       </p>
                     </div>
