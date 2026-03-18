@@ -48,7 +48,7 @@ export default function HowEngagementsWork() {
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['start 60%', 'end 40%']
+    offset: ['start start', 'end end']
   });
   
   const botLeftPercent = useTransform(scrollYProgress, [0, 0.5, 1], [16.6, 50, 83.3]);
@@ -62,8 +62,8 @@ export default function HowEngagementsWork() {
   });
 
   return (
-    <section id="how-it-works" className="relative py-16 md:py-24 bg-white dark:bg-gray-950" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="how-it-works" className="relative md:h-[250vh] bg-white dark:bg-gray-950" ref={sectionRef}>
+      <div className="md:sticky md:top-[80px] flex flex-col justify-start pt-8 pb-4 max-w-7xl mx-auto px-6 lg:px-8 overflow-visible">
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-4xl mb-4 section-title">How Engagements Work</h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light">
@@ -111,7 +111,7 @@ export default function HowEngagementsWork() {
             </motion.div>
           </div>
           
-          <div className="flex justify-between px-[16.6%] mt-4">
+          <div className="flex justify-between px-[16.6%] mt-1">
             {PHASES.map((phase, i) => (
               <span
                 key={phase.step}
@@ -158,7 +158,7 @@ export default function HowEngagementsWork() {
                 </p>
                 
                 <div>
-                  <p className={`text-xs font-bold uppercase tracking-widest mb-4 ${phase.colorClass}`}>
+                  <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${phase.colorClass}`}>
                     WHAT'S INCLUDED
                   </p>
                   <ul className="space-y-4 mb-8">
@@ -186,17 +186,17 @@ export default function HowEngagementsWork() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <motion.a 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            href="#cta" 
-            className="inline-flex items-center gap-2 px-8 py-3.5 text-base md:text-lg bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            Get Custom Pricing
-          </motion.a>
+          <div className="mt-4 text-center">
+            <motion.a 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              href="#cta" 
+              className="inline-flex items-center gap-2 px-8 py-3 text-sm bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Get Custom Pricing
+            </motion.a>
+          </div>
         </div>
-      </div>
     </section>
   );
 }
