@@ -80,24 +80,24 @@ export default function HowEngagementsWork() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6 }}
-              className="section-card p-6 md:p-8 rounded-2xl flex flex-col h-full hover:ring-2 hover:ring-[#65A859] dark:hover:ring-[#4C99A0] hover:ring-offset-2 dark:hover:ring-offset-gray-900 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+              className="section-card p-6 rounded-2xl flex flex-col h-full hover:ring-2 hover:ring-[#65A859] dark:hover:ring-[#4C99A0] hover:ring-offset-2 dark:hover:ring-offset-gray-900 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
             >
-              <div className="md:hidden text-xs font-semibold text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider mb-2">
+              <div className="md:hidden text-xs font-semibold text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider mb-1">
                 {phase.weeks}
               </div>
               <span className="text-3xl md:text-4xl text-gray-900 dark:text-gray-100">{phase.step}</span>
-              <h3 className="text-xl md:text-2xl section-subtitle mt-2">
+              <h3 className="text-xl md:text-2xl section-subtitle mt-1">
                 {phase.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base mt-3 flex-1">
+              <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base mt-2 flex-1">
                 {phase.desc}
               </p>
               
-              <div className="mt-8 mb-4">
-                <p className="text-xs text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider mb-4">What's included</p>
-                <ul className="space-y-3">
+              <div className="mt-5 mb-3">
+                <p className="text-xs text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider mb-2">What's included</p>
+                <ul className="space-y-2">
                   {phase.included.map((item, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm text-gray-700 dark:text-gray-300">
+                    <li key={j} className="flex items-start gap-2.5 text-sm text-gray-700 dark:text-gray-300">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#65A859] mt-1.5 shrink-0" />
                       <span className="leading-snug">{item}</span>
                     </li>
@@ -105,8 +105,8 @@ export default function HowEngagementsWork() {
                 </ul>
               </div>
               
-              <div className="mt-8 pt-5 border-t border-gray-200 dark:border-gray-700">
-                <p className="text-xs text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider mb-2">Outcome</p>
+              <div className="mt-5 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <p className="text-xs text-[#65A859] dark:text-[#4C99A0] uppercase tracking-wider mb-1">Outcome</p>
                 <p className="text-sm text-gray-700 dark:text-gray-300 font-medium leading-relaxed">{phase.outcome}</p>
               </div>
             </motion.div>
