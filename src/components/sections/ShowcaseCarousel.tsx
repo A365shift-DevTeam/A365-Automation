@@ -5,7 +5,9 @@ import ProcessAnimationCard from '../ui/ProcessAnimationCard';
 import WebMobileAnimation from '../ui/WebMobileAnimation';
 import ChatbotPreview from '../ui/ChatbotPreview';
 
-// Import Microsoft Images
+// Videos
+import biVideo from '../../assets/Videos/BI.mp4';
+import excelVideo from '../../assets/Videos/Excel.mp4';
 import pb1 from '../../assets/Power BI images/pic1.png';
 import pb2 from '../../assets/Power BI images/Picture2.png';
 import pb3 from '../../assets/Power BI images/Picture3.png';
@@ -42,7 +44,7 @@ type MockupItem = {
   color: string;
   title: string;
   pages: number;
-  type: 'mock' | 'image' | 'iframe' | 'chatbot';
+  type: 'mock' | 'image' | 'iframe' | 'chatbot' | 'video' | 'mixed';
   images?: string[];
   video?: string;
   iframeUrl?: string;
@@ -74,8 +76,9 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
   attendance: {
     color: 'from-accent-100 to-accent-100',
     title: 'BI Dashboards',
-    pages: 4,
-    type: 'image',
+    pages: 5,
+    type: 'mixed',
+    video: biVideo,
     images: [pb1, pb2, pb3, pb4],
     agentName: 'BI Analytics Agent',
     whatItDoes: [
@@ -97,8 +100,9 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
   payroll: {
     color: 'from-white to-white',
     title: 'Excel Automation',
-    pages: 2,
-    type: 'image',
+    pages: 3,
+    type: 'mixed',
+    video: excelVideo,
     images: [ex1, ex2],
     agentName: 'Excel Automation Agent',
     whatItDoes: [
@@ -387,6 +391,48 @@ export default function ShowcaseCarousel() {
                 {/* Dashboard Image Area */}
                 <div className="relative w-full flex-auto bg-gray-50 dark:bg-[#0B1120]/50" style={{ aspectRatio: '16/10' }}>
                   <AnimatePresence mode="wait">
+                    {activeData.type === 'mixed' && currentPage === 1 && activeData.video && (
+                      <motion.video
+                        key={`${activeTab}-mixed-video`}
+                        src={activeData.video}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="absolute inset-0 w-full h-full object-contain p-3 md:p-5"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                    )}
+                    {activeData.type === 'mixed' && currentPage > 1 && activeData.images && (
+                      <motion.img
+                        key={`${activeTab}-mixed-img-${currentPage}`}
+                        src={activeData.images[currentPage - 2]}
+                        alt={`${activeData.title} - View ${currentPage}`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="absolute inset-0 w-full h-full object-contain p-3 md:p-5"
+                      />
+                    )}
+                    {activeData.type === 'video' && activeData.video && (
+                      <motion.video
+                        key={`${activeTab}-video`}
+                        src={activeData.video}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="absolute inset-0 w-full h-full object-contain p-3 md:p-5"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                    )}
                     {activeData.type === 'image' && activeData.images && (
                       <motion.img
                         key={`${activeTab}-${currentPage}`}
