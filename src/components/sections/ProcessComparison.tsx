@@ -185,7 +185,7 @@ export default function ProcessComparison() {
           <div className="pointer-events-none absolute left-8 right-8 -bottom-10 h-16 bg-black/20 blur-3xl opacity-20 dark:opacity-30" />
 
           {/* Two Column Layout */}
-          <div className="relative rounded-t-3xl overflow-hidden border-x border-t border-gray-200/70 dark:border-gray-800/80 bg-white/90 dark:bg-gray-900/90 shadow-[0_28px_70px_-30px_rgba(31,41,55,0.45),0_6px_16px_rgba(31,41,55,0.08)]">
+          <div className="relative rounded-3xl overflow-hidden border border-gray-200/70 dark:border-gray-800/80 bg-white/90 dark:bg-gray-900/90 shadow-[0_28px_70px_-30px_rgba(31,41,55,0.45),0_6px_16px_rgba(31,41,55,0.08)]">
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/70 via-white/20 to-transparent dark:from-white/[0.04] dark:via-transparent dark:to-transparent z-10" />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 relative z-20">
 
@@ -293,12 +293,15 @@ export default function ProcessComparison() {
                     { icon: AlertTriangle, label: 'Not Scalable', color: 'text-orange-400', bgColor: 'bg-orange-50 dark:bg-orange-900/10' },
                     { icon: Clock, label: 'Slow & Tedious', color: 'text-yellow-500', bgColor: 'bg-yellow-50 dark:bg-yellow-900/10' },
                   ].map((item, i) => (
-                    <div key={i} className={`flex flex-col items-center gap-1.5 text-center py-2 rounded-xl ${item.bgColor}`}>
+                    <div key={i} className={`h-[96px] flex flex-col justify-center items-center gap-1.5 text-center py-2 rounded-xl ${item.bgColor}`}>
                       <item.icon className={`w-4 h-4 ${item.color}`} />
                       <span className="text-[11px] font-medium text-gray-500 dark:text-gray-400">{item.label}</span>
                     </div>
                   ))}
                 </div>
+                <p className="mt-4 text-[11px] md:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                 Manual: slow (10+ min) | error-prone | limited hours | not scalable
+                </p>
               </div>
 
               {/* ── CENTER VS BADGE ── */}
@@ -429,70 +432,22 @@ export default function ProcessComparison() {
                     { icon: XCircle, value: '0', label: 'Errors', color: 'text-[#65A859]' },
                     { icon: Activity, value: '24/7', label: 'Uptime', color: 'text-[#65A859]' },
                   ].map((item, i) => (
-                    <div key={i} className="flex flex-col items-center gap-1 text-center bg-[#65A859]/5 dark:bg-[#65A859]/10 py-2.5 rounded-xl">
+                    <div key={i} className="h-[96px] flex flex-col justify-center items-center gap-1 text-center bg-[#65A859]/5 dark:bg-[#65A859]/10 py-2.5 rounded-xl">
                       <item.icon className={`w-3.5 h-3.5 ${item.color} mb-0.5`} />
                       <span className={`text-lg font-mono font-black ${item.color}`}>{item.value}</span>
                       <span className="text-[11px] font-medium text-gray-500">{item.label}</span>
                     </div>
                   ))}
                 </div>
+                <p className="mt-4 text-[11px] md:text-xs text-gray-600 dark:text-gray-300 leading-relaxed relative z-10">
+                  Ambot365: fast (3 min) | highly accurate | scalable | runs 24/7
+                </p>
               </div>
 
             </div>
           </div>
 
-          {/* Bottom Comparison Benefits */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-0 border-x border-b border-gray-200/70 dark:border-gray-800 rounded-b-3xl overflow-hidden"
-          >
-            {/* Manual Drawbacks */}
-            <div className="relative bg-red-50/60 dark:bg-red-900/10 p-6 shadow-[0_14px_28px_-20px_rgba(220,38,38,0.45)] dark:shadow-[0_14px_28px_-20px_rgba(0,0,0,0.6)]">
-              <div className="pointer-events-none absolute inset-x-3 top-2 h-1/2 rounded-xl bg-white/35 dark:bg-white/5 blur-[1px]" />
-              <div className="flex items-center gap-2 mb-3">
-                <Timer className="w-4 h-4 text-red-500" />
-                <h4 className="text-sm  text-red-600 dark:text-red-400">Manual Process</h4>
-              </div>
-              <ul className="space-y-2">
-                {[
-                  'Takes 10+ minutes per transaction',
-                  'Prone to human errors & typos',
-                  'Cannot scale with volume',
-                  'Limited to business hours',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
-                    <XCircle className="w-3.5 h-3.5 text-red-400 shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
 
-            {/* Automation Benefits */}
-            <div className="relative bg-[#65A859]/5 dark:bg-green-900/10 p-6 shadow-[0_14px_28px_-20px_rgba(101,168,89,0.42)] dark:shadow-[0_14px_28px_-20px_rgba(0,0,0,0.6)]">
-              <div className="pointer-events-none absolute inset-x-3 top-2 h-1/2 rounded-xl bg-white/35 dark:bg-white/5 blur-[1px]" />
-              <div className="flex items-center gap-2 mb-3">
-                <Zap className="w-4 h-4 text-[#65A859]" />
-                <h4 className="text-sm  text-[#65A859]">Ambot365 Automation</h4>
-              </div>
-              <ul className="space-y-2">
-                {[
-                  'Completes in under 3 minutes',
-                  '~100% accuracy, zero human errors',
-                  'Handles thousands of transactions',
-                  'Runs 24/7 without breaks',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#65A859] shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
 
           {/* Bottom Summary Bar */}
           <motion.div
