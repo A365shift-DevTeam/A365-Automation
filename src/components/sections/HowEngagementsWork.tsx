@@ -74,7 +74,7 @@ export default function HowEngagementsWork() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
-          style={{ backgroundColor: 'rgba(16,185,129,0.08)' }}
+          style={{ backgroundColor: 'rgba(101,168,89,0.08)' }}
           animate={{
             y: [0, -12, 0],
             opacity: [0.9, 1, 0.9],
@@ -87,7 +87,7 @@ export default function HowEngagementsWork() {
         />
         <motion.div
           className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
-          style={{ backgroundColor: 'rgba(59,130,246,0.08)' }}
+          style={{ backgroundColor: 'rgba(76,153,160,0.08)' }}
           animate={{
             y: [0, 10, 0],
             x: [0, 8, 0],
@@ -112,12 +112,12 @@ export default function HowEngagementsWork() {
           <div className="relative h-1">
             {/* Base Horizontal line with gradient */}
             <div
-              className="absolute left-[16.6%] right-[16.6%] top-1/2 h-1 -translate-y-1/2 rounded-full bg-gradient-to-r from-teal-500 via-blue-500 to-purple-500 opacity-20"
+              className="absolute left-[16.6%] right-[16.6%] top-1/2 h-1 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4C99A0] to-[#65A859] opacity-20"
               aria-hidden
             />
             {/* Active Progress Gradient line */}
             <motion.div
-              className="absolute left-[16.6%] top-1/2 h-1 -translate-y-1/2 rounded-full bg-gradient-to-r from-teal-500 via-blue-500 to-purple-500 z-[5]"
+              className="absolute left-[16.6%] top-1/2 h-1 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4C99A0] to-[#65A859] z-[5]"
               style={{ width: progressWidth }}
             />
 

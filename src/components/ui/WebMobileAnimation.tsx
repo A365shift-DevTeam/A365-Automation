@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Globe, Smartphone, Monitor, Wifi, Battery, Signal } from 'lucide-react';
+import webScreenshot from '../../assets/Website gif/Web.png';
+import mobileScreenshot from '../../assets/Website gif/Mobile.png';
 
 type WebMobileAnimationProps = {
   url: string;
@@ -152,12 +154,10 @@ function DesktopView({ url }: { url: string }) {
       </div>
 
       <div className="flex-1 bg-white dark:bg-gray-950 overflow-hidden relative">
-        <iframe
-          src={url}
-          title="Web preview"
-          className="w-full h-full border-0 bg-white"
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+        <img
+          src={webScreenshot}
+          alt="Web preview"
+          className="w-full h-auto object-top"
         />
       </div>
     </div>
@@ -180,12 +180,10 @@ function MobileView({ url }: { url: string }) {
         </div>
 
         <div className="flex-1 overflow-hidden bg-white">
-          <iframe
-            src={url}
-            title="Mobile preview"
-            className="w-full h-full border-0"
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+          <img
+            src={mobileScreenshot}
+            alt="Mobile preview"
+            className="w-full h-auto object-top"
           />
         </div>
       </div>
