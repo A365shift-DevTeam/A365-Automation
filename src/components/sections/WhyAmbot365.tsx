@@ -9,7 +9,7 @@ const STATS = [
   { value: 'Enterprise', label: 'Enterprise Level Solutions' },
 ];
 
-export default function WhyA365() {
+export default function WhyAmbot365() {
   return (
     <SectionWrapper id="about" className="section-bg">
       <div className="text-center mb-16">
@@ -106,7 +106,7 @@ export default function WhyA365() {
 
            <div className="section-card p-6">
             <Building2 className="w-10 h-10 text-primary-500 mb-4" />
-            <h4 className="text-lg  text-gray-900 dark:text-gray-100 mb-2">Coreshift</h4>
+            <h4 className="text-lg  text-gray-900 dark:text-gray-100 mb-2">Ambot365</h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">Intelligent AI Agents, Microsoft AI Ecosystem, Office Suite, and Scalable Industry Products. We deliver it all.</p>
           </div>
             <div className="section-card p-6">

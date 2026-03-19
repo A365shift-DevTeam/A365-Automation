@@ -218,7 +218,7 @@ export default function Hero() {
             { icon: User, label: 'Ambrose Denny', sub: 'Founder of Ambot365' },
             { icon: Award, label: '40+ Years', sub: 'Combined Digital Expertise' },
             { icon: Globe, label: '50+ Clients', sub: 'Global Experience' },
-            { icon: Handshake, label: 'Digital Partners', sub: 'Ambot365 & Coreshift' },
+            { icon: Handshake, label: 'Digital Partners', sub: 'Ambot365 & Ambot365' },
           ].map((item, i) => (
             <motion.div
               key={i}

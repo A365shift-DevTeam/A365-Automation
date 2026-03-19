@@ -36,7 +36,7 @@ const COMPARISON = [
     theme: 'amber',
   },
   {
-    title: 'A365 Agent',
+    title: 'Ambot365 Agent',
     subtitle: 'Managed AI agent',
     icon: Sparkles,
     cost: '20–50% of staff cost',
@@ -57,7 +57,7 @@ export default function WhyAgent() {
     <SectionWrapper className="section-bg">
       <div className="text-center mb-16">
         <h2 className="text-2xl md:text-4xl mb-4 section-title">Why an agent, specifically?</h2>
-        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">From Intelligent AI Agents to Microsoft 365 and Office Suite—see how A365 compares to hiring or generic automation.</p>
+        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">From Intelligent AI Agents to Microsoft 365 and Office Suite—see how Ambot365 compares to hiring or generic automation.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

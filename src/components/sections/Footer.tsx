@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           <div className="col-span-2 md:col-span-1">
-            <div className="text-2xl  tracking-tighter mb-4 text-gray-900 dark:text-gray-50">A365</div>
+            <div className="text-2xl  tracking-tighter mb-4 text-gray-900 dark:text-gray-50">Ambot365</div>
             <p className="text-gray-600 dark:text-gray-400 text-sm pr-4">
               Intelligent AI Agents · Microsoft AI Ecosystem · Office Suite · Scalable Industry Products.
             </p>
@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-          <p>© 2026 A365. All rights reserved.</p>
+          <p>© 2026 Ambot365. All rights reserved.</p>
           <div className="flex gap-4 mt-4 md:mt-0">
             <a href="#" className="hover:text-gray-900 dark:hover:text-white transition-colors">Twitter</a>
             <a href="#" className="hover:text-gray-900 dark:hover:text-white transition-colors">LinkedIn</a>

@@ -1,7 +1,7 @@
-import { QA_DATABASE } from './a365Knowledge';
+import { QA_DATABASE } from './ambot365Knowledge';
 
 /**
- * Match a user question against the A365 Q&A database using keyword scoring.
+ * Match a user question against the Ambot365 Q&A database using keyword scoring.
  * Returns the best-matching answer, or a friendly fallback.
  */
 export function localAnswer(question: string): string {

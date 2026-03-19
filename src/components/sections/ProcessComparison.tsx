@@ -161,7 +161,7 @@ export default function ProcessComparison() {
             viewport={{ once: true }}
             className="text-2xl md:text-4xl mb-4 section-title"
           >
-            Manual Process vs <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859]">A365 Automation</span>
+            Manual Process vs <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859]">Ambot365 Automation</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -170,7 +170,7 @@ export default function ProcessComparison() {
             transition={{ delay: 0.1 }}
             className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base"
           >
-            Watch both processes run side by side. A365 agents complete in minutes what takes humans much longer.
+            Watch both processes run side by side. Ambot365 agents complete in minutes what takes humans much longer.
           </motion.p>
         </div>
 
@@ -331,7 +331,7 @@ export default function ProcessComparison() {
                       <Zap className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg  text-gray-900 dark:text-white">A365 Agent</h3>
+                      <h3 className="text-lg  text-gray-900 dark:text-white">Ambot365 Agent</h3>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Fully automated</p>
                     </div>
                   </div>
@@ -476,7 +476,7 @@ export default function ProcessComparison() {
               <div className="pointer-events-none absolute inset-x-3 top-2 h-1/2 rounded-xl bg-white/35 dark:bg-white/5 blur-[1px]" />
               <div className="flex items-center gap-2 mb-3">
                 <Zap className="w-4 h-4 text-[#65A859]" />
-                <h4 className="text-sm  text-[#65A859]">A365 Automation</h4>
+                <h4 className="text-sm  text-[#65A859]">Ambot365 Automation</h4>
               </div>
               <ul className="space-y-2">
                 {[
@@ -507,7 +507,7 @@ export default function ProcessComparison() {
                 <ArrowRight className="w-5 h-5 text-white" />
               </div>
               <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">
-                Save <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859] font-black text-lg">7+ minutes</span> per transaction with A365 agents
+                Save <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859] font-black text-lg">7+ minutes</span> per transaction with Ambot365 agents
               </p>
             </div>
             <div className="flex items-center gap-6 text-xs  tracking-wide uppercase text-gray-500 dark:text-gray-400">

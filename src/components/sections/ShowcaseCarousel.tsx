@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { ChevronLeft, ChevronRight, Play, Pause, CheckCircle2, TrendingUp } from 'lucide-react';
 import ProcessAnimationCard from '../ui/ProcessAnimationCard';
 import WebMobileAnimation from '../ui/WebMobileAnimation';
+import ChatbotPreview from '../ui/ChatbotPreview';
 
 // Import Microsoft Images
 import pb1 from '../../assets/Power BI images/pic1.png';
@@ -12,7 +13,6 @@ import pb4 from '../../assets/Power BI images/Power-BI-web-2025-Dashboard.png';
 import ex1 from '../../assets/Excel image/Excel img 1.png';
 import ex2 from '../../assets/Excel image/excel img 2.png';
 import productImg from '../../assets/Product img.png';
-import webImg from '../../assets/Web 13.png';
 
 // Website GIFs
 import gifCar from '../../assets/Website gif/Car.gif';
@@ -33,6 +33,7 @@ const TABS: TabItem[] = [
   { id: 'attendance', label: 'BI' },
   { id: 'payroll', label: 'Excel' },
   { id: 'webmobile', label: 'Web & Mobile' },
+  { id: 'chatbot', label: 'Chatbot' },
   { id: 'websites', label: 'Websites' },
   { id: 'compliance', label: 'Products' },
 ];
@@ -41,7 +42,7 @@ type MockupItem = {
   color: string;
   title: string;
   pages: number;
-  type: 'mock' | 'image' | 'webmobile' | 'iframe';
+  type: 'mock' | 'image' | 'iframe' | 'chatbot';
   images?: string[];
   video?: string;
   iframeUrl?: string;
@@ -143,8 +144,8 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     color: 'from-blue-50 to-indigo-50',
     title: 'Web & Mobile Applications',
     pages: 1,
-    type: 'webmobile',
-    images: [],
+    type: 'iframe',
+    iframeUrl: 'https://resturant-poc-kohl.vercel.app/',
     agentName: 'Web & Mobile Solutions',
     whatItDoes: [
       'Custom web applications with modern frameworks — React, Next.js, Angular.',
@@ -159,6 +160,23 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     outcome: {
       text: 'Enterprise-grade web and mobile applications delivered with modern tech stacks. From concept to production in weeks, not months.',
       footer: 'React · Next.js · React Native · Azure · REST APIs',
+    },
+  },
+  chatbot: {
+    color: 'from-cyan-50 to-emerald-50',
+    title: 'AI Chatbot Assistant',
+    pages: 1,
+    type: 'chatbot',
+    agentName: 'Conversational Assistant',
+    whatItDoes: [
+      'Answers questions about all sections on this page in a guided chat flow.',
+      'Highlights key offerings from Agents, BI, Excel, Web & Mobile, Websites, and Products.',
+      'Improves engagement with quick contextual responses and clear next steps.',
+      'Ends with a direct Contact Us action to convert interest into leads.',
+    ],
+    outcome: {
+      text: 'Visitors get immediate guidance and product clarity, then move smoothly to Contact Us for faster conversion.',
+      footer: 'AI Chat · Lead Capture · Customer Guidance',
     },
   },
   websites: {
@@ -313,7 +331,7 @@ export default function ShowcaseCarousel() {
         </div>
 
         {/* Unified Card Container */}
-        <div className="max-w-[1400px] mx-auto bg-white dark:bg-gray-950 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden flex flex-col w-full">
+        <div className="relative max-w-[1400px] mx-auto bg-white dark:bg-gray-950 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden flex flex-col w-full">
 
           {/* Tabs Inside Card */}
           <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 p-4 lg:p-6 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
@@ -393,7 +411,19 @@ export default function ShowcaseCarousel() {
                         <ProcessAnimationCard />
                       </motion.div>
                     )}
-                    {activeData.type === 'webmobile' && (
+                    {activeData.type === 'chatbot' && (
+                      <motion.div
+                        key={`${activeTab}-chatbot`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="absolute inset-0"
+                      >
+                        <ChatbotPreview />
+                      </motion.div>
+                    )}
+                    {activeTab === 'webmobile' && activeData.iframeUrl && (
                       <motion.div
                         key={`${activeTab}-webmobile`}
                         initial={{ opacity: 0 }}
@@ -402,10 +432,10 @@ export default function ShowcaseCarousel() {
                         transition={{ duration: 0.4 }}
                         className="absolute inset-0"
                       >
-                        <WebMobileAnimation />
+                        <WebMobileAnimation url={activeData.iframeUrl} />
                       </motion.div>
                     )}
-                    {activeData.type === 'iframe' && activeData.iframeUrl && (
+                    {activeData.type === 'iframe' && activeData.iframeUrl && activeTab !== 'webmobile' && (
                       <motion.div
                         key={`${activeTab}-iframe`}
                         initial={{ opacity: 0 }}

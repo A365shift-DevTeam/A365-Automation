@@ -11,7 +11,7 @@ import ProcessComparison from './components/sections/ProcessComparison';
 import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import Integrations from './components/sections/Integrations';
 import SecurityFAQ from './components/sections/SecurityFAQ';
-import WhyA365 from './components/sections/WhyA365';
+import WhyAmbot365 from './components/sections/WhyAmbot365';
 import ContactUs from './components/sections/ContactUs';
 import CTA from './components/sections/CTA';
 import Footer from './components/sections/Footer';
@@ -40,7 +40,7 @@ export default function App() {
           <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           {/* <Integrations />
           <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} /> */}
-          <WhyA365 />
+          <WhyAmbot365 />
           <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
           <SecurityFAQ />
           <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />

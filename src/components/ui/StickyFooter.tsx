@@ -1,7 +1,7 @@
 "use client"
 import { motion } from "motion/react"
-import { Facebook, Linkedin, Github, Mail, MapPin, Twitter } from "lucide-react"
-
+  import React from "react"
+  import { Facebook, Linkedin, Github, Mail, MapPin, Twitter } from "lucide-react"
 // Animation variants for reusability
 const containerVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -90,9 +90,9 @@ const footerData = {
     { href: "https://github.com/ambot365", label: "GitHub", icon: Github, color: "#333" },
     { href: "https://www.linkedin.com/company/ambot-365/", label: "LinkedIn", icon: Linkedin, color: "#0A66C2" },
   ],
-  title: "A365",
+  title: "Ambot365",
   subtitle: "Enterprise-grade AI Automation",
-  copyright: `©${new Date().getFullYear()} A365. All rights reserved.`,
+  copyright: `©${new Date().getFullYear()} Ambot365. All rights reserved.`,
 }
 
 // Reusable components

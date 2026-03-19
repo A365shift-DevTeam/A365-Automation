@@ -243,7 +243,7 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
             </nav>
             <div className="mt-auto px-4 pt-4 border-t border-gray-700">
               <p className="text-gray-500 text-xs">Ambot365 AI Assistant</p>
-              <p className="text-gray-600 text-xs mt-1">Powered by A365 data</p>
+              <p className="text-gray-600 text-xs mt-1">Powered by Ambot365 data</p>
             </div>
           </aside>
 
@@ -315,7 +315,7 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                        placeholder="Ask anything about A365..."
+                        placeholder="Ask anything about Ambot365..."
                         className="flex-1 bg-transparent text-white placeholder-gray-500 text-base py-1 focus:outline-none"
                       />
                       <button type="button" className="p-1.5 text-gray-400 hover:text-white rounded-lg" aria-label="Voice">

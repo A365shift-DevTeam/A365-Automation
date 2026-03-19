@@ -7,33 +7,33 @@ export type QA = {
 export const QA_DATABASE: QA[] = [
   // ── COMPANY OVERVIEW ──────────────────────────────────────────────────────
   {
-    keywords: ['what is a365', 'what is ambot', 'about a365', 'about ambot', 'who are you', 'company', 'ambot365'],
-    question: 'What is Ambot365 / A365?',
-    answer: '**Ambot365** (trading as A365) is a premium AI automation company under the **Coreshift** group.\n\nTagline: *"We Build It. You Operate It. We Transform It."*\n\nWe build intelligent AI agents and automation solutions that run securely on your own infrastructure — your data never leaves your network.\n\n**Group structure:** Coreshift → A365Shift → Ambot365',
+    keywords: ['what is ambot365', 'what is ambot', 'about ambot365', 'about ambot', 'who are you', 'company', 'ambot365'],
+    question: 'What is Ambot365 / Ambot365?',
+    answer: '**Ambot365** (trading as Ambot365) is a premium AI automation company under the **Ambot365** group.\n\nTagline: *"We Build It. You Operate It. We Transform It."*\n\nWe build intelligent AI agents and automation solutions that run securely on your own infrastructure — your data never leaves your network.\n\n**Group structure:** Ambot365 → Ambot365Shift → Ambot365',
   },
   {
     keywords: ['founder', 'ambrose', 'denny', 'who founded', 'leadership'],
-    question: 'Who founded A365?',
+    question: 'Who founded Ambot365?',
     answer: '**Ambrose Denny** is the founder of Ambot365. The group brings together 40+ years of combined enterprise experience across finance, ERP, and AI automation.',
   },
   {
     keywords: ['stats', 'statistics', 'numbers', 'clients', 'how many', 'experience', 'track record'],
-    question: 'What are A365\'s key stats?',
+    question: 'What are Ambot365\'s key stats?',
     answer: 'Here are our key numbers:\n\n- **50+** enterprise clients served\n- **6+** AI agents live in production\n- **19+** enterprise systems integrated\n- **8 weeks** average delivery time\n- **24/7** support provided\n- **40+** years combined enterprise experience',
   },
   {
     keywords: ['tagline', 'slogan', 'motto', 'build operate transform'],
-    question: 'What is A365\'s tagline?',
+    question: 'What is Ambot365\'s tagline?',
     answer: 'Our tagline is: **"We Build It. You Operate It. We Transform It."**\n\nThis reflects our end-to-end commitment — we build the solution, hand it over for you to operate, and continuously help transform your business with AI.',
   },
   {
-    keywords: ['coreshift', 'a365shift', 'group', 'parent company', 'group structure'],
-    question: 'What is the A365 group structure?',
-    answer: 'The group is structured as:\n\n**Coreshift** (parent — 20+ years enterprise IT background)\n→ **A365Shift** (AI transformation division)\n→ **Ambot365** (AI agents and automation products)',
+    keywords: ['ambot365', 'ambot365shift', 'group', 'parent company', 'group structure'],
+    question: 'What is the Ambot365 group structure?',
+    answer: 'The group is structured as:\n\n**Ambot365** (parent — 20+ years enterprise IT background)\n→ **Ambot365Shift** (AI transformation division)\n→ **Ambot365** (AI agents and automation products)',
   },
   {
     keywords: ['industries', 'sectors', 'industry', 'manufacturing', 'automotive', 'finance', 'saas', 'private equity'],
-    question: 'Which industries does A365 serve?',
+    question: 'Which industries does Ambot365 serve?',
     answer: 'We serve the following industries:\n\n- **Manufacturing**\n- **Automotive**\n- **Finance & Banking**\n- **Venture Capital / Private Equity (VC/PE)**\n- **B2B SaaS companies**',
   },
 
@@ -225,24 +225,24 @@ export const QA_DATABASE: QA[] = [
   },
   {
     keywords: ['get started', 'start', 'begin', 'contact', 'get in touch', 'book', 'next steps', 'how to start'],
-    question: 'How do I get started with A365?',
+    question: 'How do I get started with Ambot365?',
     answer: 'Getting started is simple:\n\n1. **Book a Discovery Sprint** — Click "Get in Touch" on the website to schedule a free discovery session\n2. **Receive a fixed quote** — Get a clear, fixed-price proposal within 2 weeks\n3. **Start a pilot** — Validate the solution with a scoped pilot\n4. **Scale** — Roll out across your organisation\n\nThere is no commitment until you receive and approve the quote.',
   },
 
   // ── SECURITY & DATA ───────────────────────────────────────────────────────
   {
     keywords: ['security', 'secure', 'data security', 'safe', 'data safe', 'data protection', 'privacy'],
-    question: 'How secure is the A365 solution?',
+    question: 'How secure is the Ambot365 solution?',
     answer: 'Security is central to our design:\n\n- All agents run **on your own infrastructure** (on-premise or your private cloud)\n- Data **never leaves your network**\n- Compatible with enterprise security policies and compliance requirements\n- Full **audit trails** for all automated actions\n- **Role-based access control (RBAC)** supported\n- Office AI Bots runs as a local desktop app — no cloud data transmission',
   },
   {
     keywords: ['on premise', 'on-premise', 'infrastructure', 'cloud', 'private cloud', 'in-house', 'data stays'],
     question: 'Does data leave our network?',
-    answer: 'No. All A365 agents and solutions run **on your own infrastructure**.\n\nYour data never leaves your network. Whether deployed on-premise or in your private cloud, we ensure:\n\n- No external data transmission\n- Full compliance with your IT security policies\n- Audit trails for all agent actions',
+    answer: 'No. All Ambot365 agents and solutions run **on your own infrastructure**.\n\nYour data never leaves your network. Whether deployed on-premise or in your private cloud, we ensure:\n\n- No external data transmission\n- Full compliance with your IT security policies\n- Audit trails for all agent actions',
   },
   {
     keywords: ['compliance', 'gdpr', 'audit', 'audit trail', 'regulatory', 'rbac', 'access control'],
-    question: 'Are A365 solutions compliance-ready?',
+    question: 'Are Ambot365 solutions compliance-ready?',
     answer: 'Yes. Our solutions are designed for enterprise compliance:\n\n- **Full audit trails** — every automated action is logged\n- **RBAC** — role-based access control for all users\n- **Data locality** — data stays in your network\n- Compatible with GDPR, SOX, and internal IT governance policies\n\nSpecific compliance requirements are addressed during the Discovery Sprint.',
   },
   {

@@ -155,7 +155,7 @@ export default function HowItWorks() {
       <div className="sticky top-0 h-screen flex flex-col items-center overflow-hidden py-4">
 
         <div className="text-center mb-2 shrink-0">
-          <h2 className="text-2xl md:text-4xl mb-2 section-title">How A365 Works</h2>
+          <h2 className="text-2xl md:text-4xl mb-2 section-title">How Ambot365 Works</h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base">
             Scroll down to see how our AI bot transforms your manual process into a fully automated workflow.
           </p>
