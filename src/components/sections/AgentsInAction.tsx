@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { ArrowRight, Zap, LayoutTemplate, Code2, CheckCircle2, Package, Activity, Layers, Box, ShieldCheck, Settings, Cpu, Settings2, LineChart, Clock, Database, TrendingUp, Shield } from 'lucide-react';
 import OrbitalApps from './OrbitalApps';
@@ -21,9 +21,31 @@ const TABS = [
   { id: 'products', label: 'Products', icon: Package, subtitle: 'Ready-to-use, scalable AI products built for your enterprise workflows.' },
 ];
 
+const PRODUCTS = [
+  { title: "DocCraft", desc: "Automate Excel to PDF, PPT & Image Like Certificates, Reports." },
+  { title: "Sheets to Slides", desc: "Creating Excel to Presentation like Weekly Report, Proposals." },
+  { title: "Image Compressor", desc: "Compress your image up to 90% without compromising quality" },
+  { title: "Consolidation", desc: "Combine multiple files into single file (by Column)" },
+  { title: "File Splitter", desc: "Split large files into sheets and workbook, based on criteria" },
+  { title: "Merge Master", desc: "Combine multiple files into single file (by Multiple Range)" },
+  { title: "File Comparison", desc: "Compare between files and Highlight changes." },
+  { title: "Work Allocation", desc: "Allocate tasks equally or Randomly based on User" }
+];
+
 export default function AgentsInAction() {
   const [activeTab, setActiveTab] = useState('live');
+  const [productPage, setProductPage] = useState(0);
   const reduceMotion = useReducedMotion();
+  const PRODUCTS_PER_PAGE = 4;
+  const totalProductPages = Math.ceil(PRODUCTS.length / PRODUCTS_PER_PAGE);
+
+  useEffect(() => {
+    if (activeTab !== 'products') return;
+    const timer = setInterval(() => {
+      setProductPage((prev) => (prev + 1) % totalProductPages);
+    }, 4200);
+    return () => clearInterval(timer);
+  }, [activeTab, totalProductPages]);
 
   return (
     <section id="agents-in-action" className="section-bg relative overflow-hidden py-16 md:py-24">
@@ -363,37 +385,43 @@ export default function AgentsInAction() {
                 {/* Left: 60% Product Grid */}
                 <div className="w-full lg:w-[60%] bg-white/80 dark:bg-gray-900/80 backdrop-blur-md p-6 md:p-8 rounded-3xl border-2 border-white/50 dark:border-gray-700/50 shadow-2xl overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#4C99A0]/5 via-transparent to-[#65A859]/5 rounded-3xl" />
-                  <div className="relative z-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {[
-                        { title: "DocCraft", desc: "Automate Excel to PDF, PPT & Image Like Certificates, Reports." },
-                        { title: "Sheets to Slides", desc: "Creating Excel to Presentation like Weekly Report, Proposals." },
-                        { title: "Image Compressor", desc: "Compress your image up to 90% without compromising quality" },
-                        { title: "Consolidation", desc: "Combine multiple files into single file (by Column)" },
-                        { title: "File Splitter", desc: "Split large files into sheets and workbook, based on criteria" },
-                        { title: "Merge Master", desc: "Combine multiple files into single file (by Multiple Range)" },
-                        { title: "File Comparison", desc: "Compare between files and Highlight changes." },
-                        { title: "Work Allocation", desc: "Allocate tasks equally or Randomly based on User" }
-                      ].map((product, i) => (
-                        <motion.div
-                          key={product.title}
-                          initial={{ opacity: 0 }}
-                          animate={{
-                            opacity: [0, 1, 1, 0, 0],
-                          }}
-                          transition={{
-                            duration: 5,
-                            times: [0, 0.08, 0.85, 0.95, 1],
-                            repeat: Infinity,
-                            repeatType: 'loop',
-                            delay: i * 0.15,
-                            ease: "easeOut"
-                          }}
-                          className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 dark:border-gray-700 hover:border-[#4C99A0]/50 dark:hover:border-[#65A859]/50"
-                        >
-                          <h4 className="text-gray-900 dark:text-gray-100  text-sm mb-2">{product.title}</h4>
-                          <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">{product.desc}</p>
-                        </motion.div>
+                  <div className="relative z-10 lg:h-[520px] overflow-hidden pr-1">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={productPage}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -30 }}
+                        transition={{ duration: reduceMotion ? 0.15 : 0.4 }}
+                        className="grid grid-cols-1 gap-4"
+                      >
+                        {PRODUCTS.slice(
+                          productPage * PRODUCTS_PER_PAGE,
+                          productPage * PRODUCTS_PER_PAGE + PRODUCTS_PER_PAGE
+                        ).map((product, offset) => {
+                          return (
+                            <motion.div
+                              key={`${product.title}-${offset}`}
+                              initial={{ opacity: 0, y: 16 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: reduceMotion ? 0 : offset * 0.06 }}
+                              className="h-[108px] bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md transition-all duration-300 border-2 border-gray-100 dark:border-gray-700"
+                            >
+                              <h4 className="text-gray-900 dark:text-gray-100 text-sm mb-2">{product.title}</h4>
+                              <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">{product.desc}</p>
+                            </motion.div>
+                          );
+                        })}
+                      </motion.div>
+                    </AnimatePresence>
+                    <div className="flex items-center justify-center gap-2 mt-6">
+                      {Array.from({ length: totalProductPages }).map((_, i) => (
+                        <span
+                          key={i}
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            i === productPage ? 'w-6 bg-[#4C99A0]' : 'w-1.5 bg-gray-300 dark:bg-gray-600'
+                          }`}
+                        />
                       ))}
                     </div>
                   </div>
