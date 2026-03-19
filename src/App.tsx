@@ -18,7 +18,7 @@ import Footer from './components/sections/Footer';
 import StickyFooter from './components/ui/StickyFooter';
 import Navbar from './components/layout/Navbar';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { SectionSeparator } from './components/SectionSeparator';
+import Separator from './components/ui/Separator';
 
 export default function App() {
   return (
@@ -27,23 +27,23 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
-          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
+          <Separator />
           <SolutionsOverview />
-          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
+          <Separator />
           <AgentsInAction />
-          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
+          <Separator />
           <ShowcaseCarousel />
-          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
+          <Separator />
           <ProcessComparison />
-          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
+          <Separator />
           <HowEngagementsWork />
-          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
+          <Separator />
           {/* <Integrations />
-          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} /> */}
+          <Separator /> */}
           <WhyAmbot365 />
-          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
+          <Separator />
           <SecurityFAQ />
-          <SectionSeparator color="grey" width="100%" thickness={2} shadow={true} />
+          <Separator />
           <ContactUs />
           {/* <CTA /> */}
         </main>

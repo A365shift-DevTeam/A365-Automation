@@ -1,119 +1,85 @@
 import { motion } from 'motion/react';
-import { Facebook, Linkedin, Youtube, Instagram, MessageCircle, Mail, MapPin } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import fbIcon from '../../assets/Socialmedia-icons/facebook.png';
+import inIcon from '../../assets/Socialmedia-icons/linkedin.png';
+import ytIcon from '../../assets/Socialmedia-icons/youtube.png';
+import igIcon from '../../assets/Socialmedia-icons/instagram.png';
+import waIcon from '../../assets/Socialmedia-icons/social.png';
 import qrCode from '../../assets/QR-code.png';
 import contactBg from '../../assets/Contact-Us- 1.jpg';
 import SectionWrapper from '../ui/SectionWrapper';
+import Separator from '../ui/Separator';
 
 const SOCIAL_LINKS = [
-  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61555896342817&mibextid=LQQJ4d', color: '#1877F2' },
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/company/ambot-365/', color: '#0A66C2' },
-  { icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@ambot365?si=0lREyG9S_k68ZzYp', color: '#FF0000' },
-  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/ambot365?igsh=MW9mNjYwaWFibGNlcg%3D%3D&utm_source=qr', color: '#E4405F' },
-  { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/message/RTMK3T6Y7ZJXP1', color: '#25D366' },
+  { imgSrc: fbIcon, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61555896342817&mibextid=LQQJ4d', color: '#1877F2' },
+  { imgSrc: inIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/company/ambot-365/', color: '#0A66C2' },
+  { imgSrc: ytIcon, label: 'YouTube', href: 'https://youtube.com/@ambot365?si=0lREyG9S_k68ZzYp', color: '#FF0000' },
+  { imgSrc: igIcon, label: 'Instagram', href: 'https://www.instagram.com/ambot365?igsh=MW9mNjYwaWFibGNlcg%3D%3D&utm_source=qr', color: '#E4405F' },
+  { imgSrc: waIcon, label: 'WhatsApp', href: 'https://wa.me/message/RTMK3T6Y7ZJXP1', color: '#25D366' },
 ];
 
 export default function ContactUs() {
   return (
-    <SectionWrapper 
-      id="contact" 
-      className="relative overflow-hidden group"
+    <SectionWrapper
+      id="contact"
+      className="relative overflow-hidden p-0"
       style={{
         backgroundImage: `url(${contactBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left: Contact Details (Mobile: 1st) */}
-        <div className="text-center lg:text-left order-1">
+      <div className="relative z-10">
+        <div className="max-w-6xl mx-auto px-6 py-10 md:py-12 grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-8 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.45 }}
+            className="space-y-3 text-center md:text-left ml-6 md:ml-14 md:translate-x-24 lg:translate-x-40"
           >
-            <h2 className="text-2xl md:text-4xl mb-8 leading-tight tracking-tighter section-title">
-              Contact Us
-            </h2>
+            <h2 className="text-3xl md:text-4xl section-title">Contact Us</h2>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">United Arab Emirates | India</p>
+            <p className="text-gray-900 dark:text-gray-100 text-xl">
+              E-mail Id: <a className="hover:text-[#4C99A0] transition-colors" href="mailto:Info@ambot365.com">Info@ambot365.com</a>
+            </p>
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 mt-4 px-6 py-3 rounded-md border-2 border-[#3B82F6] text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              Connect to Us
+            </a>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: 12 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="space-y-8"
+            transition={{ duration: 0.45, delay: 0.1 }}
+            className="flex justify-center md:justify-start md:translate-x-12"
           >
-            <div className="flex items-center justify-center lg:justify-start gap-3 text-xl md:text-2xl  text-gray-600 dark:text-gray-400">
-               <MapPin className="w-6 h-6 text-[#65A859]" />
-               <span className="italic">United Arab Emirates | India</span>
-            </div>
-
-            <div className="h-px w-24 bg-gradient-to-r from-gray-200 dark:from-gray-800 to-transparent mr-auto hidden lg:block" />
-
-            <div className="flex flex-col items-center lg:items-start gap-3">
-              <span className="text-sm font-black uppercase tracking-[0.4em] text-[#4C99A0]">E-mail Id</span>
-              <a
-                href="mailto:Info@ambot365.com"
-                className="group flex items-center justify-center lg:justify-start gap-4 text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100 hover:text-[#4C99A0] transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-full bg-gray-50 dark:bg-gray-900 flex items-center justify-center border border-gray-100 dark:border-gray-800 group-hover:border-[#4C99A0]/30 group-hover:bg-[#4C99A0]/5 transition-all">
-                  <Mail className="w-5 h-5 transition-transform group-hover:scale-110" />
-                </div>
-                <span>Info@ambot365.com</span>
-              </a>
-            </div>
+            <img src={qrCode} alt="Ambot365 QR Code" className="w-36 h-36 md:w-40 md:h-40 object-contain" />
           </motion.div>
         </div>
 
-        {/* Right: Social Media & QR Code (Mobile: 2nd) */}
-        <div className="flex flex-col md:flex-row items-center justify-center lg:justify-end gap-12 order-2">
-          <div className="grid grid-cols-3 gap-6 order-2 md:order-1">
-            {SOCIAL_LINKS.map((social, i) => (
-              <motion.a
+        <div className="border-t border-white/70 dark:border-gray-700/60">
+          <div className="max-w-6xl mx-auto px-6 pt-5 pb-2 flex flex-wrap items-center justify-center gap-6 md:gap-8">
+            {SOCIAL_LINKS.map((social) => (
+              <a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                className="group flex flex-col items-center gap-3"
+                className="inline-flex items-center gap-2.5"
+                style={{ color: social.color }}
               >
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-white dark:bg-gray-900 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] flex items-center justify-center border border-gray-100 dark:border-gray-800 transition-all duration-300 group-hover:shadow-[0_20px_40px_rgb(0,0,0,0.1)] group-hover:border-primary-500/30">
-                  <social.icon 
-                    className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:scale-110"
-                    style={{ color: social.color }}
-                  />
-                </div>
-                <span className="text-xs  text-gray-400 dark:text-gray-500 group-hover:text-gray-900 dark:group-hover:text-gray-200 uppercase tracking-tighter transition-colors">
-                  {social.label}
-                </span>
-              </motion.a>
+                <img src={social.imgSrc} alt={social.label} className="w-6 h-6 object-contain" />
+                <span className="text-base">{social.label}</span>
+              </a>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex flex-col items-center gap-4 order-1 md:order-2"
-          >
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-[#4C99A0]/20 to-[#65A859]/20 rounded-[2.5rem] blur-2xl group-hover:opacity-100 opacity-70 transition-opacity" />
-              <div className="relative bg-white p-4 rounded-[2.5rem] shadow-2xl border border-gray-100 transition-transform duration-500 group-hover:scale-[1.02]">
-                <img
-                  src={qrCode}
-                  alt="Ambot365 QR Code"
-                  className="w-32 h-32 md:w-40 md:h-40 object-contain"
-                />
-              </div>
-            </div>
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-300 dark:text-gray-700">Scan to Connect</p>
-          </motion.div>
+          <Separator className="py-2" />
         </div>
       </div>
     </SectionWrapper>
