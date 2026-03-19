@@ -112,12 +112,12 @@ export default function HowEngagementsWork() {
           <div className="relative h-1">
             {/* Base Horizontal line with gradient */}
             <div
-              className="absolute left-[16.6%] right-[16.6%] top-1/2 h-1 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4C99A0] to-[#65A859] opacity-20"
+              className="absolute left-[16.6%] right-[16.6%] top-1/2 h-0.5 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4C99A0] to-[#65A859] opacity-20"
               aria-hidden
             />
             {/* Active Progress Gradient line */}
             <motion.div
-              className="absolute left-[16.6%] top-1/2 h-1 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4C99A0] to-[#65A859] z-[5]"
+              className="absolute left-[16.6%] top-1/2 h-0.5 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4C99A0] to-[#65A859] z-[5]"
               style={{ width: progressWidth }}
             />
 
