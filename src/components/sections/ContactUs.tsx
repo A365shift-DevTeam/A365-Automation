@@ -64,7 +64,7 @@ export default function ContactUs() {
         </div>
 
         <div className="border-t border-white/70 dark:border-gray-700/60">
-          <div className="max-w-6xl mx-auto px-6 pt-5 pb-2 flex flex-wrap items-center justify-center gap-6 md:gap-8">
+          <div className="max-w-6xl mx-auto px-6 pt-5 pb-2 flex flex-wrap items-center justify-center gap-12 md:gap-20">
             {SOCIAL_LINKS.map((social) => (
               <a
                 key={social.label}
