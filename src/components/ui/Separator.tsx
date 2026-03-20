@@ -1,15 +1,13 @@
-export default function Separator({ className = 'py-10' }: { className?: string }) {
+export default function Separator({ className = 'py-0' }: { className?: string }) {
   return (
     <div className={`w-full flex items-center justify-center ${className}`}>
-      <div className="relative w-full max-w-6xl">
-        {/* Top highlight (raised edge) */}
-        <div className="absolute -top-[1px] left-0 w-full h-[1px] bg-white/90 dark:bg-gray-500/25 z-0" />
-
-        {/* Ultra-thin main bevel line (1px) */}
-        <div className="relative h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent dark:via-gray-700 rounded-full z-10" />
-
-        {/* Sharp, thin bottom shadow */}
-        <div className="absolute top-[1px] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-900 blur-[2px] opacity-25 z-0" />
+      <div className="relative w-full max-w-6xl px-2">
+        {/* top highlight */}
+        <div className="absolute -top-px left-2 right-2 h-px bg-white/80 dark:bg-white/15" />
+        {/* main separator */}
+        <div className="relative h-px bg-gray-300 dark:bg-gray-700" />
+        {/* soft shadow for 3D depth */}
+        <div className="absolute top-px left-2 right-2 h-[2px] bg-gray-500/25 dark:bg-black/45 blur-[1px]" />
       </div>
     </div>
   );

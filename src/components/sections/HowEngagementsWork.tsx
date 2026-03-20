@@ -141,7 +141,7 @@ export default function HowEngagementsWork() {
               <img
                 src={botLogo}
                 alt="Ambot365"
-                className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(101,168,89,0.5)] bg-white dark:bg-gray-900 rounded-full p-1 border border-gray-100 dark:border-gray-800"
+                className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(101,168,89,0.5)]"
               />
             </motion.div>
           </div>
@@ -176,14 +176,16 @@ export default function HowEngagementsWork() {
               <div className={`h-1.5 w-full ${phase.bgClass}`} />
 
               <div className="p-8 flex flex-col h-full">
-                {/* Step indicator pill */}
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-white mb-6 ${phase.bgClass} shadow-lg shadow-${phase.colorClass.split('-')[1]}-200 dark:shadow-none`}>
-                  {phase.step}
+                {/* Inline step + title */}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`min-w-12 h-12 px-3 rounded-2xl flex items-center justify-center font-bold text-white ${phase.bgClass} shadow-lg shadow-${phase.colorClass.split('-')[1]}-200 dark:shadow-none`}>
+                    {phase.step}
+                  </div>
+                  <span className="text-xl font-semibold text-[#002060] dark:text-gray-400">-</span>
+                  <h3 className="text-2xl font-bold !text-[#002060] dark:!text-gray-50 leading-tight">
+                    {phase.title}
+                  </h3>
                 </div>
-
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
-                  {phase.title}
-                </h3>
 
                 <p className="text-gray-500 dark:text-gray-400 text-base leading-relaxed mb-8 flex-1 font-light">
                   {phase.desc}
