@@ -119,7 +119,7 @@ export default function AgentsInAction() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-xs md:text-sm transition-colors duration-200 ${activeTab === tab.id
                   ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                  : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
                 }`}
             >
               <tab.icon className={`w-5 h-5 ${activeTab === tab.id ? 'text-white' : ''}`} />
