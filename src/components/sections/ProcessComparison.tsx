@@ -185,12 +185,12 @@ export default function ProcessComparison() {
           <div className="pointer-events-none absolute left-8 right-8 -bottom-10 h-16 bg-black/20 blur-3xl opacity-20 dark:opacity-30" />
 
           {/* Two Column Layout */}
-          <div className="relative rounded-3xl overflow-hidden border border-gray-200/70 dark:border-gray-800/80 bg-white/90 dark:bg-gray-900/90 shadow-[0_28px_70px_-30px_rgba(31,41,55,0.45),0_6px_16px_rgba(31,41,55,0.08)]">
+          <div className="relative rounded-3xl overflow-hidden border border-gray-200/70 dark:border-gray-800/80 bg-[#EAF6F1] dark:bg-gray-900/90 shadow-[0_28px_70px_-30px_rgba(31,41,55,0.45),0_6px_16px_rgba(31,41,55,0.08)]">
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/70 via-white/20 to-transparent dark:from-white/[0.04] dark:via-transparent dark:to-transparent z-10" />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 relative z-20">
 
               {/* ── LEFT: MANUAL ── */}
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100/80 dark:from-gray-900 dark:to-gray-900/80 p-8 md:p-10 relative overflow-hidden lg:border-r border-gray-200/60 dark:border-gray-800/80">
+              <div className="bg-white dark:bg-gray-900 p-8 md:p-10 relative overflow-hidden lg:border-r border-gray-200/60 dark:border-gray-800/80">
                 {/* Header Row */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
@@ -322,7 +322,7 @@ export default function ProcessComparison() {
               </div>
 
               {/* ── RIGHT: AUTOMATION ── */}
-              <div className="bg-gradient-to-br from-[#4C99A0]/5 to-[#65A859]/5 dark:from-gray-900 dark:to-gray-900/80 p-8 md:p-10 relative overflow-hidden">
+              <div className="bg-white dark:bg-gray-900 p-8 md:p-10 relative overflow-hidden">
                 {/* Glow effects */}
                 <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full bg-[#4C99A0]/8 blur-3xl pointer-events-none" />
                 <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full bg-[#65A859]/8 blur-3xl pointer-events-none" />
