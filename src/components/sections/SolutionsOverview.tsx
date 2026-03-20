@@ -49,8 +49,7 @@ export default function SolutionsOverview() {
   return (
     <section
       id="solutions-overview"
-      className="py-24 relative"
-      style={{ background: 'linear-gradient(135deg, #e8f5ee 0%, #f0faf4 30%, #f7fdfa 60%, #ffffff 100%)' }}
+      className="py-24 relative bg-[linear-gradient(135deg,#e8f5ee_0%,#f0faf4_30%,#f7fdfa_60%,#ffffff_100%)] dark:bg-none dark:bg-gray-950"
     >
       <motion.div
         initial={{ opacity: 0, y: 32 }}

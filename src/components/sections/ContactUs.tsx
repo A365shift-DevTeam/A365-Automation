@@ -22,13 +22,14 @@ export default function ContactUs() {
   return (
     <SectionWrapper
       id="contact"
-      className="relative overflow-hidden p-0"
+      className="relative overflow-hidden p-0 [&>div]:max-w-none [&>div]:px-0"
       style={{
         backgroundImage: `url(${contactBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
+      <div className="absolute inset-0 bg-white/72 dark:bg-black/88" />
       <div className="relative z-10">
         <div className="max-w-6xl mx-auto px-6 py-10 md:py-12 grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-8 items-center">
           <motion.div
