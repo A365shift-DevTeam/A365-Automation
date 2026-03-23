@@ -61,12 +61,20 @@ export default function WhyAmbot365() {
           {stats.map((item) => (
             <div
               key={item.label}
-              className="section-card rounded-[28px] px-8 py-9 text-center shadow-sm"
+              className="section-card rounded-[28px] px-6 py-7 shadow-sm"
             >
-              <div className="text-xs md:text-sm font-medium text-primary-600 dark:text-primary-400">
-                {item.value}
+              <div className="flex items-center gap-4">
+                <div className="basis-[30%] text-left">
+                  <div className="text-xl md:text-2xl leading-tight font-semibold text-primary-600 dark:text-primary-400">
+                    {item.value}
+                  </div>
+                </div>
+                <div className="basis-[70%] border-l border-gray-200 pl-4 dark:border-gray-700">
+                  <div className="text-left text-xs md:text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">
+                    {item.label}
+                  </div>
+                </div>
               </div>
-              <div className="mt-2 text-xs md:text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">{item.label}</div>
             </div>
           ))}
         </div>

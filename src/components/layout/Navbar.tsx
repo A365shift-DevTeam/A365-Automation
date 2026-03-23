@@ -11,7 +11,7 @@ const NAV_LINKS = [
     { name: 'Services', href: '#solutions-overview' },
     { name: 'AI Solutions', href: '#agents-in-action' },
     { name: 'Process', href: '#how-it-works' },
-    { name: 'FAQ', href: '#security-faq' },
+    { name: 'FAQ', href: '#', openInAI: true, aiMenu: 'FAQ' },
     { name: 'Why Us', href: '#about' },
 ];
 
@@ -19,6 +19,7 @@ export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isAIChatOpen, setIsAIChatOpen] = useState(false);
+    const [aiInitialMenu, setAiInitialMenu] = useState<string | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -44,14 +45,29 @@ export default function Navbar() {
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
                     {NAV_LINKS.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 transition-colors relative group"
-                        >
-                            {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover:w-full rounded-full" />
-                        </a>
+                        link.openInAI ? (
+                            <button
+                                key={link.name}
+                                type="button"
+                                onClick={() => {
+                                    setAiInitialMenu(link.aiMenu ?? null);
+                                    setIsAIChatOpen(true);
+                                }}
+                                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 transition-colors relative group"
+                            >
+                                {link.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover:w-full rounded-full" />
+                            </button>
+                        ) : (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 transition-colors relative group"
+                            >
+                                {link.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover:w-full rounded-full" />
+                            </a>
+                        )
                     ))}
                 </nav>
 
@@ -60,7 +76,10 @@ export default function Navbar() {
                     <ThemeToggle />
                     <button
                         type="button"
-                        onClick={() => setIsAIChatOpen(true)}
+                        onClick={() => {
+                            setAiInitialMenu(null);
+                            setIsAIChatOpen(true);
+                        }}
                         className="px-5 py-2.5 bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] text-white text-sm font-medium rounded-xl transition-all shadow-md shadow-[#4C99A0]/25 hover:shadow-lg hover:shadow-[#4C99A0]/40 hover:-translate-y-0.5"
                     >
                         Ask AI
@@ -87,7 +106,10 @@ export default function Navbar() {
                     <ThemeToggle />
                     <button
                         type="button"
-                        onClick={() => setIsAIChatOpen(true)}
+                        onClick={() => {
+                            setAiInitialMenu(null);
+                            setIsAIChatOpen(true);
+                        }}
                         className="px-4 py-2 bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] text-white text-sm font-medium rounded-xl transition-all"
                     >
                         Ask AI
@@ -114,19 +136,35 @@ export default function Navbar() {
                     >
                         <div className="px-6 py-4 flex flex-col gap-4">
                             {NAV_LINKS.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-base font-medium text-gray-900 dark:text-gray-100 py-3 border-b border-gray-100 dark:border-gray-800 hover:text-primary-600 dark:hover:text-primary-500 transition-colors"
-                                >
-                                    {link.name}
-                                </a>
+                                link.openInAI ? (
+                                    <button
+                                        key={link.name}
+                                        type="button"
+                                        onClick={() => {
+                                            setAiInitialMenu(link.aiMenu ?? null);
+                                            setIsAIChatOpen(true);
+                                            setIsMobileMenuOpen(false);
+                                        }}
+                                        className="text-left text-base font-medium text-gray-900 dark:text-gray-100 py-3 border-b border-gray-100 dark:border-gray-800 hover:text-primary-600 dark:hover:text-primary-500 transition-colors"
+                                    >
+                                        {link.name}
+                                    </button>
+                                ) : (
+                                    <a
+                                        key={link.name}
+                                        href={link.href}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="text-base font-medium text-gray-900 dark:text-gray-100 py-3 border-b border-gray-100 dark:border-gray-800 hover:text-primary-600 dark:hover:text-primary-500 transition-colors"
+                                    >
+                                        {link.name}
+                                    </a>
+                                )
                             ))}
                             <div className="flex flex-col gap-3 mt-4 pb-4">
                                 <button
                                     type="button"
                                     onClick={() => {
+                                        setAiInitialMenu(null);
                                         setIsAIChatOpen(true);
                                         setIsMobileMenuOpen(false);
                                     }}
@@ -158,7 +196,7 @@ export default function Navbar() {
 
             {/* Full-screen AI Chat (Gemini/ChatGPT style) */}
             <AnimatePresence>
-                {isAIChatOpen && <AIChatFullScreen onClose={() => setIsAIChatOpen(false)} />}
+                {isAIChatOpen && <AIChatFullScreen onClose={() => setIsAIChatOpen(false)} initialMenu={aiInitialMenu} />}
             </AnimatePresence>
         </header>
     );

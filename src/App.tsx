@@ -10,7 +10,6 @@ import SolutionsOverview from './components/sections/SolutionsOverview';
 import ProcessComparison from './components/sections/ProcessComparison';
 import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import Integrations from './components/sections/Integrations';
-import SecurityFAQ from './components/sections/SecurityFAQ';
 import WhyAmbot365 from './components/sections/WhyAmbot365';
 import ContactUs from './components/sections/ContactUs';
 import CTA from './components/sections/CTA';
@@ -41,8 +40,6 @@ export default function App() {
           {/* <Integrations />
           <Separator /> */}
           <WhyAmbot365 />
-          <Separator />
-          <SecurityFAQ />
           <Separator />
           <ContactUs />
           {/* <CTA /> */}

@@ -32,7 +32,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li><a href="#about" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">About</a></li>
               <li><a href="#cta" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">Contact</a></li>
-              <li><a href="#security-faq" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">FAQ</a></li>
+              <li><a href="#" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">FAQ (Ask AI)</a></li>
             </ul>
           </div>
         </div>

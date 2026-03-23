@@ -5,11 +5,28 @@ import { X, Send, Plus, Mic } from 'lucide-react';
 import { localAnswer } from '../../lib/localChat';
 import ambotLogo from '../../assets/Ambot logo png.png';
 
+const FAQ_ITEMS = [
+  { q: 'What is the Office AI Bots Application?', a: 'The Office AI Bots Application is a desktop tool that brings intelligent automation to your Microsoft Office workflow, helping you complete repetitive tasks faster and with fewer errors.' },
+  { q: 'Who can benefit from using the Office Bots Desktop Application?', a: 'Anyone who uses Microsoft Office regularly-from individuals and small teams to enterprises-can benefit. It is especially useful for roles that handle repetitive document, spreadsheet, or email tasks.' },
+  { q: 'How many bots are currently available and will more bots be added in the future?', a: 'We offer a growing set of bots today and regularly add new ones based on user needs and feedback. Check the app or our website for the latest list and roadmap.' },
+  { q: 'What is the reason for creating these bots?', a: 'We created these bots to reduce manual, repetitive work in Office so users can focus on higher-value tasks, improve accuracy, and scale without adding headcount.' },
+  { q: 'What is unique about this tool, and is it patented?', a: 'Our bots are built specifically for real-world Office workflows and integrate tightly with your existing setup. Specific innovations are covered by our intellectual property and patents where applicable.' },
+  { q: 'Is the bot certified against antivirus threats? How secure is Ambot365?', a: 'Ambot365 is designed with security in mind and is tested for compatibility with common antivirus solutions. We follow secure development practices and can provide more detail on request.' },
+  { q: 'How can I download the application?', a: 'You can download the Office Bots Desktop Application from our website or through the link provided after purchase. Follow the installation guide for your operating system.' },
+  { q: 'Can the product license be transferred or accessed from another system?', a: 'License terms depend on your plan. Some licenses allow use on one primary device with options to transfer; check your license agreement or contact support for your case.' },
+  { q: 'Can I transfer my license if my system crashes or I get a new one?', a: 'Yes. We support license transfer in cases of hardware failure or upgrade. Contact our support team with your license details to complete the transfer.' },
+  { q: 'Is there a support desk for inquiries?', a: 'Yes. We provide a support desk for technical and account inquiries. Access details are in the app and in your welcome email.' },
+  { q: 'Do we have any training or knowledge sources and IT support?', a: 'We offer training materials, knowledge bases, and IT support to help you get the most out of the application. Resources are available in the app and on our customer portal.' },
+  { q: 'What are the system requirements and installation software?', a: 'The application runs on supported Windows versions with Microsoft Office installed. Exact requirements and installation steps are listed on our website and in the installer.' },
+  { q: 'Are there any inaugural offers available?', a: 'We occasionally run launch and promotional offers. Check our website or contact sales for current inaugural or special pricing.' },
+];
+
 const SIDEBAR_MENUS = [
   'Intelligent AI Agents',
   'Microsoft AI Ecosystem',
   'Office Suite',
   'Scalable Industry Products',
+  'FAQ',
   'Contact Us',
 ];
 
@@ -35,6 +52,7 @@ const MENU_SUGGESTIONS: Record<string, string[]> = {
     'What is MediBot?',
     'Tell me more about LegalBot.',
   ],
+  FAQ: FAQ_ITEMS.map((item) => item.q),
   'Contact Us': [
     'Email Us',
     'LinkedIn',
@@ -46,13 +64,20 @@ const MENU_SUGGESTIONS: Record<string, string[]> = {
 
 type Message = { role: 'user' | 'assistant'; content: string };
 
-export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
+export default function AIChatFullScreen({
+  onClose,
+  initialMenu = null,
+}: {
+  onClose: () => void;
+  initialMenu?: string | null;
+}) {
   const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: 'Hi 👋! Welcome to Ambot365 Product & Services' },
     { role: 'assistant', content: 'Explore the sidebar to your left to discover our detailed Solutions, AI Ecosystem, and Industry Products. How can I assist you today?' }
   ]);
   const [input, setInput] = useState('');
-  const [selectedMenu, setSelectedMenu] = useState<string | null>(null);
+  const faqAnswerMap = new Map(FAQ_ITEMS.map((item) => [item.q, item.a]));
+  const [selectedMenu, setSelectedMenu] = useState<string | null>(initialMenu);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,6 +89,10 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
   }, [messages]);
+
+  useEffect(() => {
+    if (initialMenu) setSelectedMenu(initialMenu);
+  }, [initialMenu]);
 
   const handleSend = (text: string = input.trim()) => {
     if (!text) return;
@@ -92,6 +121,16 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
         ...m,
         { role: 'user', content: text },
         { role: 'assistant', content: 'SHOW_CONTACT_FORM' },
+      ]);
+      return;
+    }
+
+    const faqAnswer = faqAnswerMap.get(text);
+    if (faqAnswer) {
+      setMessages((m) => [
+        ...m,
+        { role: 'user', content: text },
+        { role: 'assistant', content: faqAnswer },
       ]);
       return;
     }
@@ -338,3 +377,4 @@ export default function AIChatFullScreen({ onClose }: { onClose: () => void }) {
 
   return createPortal(chatUI, document.body);
 }
+

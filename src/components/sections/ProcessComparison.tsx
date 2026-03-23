@@ -174,7 +174,7 @@ export default function ProcessComparison() {
             transition={{ delay: 0.1 }}
             className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base"
           >
-            Watch both processes run side by side. Ambot365 agents complete in minutes what takes humans much longer.
+            Automate Any Process. Across Any Industry.
           </motion.p>
         </div>
 
@@ -230,10 +230,6 @@ export default function ProcessComparison() {
                       <h3 className="text-lg  text-gray-900 dark:text-white">Manual</h3>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Traditional process</p>
                     </div>
-                  </div>
-                  <div className="bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800/40 rounded-xl px-4 py-2 text-center">
-                    <p className="text-2xl font-mono font-black text-red-500 leading-none">10+</p>
-                    <p className="text-[10px] font-semibold uppercase tracking-wider text-red-400 mt-1">Minutes</p>
                   </div>
                 </div>
 
@@ -353,13 +349,9 @@ export default function ProcessComparison() {
                       <Zap className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg  text-gray-900 dark:text-white">Ambot365 Agent</h3>
+                      <h3 className="text-lg  text-gray-900 dark:text-white">Agent</h3>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Fully automated</p>
                     </div>
-                  </div>
-                  <div className="bg-[#65A859]/10 border border-[#65A859]/25 rounded-xl px-4 py-2 text-center">
-                    <p className="text-2xl font-mono font-black text-[#65A859] leading-none">3</p>
-                    <p className="text-[10px] font-semibold uppercase tracking-wider text-[#65A859]/70 mt-1">Minutes</p>
                   </div>
                 </div>
 

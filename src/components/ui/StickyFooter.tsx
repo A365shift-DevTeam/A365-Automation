@@ -1,7 +1,7 @@
 "use client"
 import { motion } from "motion/react"
-  import React from "react"
-  import { Facebook, Linkedin, Github, Mail, MapPin, Twitter } from "lucide-react"
+import React from "react"
+import { Facebook, Linkedin, Github, Mail, MapPin, Twitter } from "lucide-react"
 // Animation variants for reusability
 const containerVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -62,28 +62,36 @@ const backgroundVariants = {
 // Footer data for better maintainability
 const footerData = {
   sections: [
-    { title: "Platform", links: [
-      { label: "Agents in Action", href: "#agents-in-action" },
-      { label: "Solutions", href: "#solutions-overview" },
-      { label: "How It Works", href: "#how-it-works" }
-    ] },
-    { title: "Industries", links: [
-      { label: "Manufacturing", href: "#agents-in-action" },
-      { label: "Automotive", href: "#agents-in-action" },
-      { label: "Finance", href: "#agents-in-action" },
-      { label: "VC & PE", href: "#agents-in-action" },
-      { label: "B2B SaaS", href: "#agents-in-action" }
-    ] },
-    { title: "Company", links: [
-      { label: "About", href: "#about" },
-      { label: "Contact", href: "#contact" },
-      { label: "FAQ", href: "#security-faq" }
-    ] },
-    { title: "Legal", links: [
-      { label: "Terms", href: "#" },
-      { label: "Privacy", href: "#" },
-      { label: "Cookies", href: "#" }
-    ] },
+    {
+      title: "Platform", links: [
+        { label: "Agents in Action", href: "#agents-in-action" },
+        { label: "Solutions", href: "#solutions-overview" },
+        { label: "How It Works", href: "#how-it-works" }
+      ]
+    },
+    {
+      title: "Industries", links: [
+        { label: "Manufacturing", href: "#agents-in-action" },
+        { label: "Automotive", href: "#agents-in-action" },
+        { label: "Finance", href: "#agents-in-action" },
+        { label: "VC & PE", href: "#agents-in-action" },
+        { label: "B2B SaaS", href: "#agents-in-action" }
+      ]
+    },
+    {
+      title: "Company", links: [
+        { label: "About", href: "#about" },
+        { label: "Contact", href: "#contact" },
+        { label: "FAQ (Ask AI)", href: "#" }
+      ]
+    },
+    {
+      title: "Legal", links: [
+        { label: "Terms", href: "#" },
+        { label: "Privacy", href: "#" },
+        { label: "Cookies", href: "#" }
+      ]
+    },
   ],
   social: [
     { href: "https://twitter.com/ambot365", label: "Twitter", icon: Twitter, color: "#1DA1F2" },
@@ -150,8 +158,8 @@ const SocialLink: React.FC<{ href: string; label: string; icon: any; index: numb
     className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 flex items-center justify-center transition-all duration-300 group hover:shadow-lg hover:border-primary-500/30"
     aria-label={label}
   >
-    <Icon 
-      className="w-5 h-5 md:w-6 md:h-6 text-gray-400 group-hover:text-primary-500 transition-colors" 
+    <Icon
+      className="w-5 h-5 md:w-6 md:h-6 text-gray-400 group-hover:text-primary-500 transition-colors"
       style={{ color: undefined }} // Let hover take over or use specific color
     />
   </motion.a>
