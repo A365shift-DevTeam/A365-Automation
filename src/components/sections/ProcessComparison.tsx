@@ -29,6 +29,14 @@ export default function ProcessComparison() {
     { name: 'Auto-email and auto-log every action', duration: '<3 sec', seconds: 2 },
   ];
 
+  const benefits = [
+    { title: '90% Time Reduction', detail: 'From 7-12 minutes to under 45 seconds per order' },
+    { title: '95% Process Automation', detail: 'End-to-end execution with minimal human intervention' },
+    { title: '10x Higher Throughput', detail: 'Scales seamlessly across industries without increasing manpower' },
+    { title: '3-5x Productivity Gain', detail: 'Teams shift from manual work to high-value decision making' },
+    { title: '100% Accuracy & Compliance', detail: 'Standardized automation adaptable across any business function' },
+  ];
+
   const MANUAL_CYCLE_MS = 10000; // 10s per manual cycle
   const AUTO_CYCLE_MS = 5000;   // 5s per auto cycle — resets immediately
 
@@ -138,10 +146,16 @@ export default function ProcessComparison() {
     setAutoElapsed(0);
   }, [cycleCount]);
 
-  const formatTime = (seconds: number) => {
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-    return `${m}:${s.toString().padStart(2, '0')}`;
+  const getInvoiceCount = (elapsed: number, max: number) => {
+    // For manual: counts up to 10 over 600 units
+    // For auto: counts up to 50 over 180 units
+    if (max === 600) {
+      const count = Math.min(Math.floor((elapsed / 600) * 10) + 1, 10);
+      return `Invoice ${count}`;
+    } else {
+      const count = Math.min(Math.floor((elapsed / 180) * 50) + 1, 50);
+      return `Invoice ${count}`;
+    }
   };
 
   return (
@@ -150,15 +164,7 @@ export default function ProcessComparison() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4C99A0]/10 border border-[#4C99A0]/20 text-[#4C99A0] text-xs font-semibold tracking-wide uppercase mb-4"
-          >
-            <Activity className="w-3.5 h-3.5" />
-            Live Comparison
-          </motion.div>
+         
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -221,35 +227,34 @@ export default function ProcessComparison() {
               {/* ── LEFT: MANUAL ── */}
               <div className="bg-white dark:bg-gray-900 p-8 md:p-10 relative overflow-hidden lg:border-r border-gray-200/60 dark:border-gray-800/80">
                 {/* Header Row */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800/40 flex items-center justify-center">
                       <Timer className="w-5 h-5 text-red-500" />
                     </div>
                     <div>
-                      <h3 className="text-lg  text-gray-900 dark:text-white">Manual</h3>
+                      <div className="flex items-center gap-3">
+                        <h3 className="text-lg  text-gray-900 dark:text-white">Manual</h3>
+                        <div className={`ml-4 md:ml-6 flex items-center gap-2 px-2 py-1 rounded-lg text-[10px] font-mono transition-colors duration-300 ${manualFinished
+                          ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
+                          : 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400'
+                          }`}>
+                          <span className={`w-1.5 h-1.5 rounded-full ${manualFinished ? 'bg-red-500' : 'bg-orange-500 animate-pulse'}`} />
+                          {manualFinished ? 'TIMED OUT' : 'RUNNING'} {getInvoiceCount(manualElapsed, 600)}
+                        </div>
+                      </div>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Traditional process</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Elapsed Timer */}
-                <div className="mb-6 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 xl:gap-2 min-h-[2rem]">
-                  <div className="flex items-center gap-2">
-                    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono  transition-colors duration-300 ${manualFinished
-                      ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
-                      : 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400'
-                      }`}>
-                      <span className={`w-2 h-2 rounded-full ${manualFinished ? 'bg-red-500' : 'bg-orange-500 animate-pulse'}`} />
-                      {manualFinished ? 'TIMED OUT' : 'RUNNING'} {formatTime(Math.min(manualElapsed, 600))}
-                    </div>
-                    <div className={`flex items-center gap-1 text-xs text-red-500 font-medium transition-opacity duration-300 ${manualFinished ? 'opacity-100' : 'opacity-0'}`}>
-                      <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: '2s' }} />
-                      Restarting...
-                    </div>
+                <div className="mb-6 flex flex-col xl:flex-row items-center justify-between gap-3 min-h-[1.5rem]">
+                  <div className={`flex items-center gap-1 text-[10px] text-red-500 font-medium transition-opacity duration-300 ${manualFinished ? 'opacity-100' : 'opacity-0'}`}>
+                    <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: '2s' }} />
+                    Restarting...
                   </div>
-                  <p className="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 max-w-[280px] xl:max-w-[200px] xl:text-right">
-                    Manual: slow (10+ min) | error-prone | limited hours | not scalable
+                  <p className="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 whitespace-nowrap xl:text-right">
+                    Manual: 10/50 invoices | slow (10+ min) | error-prone | not scalable
                   </p>
                 </div>
 
@@ -296,7 +301,7 @@ export default function ProcessComparison() {
                                 }`}>
                                 {step.name}
                               </p>
-                              <span className={`text-[10px] md:text-[11px] font-mono ml-2 transition-colors duration-500 ${isDone ? 'text-gray-500' : isCurrent ? 'text-orange-500' : 'text-gray-300 dark:text-gray-700'
+                              <span className={`text-[10px] md:text-[11px] font-mono ml-2 transition-colors duration-500 ${isDone ? 'text-gray-50' : isCurrent ? 'text-orange-500' : 'text-gray-300 dark:text-gray-700'
                                 }`}>
                                 {step.duration}
                               </span>
@@ -343,35 +348,34 @@ export default function ProcessComparison() {
                 <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full bg-[#65A859]/8 blur-3xl pointer-events-none" />
 
                 {/* Header Row */}
-                <div className="flex items-center justify-between mb-6 relative z-10">
+                <div className="flex items-center justify-between mb-2 relative z-10">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg shadow-[#4C99A0]/25">
                       <Zap className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg  text-gray-900 dark:text-white">Agent</h3>
+                      <div className="flex items-center gap-3">
+                        <h3 className="text-lg  text-gray-900 dark:text-white">Agent</h3>
+                        <div className={`ml-4 md:ml-6 flex items-center gap-2 px-2 py-1 rounded-lg text-[10px] font-mono transition-colors duration-300 ${autoFinished
+                          ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+                          : 'bg-[#4C99A0]/15 text-[#4C99A0] dark:text-[#65A859]'
+                          }`}>
+                          <span className={`w-1.5 h-1.5 rounded-full ${autoFinished ? 'bg-green-500' : 'bg-[#4C99A0] animate-pulse'}`} />
+                          {autoFinished ? 'COMPLETED' : 'RUNNING'} {getInvoiceCount(autoElapsed, 180)}
+                        </div>
+                      </div>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Fully automated</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Elapsed Timer */}
-                <div className="mb-6 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 xl:gap-2 relative z-10 min-h-[2rem]">
-                  <div className="flex items-center gap-2">
-                    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono  transition-colors duration-300 ${autoFinished
-                      ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
-                      : 'bg-[#4C99A0]/15 text-[#4C99A0] dark:text-[#65A859]'
-                      }`}>
-                      <span className={`w-2 h-2 rounded-full ${autoFinished ? 'bg-green-500' : 'bg-[#4C99A0] animate-pulse'}`} />
-                      {autoFinished ? 'COMPLETED' : 'RUNNING'} {formatTime(Math.min(autoElapsed, 180))}
-                    </div>
-                    <div className={`flex items-center gap-1 text-xs text-green-600 dark:text-green-400 font-semibold transition-opacity duration-300 ${autoFinished ? 'opacity-100' : 'opacity-0'}`}>
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      All tasks done!
-                    </div>
+                <div className="mb-6 flex flex-col xl:flex-row items-center justify-between gap-3 relative z-10 min-h-[1.5rem]">
+                  <div className={`flex items-center gap-1 text-[10px] text-green-600 dark:text-green-400 font-semibold transition-opacity duration-300 ${autoFinished ? 'opacity-100' : 'opacity-0'}`}>
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    All tasks done!
                   </div>
-                  <p className="text-[10px] md:text-[11px] text-gray-600 dark:text-gray-300 max-w-[280px] xl:max-w-[200px] xl:text-right">
-                    Ambot365: fast (3 min) | highly accurate | scalable | runs 24/7
+                  <p className="text-[10px] md:text-[11px] text-gray-600 dark:text-gray-300 whitespace-nowrap xl:text-right">
+                    Ambot365: 50/50 invoices | fast (3 min) | highly accurate | scalable
                   </p>
                 </div>
 
@@ -447,8 +451,24 @@ export default function ProcessComparison() {
             </div>
           </div>
 
-
-
+          <div className="mt-8 rounded-2xl border border-gray-200/70 dark:border-gray-800/80 bg-white/80 dark:bg-gray-900/70 p-5 md:p-6">
+            <h3 className="text-sm md:text-base font-semibold text-gray-900 dark:text-gray-100 mb-3">
+              Benefits
+            </h3>
+            <ul className="space-y-3">
+              {benefits.map((benefit) => (
+                <li key={benefit.title} className="flex items-start gap-2.5 rounded-lg px-2 py-1.5 bg-gradient-to-r from-[#4C99A0]/8 to-[#65A859]/8 dark:from-[#4C99A0]/15 dark:to-[#65A859]/15 text-xs md:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#65A859]" />
+                  <span>
+                    <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859]">
+                      {benefit.title}
+                    </span>
+                    <span className="text-gray-700 dark:text-gray-300"> - {benefit.detail}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
         </motion.div>
       </div>
