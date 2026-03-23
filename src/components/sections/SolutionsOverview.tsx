@@ -10,31 +10,30 @@ const COLUMNS = [
       'AP Automation Agent',
       'AR Automation Agent',
       'SAP Reconcile Agent',
-      'Finance Reconcile Agent',
     ],
   },
   {
     title: 'Microsoft AI Ecosystem',
-    badge: 'Copilot & 365',
+    badge: 'Copilot & M365',
     icon: Sparkles,
     items: [
       'Microsoft Copilot Solutions',
-      'Custom Microsoft Agents',
-      'Microsoft 365 Desktop Automation',
-      'Microsoft 365 Cloud Automation',
+      'Custom AI Agents (Microsoft Stack)',
+      'Microsoft 365 Process Automation',
+      'Cloud & Workflow Automation',
     ],
   },
   {
     title: 'Office Suite',
-    badge: 'Business Apps',
+    badge: 'Business Applications',
     icon: LayoutTemplate,
     items: [
-      'Web | Mobile Apps with BI',
-      'CRM Agents',
-      'Websites',
-      'Chatbots with AI',
-      'Digital Marketing Agent',
-      'Lead Agents',
+      'Web | Mobile Apps with AI',
+      'CRM & Workflow Systems',
+      'Enterprise Websites',
+      'AI Chatbots',
+      'Digital Marketing Agents',
+      'Lead Generation Agents',
     ],
   },
   {
@@ -63,7 +62,7 @@ export default function SolutionsOverview() {
           What we offer
         </p>
         <h2 className="text-2xl md:text-4xl mb-5 section-title">
-          Solutions &  Products
+          AI Solutions & Enterprise Products
         </h2>
         <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-base leading-relaxed">
           AI agents, Microsoft automation, business applications, and scalable products

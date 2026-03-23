@@ -82,18 +82,17 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     images: [pb1, pb2, pb3, pb4],
     agentName: 'BI Analytics Agent',
     whatItDoes: [
-      'AI Chatbot for real-time report conversations.',
-      'Automated narratives and smart insights.',
-      'Interactive filters with custom drilldowns.',
-      'Live dashboards with auto-refresh.',
-      'Key Influencer analysis for business factors.',
-      'Visual decision trees for data exploration.',
-      'Data visualization with compelling charts.',
-      'Team collaboration and report sharing.',
-      'Track KPIs and spot trends instantly.',
+      'AI-powered conversational reporting',
+      'Real-time dashboards with auto-refresh',
+      'Smart insights and automated narratives',
+      'Interactive filters and deep drilldowns',
+      'KPI tracking with trend analysis',
+      'Advanced analytics (key drivers & patterns)',
+      'Rich visualizations and storytelling',
+      'Secure sharing and collaboration',
     ],
     outcome: {
-      text: 'Business intelligence that was complex and static is now interactive and AI-driven. Insights delivered in seconds, not days.',
+      text: 'From data to decisions—instantly. AI-driven insights that improve visibility, speed, and business performance.',
       footer: 'Power BI · Azure AI · Real-time Analytics',
     },
   },
@@ -106,18 +105,16 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     images: [ex1, ex2],
     agentName: 'Excel Automation Agent',
     whatItDoes: [
-      'Seamless Microsoft 365 integration — Excel, Power BI, SharePoint & more.',
-      'Low-code apps for custom solutions without developer support.',
-      'Cloud-based workflows accessible from anywhere.',
-      'AI-powered insights for smarter decisions.',
-      'VBA & Office Script automation out of the box.',
-      'Power Automate for end-to-end process flows.',
-      'Cross-app data sync between Excel, Teams & SharePoint.',
-      'Enhanced desktop apps for maximum productivity.',
-      'Secure data handling with enterprise compliance.',
+      'Data Consolidation – Combine multiple raw data sources into one Excel dashboard',
+      'Interactive Slicers – Real-time filtering and slice & dice analysis',
+      'Dynamic KPI Cards – Live metrics for Sales, Orders, Channels, Performance',
+      'Auto-Refresh Dashboard – Updates automatically when backend data changes',
+      'One-Click Reports – Instantly generate PPT, PDF, and reports',
+      'Email Automation – Send reports directly to stakeholders',
+      'Business Ready – Cost-effective BI solution for small & mid-scale companies',
     ],
     outcome: {
-      text: 'Manual Excel operations that consumed entire workdays now complete in minutes. Fully automated, error-free processing built in.',
+      text: 'From raw Excel data to a fully automated, interactive dashboard with real-time insights. Generate reports, share instantly, and make faster decisions — without complex tools.',
       footer: 'Microsoft 365 · VBA · Office Scripts · Power Automate',
     },
   },
@@ -173,13 +170,16 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     type: 'chatbot',
     agentName: 'Conversational Assistant',
     whatItDoes: [
-      'Answers questions about all sections on this page in a guided chat flow.',
-      'Highlights key offerings from Agents, BI, Excel, Web & Mobile, Websites, and Products.',
-      'Improves engagement with quick contextual responses and clear next steps.',
-      'Ends with a direct Contact Us action to convert interest into leads.',
+      'Builds an AI-powered website chatbot for instant visitor interaction',
+      'Uses a trained knowledge base to answer business, service, and product-related questions',
+      'Provides guided responses based on your company content, FAQs, documents, and offerings',
+      'Helps visitors explore services, solutions, pricing, and contact options more easily',
+      'Delivers quick, contextual answers 24/7 without manual support',
+      'Captures leads by directing users to enquiry, demo, or Contact Us actions',
+      'Improves customer engagement and reduces response time on your website',
     ],
     outcome: {
-      text: 'Visitors get immediate guidance and product clarity, then move smoothly to Contact Us for faster conversion.',
+      text: 'Deliver instant, intelligent responses that elevate user experience and build trust. Convert website visitors into high-quality leads with seamless, guided interactions.',
       footer: 'AI Chat · Lead Capture · Customer Guidance',
     },
   },
@@ -530,40 +530,40 @@ export default function ShowcaseCarousel() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.4 }}
-                  className="h-full flex flex-col justify-between"
+                  className="h-full flex flex-col justify-between overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700"
                   style={visualCardHeight ? { height: visualCardHeight } : undefined}
                 >
                   {/* WHAT IT DOES */}
-                  <div className="px-5 md:px-6 pt-5 md:pt-6 pb-2 flex-auto flex flex-col justify-center">
-                    <div className="text-[10px] md:text-xs  tracking-[0.2em] text-gray-400 dark:text-gray-500 uppercase mb-3 md:mb-4">
-                      What It Does
+                  <div className="px-4 md:px-6 pt-4 md:pt-6 pb-2 flex-auto flex flex-col justify-center">
+                    <div className="text-[10px] md:text-xs tracking-[0.2em] text-gray-400 dark:text-gray-500 uppercase mb-2 md:mb-3 mt-1">
+                      Our Solution
                     </div>
-                    <ul className="space-y-2 md:space-y-2.5">
+                    <ul className="space-y-1.5 md:space-y-2">
                       {activeData.whatItDoes.map((item, i) => (
                         <motion.li
                           key={i}
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.15 + i * 0.06 }}
-                          className="flex items-start gap-3 group"
+                          className="flex items-start gap-2.5 group"
                         >
                           <div className="mt-0.5 shrink-0">
-                            <CheckCircle2 className="w-4 h-4 md:w-[18px] md:h-[18px] text-[#65A859]" />
+                            <CheckCircle2 className="w-4 h-4 md:w-[16px] md:h-[16px] text-[#65A859]" />
                           </div>
-                          <span className="text-gray-700 dark:text-gray-300 text-xs md:text-sm leading-snug md:leading-relaxed">{item}</span>
+                          <span className="text-gray-700 dark:text-gray-300 text-[11px] md:text-sm leading-snug md:leading-normal">{item}</span>
                         </motion.li>
                       ))}
                     </ul>
                   </div>
 
                   {/* OUTCOME */}
-                  <div className="px-5 md:px-6 pb-5 md:pb-6 mt-auto">
-                    <div className="border-t border-gray-100 dark:border-gray-800 pt-4">
-                      <div className="flex items-center gap-2 mb-2">
+                  <div className="px-4 md:px-6 pb-4 md:pb-6 mt-auto shrink-0">
+                    <div className="border-t border-gray-100 dark:border-gray-800 pt-3">
+                      <div className="flex items-center gap-2 mb-1.5">
                         <TrendingUp className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#65A859]" />
-                        <span className="text-[10px] md:text-xs  tracking-[0.15em] text-[#65A859] uppercase">Outcome</span>
+                        <span className="text-[10px] md:text-xs tracking-[0.15em] text-[#65A859] uppercase">Outcome</span>
                       </div>
-                      <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm leading-snug md:leading-relaxed mb-2 md:mb-3">
+                      <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm leading-snug md:leading-relaxed mb-1.5 md:mb-2">
                         {activeData.outcome.text}
                       </p>
                       {activeData.outcome.footer && (
