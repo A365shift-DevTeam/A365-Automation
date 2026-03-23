@@ -10,13 +10,14 @@ export default function ProcessAnimationCard() {
   const [cycleCount, setCycleCount] = useState(0);
 
   const autoSteps = [
-    { name: 'SAP Auto-Login & Extract', duration: '30s', seconds: 30 },
-    { name: 'AI-Powered Matching', duration: '1 min', seconds: 60 },
-    { name: 'Validation & Reconciliation', duration: '1 min', seconds: 60 },
-    { name: 'Exception Report Generated', duration: '30s', seconds: 30 },
+    { name: 'Auto-login across systems securely', duration: '5 sec', seconds: 5 },
+    { name: 'Auto-scan and process all orders', duration: '10-15 sec', seconds: 12 },
+    { name: 'Auto-validate payment instantly', duration: '5-10 sec', seconds: 7 },
+    { name: 'Auto-update ERP and notify instantly', duration: '<5 sec', seconds: 5 },
+    { name: 'Auto-email and auto-log every action', duration: '<3 sec', seconds: 3 },
   ];
 
-  const AUTO_CYCLE_MS = 4000;
+  const AUTO_CYCLE_MS = 5000;
 
   const resetAuto = useCallback(() => {
     setAutoStep(-1);
@@ -31,13 +32,14 @@ export default function ProcessAnimationCard() {
     function runAutoCycle() {
       resetAuto();
       timers.push(setTimeout(() => setAutoStep(0), 200));
-      timers.push(setTimeout(() => setAutoStep(1), 900));
-      timers.push(setTimeout(() => setAutoStep(2), 1600));
-      timers.push(setTimeout(() => setAutoStep(3), 2300));
+      timers.push(setTimeout(() => setAutoStep(1), 1000));
+      timers.push(setTimeout(() => setAutoStep(2), 1800));
+      timers.push(setTimeout(() => setAutoStep(3), 2600));
+      timers.push(setTimeout(() => setAutoStep(4), 3400));
       timers.push(setTimeout(() => {
-        setAutoStep(4);
+        setAutoStep(5);
         setAutoFinished(true);
-      }, 3000));
+      }, 4000));
     }
 
     runAutoCycle();
@@ -113,14 +115,14 @@ export default function ProcessAnimationCard() {
         </div>
 
         <div className="relative ml-2 md:ml-3 flex-1">
-          <div className="absolute left-[7px] md:left-[11px] top-2 bottom-2 w-px bg-gray-200 dark:bg-gray-700" />
+          <div className="absolute left-[7.5px] md:left-[11.5px] top-2 bottom-2 w-px bg-gray-200 dark:bg-gray-700" />
           <motion.div
-            className="absolute left-[6.5px] md:left-[10.5px] top-2 w-[3px] bg-gradient-to-b from-[#4C99A0] to-[#65A859] origin-top rounded-full"
-            animate={{ height: `${Math.min((autoStep + 1) / 4 * 100, 100)}%` }}
+            className="absolute left-[7.5px] md:left-[11.5px] top-2 w-px bg-gradient-to-b from-[#4C99A0] to-[#65A859] origin-top rounded-full"
+            animate={{ height: `${Math.min((autoStep + 1) / 5 * 100, 100)}%` }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           />
 
-          <div className="space-y-4 md:space-y-5">
+          <div className="space-y-3.5 md:space-y-4">
             {autoSteps.map((step, i) => {
               const isDone = i < autoStep;
               const isCurrent = i === autoStep;
@@ -132,14 +134,14 @@ export default function ProcessAnimationCard() {
                   </motion.div>
                   <div className={`flex-1 pb-0.5 transition-all duration-500 ${isDone || isCurrent ? 'opacity-100' : 'opacity-30'}`}>
                     <div className="flex items-center justify-between">
-                      <p className={`text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight transition-colors duration-400 ${isDone ? 'text-gray-900 dark:text-white' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-400 dark:text-gray-600'}`}>
+                      <p className={`text-[10px] md:text-xs lg:text-[13px] font-medium tracking-tight transition-colors duration-400 ${isDone ? 'text-gray-900 dark:text-white' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-400 dark:text-gray-600'}`}>
                         {step.name}
                       </p>
-                      <span className={`text-[9px] md:text-[10px] lg:text-xs font-mono  ml-1 transition-colors duration-400 ${isDone ? 'text-[#65A859]' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-300 dark:text-gray-700'}`}>
+                      <span className={`text-[9px] md:text-[10px] lg:text-[11px] font-mono ml-1 transition-colors duration-400 ${isDone ? 'text-[#65A859]' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-300 dark:text-gray-700'}`}>
                         {step.duration}
                       </span>
                     </div>
-                    <div className="h-0.5 md:h-1 mt-1.5 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+                    <div className="h-[2px] mt-1.5 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
                       <motion.div
                         animate={{ width: isCurrent ? '100%' : isDone ? '100%' : '0%' }}
                         transition={{ duration: isCurrent ? 0.7 : 0.3, ease: 'easeOut' }}

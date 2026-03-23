@@ -14,21 +14,23 @@ export default function ProcessComparison() {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const manualSteps = [
-    { name: 'Open SAP & Download GRN', duration: '2 min', seconds: 120 },
-    { name: 'Copy to Excel & Clean Data', duration: '3 min', seconds: 180 },
-    { name: 'VLOOKUP & Cross-Check', duration: '3 min', seconds: 180 },
-    { name: 'Flag Mismatches Manually', duration: '2 min', seconds: 120 },
+    { name: 'Login to multiple systems manually', duration: '2-3 min', seconds: 150 },
+    { name: 'Search and open orders one-by-one', duration: '3-4 min', seconds: 210 },
+    { name: 'Verify payment manually', duration: '2-3 min', seconds: 150 },
+    { name: 'Update ERP and notify teams manually', duration: '2-3 min', seconds: 150 },
+    { name: 'Send emails and maintain audit manually', duration: '1-2 min', seconds: 90 },
   ];
 
   const autoSteps = [
-    { name: 'SAP Auto-Login & Extract', duration: '30s', seconds: 30 },
-    { name: 'AI-Powered Matching', duration: '1 min', seconds: 60 },
-    { name: 'Validation & Reconciliation', duration: '1 min', seconds: 60 },
-    { name: 'Exception Report Generated', duration: '30s', seconds: 30 },
+    { name: 'Auto-login across systems securely', duration: '5 sec', seconds: 5 },
+    { name: 'Auto-scan and process all orders', duration: '10-15 sec', seconds: 12 },
+    { name: 'Auto-validate payment instantly', duration: '5-10 sec', seconds: 7 },
+    { name: 'Auto-update ERP and notify instantly', duration: '<5 sec', seconds: 4 },
+    { name: 'Auto-email and auto-log every action', duration: '<3 sec', seconds: 2 },
   ];
 
   const MANUAL_CYCLE_MS = 10000; // 10s per manual cycle
-  const AUTO_CYCLE_MS = 4000;   // 4s per auto cycle — resets immediately
+  const AUTO_CYCLE_MS = 5000;   // 5s per auto cycle — resets immediately
 
   const resetManual = useCallback(() => {
     setManualStep(-1);
@@ -52,8 +54,9 @@ export default function ProcessComparison() {
       resetManual();
       timers.push(setTimeout(() => setManualStep(0), 400));
       timers.push(setTimeout(() => setManualStep(1), 2500));
-      timers.push(setTimeout(() => setManualStep(2), 5500));
-      timers.push(setTimeout(() => setManualStep(3), 8500));
+      timers.push(setTimeout(() => setManualStep(2), 4500));
+      timers.push(setTimeout(() => setManualStep(3), 6500));
+      timers.push(setTimeout(() => setManualStep(4), 8500));
       timers.push(setTimeout(() => setManualFinished(true), 9500));
     }
 
@@ -80,13 +83,14 @@ export default function ProcessComparison() {
     function runAutoCycle() {
       resetAuto();
       timers.push(setTimeout(() => setAutoStep(0), 200));
-      timers.push(setTimeout(() => setAutoStep(1), 900));
-      timers.push(setTimeout(() => setAutoStep(2), 1600));
-      timers.push(setTimeout(() => setAutoStep(3), 2300));
+      timers.push(setTimeout(() => setAutoStep(1), 1000));
+      timers.push(setTimeout(() => setAutoStep(2), 1800));
+      timers.push(setTimeout(() => setAutoStep(3), 2600));
+      timers.push(setTimeout(() => setAutoStep(4), 3400));
       timers.push(setTimeout(() => {
-        setAutoStep(4);
+        setAutoStep(5);
         setAutoFinished(true);
-      }, 3000));
+      }, 4000));
     }
 
     runAutoCycle();
@@ -182,6 +186,31 @@ export default function ProcessComparison() {
           onViewportEnter={() => setIsInView(true)}
           className="relative [transform-style:preserve-3d]"
         >
+          {/* Summary Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7 }}
+            className="mb-6 bg-gradient-to-r from-[#4C99A0]/10 via-white dark:via-gray-900 to-[#65A859]/10 rounded-2xl p-5 md:p-6 border border-gray-200/50 dark:border-gray-800/50 flex flex-col md:flex-row items-center justify-between gap-4"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
+                <ArrowRight className="w-5 h-5 text-white" />
+              </div>
+              <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                Save <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859] font-black text-lg">7+ minutes</span> per transaction with Ambot365 agents
+              </p>
+            </div>
+            <div className="flex items-center gap-6 text-xs  tracking-wide uppercase text-gray-500 dark:text-gray-400">
+              <span>No code changes</span>
+              <span className="w-1 h-1 rounded-full bg-gray-400" />
+              <span>Deploy in weeks</span>
+              <span className="w-1 h-1 rounded-full bg-gray-400" />
+              <span>Full audit trail</span>
+            </div>
+          </motion.div>
+
           <div className="pointer-events-none absolute left-8 right-8 -bottom-10 h-16 bg-black/20 blur-3xl opacity-20 dark:opacity-30" />
 
           {/* Two Column Layout */}
@@ -209,32 +238,37 @@ export default function ProcessComparison() {
                 </div>
 
                 {/* Elapsed Timer */}
-                <div className="mb-6 flex items-center gap-2 h-8">
-                  <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono  transition-colors duration-300 ${manualFinished
-                    ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
-                    : 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400'
-                    }`}>
-                    <span className={`w-2 h-2 rounded-full ${manualFinished ? 'bg-red-500' : 'bg-orange-500 animate-pulse'}`} />
-                    {manualFinished ? 'TIMED OUT' : 'RUNNING'} {formatTime(Math.min(manualElapsed, 600))}
+                <div className="mb-6 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 xl:gap-2 min-h-[2rem]">
+                  <div className="flex items-center gap-2">
+                    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono  transition-colors duration-300 ${manualFinished
+                      ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
+                      : 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400'
+                      }`}>
+                      <span className={`w-2 h-2 rounded-full ${manualFinished ? 'bg-red-500' : 'bg-orange-500 animate-pulse'}`} />
+                      {manualFinished ? 'TIMED OUT' : 'RUNNING'} {formatTime(Math.min(manualElapsed, 600))}
+                    </div>
+                    <div className={`flex items-center gap-1 text-xs text-red-500 font-medium transition-opacity duration-300 ${manualFinished ? 'opacity-100' : 'opacity-0'}`}>
+                      <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: '2s' }} />
+                      Restarting...
+                    </div>
                   </div>
-                  <div className={`flex items-center gap-1 text-xs text-red-500 font-medium transition-opacity duration-300 ${manualFinished ? 'opacity-100' : 'opacity-0'}`}>
-                    <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: '2s' }} />
-                    Restarting...
-                  </div>
+                  <p className="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 max-w-[280px] xl:max-w-[200px] xl:text-right">
+                    Manual: slow (10+ min) | error-prone | limited hours | not scalable
+                  </p>
                 </div>
 
                 {/* Timeline Steps */}
                 <div className="relative ml-4">
                   {/* Vertical line */}
-                  <div className="absolute left-[11px] top-3 bottom-3 w-0.5 bg-gray-200 dark:bg-gray-700" />
+                  <div className="absolute left-[11.5px] top-3 bottom-3 w-px bg-gray-200 dark:bg-gray-700" />
                   {/* Manual progress line */}
                   <motion.div
-                    className="absolute left-[11px] top-3 w-0.5 bg-gradient-to-b from-blue-400 to-orange-400 origin-top"
-                    animate={{ height: `${Math.min((manualStep + 1) / 4 * 100, 100)}%` }}
+                    className="absolute left-[11.5px] top-3 w-px bg-gradient-to-b from-blue-400 to-orange-400 origin-top"
+                    animate={{ height: `${Math.min((manualStep + 1) / 5 * 100, 100)}%` }}
                     transition={{ duration: 0.8, ease: 'easeOut' }}
                   />
 
-                  <div className="space-y-6">
+                  <div className="space-y-5">
                     {manualSteps.map((step, i) => {
                       const isDone = i < manualStep;
                       const isCurrent = i === manualStep;
@@ -262,17 +296,17 @@ export default function ProcessComparison() {
                           {/* Content */}
                           <div className={`flex-1 pb-1 transition-all duration-500 ${isPending ? 'opacity-30' : ''}`}>
                             <div className="flex items-center justify-between">
-                              <p className={`text-sm font-semibold transition-colors duration-500 ${isDone ? 'text-gray-800 dark:text-gray-200' : isCurrent ? 'text-orange-600 dark:text-orange-400' : 'text-gray-400 dark:text-gray-600'
+                              <p className={`text-xs md:text-[13px] font-medium transition-colors duration-500 ${isDone ? 'text-gray-800 dark:text-gray-200' : isCurrent ? 'text-orange-600 dark:text-orange-400' : 'text-gray-400 dark:text-gray-600'
                                 }`}>
                                 {step.name}
                               </p>
-                              <span className={`text-xs font-mono  ml-2 transition-colors duration-500 ${isDone ? 'text-gray-500' : isCurrent ? 'text-orange-500' : 'text-gray-300 dark:text-gray-700'
+                              <span className={`text-[10px] md:text-[11px] font-mono ml-2 transition-colors duration-500 ${isDone ? 'text-gray-500' : isCurrent ? 'text-orange-500' : 'text-gray-300 dark:text-gray-700'
                                 }`}>
                                 {step.duration}
                               </span>
                             </div>
                             {/* Always rendered to prevent height shift */}
-                            <div className="h-1 mt-2 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+                            <div className="h-[2px] mt-1.5 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
                               <motion.div
                                 animate={{ width: isCurrent ? '100%' : isDone ? '100%' : '0%' }}
                                 transition={{ duration: isCurrent ? 2.5 : 0.3, ease: isCurrent ? 'linear' : 'easeOut' }}
@@ -286,22 +320,7 @@ export default function ProcessComparison() {
                   </div>
                 </div>
 
-                {/* Bottom: Pain Points */}
-                <div className="mt-8 pt-6 border-t border-gray-200/80 dark:border-gray-700/50 grid grid-cols-3 gap-3">
-                  {[
-                    { icon: XCircle, label: 'Error Prone', color: 'text-red-400', bgColor: 'bg-red-50 dark:bg-red-900/10' },
-                    { icon: AlertTriangle, label: 'Not Scalable', color: 'text-orange-400', bgColor: 'bg-orange-50 dark:bg-orange-900/10' },
-                    { icon: Clock, label: 'Slow & Tedious', color: 'text-yellow-500', bgColor: 'bg-yellow-50 dark:bg-yellow-900/10' },
-                  ].map((item, i) => (
-                    <div key={i} className={`h-[96px] flex flex-col justify-center items-center gap-1.5 text-center py-2 rounded-xl ${item.bgColor}`}>
-                      <item.icon className={`w-4 h-4 ${item.color}`} />
-                      <span className="text-[11px] font-medium text-gray-500 dark:text-gray-400">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-[11px] md:text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                 Manual: slow (10+ min) | error-prone | limited hours | not scalable
-                </p>
+
               </div>
 
               {/* ── CENTER VS BADGE ── */}
@@ -345,32 +364,37 @@ export default function ProcessComparison() {
                 </div>
 
                 {/* Elapsed Timer */}
-                <div className="mb-6 flex items-center gap-2 relative z-10 h-8">
-                  <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono  transition-colors duration-300 ${autoFinished
-                    ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
-                    : 'bg-[#4C99A0]/15 text-[#4C99A0] dark:text-[#65A859]'
-                    }`}>
-                    <span className={`w-2 h-2 rounded-full ${autoFinished ? 'bg-green-500' : 'bg-[#4C99A0] animate-pulse'}`} />
-                    {autoFinished ? 'COMPLETED' : 'RUNNING'} {formatTime(Math.min(autoElapsed, 180))}
+                <div className="mb-6 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 xl:gap-2 relative z-10 min-h-[2rem]">
+                  <div className="flex items-center gap-2">
+                    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono  transition-colors duration-300 ${autoFinished
+                      ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+                      : 'bg-[#4C99A0]/15 text-[#4C99A0] dark:text-[#65A859]'
+                      }`}>
+                      <span className={`w-2 h-2 rounded-full ${autoFinished ? 'bg-green-500' : 'bg-[#4C99A0] animate-pulse'}`} />
+                      {autoFinished ? 'COMPLETED' : 'RUNNING'} {formatTime(Math.min(autoElapsed, 180))}
+                    </div>
+                    <div className={`flex items-center gap-1 text-xs text-green-600 dark:text-green-400 font-semibold transition-opacity duration-300 ${autoFinished ? 'opacity-100' : 'opacity-0'}`}>
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      All tasks done!
+                    </div>
                   </div>
-                  <div className={`flex items-center gap-1 text-xs text-green-600 dark:text-green-400 font-semibold transition-opacity duration-300 ${autoFinished ? 'opacity-100' : 'opacity-0'}`}>
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    All tasks done!
-                  </div>
+                  <p className="text-[10px] md:text-[11px] text-gray-600 dark:text-gray-300 max-w-[280px] xl:max-w-[200px] xl:text-right">
+                    Ambot365: fast (3 min) | highly accurate | scalable | runs 24/7
+                  </p>
                 </div>
 
                 {/* Timeline Steps */}
                 <div className="relative ml-4 z-10">
                   {/* Vertical line */}
-                  <div className="absolute left-[11px] top-3 bottom-3 w-0.5 bg-gray-200 dark:bg-gray-700" />
+                  <div className="absolute left-[11.5px] top-3 bottom-3 w-px bg-gray-200 dark:bg-gray-700" />
                   {/* Animated progress line */}
                   <motion.div
-                    className="absolute left-[11px] top-3 w-0.5 bg-gradient-to-b from-[#4C99A0] to-[#65A859] origin-top"
-                    animate={{ height: `${Math.min((autoStep + 1) / 4 * 100, 100)}%` }}
+                    className="absolute left-[11.5px] top-3 w-px bg-gradient-to-b from-[#4C99A0] to-[#65A859] origin-top"
+                    animate={{ height: `${Math.min((autoStep + 1) / 5 * 100, 100)}%` }}
                     transition={{ duration: 0.5, ease: 'easeOut' }}
                   />
 
-                  <div className="space-y-6">
+                  <div className="space-y-5">
                     {autoSteps.map((step, i) => {
                       const isDone = i < autoStep;
                       const isCurrent = i === autoStep;
@@ -401,17 +425,17 @@ export default function ProcessComparison() {
                           {/* Content */}
                           <div className={`flex-1 pb-1 transition-all duration-500 ${isDone || isCurrent ? 'opacity-100' : 'opacity-30'}`}>
                             <div className="flex items-center justify-between">
-                              <p className={`text-sm font-semibold transition-colors duration-400 ${isDone ? 'text-gray-900 dark:text-white' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-400 dark:text-gray-600'
+                              <p className={`text-xs md:text-[13px] font-medium transition-colors duration-400 ${isDone ? 'text-gray-900 dark:text-white' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-400 dark:text-gray-600'
                                 }`}>
                                 {step.name}
                               </p>
-                              <span className={`text-xs font-mono  ml-2 transition-colors duration-400 ${isDone ? 'text-[#65A859]' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-300 dark:text-gray-700'
+                              <span className={`text-[10px] md:text-[11px] font-mono ml-2 transition-colors duration-400 ${isDone ? 'text-[#65A859]' : isCurrent ? 'text-[#4C99A0]' : 'text-gray-300 dark:text-gray-700'
                                 }`}>
                                 {step.duration}
                               </span>
                             </div>
                             {/* Always rendered to prevent height shift */}
-                            <div className="h-1 mt-2 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+                            <div className="h-[2px] mt-1.5 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
                               <motion.div
                                 animate={{ width: isCurrent ? '100%' : isDone ? '100%' : '0%' }}
                                 transition={{ duration: isCurrent ? 0.7 : 0.3, ease: 'easeOut' }}
@@ -425,23 +449,7 @@ export default function ProcessComparison() {
                   </div>
                 </div>
 
-                {/* Bottom: Highlights */}
-                <div className="mt-8 pt-6 border-t border-[#4C99A0]/15 dark:border-gray-700/40 grid grid-cols-3 gap-3 relative z-10">
-                  {[
-                    { icon: Shield, value: '~100%', label: 'Accuracy', color: 'text-[#65A859]' },
-                    { icon: XCircle, value: '0', label: 'Errors', color: 'text-[#65A859]' },
-                    { icon: Activity, value: '24/7', label: 'Uptime', color: 'text-[#65A859]' },
-                  ].map((item, i) => (
-                    <div key={i} className="h-[96px] flex flex-col justify-center items-center gap-1 text-center bg-[#65A859]/5 dark:bg-[#65A859]/10 py-2.5 rounded-xl">
-                      <item.icon className={`w-3.5 h-3.5 ${item.color} mb-0.5`} />
-                      <span className={`text-lg font-mono font-black ${item.color}`}>{item.value}</span>
-                      <span className="text-[11px] font-medium text-gray-500">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-[11px] md:text-xs text-gray-600 dark:text-gray-300 leading-relaxed relative z-10">
-                  Ambot365: fast (3 min) | highly accurate | scalable | runs 24/7
-                </p>
+
               </div>
 
             </div>
@@ -449,30 +457,7 @@ export default function ProcessComparison() {
 
 
 
-          {/* Bottom Summary Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7 }}
-            className="mt-4 bg-gradient-to-r from-[#4C99A0]/10 via-white dark:via-gray-900 to-[#65A859]/10 rounded-2xl p-5 md:p-6 border border-gray-200/50 dark:border-gray-800/50 flex flex-col md:flex-row items-center justify-between gap-4"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
-                <ArrowRight className="w-5 h-5 text-white" />
-              </div>
-              <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">
-                Save <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859] font-black text-lg">7+ minutes</span> per transaction with Ambot365 agents
-              </p>
-            </div>
-            <div className="flex items-center gap-6 text-xs  tracking-wide uppercase text-gray-500 dark:text-gray-400">
-              <span>No code changes</span>
-              <span className="w-1 h-1 rounded-full bg-gray-400" />
-              <span>Deploy in weeks</span>
-              <span className="w-1 h-1 rounded-full bg-gray-400" />
-              <span>Full audit trail</span>
-            </div>
-          </motion.div>
+
         </motion.div>
       </div>
     </section>
