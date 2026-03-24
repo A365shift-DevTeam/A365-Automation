@@ -12,7 +12,7 @@ export default function WhyAmbot365() {
   ];
 
   return (
-    <SectionWrapper id="about" className="px-6 py-12 md:px-12 lg:px-20">
+    <SectionWrapper id="about" className="px-6 py-12 md:px-12 lg:px-20 bg-[#f2faf6] dark:bg-gray-950/50">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mb-14 text-center">
@@ -21,10 +21,12 @@ export default function WhyAmbot365() {
           </h2>
         </div>
 
-        {/* Main Content: Founder Left + Content Right */}
-        <div className="section-card rounded-[32px] p-8 md:p-12 lg:p-16 shadow-sm overflow-hidden relative">
+        {/* Main Content: Founder Left + Content Right — Clean Design */}
+        <div className="section-card rounded-[32px] p-8 md:p-12 lg:p-16 overflow-hidden relative bg-white dark:bg-gray-900 border-none shadow-sm">
           {/* Subtle background gradient accent */}
           <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-bl from-primary-50 to-transparent dark:from-primary-900/20 dark:to-transparent rounded-full -translate-y-1/3 translate-x-1/3 pointer-events-none" />
+          {/* Bottom-left glow */}
+          <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-accent-400/5 to-transparent dark:from-accent-500/10 dark:to-transparent rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-10 lg:gap-16 items-start relative z-10">
             {/* LEFT: Founder Card */}
@@ -70,7 +72,7 @@ export default function WhyAmbot365() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.1 * index, ease: [0.22, 1, 0.36, 1] }}
-                    className="rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-gray-100 dark:border-gray-700/50 px-4 py-3"
+                    className="rounded-2xl bg-white/60 dark:bg-gray-800/60 border border-white/50 dark:border-gray-700/50 px-4 py-3 shadow-sm blur-none"
                   >
                     <div className="text-lg md:text-xl font-bold text-primary-600 dark:text-primary-400 leading-tight">
                       {item.value}
@@ -94,7 +96,7 @@ export default function WhyAmbot365() {
               {/* About Section */}
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-100 dark:bg-primary-900/30">
                     <svg className="w-4 h-4 text-primary-600 dark:text-primary-400" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -112,12 +114,12 @@ export default function WhyAmbot365() {
               </div>
 
               {/* Divider */}
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent" />
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent opacity-50" />
 
               {/* Vision Section */}
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-100 dark:bg-primary-900/30">
                     <svg className="w-4 h-4 text-primary-600 dark:text-primary-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10" />
                       <circle cx="12" cy="12" r="6" />
@@ -134,12 +136,12 @@ export default function WhyAmbot365() {
               </div>
 
               {/* Divider */}
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent" />
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent opacity-50" />
 
               {/* Mission Section */}
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-100 dark:bg-primary-900/30">
                     <svg className="w-4 h-4 text-primary-600 dark:text-primary-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                       <polyline points="22 4 12 14.01 9 11.01" />
@@ -161,7 +163,7 @@ export default function WhyAmbot365() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.35, delay: 0.08 * index, ease: [0.22, 1, 0.36, 1] }}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/30 px-4 py-2 text-xs md:text-sm font-semibold text-primary-700 dark:text-primary-300 tracking-wide"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-primary-200 dark:border-primary-800 bg-white/70 dark:bg-primary-900/30 px-4 py-2 text-xs md:text-sm font-semibold text-primary-700 dark:text-primary-300 tracking-wide"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-500" />
                       {word}
