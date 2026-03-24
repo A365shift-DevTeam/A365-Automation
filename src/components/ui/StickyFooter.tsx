@@ -1,7 +1,7 @@
 "use client"
 import { motion } from "motion/react"
 import React from "react"
-import { Facebook, Linkedin, Github, Mail, MapPin, Twitter } from "lucide-react"
+import { Linkedin, Github, Mail, MapPin, Twitter } from "lucide-react"
 // Animation variants for reusability
 const containerVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -44,16 +44,16 @@ const backgroundVariants = {
 // Footer data for better maintainability
 const footerData = {
   social: [
-    { href: "https://twitter.com/ambot365", label: "Twitter", icon: Twitter, color: "#1DA1F2" },
-    { href: "https://github.com/ambot365", label: "GitHub", icon: Github, color: "#333" },
-    { href: "https://www.linkedin.com/company/ambot-365/", label: "LinkedIn", icon: Linkedin, color: "#0A66C2" },
+    { href: "https://twitter.com/ambot365", label: "Twitter", icon: Twitter },
+    { href: "https://github.com/ambot365", label: "GitHub", icon: Github },
+    { href: "https://www.linkedin.com/company/ambot-365/", label: "LinkedIn", icon: Linkedin },
   ],
   title: "Ambot365",
   subtitle: "Enterprise-grade AI Automation",
-  copyright: `©${new Date().getFullYear()} Ambot365. All rights reserved.`,
+  copyright: `(c) ${new Date().getFullYear()} Ambot365. All rights reserved.`,
 }
 
-const SocialLink: React.FC<{ href: string; label: string; icon: any; index: number; color: string }> = ({ href, label, icon: Icon, index, color }) => (
+const SocialLink: React.FC<{ href: string; label: string; icon: any; index: number }> = ({ href, label, icon: Icon, index }) => (
   <motion.a
     variants={socialVariants}
     custom={index}
@@ -106,7 +106,7 @@ export default function StickyFooter() {
             />
 
             {/* Footer Bottom Section */}
-            <div className="max-w-7xl mx-auto w-full">
+            <div className="site-container w-full">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -165,7 +165,6 @@ export default function StickyFooter() {
                         label={social.label}
                         icon={social.icon}
                         index={index}
-                        color={social.color}
                       />
                     ))}
                   </motion.div>

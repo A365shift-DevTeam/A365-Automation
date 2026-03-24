@@ -39,14 +39,14 @@ export default function ContactUs() {
             transition={{ duration: 0.45 }}
             className="space-y-3 text-center md:text-left ml-6 md:ml-14 md:translate-x-24 lg:translate-x-40"
           >
-            <h2 className="text-3xl md:text-4xl section-title">Contact Us</h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">United Arab Emirates | India</p>
+            <h2 className="text-3xl md:text-4xl section-heading">Contact Us</h2>
+            <p className="section-copy text-lg">United Arab Emirates | India</p>
             <p className="text-gray-900 dark:text-gray-100 text-xl">
               E-mail Id: <a className="hover:text-[#4C99A0] transition-colors" href="mailto:Info@ambot365.com">Info@ambot365.com</a>
             </p>
             <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2 mt-4 px-6 py-3 rounded-md border-2 border-[#3B82F6] text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white transition-colors"
+              href="mailto:Info@ambot365.com"
+              className="btn-brand mt-4"
             >
               <Mail className="w-4 h-4" />
               Connect to Us

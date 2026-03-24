@@ -36,7 +36,7 @@ export default function Navbar() {
                 : 'bg-transparent py-6'
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div className="site-container flex items-center justify-between">
                 {/* Logo */}
                 <a href="#" className="flex items-center gap-2 text-xl  tracking-tight text-gray-900 dark:text-gray-50">
                     <img src={logoPath} alt="AmBot 365 Logo" className="h-8 w-auto" />
@@ -80,13 +80,13 @@ export default function Navbar() {
                             setAiInitialMenu(null);
                             setIsAIChatOpen(true);
                         }}
-                        className="px-5 py-2.5 bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] text-white text-sm font-medium rounded-xl transition-all shadow-md shadow-[#4C99A0]/25 hover:shadow-lg hover:shadow-[#4C99A0]/40 hover:-translate-y-0.5"
+                        className="btn-brand"
                     >
                         Ask AI
                     </button>
                     <a
-                        href="#cta"
-                        className="px-5 py-2.5 bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] text-white text-sm font-medium rounded-xl transition-all shadow-md shadow-[#4C99A0]/25 hover:shadow-lg hover:shadow-[#4C99A0]/40 hover:-translate-y-0.5"
+                        href="#contact"
+                        className="btn-brand"
                     >
                         Get in Touch
                     </a>
@@ -110,7 +110,7 @@ export default function Navbar() {
                             setAiInitialMenu(null);
                             setIsAIChatOpen(true);
                         }}
-                        className="px-4 py-2 bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] text-white text-sm font-medium rounded-xl transition-all"
+                        className="btn-brand text-xs px-3 py-2"
                     >
                         Ask AI
                     </button>
@@ -168,13 +168,13 @@ export default function Navbar() {
                                         setIsAIChatOpen(true);
                                         setIsMobileMenuOpen(false);
                                     }}
-                                    className="w-full py-3 text-center text-base font-medium text-white bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] rounded-xl transition-all shadow-md"
+                                    className="btn-brand w-full py-3 text-base"
                                 >
                                     Ask AI
                                 </button>
                                 <a
-                                    href="#cta"
-                                    className="w-full py-3 text-center text-base font-medium text-white bg-gradient-to-r from-[#4C99A0] to-[#65A859] hover:from-[#3d7a80] hover:to-[#508a47] rounded-xl transition-all shadow-md shadow-[#4C99A0]/25"
+                                    href="#contact"
+                                    className="btn-brand w-full py-3 text-base"
                                 >
                                     Get in Touch
                                 </a>
