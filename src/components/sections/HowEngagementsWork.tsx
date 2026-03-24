@@ -20,9 +20,9 @@ const PHASES = [
     step: '02',
     weeks: '2–4 WEEKS',
     title: 'Solution Design',
-    desc: 'We design the AI agent architecture, integrations, and workflow.',
-    included: ['Agent workflow design', 'System integration planning', 'UI/UX prototype', 'Architecture design'],
-    outcome: 'Approved design ready for development.',
+    desc: 'We design user-centric UI/UX, robust architecture, system integrations, and optimized workflows.',
+    included: ['Workflow design', 'System integration planning', 'UI/UX prototype', 'Architecture design'],
+    outcome: 'Design Approved. Ready to Build',
     colorClass: 'text-[#4C99A0]',
     bgClass: 'bg-gradient-to-r from-[#4C99A0] to-[#65A859]',
     lightBgClass: 'bg-[#4C99A0]/10',
@@ -31,10 +31,10 @@ const PHASES = [
   {
     step: '03',
     weeks: '4–8 WEEKS',
-    title: 'Agent Build & Deployment',
-    desc: 'We build, integrate, and deploy AI agents within your systems.',
-    included: ['AI agent development', 'Microsoft 365 & API integrations', 'Testing with real data', 'UAT & production deployment'],
-    outcome: 'Production-ready AI automation.',
+    title: 'Build & Deployment',
+    desc: 'We build, integrate, and deploy intelligent solutions for your business.',
+    included: ['Development', 'Testing with real data', 'UAT & Production', 'Deployment'],
+    outcome: 'Production-ready digital solutions.',
     colorClass: 'text-[#4C99A0]',
     bgClass: 'bg-gradient-to-r from-[#4C99A0] to-[#65A859]',
     lightBgClass: 'bg-[#4C99A0]/10',
@@ -178,21 +178,21 @@ export default function HowEngagementsWork() {
                   <div className={`min-w-12 h-12 px-3 rounded-2xl flex items-center justify-center font-bold text-white ${phase.bgClass} shadow-lg shadow-${phase.colorClass.split('-')[1]}-200 dark:shadow-none`}>
                     {phase.step}
                   </div>
-                  <span className="text-xl font-semibold text-[#002060] dark:text-gray-400">-</span>
-                  <h3 className="text-2xl font-bold !text-[#002060] dark:!text-gray-50 leading-tight">
+
+                  <h3 className="text-2xl font-normal !text-[#002060] dark:!text-gray-50 leading-tight whitespace-nowrap">
                     {phase.title}
                   </h3>
                 </div>
 
-                <p className="text-gray-500 dark:text-gray-400 text-base leading-relaxed mb-8 flex-1 font-light">
+                <p className="text-[#002060]/70 dark:text-gray-300 text-base leading-relaxed mb-8 flex-1 font-light">
                   {phase.desc}
                 </p>
 
-                <div>
+                <div className="min-h-[180px]">
                   <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${phase.colorClass}`}>
-                    WHAT'S INCLUDED
+                    Engagement Scope  
                   </p>
-                  <ul className="space-y-4 mb-8">
+                  <ul className="space-y-4 mb-4">
                     {phase.included.map((item, j) => (
                       <li key={j} className="flex items-center gap-3 text-gray-600 dark:text-gray-300">
                         <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${phase.bgClass} shadow-sm`}>
@@ -204,11 +204,11 @@ export default function HowEngagementsWork() {
                   </ul>
                 </div>
 
-                <div className={`mt-auto p-5 rounded-2xl ${phase.lightBgClass} dark:bg-gray-800/50`}>
+                <div className={`mt-auto p-5 rounded-2xl ${phase.lightBgClass} dark:bg-gray-800/50 min-h-[105px] flex flex-col justify-center`}>
                   <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${phase.colorClass}`}>
-                    OUTCOME
+                    Business OUTCOME
                   </p>
-                  <p className="text-gray-900 dark:text-gray-100 font-semibold leading-snug">
+                  <p className="text-gray-900 dark:text-gray-100 font-normal leading-snug">
                     {phase.outcome}
                   </p>
                 </div>
@@ -218,14 +218,7 @@ export default function HowEngagementsWork() {
         </div>
 
         <div className="mt-4 text-center">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            href="#cta"
-            className="inline-flex items-center gap-2 px-8 py-3 text-sm bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            Get Custom Pricing
-          </motion.a>
+
         </div>
       </div>
     </section>
