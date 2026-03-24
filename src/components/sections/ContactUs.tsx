@@ -11,10 +11,10 @@ import SectionWrapper from '../ui/SectionWrapper';
 import Separator from '../ui/Separator';
 
 const SOCIAL_LINKS = [
-  { imgSrc: fbIcon, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61555896342817&mibextid=LQQJ4d', color: '#1877F2' },
+  // { imgSrc: fbIcon, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61555896342817&mibextid=LQQJ4d', color: '#1877F2' },
   { imgSrc: inIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/company/ambot-365/', color: '#0A66C2' },
-  { imgSrc: ytIcon, label: 'YouTube', href: 'https://youtube.com/@ambot365?si=0lREyG9S_k68ZzYp', color: '#FF0000' },
-  { imgSrc: igIcon, label: 'Instagram', href: 'https://www.instagram.com/ambot365?igsh=MW9mNjYwaWFibGNlcg%3D%3D&utm_source=qr', color: '#E4405F' },
+  // { imgSrc: ytIcon, label: 'YouTube', href: 'https://youtube.com/@ambot365?si=0lREyG9S_k68ZzYp', color: '#FF0000' },
+  // { imgSrc: igIcon, label: 'Instagram', href: 'https://www.instagram.com/ambot365?igsh=MW9mNjYwaWFibGNlcg%3D%3D&utm_source=qr', color: '#E4405F' },
   { imgSrc: waIcon, label: 'WhatsApp', href: 'https://wa.me/message/RTMK3T6Y7ZJXP1', color: '#25D366' },
 ];
 

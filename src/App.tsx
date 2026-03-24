@@ -10,7 +10,6 @@ import SolutionsOverview from './components/sections/SolutionsOverview';
 import ProcessComparison from './components/sections/ProcessComparison';
 import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import WhyAmbot365 from './components/sections/WhyAmbot365';
-import ContactUs from './components/sections/ContactUs';
 import StickyFooter from './components/ui/StickyFooter';
 import Navbar from './components/layout/Navbar';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -37,8 +36,6 @@ export default function App() {
           {/* <Integrations />
           <Separator /> */}
           <WhyAmbot365 />
-          <Separator />
-          <ContactUs />
           {/* <CTA /> */}
         </main>
         <StickyFooter />

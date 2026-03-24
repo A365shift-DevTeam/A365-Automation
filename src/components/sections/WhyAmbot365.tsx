@@ -72,7 +72,7 @@ export default function WhyAmbot365() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.1 * index, ease: [0.22, 1, 0.36, 1] }}
-                    className="rounded-2xl bg-white/60 dark:bg-gray-800/60 border border-white/50 dark:border-gray-700/50 px-4 py-3 shadow-sm blur-none"
+                    className="rounded-2xl bg-white/60 dark:bg-gray-800/60 border border-white/50 dark:border-gray-700/50 px-5 py-4 min-h-[96px] shadow-sm blur-none flex flex-col justify-center"
                   >
                     <div className="text-lg md:text-xl font-bold text-primary-600 dark:text-primary-400 leading-tight">
                       {item.value}
@@ -154,22 +154,6 @@ export default function WhyAmbot365() {
                 <p className="text-sm md:text-base leading-relaxed text-gray-600 dark:text-gray-300">
                   To build impactful digital solutions, drive continuous innovation, and create value for businesses and people.
                 </p>
-                {/* Tagline */}
-                <div className="mt-5 flex flex-wrap gap-3">
-                  {['Identify', 'Innovate', 'Create', 'Transform'].map((word, index) => (
-                    <motion.span
-                      key={word}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.35, delay: 0.08 * index, ease: [0.22, 1, 0.36, 1] }}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-primary-200 dark:border-primary-800 bg-white/70 dark:bg-primary-900/30 px-4 py-2 text-xs md:text-sm font-semibold text-primary-700 dark:text-primary-300 tracking-wide"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary-500" />
-                      {word}
-                    </motion.span>
-                  ))}
-                </div>
               </div>
             </motion.div>
           </div>

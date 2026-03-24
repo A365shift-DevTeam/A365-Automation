@@ -85,7 +85,7 @@ export default function Navbar() {
                         Ask AI
                     </button>
                     <a
-                        href="#contact"
+                        href="mailto:Info@ambot365.com"
                         className="btn-brand"
                     >
                         Get in Touch
@@ -173,7 +173,7 @@ export default function Navbar() {
                                     Ask AI
                                 </button>
                                 <a
-                                    href="#contact"
+                                    href="mailto:Info@ambot365.com"
                                     className="btn-brand w-full py-3 text-base"
                                 >
                                     Get in Touch
