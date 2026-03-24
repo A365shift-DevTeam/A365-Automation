@@ -164,7 +164,7 @@ export default function ProcessComparison() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="text-center mb-16">
-         
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -192,30 +192,6 @@ export default function ProcessComparison() {
           onViewportEnter={() => setIsInView(true)}
           className="relative [transform-style:preserve-3d]"
         >
-          {/* Summary Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7 }}
-            className="mb-6 bg-gradient-to-r from-[#4C99A0]/10 via-white dark:via-gray-900 to-[#65A859]/10 rounded-2xl p-5 md:p-6 border border-gray-200/50 dark:border-gray-800/50 flex flex-col md:flex-row items-center justify-between gap-4"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
-                <ArrowRight className="w-5 h-5 text-white" />
-              </div>
-              <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">
-                Save <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C99A0] to-[#65A859] font-black text-lg">7+ minutes</span> per transaction with Ambot365 agents
-              </p>
-            </div>
-            <div className="flex items-center gap-6 text-xs  tracking-wide uppercase text-gray-500 dark:text-gray-400">
-              <span>No code changes</span>
-              <span className="w-1 h-1 rounded-full bg-gray-400" />
-              <span>Deploy in weeks</span>
-              <span className="w-1 h-1 rounded-full bg-gray-400" />
-              <span>Full audit trail</span>
-            </div>
-          </motion.div>
 
           <div className="pointer-events-none absolute left-8 right-8 -bottom-10 h-16 bg-black/20 blur-3xl opacity-20 dark:opacity-30" />
 
@@ -227,33 +203,43 @@ export default function ProcessComparison() {
               {/* ── LEFT: MANUAL ── */}
               <div className="bg-white dark:bg-gray-900 p-8 md:p-10 relative overflow-hidden lg:border-r border-gray-200/60 dark:border-gray-800/80">
                 {/* Header Row */}
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-start mb-6 relative z-10">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800/40 flex items-center justify-center">
                       <Timer className="w-5 h-5 text-red-500" />
                     </div>
                     <div>
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-lg  text-gray-900 dark:text-white">Manual</h3>
-                        <div className={`ml-4 md:ml-6 flex items-center gap-2 px-2 py-1 rounded-lg text-[10px] font-mono transition-colors duration-300 ${manualFinished
-                          ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
-                          : 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400'
-                          }`}>
-                          <span className={`w-1.5 h-1.5 rounded-full ${manualFinished ? 'bg-red-500' : 'bg-orange-500 animate-pulse'}`} />
-                          {manualFinished ? 'TIMED OUT' : 'RUNNING'} {getInvoiceCount(manualElapsed, 600)}
-                        </div>
-                      </div>
+                      <h3 className="text-lg text-gray-900 dark:text-white">Manual</h3>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Traditional process</p>
+                    </div>
+                  </div>
+                  
+                  {/* Absolute Centered Status Animation */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                    <div className="flex items-center gap-2 pointer-events-auto">
+                      <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[11px] font-mono transition-colors duration-300 ${manualFinished
+                        ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
+                        : 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400'
+                        }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${manualFinished ? 'bg-red-500' : 'bg-orange-500 animate-pulse'}`} />
+                        {manualFinished ? 'TIMED OUT' : 'RUNNING'} {getInvoiceCount(manualElapsed, 600)}
+                      </div>
+                      {manualFinished && (
+                        <motion.div
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          className="flex items-center gap-1 text-[10px] text-red-500 font-medium"
+                        >
+                          <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: '2s' }} />
+                          Restarting...
+                        </motion.div>
+                      )}
                     </div>
                   </div>
                 </div>
 
-                <div className="mb-6 flex flex-col xl:flex-row items-center justify-between gap-3 min-h-[1.5rem]">
-                  <div className={`flex items-center gap-1 text-[10px] text-red-500 font-medium transition-opacity duration-300 ${manualFinished ? 'opacity-100' : 'opacity-0'}`}>
-                    <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: '2s' }} />
-                    Restarting...
-                  </div>
-                  <p className="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 whitespace-nowrap xl:text-right">
+                <div className="mb-6 flex flex-col items-center justify-center gap-3 min-h-[1.5rem]">
+                  <p className="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 whitespace-nowrap text-center">
                     Manual: 10/50 invoices | slow (10+ min) | error-prone | not scalable
                   </p>
                 </div>
@@ -348,33 +334,33 @@ export default function ProcessComparison() {
                 <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full bg-[#65A859]/8 blur-3xl pointer-events-none" />
 
                 {/* Header Row */}
-                <div className="flex items-center justify-between mb-2 relative z-10">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-center justify-start mb-6 relative z-10">
+                  <div className="flex items-center gap-3 text-left">
                     <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg shadow-[#4C99A0]/25">
                       <Zap className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-lg  text-gray-900 dark:text-white">Agent</h3>
-                        <div className={`ml-4 md:ml-6 flex items-center gap-2 px-2 py-1 rounded-lg text-[10px] font-mono transition-colors duration-300 ${autoFinished
-                          ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
-                          : 'bg-[#4C99A0]/15 text-[#4C99A0] dark:text-[#65A859]'
-                          }`}>
-                          <span className={`w-1.5 h-1.5 rounded-full ${autoFinished ? 'bg-green-500' : 'bg-[#4C99A0] animate-pulse'}`} />
-                          {autoFinished ? 'COMPLETED' : 'RUNNING'} {getInvoiceCount(autoElapsed, 180)}
-                        </div>
-                      </div>
+                      <h3 className="text-lg text-gray-900 dark:text-white">Agent</h3>
                       <p className="text-xs text-gray-500 dark:text-gray-400">Fully automated</p>
+                    </div>
+                  </div>
+
+                  {/* Absolute Centered Status Animation */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                    <div className="flex items-center gap-2 pointer-events-auto">
+                      <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[11px] font-mono transition-colors duration-300 ${autoFinished
+                        ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+                        : 'bg-[#4C99A0]/15 text-[#4C99A0] dark:text-[#65A859]'
+                        }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${autoFinished ? 'bg-green-500' : 'bg-[#4C99A0] animate-pulse'}`} />
+                        {autoFinished ? 'COMPLETED' : 'RUNNING'} {getInvoiceCount(autoElapsed, 180)}
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mb-6 flex flex-col xl:flex-row items-center justify-between gap-3 relative z-10 min-h-[1.5rem]">
-                  <div className={`flex items-center gap-1 text-[10px] text-green-600 dark:text-green-400 font-semibold transition-opacity duration-300 ${autoFinished ? 'opacity-100' : 'opacity-0'}`}>
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    All tasks done!
-                  </div>
-                  <p className="text-[10px] md:text-[11px] text-gray-600 dark:text-gray-300 whitespace-nowrap xl:text-right">
+                <div className="mb-6 flex flex-col items-center justify-center gap-3 relative z-10 min-h-[1.5rem]">
+                  <p className="text-[10px] md:text-[11px] text-gray-600 dark:text-gray-300 whitespace-nowrap text-center">
                     Ambot365: 50/50 invoices | fast (3 min) | highly accurate | scalable
                   </p>
                 </div>
