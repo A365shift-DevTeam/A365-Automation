@@ -223,9 +223,9 @@ export default function ProcessComparison() {
                   </div>
                 </div>
                 
-                <div className="mb-6 flex flex-col items-center justify-center gap-3 min-h-[1.5rem]">
-                  <p className="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 whitespace-nowrap text-center">
-                    Manual: 10/50 invoices | slow (10+ min) | error-prone | not scalable
+                <div className="mb-8 flex flex-col items-center justify-center gap-3">
+                  <p className="text-[11px] md:text-[12px] font-medium text-orange-600/80 dark:text-orange-400/80 whitespace-nowrap text-center">
+                    Delayed • Error-Prone • Repetitive
                   </p>
                 </div>
 
@@ -339,9 +339,9 @@ export default function ProcessComparison() {
                   </div>
                 </div>
                 
-                <div className="mb-6 flex flex-col items-center justify-center gap-3 relative z-10 min-h-[1.5rem]">
-                  <p className="text-[10px] md:text-[11px] text-gray-600 dark:text-gray-300 whitespace-nowrap text-center">
-                    Ambot365: 50/50 invoices | fast (3 min) | highly accurate | scalable
+                <div className="mb-8 flex flex-col items-center justify-center gap-3 relative z-10">
+                  <p className="text-[11px] md:text-[12px] font-medium text-[#65A859] whitespace-nowrap text-center">
+                    Real-Time • Precise • Scalable
                   </p>
                 </div>
 
