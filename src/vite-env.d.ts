@@ -20,6 +20,11 @@ declare module '*.jpeg' {
   export default src;
 }
 
+declare module '*.enc' {
+  const src: string;
+  export default src;
+}
+
 declare module 'cobe' {
   interface GlobeOptions {
     devicePixelRatio?: number;

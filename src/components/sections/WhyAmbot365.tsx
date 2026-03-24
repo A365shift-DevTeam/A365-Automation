@@ -1,156 +1,175 @@
-import { Settings, TrendingUp, BarChart3, AppWindow } from 'lucide-react';
+import { motion } from 'motion/react';
 import SectionWrapper from '../ui/SectionWrapper';
+import ambotLogo from '../../assets/AmBot 365-Logo.png';
+import founderImg from '../../assets/Founder img.png';
 
 export default function WhyAmbot365() {
   const stats = [
-    { value: '18+ Years', label: 'Global Automation Experience' },
-    { value: '1,213+', label: 'Automation Projects Delivered' },
-    { value: '200+', label: 'Lean Projects Led' },
-    { value: '95%', label: 'Process Automation Achieved' },
-  ];
-
-  const highlights = [
-    {
-      title: 'AUTOMATION BACKGROUND',
-      text: '18+ years of global experience focused on Microsoft automation, process excellence, and enterprise delivery.',
-      icon: <Settings className="w-5 h-5 text-primary-500" />,
-    },
-    {
-      title: 'DELIVERY IMPACT',
-      text: 'Completed 1,213 automation projects and led over 200 Lean projects with measurable productivity gains.',
-      icon: <TrendingUp className="w-5 h-5 text-primary-500" />,
-    },
-    {
-      title: 'POWER BI & ANALYTICS',
-      text: 'Built dashboards, KPI scorecards, and visual reports for senior leadership including VPs and CIOs.',
-      icon: <BarChart3 className="w-5 h-5 text-primary-500" />,
-    },
-    {
-      title: 'MICROSOFT EXPERTISE',
-      text: 'Hands-on with Office Script, VBA, Power BI, Power Automate, Excel, Word, PowerPoint, and SharePoint.',
-      icon: <AppWindow className="w-5 h-5 text-primary-500" />,
-    },
-  ];
-
-  const tools = [
-    'Office Script',
-    'VBA',
-    'Power BI',
-    'Power Automate',
-    'Excel',
-    'Word',
-    'PowerPoint',
-    'SharePoint',
+    { value: '18+', label: 'Years Experience' },
+    { value: '1,200+', label: 'Automations Delivered' },
+    { value: 'Up to 95%', label: 'Automation Achieved' },
+    { value: '8+', label: 'Active Global Clients' },
   ];
 
   return (
-    <SectionWrapper id="about" className="section-bg px-6 py-12 md:px-12 lg:px-20">
+    <SectionWrapper id="about" className="px-6 py-12 md:px-12 lg:px-20">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-12 text-center">
+        {/* Section Header */}
+        <div className="mb-14 text-center">
           <h2 className="text-2xl md:text-4xl mb-4 section-title tracking-tight">
             Why Ambot365
           </h2>
-          <p className="mx-auto mt-5 max-w-4xl text-xs leading-relaxed text-gray-600 dark:text-gray-400 md:text-sm">
-            18+ years of global automation experience with deep Microsoft expertise,
-            enterprise process transformation, Power BI reporting, and scalable digital
-            solutions built for real business impact.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {stats.map((item) => (
-            <div
-              key={item.label}
-              className="section-card rounded-[28px] px-6 py-7 shadow-sm"
+        {/* Main Content: Founder Left + Content Right */}
+        <div className="section-card rounded-[32px] p-8 md:p-12 lg:p-16 shadow-sm overflow-hidden relative">
+          {/* Subtle background gradient accent */}
+          <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-bl from-primary-50 to-transparent dark:from-primary-900/20 dark:to-transparent rounded-full -translate-y-1/3 translate-x-1/3 pointer-events-none" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-10 lg:gap-16 items-start relative z-10">
+            {/* LEFT: Founder Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-center text-center"
             >
-              <div className="flex items-center gap-4">
-                <div className="basis-[30%] text-left">
-                  <div className="text-xl md:text-2xl leading-tight font-semibold text-primary-600 dark:text-primary-400">
-                    {item.value}
-                  </div>
-                </div>
-                <div className="basis-[70%] border-l border-gray-200 pl-4 dark:border-gray-700">
-                  <div className="text-left text-xs md:text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">
-                    {item.label}
-                  </div>
+              {/* Circular Founder Image */}
+              <div className="relative mb-6">
+                {/* Decorative ring */}
+                <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-primary-400 via-primary-500 to-accent-500 opacity-20 blur-sm" />
+                <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800">
+                  <img
+                    src={founderImg}
+                    alt="Ambrose Denny - Founder"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-8 xl:grid-cols-[1fr_1fr]">
-          <div className="section-card rounded-[30px] p-8 md:p-10 shadow-sm">
-            <p className="text-xs leading-relaxed text-gray-700 dark:text-gray-300 md:text-sm">
-              With 18 years of global experience, I bring specialized automation skills,
-              particularly in Microsoft applications, to drive efficiency and innovation.
-              I have completed <span className="font-medium section-subtitle">1,213 automation projects</span>,
-              led <span className="font-medium section-subtitle">200+ Lean projects</span>, and achieved up to
-              <span className="font-medium text-primary-600 dark:text-primary-400"> 95% process automation</span>, delivering major
-              operational savings and productivity gains.
-            </p>
-
-            <div className="mt-8 rounded-3xl bg-gray-50 dark:bg-gray-800/50 p-6 md:p-8 border border-gray-100 dark:border-gray-800">
-              <h3 className="text-xs md:text-sm font-medium uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400">
-                Approach to Automation
+              {/* Founder Name */}
+              <h3 className="text-xl md:text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-1">
+                Ambrose Denny
               </h3>
-              <p className="mt-4 text-xs leading-relaxed text-gray-700 dark:text-gray-300 md:text-sm">
-                My methodology starts with end-to-end process understanding, followed by
-                feasibility checks, solution design, development, testing, and delivery.
-                Every project is built with strong focus on usability, UX, and UI.
+              <p className="text-sm font-medium text-gray-500 dark:text-gray-400 tracking-wide uppercase">
+                Founder
               </p>
-            </div>
-          </div>
 
-          <div className="section-card rounded-[30px] p-5 md:p-7 shadow-sm">
-            <div className="divide-y divide-gray-100 dark:divide-gray-800">
-              {highlights.map((item) => (
-                <div key={item.title} className="flex gap-5 px-3 py-3 md:gap-6 md:px-5 md:py-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <div className="text-sm md:text-base font-semibold uppercase tracking-[0.26em] !text-[#002060] dark:!text-gray-100">
-                      {item.title}
-                    </div>
-                    <div className="mt-2 text-xs leading-relaxed text-gray-700 dark:text-gray-300 font-medium md:text-sm">
-                      {item.text}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+              {/* Logo */}
+              <div className="mt-5 mb-6">
+                <img src={ambotLogo} alt="AmBot 365 Logo" className="h-12 md:h-14 object-contain" />
+              </div>
 
-        <div className="mt-10 section-card rounded-[30px] p-8 md:p-10 shadow-sm">
-          <div className="grid gap-8 lg:grid-cols-[1.25fr_1fr]">
-            <div>
-              <h2 className="text-xl font-medium section-subtitle md:text-2xl">
-                Global Automation Implementations
-              </h2>
-              <p className="mt-4 text-xs leading-relaxed text-gray-600 dark:text-gray-400 md:text-sm">
-                Implemented automation solutions across Banking, FP&A, Accounts Receivable,
-                Human Resources, Payroll, Record to Report, Accounts Payable, Travel & Living,
-                Quality, Presales, and Transition functions at enterprise scale.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-xl font-medium section-subtitle md:text-2xl">
-                Microsoft 365 Expertise
-              </h2>
-              <div className="mt-5 flex flex-wrap gap-3">
-                {tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="rounded-full border border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/30 px-3 py-1.5 text-[10px] font-medium text-primary-700 dark:text-primary-300 md:text-xs"
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 gap-3 w-full mt-2">
+                {stats.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.1 * index, ease: [0.22, 1, 0.36, 1] }}
+                    className="rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-gray-100 dark:border-gray-700/50 px-4 py-3"
                   >
-                    {tool}
-                  </span>
+                    <div className="text-lg md:text-xl font-bold text-primary-600 dark:text-primary-400 leading-tight">
+                      {item.value}
+                    </div>
+                    <div className="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 font-medium mt-0.5 leading-tight">
+                      {item.label}
+                    </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
+
+            {/* RIGHT: About, Vision, Mission */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col gap-8"
+            >
+              {/* About Section */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                    <svg className="w-4 h-4 text-primary-600 dark:text-primary-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  <h3 className="text-lg md:text-xl font-semibold section-subtitle">
+                    About Ambot365
+                  </h3>
+                </div>
+                <p className="text-sm md:text-base leading-relaxed text-gray-600 dark:text-gray-300">
+                  Ambot365 is a data-driven technology company delivering AI solutions and digital solutions using Microsoft 365. We build production-ready products and digital solutions that drive real business impact and transform processes into scalable, efficient systems.
+                </p>
+                <p className="mt-3 text-sm md:text-base leading-relaxed text-gray-600 dark:text-gray-300">
+                  With <span className="font-semibold text-primary-600 dark:text-primary-400">47+ client engagements</span> and <span className="font-semibold text-primary-600 dark:text-primary-400">8+ active global clients</span>, we deliver solutions that improve productivity, visibility, and operational efficiency.
+                </p>
+              </div>
+
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent" />
+
+              {/* Vision Section */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                    <svg className="w-4 h-4 text-primary-600 dark:text-primary-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <circle cx="12" cy="12" r="6" />
+                      <circle cx="12" cy="12" r="2" />
+                    </svg>
+                  </span>
+                  <h3 className="text-lg md:text-xl font-semibold section-subtitle">
+                    Vision
+                  </h3>
+                </div>
+                <p className="text-sm md:text-base leading-relaxed text-gray-600 dark:text-gray-300">
+                  To be a top-tier global technology company, leading innovation in AI and automation by <span className="font-semibold text-primary-600 dark:text-primary-400">2027</span>.
+                </p>
+              </div>
+
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent" />
+
+              {/* Mission Section */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                    <svg className="w-4 h-4 text-primary-600 dark:text-primary-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </span>
+                  <h3 className="text-lg md:text-xl font-semibold section-subtitle">
+                    Mission
+                  </h3>
+                </div>
+                <p className="text-sm md:text-base leading-relaxed text-gray-600 dark:text-gray-300">
+                  To build impactful digital solutions, drive continuous innovation, and create value for businesses and people.
+                </p>
+                {/* Tagline */}
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {['Identify', 'Innovate', 'Create', 'Transform'].map((word, index) => (
+                    <motion.span
+                      key={word}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.35, delay: 0.08 * index, ease: [0.22, 1, 0.36, 1] }}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/30 px-4 py-2 text-xs md:text-sm font-semibold text-primary-700 dark:text-primary-300 tracking-wide"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary-500" />
+                      {word}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
