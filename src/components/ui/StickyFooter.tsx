@@ -16,24 +16,6 @@ const containerVariants = {
   },
 }
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  },
-}
-
-const linkVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-  },
-}
-
 const socialVariants = {
   hidden: { opacity: 0, scale: 0 },
   visible: {
@@ -61,38 +43,6 @@ const backgroundVariants = {
 
 // Footer data for better maintainability
 const footerData = {
-  sections: [
-    {
-      title: "Platform", links: [
-        { label: "Agents in Action", href: "#agents-in-action" },
-        { label: "Solutions", href: "#solutions-overview" },
-        { label: "How It Works", href: "#how-it-works" }
-      ]
-    },
-    {
-      title: "Industries", links: [
-        { label: "Manufacturing", href: "#agents-in-action" },
-        { label: "Automotive", href: "#agents-in-action" },
-        { label: "Finance", href: "#agents-in-action" },
-        { label: "VC & PE", href: "#agents-in-action" },
-        { label: "B2B SaaS", href: "#agents-in-action" }
-      ]
-    },
-    {
-      title: "Company", links: [
-        { label: "About", href: "#about" },
-        { label: "Contact", href: "#contact" },
-        { label: "FAQ (Ask AI)", href: "#" }
-      ]
-    },
-    {
-      title: "Legal", links: [
-        { label: "Terms", href: "#" },
-        { label: "Privacy", href: "#" },
-        { label: "Cookies", href: "#" }
-      ]
-    },
-  ],
   social: [
     { href: "https://twitter.com/ambot365", label: "Twitter", icon: Twitter, color: "#1DA1F2" },
     { href: "https://github.com/ambot365", label: "GitHub", icon: Github, color: "#333" },
@@ -102,45 +52,6 @@ const footerData = {
   subtitle: "Enterprise-grade AI Automation",
   copyright: `©${new Date().getFullYear()} Ambot365. All rights reserved.`,
 }
-
-// Reusable components
-const NavSection: React.FC<{ title: string; links: { label: string; href: string }[]; index: number }> = ({ title, links, index }) => (
-  <motion.div variants={itemVariants} custom={index} className="flex flex-col gap-4">
-    <motion.h3
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-      className="mb-2 uppercase text-gray-500 dark:text-gray-400 text-xs  tracking-[0.2em] border-b border-gray-100 dark:border-gray-800 pb-2"
-    >
-      {title}
-    </motion.h3>
-    <div className="flex flex-col gap-3">
-      {links.map((link, linkIndex) => (
-        <motion.a
-          key={linkIndex}
-          variants={linkVariants}
-          custom={linkIndex}
-          href={link.href}
-          whileHover={{
-            x: 6,
-            transition: { type: "spring", stiffness: 300, damping: 20 },
-          }}
-          className="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300 text-sm font-medium group relative w-fit"
-        >
-          <span className="relative">
-            {link.label}
-            <motion.span
-              className="absolute bottom-0 left-0 h-0.5 bg-primary-500"
-              initial={{ width: 0 }}
-              whileHover={{ width: "100%" }}
-              transition={{ duration: 0.3 }}
-            />
-          </span>
-        </motion.a>
-      ))}
-    </div>
-  </motion.div>
-)
 
 const SocialLink: React.FC<{ href: string; label: string; icon: any; index: number; color: string }> = ({ href, label, icon: Icon, index, color }) => (
   <motion.a
@@ -175,7 +86,7 @@ export default function StickyFooter() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={containerVariants}
-            className="bg-white dark:bg-gray-950 py-12 md:py-16 px-6 md:px-12 h-full w-full flex flex-col justify-between relative overflow-hidden border-t border-gray-100 dark:border-gray-900"
+            className="bg-white dark:bg-gray-950 py-12 md:py-16 px-6 md:px-12 h-full w-full flex flex-col justify-end relative overflow-hidden border-t border-gray-100 dark:border-gray-900"
           >
             {/* Animated Background Elements */}
             <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 dark:from-gray-900/20 to-transparent pointer-events-none" />
@@ -194,15 +105,6 @@ export default function StickyFooter() {
               }}
             />
 
-            {/* Navigation Section */}
-            <motion.div variants={containerVariants} className="relative z-10 max-w-7xl mx-auto w-full">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 lg:gap-24">
-                {footerData.sections.map((section, index) => (
-                  <NavSection key={section.title} title={section.title} links={section.links} index={index} />
-                ))}
-              </div>
-            </motion.div>
-
             {/* Footer Bottom Section */}
             <div className="max-w-7xl mx-auto w-full">
               <motion.div
@@ -210,7 +112,7 @@ export default function StickyFooter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col md:flex-row justify-between items-start md:items-end relative z-10 gap-8 md:gap-12 mt-12"
+                className="flex flex-col md:flex-row justify-between items-start md:items-end relative z-10 gap-8 md:gap-12 mt-0"
               >
                 <div className="flex-1 w-full relative z-20">
                   <motion.h1

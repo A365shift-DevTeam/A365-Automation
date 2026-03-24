@@ -98,7 +98,7 @@ export default function HowEngagementsWork() {
       </div>
       <div className="md:sticky md:top-[80px] flex flex-col justify-start pt-8 pb-4 max-w-7xl mx-auto px-6 lg:px-8 overflow-visible">
         <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-4xl mb-4 section-title">How We Work</h2>
+          <h2 className="text-2xl md:text-4xl mb-4 section-title">Our Engagement Model</h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light">
             Transparent process. Predictable investment. Every engagement follows the same proven path.
           </p>
