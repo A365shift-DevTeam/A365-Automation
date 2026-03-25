@@ -96,7 +96,7 @@ export default function ProductsAnimation() {
     <div className="w-full h-full bg-[#F8FAFC] dark:bg-gray-950 p-4 overflow-hidden flex items-center justify-center font-sans absolute inset-0">
       <div 
         ref={containerRef} 
-        className="relative w-full min-w-[320px] max-w-[600px] h-[400px] flex flex-col items-center justify-between py-6 shrink-0"
+        className="relative w-full min-w-[320px] max-w-[600px] h-[400px] flex flex-col items-center justify-between pt-0 pb-6 shrink-0"
       >
         {/* SVG Lines */}
         <svg className="absolute inset-0 pointer-events-none z-0 overflow-visible" width="100%" height="100%">
@@ -131,7 +131,7 @@ export default function ProductsAnimation() {
         </svg>
 
         {/* Top Row */}
-        <div className="flex justify-center gap-32 z-10 w-full mb-auto mt-2">
+        <div className="flex justify-center gap-32 z-10 w-full mb-auto -mt-8">
           {/* Excel */}
           <div ref={el => { topRefs.current[0] = el; }} className="w-12 h-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex items-center justify-center hover:shadow-md transition-shadow cursor-pointer overflow-hidden p-2">
             <img src={excelImg} alt="Excel" className="w-full h-full object-contain" />
