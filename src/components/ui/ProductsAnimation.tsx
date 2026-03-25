@@ -4,8 +4,8 @@ import pptImg from '../../assets/Power Point 10.png';
 import ambotLogo from '../../assets/Ambot logo png.png';
 
 const LogoBox = ({ name, color, className = "" }: { name: string, color?: string, className?: string }) => (
-  <div className={`flex items-center justify-center h-10 px-1 rounded-md border border-gray-100 bg-white shadow-sm text-[9px] font-bold hover:shadow-md transition-shadow cursor-pointer ${className}`}>
-    <span style={{ color: color || '#4B5563' }} className="text-center leading-[1.1] line-clamp-2">{name}</span>
+  <div className={`flex items-center justify-center h-10 px-1 rounded-md border border-gray-100 bg-white shadow-sm text-[9px] font-medium hover:shadow-md transition-shadow cursor-pointer min-h-10 ${className}`}>
+    <span style={{ color: color || '#4B5563' }} className="text-center leading-[1.1] line-clamp-2 break-words">{name}</span>
   </div>
 );
 
@@ -19,40 +19,42 @@ export default function ProductsAnimation() {
 
   const updateLines = () => {
     if (!containerRef.current || !centerRef.current) return;
-    
-    // Scale-independent dimensions provided by user design
+
     const containerRect = containerRef.current.getBoundingClientRect();
     const centerRect = centerRef.current.getBoundingClientRect();
-    
-    // Adjust center points for top and bottom connections
-    const centerPointTop = {
-      x: centerRect.left - containerRect.left + centerRect.width / 2,
-      y: centerRect.top - containerRect.top + 10,
-    };
+
+    // Center of bot logo
+    const centerX = centerRect.left - containerRect.left + centerRect.width / 2;
+    const centerTopY = centerRect.top - containerRect.top;
+
     const centerPointBottom = {
-      x: centerRect.left - containerRect.left + centerRect.width / 2,
+      x: centerX,
       y: centerRect.bottom - containerRect.top - 10,
     };
 
     const newLines: { id: string; path: string; delay: number }[] = [];
 
-    // Lines from top items to center
+    // Lines from top items (Excel/PPT) to center bot icon
     topRefs.current.forEach((ref, index) => {
       if (!ref) return;
       const rect = ref.getBoundingClientRect();
-      const point = {
-        x: rect.left - containerRect.left + rect.width / 2,
-        y: rect.bottom - containerRect.top,
-      };
-      
-      const cp1x = point.x;
-      const cp1y = point.y + (centerPointTop.y - point.y) / 2;
-      const cp2x = centerPointTop.x;
-      const cp2y = centerPointTop.y - (centerPointTop.y - point.y) / 2;
-      
+      // Start from bottom-center of the icon
+      const startX = rect.left - containerRect.left + rect.width / 2;
+      const startY = rect.bottom - containerRect.top;
+
+      // End at the top-center of the bot logo
+      const endX = centerX;
+      const endY = centerTopY;
+
+      // Curve: first drop straight down, then sweep into the bot top
+      const cp1x = startX;
+      const cp1y = startY + (endY - startY) * 0.7;
+      const cp2x = endX;
+      const cp2y = endY - (endY - startY) * 0.15;
+
       newLines.push({
         id: `top-${index}`,
-        path: `M ${point.x} ${point.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${centerPointTop.x} ${centerPointTop.y}`,
+        path: `M ${startX} ${startY} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${endX} ${endY}`,
         delay: index * 0.7,
       });
     });
@@ -131,7 +133,7 @@ export default function ProductsAnimation() {
         </svg>
 
         {/* Top Row */}
-        <div className="flex justify-center gap-32 z-10 w-full mb-auto mt-2">
+        <div className="flex justify-center gap-20 sm:gap-28 z-10 w-full mt-2">
           {/* Excel */}
           <div ref={el => { topRefs.current[0] = el; }} className="w-12 h-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex items-center justify-center hover:shadow-md transition-shadow cursor-pointer overflow-hidden p-2">
             <img src={excelImg} alt="Excel" className="w-full h-full object-contain" />
@@ -144,16 +146,16 @@ export default function ProductsAnimation() {
         </div>
 
         {/* Center Section */}
-        <div className="z-10 relative flex flex-col items-center justify-center my-auto w-full gap-5">
+        <div className="z-10 relative flex flex-col items-center justify-center w-full gap-3 mt-8">
           {/* Center Logo */}
-          <div ref={centerRef} className="bg-white dark:bg-gray-800 rounded-2xl p-2 shadow-lg border border-gray-100 dark:border-gray-700 relative z-10">
-            <div className="w-20 h-20 flex items-center justify-center relative hover:scale-105 transition-transform duration-300 cursor-pointer">
+          <div className="rounded-2xl p-2 relative z-10">
+            <div ref={centerRef} className="w-20 h-20 flex items-center justify-center relative hover:scale-105 transition-transform duration-300 cursor-pointer">
               <img src={ambotLogo} alt="Ambot Logo" className="w-full h-full object-contain" />
             </div>
           </div>
           
           {/* Horizontal Text Summary */}
-          <div className="mt-2 bg-white dark:bg-gray-800 px-6 py-2 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-wrap items-center justify-center gap-4 sm:gap-8 relative z-20 w-max max-w-[100%]">
+          <div className="bg-white dark:bg-gray-800 px-6 py-2 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-wrap items-center justify-center gap-4 sm:gap-8 relative z-20 w-max max-w-[100%]">
             <span className="text-[10px] sm:text-[11px] font-bold text-[#4A8554] dark:text-[#65A859]">Secured</span>
             <span className="text-[10px] sm:text-[11px] font-bold text-[#4A8554] dark:text-[#65A859]">Zero Coding</span>
             <span className="text-[10px] sm:text-[11px] font-bold text-[#4A8554] dark:text-[#65A859]">Desktop App</span>
@@ -164,8 +166,8 @@ export default function ProductsAnimation() {
         {/* Bottom Row */}
         <div className="flex justify-center z-10 w-full mt-auto mb-2">
           {/* 7 Icons Card */}
-          <div ref={el => { bottomRefs.current[0] = el; }} className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 w-full max-w-[380px]">
-            <h3 className="text-[10px] font-bold text-gray-400 dark:text-gray-500 mb-3 uppercase tracking-wider text-center">Our Bots</h3>
+          <div ref={el => { bottomRefs.current[0] = el; }} className="bg-white dark:bg-gray-800 p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 w-full max-w-[460px]">
+            <h3 className="text-[10px] font-bold text-gray-400 dark:text-gray-500 mb-2 uppercase tracking-wider text-center">Our Bots</h3>
             <div className="flex flex-wrap justify-center gap-2">
               <LogoBox name="DocCraft" color="#002060" className="w-[calc(25%-6px)] dark:bg-gray-900 border-gray-100 dark:border-gray-700" />
               <LogoBox name="Image Compressor" color="#002060" className="w-[calc(25%-6px)] dark:bg-gray-900 border-gray-100 dark:border-gray-700" />
@@ -173,7 +175,7 @@ export default function ProductsAnimation() {
               <LogoBox name="File Splitter" color="#002060" className="w-[calc(25%-6px)] dark:bg-gray-900 border-gray-100 dark:border-gray-700" />
               <LogoBox name="Merge Master" color="#002060" className="w-[calc(25%-6px)] dark:bg-gray-900 border-gray-100 dark:border-gray-700" />
               <LogoBox name="File Comparison" color="#002060" className="w-[calc(25%-6px)] dark:bg-gray-900 border-gray-100 dark:border-gray-700" />
-              <LogoBox name="Work Allocation" color="#002060" className="w-[calc(25%-6px)] dark:!text-white dark:bg-gray-900 border-gray-100 dark:border-gray-700" />
+              <LogoBox name="Work Allocation" color="#002060" className="w-[calc(25%-6px)] dark:bg-gray-900 border-gray-100 dark:border-gray-700" />
             </div>
           </div>
         </div>

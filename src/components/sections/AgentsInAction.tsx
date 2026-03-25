@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import { ArrowRight, Zap, LayoutTemplate, Code2, CheckCircle2, Package, Activity, Layers, Box, ShieldCheck, Settings, Cpu, Settings2, LineChart, Clock, Database, TrendingUp, Shield } from 'lucide-react';
+import { ArrowRight, Zap, LayoutTemplate, Code2, CheckCircle2, Package, Activity, Layers, Box, ShieldCheck, Settings, Cpu, Settings2, LineChart, Clock, Database, TrendingUp, Shield, FileText, Image, Scissors, ArrowRightLeft, Users } from 'lucide-react';
 import OrbitalApps from './OrbitalApps';
 import CardSwap, { Card } from './CardSwap';
 import SuitcaseImage from '../../assets/Suitcase.jpg';
@@ -22,13 +22,13 @@ const TABS = [
 ];
 
 const PRODUCTS = [
-  { title: "DocCraft", desc: "Automate Excel to PDF, PPT & Image Like Certificates, Reports.", borderColor: "border-orange-500/40 hover:border-orange-500" },
-  { title: "Image Compressor", desc: "Compress your image up to 90% without compromising quality", borderColor: "border-blue-500/40 hover:border-blue-500" },
-  { title: "Consolidation", desc: "Combine multiple files into single file (by Column)", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
-  { title: "File Splitter", desc: "Split large files into sheets and workbook, based on criteria", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
-  { title: "Merge Master", desc: "Combine multiple files into single file (by Multiple Range)", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
-  { title: "File Comparison", desc: "Compare between files and Highlight changes.", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
-  { title: "Work Allocation", desc: "Allocate tasks equally or Randomly based on User", borderColor: "border-purple-500/40 hover:border-purple-500" }
+  { title: "DocCraft", icon: FileText, desc: "Automate Excel to PDF, PPT & Image Like Certificates, Reports.", borderColor: "border-orange-500/40 hover:border-orange-500" },
+  { title: "Image Compressor", icon: Image, desc: "Compress your image up to 90% without compromising quality", borderColor: "border-blue-500/40 hover:border-blue-500" },
+  { title: "Consolidation", icon: Database, desc: "Combine multiple files into single file (by Column)", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
+  { title: "File Splitter", icon: Scissors, desc: "Split large files into sheets and workbook, based on criteria", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
+  { title: "Merge Master", icon: Layers, desc: "Combine multiple files into single file (by Multiple Range)", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
+  { title: "File Comparison", icon: ArrowRightLeft, desc: "Compare between files and Highlight changes.", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
+  { title: "Work Allocation", icon: Users, desc: "Allocate tasks equally or Randomly based on User", borderColor: "border-purple-500/40 hover:border-purple-500" }
 ];
 
 export default function AgentsInAction() {
@@ -419,8 +419,15 @@ export default function AgentsInAction() {
                                 transition={{ delay: 0.05 * offset }}
                                 className="h-[104px] xl:h-[108px] bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 border-2 border-[#4C99A0]/20 hover:border-[#4C99A0]/60 dark:border-[#4C99A0]/20 dark:hover:border-[#4C99A0]/60 flex flex-col justify-center"
                               >
-                                <h4 className="text-gray-900 dark:text-gray-100 text-[12px] xl:text-[13px] font-bold mb-1.5">{product.title}</h4>
-                                <p className="text-gray-500 dark:text-gray-400 text-[10px] xl:text-[11px] leading-snug line-clamp-2 title">{product.desc}</p>
+                                <div className="flex items-start gap-3">
+                                  <div className="flex-shrink-0 mt-0.5 p-1.5 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                                    <product.icon className="w-4 h-4 text-[#4C99A0] dark:text-[#65A859]" />
+                                  </div>
+                                  <div>
+                                    <h4 className="text-gray-900 dark:text-gray-100 text-[12px] xl:text-[13px] font-bold mb-1">{product.title}</h4>
+                                    <p className="text-gray-500 dark:text-gray-400 text-[10px] xl:text-[11px] leading-snug line-clamp-2 title">{product.desc}</p>
+                                  </div>
+                                </div>
                               </motion.div>
                             );
                           })}
