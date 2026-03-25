@@ -97,7 +97,7 @@ export default function ProcessAnimationCard() {
               <Zap className="w-4 h-4 md:w-5 md:h-5 text-white" />
             </div>
             <div>
-              <h3 className="text-sm md:text-base  text-gray-900 dark:text-white leading-tight">Ambot365 Agent</h3>
+              <h3 className="text-sm md:text-base  text-gray-900 dark:text-white leading-tight">Agent</h3>
               <p className="text-[10px] md:text-xs text-gray-500 dark:text-gray-400">Fully automated</p>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Bot, User } from 'lucide-react';
+import ambotLogo from '../../assets/Ambot logo png.png';
 
 const CHAT_MESSAGES = [
   {
@@ -54,8 +55,8 @@ export default function ChatbotPreview() {
     <div className="w-full h-full bg-gradient-to-br from-slate-50 via-cyan-50/40 to-emerald-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-gray-900 p-4 md:p-6">
       <div className="w-full h-full rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 shadow-xl flex flex-col overflow-hidden">
         <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-800 bg-gradient-to-r from-[#4C99A0]/10 to-[#65A859]/10 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#4C99A0] to-[#65A859] text-white flex items-center justify-center">
-            <Bot className="w-4 h-4" />
+          <div className="w-8 h-8 rounded-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+            <img src={ambotLogo} alt="Ambot Logo" className="w-[85%] h-[85%] object-contain" />
           </div>
           <div>
             <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">Page Assistant</p>
@@ -75,8 +76,8 @@ export default function ChatbotPreview() {
                 className={`flex items-end gap-2 ${isUser ? 'justify-end' : 'justify-start'}`}
               >
                 {!isUser && (
-                  <div className="w-7 h-7 rounded-full bg-gray-100 dark:bg-gray-800 text-[#4C99A0] flex items-center justify-center shrink-0">
-                    <Bot className="w-3.5 h-3.5" />
+                  <div className="w-7 h-7 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
+                    <img src={ambotLogo} alt="Ambot Logo" className="w-[85%] h-[85%] object-contain" />
                   </div>
                 )}
                 <div
