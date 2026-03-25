@@ -22,14 +22,13 @@ const TABS = [
 ];
 
 const PRODUCTS = [
-  { title: "DocCraft", desc: "Automate Excel to PDF, PPT & Image Like Certificates, Reports." },
-  { title: "Sheets to Slides", desc: "Creating Excel to Presentation like Weekly Report, Proposals." },
-  { title: "Image Compressor", desc: "Compress your image up to 90% without compromising quality" },
-  { title: "Consolidation", desc: "Combine multiple files into single file (by Column)" },
-  { title: "File Splitter", desc: "Split large files into sheets and workbook, based on criteria" },
-  { title: "Merge Master", desc: "Combine multiple files into single file (by Multiple Range)" },
-  { title: "File Comparison", desc: "Compare between files and Highlight changes." },
-  { title: "Work Allocation", desc: "Allocate tasks equally or Randomly based on User" }
+  { title: "DocCraft", desc: "Automate Excel to PDF, PPT & Image Like Certificates, Reports.", borderColor: "border-orange-500/40 hover:border-orange-500" },
+  { title: "Image Compressor", desc: "Compress your image up to 90% without compromising quality", borderColor: "border-blue-500/40 hover:border-blue-500" },
+  { title: "Consolidation", desc: "Combine multiple files into single file (by Column)", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
+  { title: "File Splitter", desc: "Split large files into sheets and workbook, based on criteria", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
+  { title: "Merge Master", desc: "Combine multiple files into single file (by Multiple Range)", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
+  { title: "File Comparison", desc: "Compare between files and Highlight changes.", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
+  { title: "Work Allocation", desc: "Allocate tasks equally or Randomly based on User", borderColor: "border-purple-500/40 hover:border-purple-500" }
 ];
 
 export default function AgentsInAction() {
@@ -404,44 +403,28 @@ export default function AgentsInAction() {
                     {/* Left: 60% Product Grid */}
                     <div className="w-full lg:w-[60%] bg-white/80 dark:bg-gray-900/80 backdrop-blur-md p-6 md:p-8 rounded-3xl border-2 border-white/50 dark:border-gray-700/50 shadow-2xl overflow-hidden relative">
                       <div className="absolute inset-0 bg-gradient-to-br from-[#4C99A0]/5 via-transparent to-[#65A859]/5 rounded-3xl" />
-                      <div className="relative z-10 lg:h-[520px] overflow-hidden pr-1">
-                        <AnimatePresence mode="wait">
-                          <motion.div
-                            key={productPage}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -30 }}
-                            transition={{ duration: reduceMotion ? 0.15 : 0.4 }}
-                            className="grid grid-cols-1 gap-4"
-                          >
-                            {PRODUCTS.slice(
-                              productPage * PRODUCTS_PER_PAGE,
-                              productPage * PRODUCTS_PER_PAGE + PRODUCTS_PER_PAGE
-                            ).map((product, offset) => {
-                              return (
-                                <motion.div
-                                  key={`${product.title}-${offset}`}
-                                  initial={{ opacity: 0, y: 16 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  transition={{ delay: reduceMotion ? 0 : offset * 0.06 }}
-                                  className="h-[108px] bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md transition-all duration-300 border-2 border-gray-100 dark:border-gray-700"
-                                >
-                                  <h4 className="text-gray-900 dark:text-gray-100 text-sm mb-2">{product.title}</h4>
-                                  <p className="text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">{product.desc}</p>
-                                </motion.div>
-                              );
-                            })}
-                          </motion.div>
-                        </AnimatePresence>
-                        <div className="flex items-center justify-center gap-2 mt-6">
-                          {Array.from({ length: totalProductPages }).map((_, i) => (
-                            <span
-                              key={i}
-                              className={`h-1.5 rounded-full transition-all duration-300 ${i === productPage ? 'w-6 bg-[#4C99A0]' : 'w-1.5 bg-gray-300 dark:bg-gray-600'
-                                }`}
-                            />
-                          ))}
-                        </div>
+                      <div className="relative z-10 lg:h-[520px] pr-1 flex flex-col justify-center">
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4 }}
+                          className="grid grid-cols-1 sm:grid-cols-2 gap-3 xl:gap-4"
+                        >
+                          {PRODUCTS.map((product, offset) => {
+                            return (
+                              <motion.div
+                                key={`${product.title}-${offset}`}
+                                initial={{ opacity: 0, y: 16 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.05 * offset }}
+                                className="h-[104px] xl:h-[108px] bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 border-2 border-[#4C99A0]/20 hover:border-[#4C99A0]/60 dark:border-[#4C99A0]/20 dark:hover:border-[#4C99A0]/60 flex flex-col justify-center"
+                              >
+                                <h4 className="text-gray-900 dark:text-gray-100 text-[12px] xl:text-[13px] font-bold mb-1.5">{product.title}</h4>
+                                <p className="text-gray-500 dark:text-gray-400 text-[10px] xl:text-[11px] leading-snug line-clamp-2 title">{product.desc}</p>
+                              </motion.div>
+                            );
+                          })}
+                        </motion.div>
                       </div>
                     </div>
                     {/* Right: 40% Info */}

@@ -36,7 +36,8 @@ export default function ChatbotPreview() {
   useEffect(() => {
     const timer = setInterval(() => {
       setVisibleCount((prev) => {
-        if (prev >= CHAT_MESSAGES.length) return 1;
+        // Hold the final state for 4 extra iterations (5.6 seconds) before looping
+        if (prev >= CHAT_MESSAGES.length + 4) return 1;
         return prev + 1;
       });
     }, 1400);
@@ -100,10 +101,10 @@ export default function ChatbotPreview() {
         </div>
 
         {visibleCount >= CHAT_MESSAGES.length && (
-          <div className="px-4 pb-4 pt-2 border-t border-gray-100 dark:border-gray-800">
+          <div className="px-4 pb-4 pt-3 flex justify-center">
             <button
               onClick={handleContactScroll}
-              className="w-full rounded-lg bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white text-sm font-semibold py-2.5 shadow-lg shadow-[#4C99A0]/20 hover:opacity-95 transition-opacity"
+              className="px-8 flex items-center justify-center rounded-lg bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white text-sm font-semibold py-2.5 shadow-md shadow-[#4C99A0]/20 hover:shadow-lg hover:opacity-95 transition-all"
             >
               Contact Us
             </button>

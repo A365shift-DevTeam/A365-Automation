@@ -96,7 +96,7 @@ export default function ProductsAnimation() {
     <div className="w-full h-full bg-[#F8FAFC] dark:bg-gray-950 p-4 overflow-hidden flex items-center justify-center font-sans absolute inset-0">
       <div 
         ref={containerRef} 
-        className="relative w-full min-w-[320px] max-w-[600px] h-[400px] flex flex-col items-center justify-between pt-0 pb-6 shrink-0"
+        className="relative w-full h-full min-w-[320px] max-w-[600px] flex flex-col items-center justify-between py-2 sm:py-4 shrink-0"
       >
         {/* SVG Lines */}
         <svg className="absolute inset-0 pointer-events-none z-0 overflow-visible" width="100%" height="100%">
@@ -131,7 +131,7 @@ export default function ProductsAnimation() {
         </svg>
 
         {/* Top Row */}
-        <div className="flex justify-center gap-32 z-10 w-full mb-auto -mt-8">
+        <div className="flex justify-center gap-32 z-10 w-full mb-auto mt-2">
           {/* Excel */}
           <div ref={el => { topRefs.current[0] = el; }} className="w-12 h-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex items-center justify-center hover:shadow-md transition-shadow cursor-pointer overflow-hidden p-2">
             <img src={excelImg} alt="Excel" className="w-full h-full object-contain" />
@@ -144,19 +144,20 @@ export default function ProductsAnimation() {
         </div>
 
         {/* Center Section */}
-        <div className="z-10 relative flex items-center justify-center my-auto">
+        <div className="z-10 relative flex flex-col items-center justify-center my-auto w-full gap-5">
           {/* Center Logo */}
-          <div ref={centerRef} className="bg-white dark:bg-gray-800 rounded-2xl p-2 shadow-lg border border-gray-100 dark:border-gray-700">
+          <div ref={centerRef} className="bg-white dark:bg-gray-800 rounded-2xl p-2 shadow-lg border border-gray-100 dark:border-gray-700 relative z-10">
             <div className="w-20 h-20 flex items-center justify-center relative hover:scale-105 transition-transform duration-300 cursor-pointer">
               <img src={ambotLogo} alt="Ambot Logo" className="w-full h-full object-contain" />
             </div>
           </div>
           
-          {/* Right Text */}
-          <div className="absolute left-[50%] ml-16 whitespace-nowrap hidden sm:block">
-            <div className="bg-white dark:bg-gray-800 px-3 py-1.5 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 flex items-center">
-              <span className="text-xs font-bold text-gray-700 dark:text-gray-200">Zero coding</span>
-            </div>
+          {/* Horizontal Text Summary */}
+          <div className="mt-2 bg-white dark:bg-gray-800 px-6 py-2 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-wrap items-center justify-center gap-4 sm:gap-8 relative z-20 w-max max-w-[100%]">
+            <span className="text-[10px] sm:text-[11px] font-bold text-[#4A8554] dark:text-[#65A859]">Secured</span>
+            <span className="text-[10px] sm:text-[11px] font-bold text-[#4A8554] dark:text-[#65A859]">Zero Coding</span>
+            <span className="text-[10px] sm:text-[11px] font-bold text-[#4A8554] dark:text-[#65A859]">Desktop App</span>
+            <span className="text-[10px] sm:text-[11px] font-bold text-[#4A8554] dark:text-[#65A859]">Runs in your Network</span>
           </div>
         </div>
 

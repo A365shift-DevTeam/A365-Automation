@@ -139,7 +139,7 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     ],
     outcome: {
       text: 'Manual work is replaced with intelligent automation, saving up to 90% of time on repetitive tasks. Businesses operate faster, reduce errors, and scale operations efficiently with ready-to-deploy automation products.',
-      footer: 'DocCraft · Sheets to Slides · File Splitter · Merge Master',
+      footer: 'DocCraft · Image Compressor · File Splitter · Merge Master',
     },
   },
   webmobile: {
