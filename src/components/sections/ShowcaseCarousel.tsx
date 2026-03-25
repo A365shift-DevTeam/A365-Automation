@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Play, Pause, CheckCircle2, TrendingUp } from
 import ProcessAnimationCard from '../ui/ProcessAnimationCard';
 import WebMobileAnimation from '../ui/WebMobileAnimation';
 import ChatbotPreview from '../ui/ChatbotPreview';
+import ProductsAnimation from '../ui/ProductsAnimation';
 
 // Videos
 import biVideo from '../../assets/Videos/BI.mp4';
@@ -46,7 +47,7 @@ type MockupItem = {
   header: string;
   oneLine: string;
   pages: number;
-  type: 'mock' | 'image' | 'iframe' | 'chatbot' | 'video' | 'mixed';
+  type: 'mock' | 'image' | 'iframe' | 'chatbot' | 'video' | 'mixed' | 'animation';
   images?: string[];
   video?: string;
   iframeUrl?: string;
@@ -127,8 +128,7 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     header: 'Automation Product Suite',
     oneLine: 'Ready-to-deploy tools that automate business processes without coding.',
     pages: 1,
-    type: 'image',
-    images: [productImg],
+    type: 'animation',
     agentName: 'Product Suite',
     whatItDoes: [
       'No-code automation for office tasks',
@@ -347,9 +347,9 @@ export default function ShowcaseCarousel() {
                 <div className="flex items-center justify-between px-4 md:px-6 py-3 bg-gray-50 dark:bg-[#0d1526] border-b border-gray-200 dark:border-gray-800 shrink-0">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-md">
-                      <span className="text-white text-xs ">{activeData.agentName.charAt(0)}{activeData.agentName.split(' ')[1]?.charAt(0) || ''}</span>
+                      <span className="text-white text-xs ">{activeData.header.charAt(0)}{activeData.header.split(' ')[1]?.charAt(0) || ''}</span>
                     </div>
-                    <span className="text-gray-900 dark:text-white text-sm font-semibold tracking-wide">{activeData.agentName}</span>
+                    <span className="text-sm font-semibold tracking-wide dark:text-white" style={{ color: '#002060' }}>{activeData.header}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     {/* Page dots */}
@@ -426,6 +426,18 @@ export default function ShowcaseCarousel() {
                         transition={{ duration: 0.4 }}
                         className="absolute inset-0 w-full h-full object-contain p-3 md:p-5"
                       />
+                    )}
+                    {activeData.type === 'animation' && (
+                      <motion.div
+                        key={`${activeTab}-animation`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="absolute inset-0 bg-white dark:bg-gray-900 rounded-lg overflow-hidden flex items-center justify-center p-3 md:p-5"
+                      >
+                        <ProductsAnimation />
+                      </motion.div>
                     )}
                     {activeData.type === 'mock' && (
                       <motion.div
@@ -520,16 +532,13 @@ export default function ShowcaseCarousel() {
                 >
                   {/* WHAT IT DOES */}
                   <div className="px-4 md:px-6 pt-5 md:pt-7 pb-2 flex-auto flex flex-col justify-start">
-                    <h3 className="text-xl md:text-2xl font-medium dark:text-white mb-2 leading-tight" style={{ color: '#002060' }}>
-                      {activeData.header}
-                    </h3>
-                    <p className="text-[13px] md:text-sm text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">
-                      {activeData.oneLine}
-                    </p>
-                    
                     <div className="text-[10px] md:text-xs tracking-[0.2em] text-[#65A859] font-semibold uppercase mb-2 md:mb-3 mt-1">
                       Our Solution
                     </div>
+                    <p className="text-[13px] md:text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                      {activeData.oneLine}
+                    </p>
+                    
                     <ul className="space-y-1.5 md:space-y-2">
                       {activeData.whatItDoes.map((item, i) => (
                         <motion.li

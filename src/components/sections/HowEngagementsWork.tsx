@@ -78,7 +78,7 @@ export default function HowEngagementsWork() {
           style={{ backgroundColor: 'rgba(76,153,160,0.08)' }}
         />
       </div>
-      <div className="md:sticky md:top-[80px] flex flex-col justify-start pt-8 pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+      <div className="md:sticky md:top-[20px] flex flex-col justify-start pt-8 pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-2xl md:text-4xl mb-4 section-title">Our Engagement Model</h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light">
@@ -199,9 +199,6 @@ export default function HowEngagementsWork() {
           ))}
         </div>
 
-        <div className="mt-4 text-center">
-
-        </div>
       </div>
     </section>
   );

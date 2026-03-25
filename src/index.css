@@ -34,11 +34,6 @@
   --color-accent-700: #1c5369;
 }
 
-html,
-body {
-  overflow-x: hidden;
-}
-
 body {
   font-family: var(--font-sans);
   font-weight: 400;
@@ -47,7 +42,6 @@ body {
   text-rendering: optimizeLegibility;
   background-color: #ffffff;
   color: #454545;
-  overflow-x: hidden;
   line-height: 1.5;
 }
 

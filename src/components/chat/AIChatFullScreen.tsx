@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Send, Plus, Mic } from 'lucide-react';
+import { X, Send, Plus, Mic, PanelLeft } from 'lucide-react';
 import { localAnswer } from '../../lib/localChat';
 import ambotLogo from '../../assets/Ambot logo png.png';
 
@@ -78,6 +78,7 @@ export default function AIChatFullScreen({
   const [input, setInput] = useState('');
   const faqAnswerMap = new Map(FAQ_ITEMS.map((item) => [item.q, item.a]));
   const [selectedMenu, setSelectedMenu] = useState<string | null>(initialMenu);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -243,12 +244,19 @@ export default function AIChatFullScreen({
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 z-[10000] flex items-center justify-between px-4 py-3 border-b border-gray-700 bg-gray-900 shrink-0">
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="md:hidden p-1.5 text-gray-300 hover:text-white rounded-lg hover:bg-gray-800 transition-colors"
+              aria-label="Toggle sidebar"
+            >
+              <PanelLeft className="w-5 h-5" />
+            </button>
             <div className="w-2 h-2 rounded-full bg-[#4C99A0] animate-pulse" />
             <h2
-              className=" text-xl tracking-tight"
+              className="text-base sm:text-xl tracking-tight"
               style={{ color: '#ffffff', textShadow: '0 0 1px rgba(255,255,255,0.5)' }}
             >
-              Ambot365  AI Assistant
+              Ambot365 AI Assistant
             </h2>
           </div>
           <button
@@ -263,14 +271,29 @@ export default function AIChatFullScreen({
         {/* Main layout */}
         <div className="flex-1 flex min-h-0 overflow-hidden pt-14 bg-gray-900">
 
+          {/* Mobile sidebar overlay */}
+          {sidebarOpen && (
+            <div
+              className="fixed inset-0 bg-black/50 z-[10001] md:hidden"
+              onClick={() => setSidebarOpen(false)}
+            />
+          )}
+
           {/* Sidebar */}
-          <aside className="w-56 shrink-0 border-r border-gray-700 bg-gray-800/50 flex flex-col py-4">
+          <aside className={`
+            fixed md:relative top-14 bottom-0 left-0 z-[10002] w-64 md:w-56 shrink-0 border-r border-gray-700 bg-gray-800 md:bg-gray-800/50 flex flex-col py-4
+            transition-transform duration-300 ease-in-out
+            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0
+          `}>
             <p className="px-4 text-gray-500 text-xs uppercase tracking-wider mb-3 font-semibold">Solutions</p>
-            <nav className="flex flex-col gap-0.5 px-2">
+            <nav className="flex flex-col gap-0.5 px-2 overflow-y-auto flex-1">
               {SIDEBAR_MENUS.map((menu) => (
                 <button
                   key={menu}
-                  onClick={() => setSelectedMenu(menu)}
+                  onClick={() => {
+                    setSelectedMenu(menu);
+                    setSidebarOpen(false);
+                  }}
                   className={`text-left px-3 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium ${selectedMenu === menu
                     ? 'text-white bg-gradient-to-r from-[#4C99A0] to-[#65A859] shadow-md shadow-[#4C99A0]/20'
                     : 'text-gray-300 hover:text-white hover:bg-gray-700/80'
@@ -280,7 +303,7 @@ export default function AIChatFullScreen({
                 </button>
               ))}
             </nav>
-            <div className="mt-auto px-4 pt-4 border-t border-gray-700">
+            <div className="px-4 pt-4 border-t border-gray-700">
               <p className="text-gray-500 text-xs">Ambot365 AI Assistant</p>
               <p className="text-gray-600 text-xs mt-1">Powered by Ambot365 data</p>
             </div>
@@ -345,8 +368,8 @@ export default function AIChatFullScreen({
 
                   {/* Bottom bar */}
                   <div className="shrink-0 border-t border-gray-800 bg-gray-900 px-4 py-4">
-                    <div className="max-w-2xl mx-auto flex items-center gap-2 bg-gray-800 border border-gray-700 rounded-2xl px-4 py-3">
-                      <button type="button" className="p-1.5 text-gray-400 hover:text-white rounded-lg" aria-label="Attach">
+                    <div className="max-w-2xl mx-auto flex items-center gap-1.5 sm:gap-2 bg-gray-800 border border-gray-700 rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3">
+                      <button type="button" className="hidden sm:block p-1.5 text-gray-400 hover:text-white rounded-lg" aria-label="Attach">
                         <Plus className="w-5 h-5" />
                       </button>
                       <input
@@ -355,17 +378,17 @@ export default function AIChatFullScreen({
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                         placeholder="Ask anything about Ambot365..."
-                        className="flex-1 bg-transparent text-white placeholder-gray-500 text-base py-1 focus:outline-none"
+                        className="flex-1 min-w-0 bg-transparent text-white placeholder-gray-500 text-sm sm:text-base py-1 focus:outline-none"
                       />
-                      <button type="button" className="p-1.5 text-gray-400 hover:text-white rounded-lg" aria-label="Voice">
+                      <button type="button" className="hidden sm:block p-1.5 text-gray-400 hover:text-white rounded-lg" aria-label="Voice">
                         <Mic className="w-5 h-5" />
                       </button>
                       <button
                         onClick={() => handleSend()}
                         disabled={!input.trim()}
-                        className="p-2 rounded-xl bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="p-2 rounded-xl bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
                       >
-                        <Send className="w-5 h-5" />
+                        <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                       </button>
                     </div>
                   </div>

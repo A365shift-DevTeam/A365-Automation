@@ -110,7 +110,7 @@ export default function Navbar() {
                             setAiInitialMenu(null);
                             setIsAIChatOpen(true);
                         }}
-                        className="hidden sm:inline-flex btn-brand text-xs px-3 py-2"
+                        className="inline-flex btn-brand text-xs px-3 py-1.5 whitespace-nowrap"
                     >
                         Ask AI
                     </button>
