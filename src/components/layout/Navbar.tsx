@@ -32,8 +32,8 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? 'bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm py-4'
-                : 'bg-transparent py-6'
+                ? 'bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm py-3 md:py-4'
+                : 'bg-transparent py-4 md:py-6'
                 }`}
         >
             <div className="site-container flex items-center justify-between">
@@ -110,7 +110,7 @@ export default function Navbar() {
                             setAiInitialMenu(null);
                             setIsAIChatOpen(true);
                         }}
-                        className="btn-brand text-xs px-3 py-2"
+                        className="hidden sm:inline-flex btn-brand text-xs px-3 py-2"
                     >
                         Ask AI
                     </button>

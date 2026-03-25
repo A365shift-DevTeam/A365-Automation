@@ -203,7 +203,7 @@ export default function ProcessComparison() {
               {/* ── LEFT: MANUAL ── */}
               <div className="bg-white dark:bg-gray-900 p-8 md:p-10 relative overflow-hidden lg:border-r border-gray-200/60 dark:border-gray-800/80">
                 {/* Manual Invoice Count Card */}
-                <div className="absolute top-6 right-6 w-20 h-20 rounded-xl bg-red-50/80 dark:bg-red-900/20 flex flex-col items-center justify-center border border-red-100 dark:border-red-800/40 pointer-events-none z-30 shadow-sm shadow-red-500/5">
+                <div className="hidden sm:flex absolute top-6 right-6 w-20 h-20 rounded-xl bg-red-50/80 dark:bg-red-900/20 flex-col items-center justify-center border border-red-100 dark:border-red-800/40 pointer-events-none z-30 shadow-sm shadow-red-500/5">
                   <span className="text-3xl font-bold text-red-600 dark:text-red-400">
                     {Math.min(Math.floor(manualElapsed / 60) + 1, 10)}
                   </span>
@@ -224,7 +224,7 @@ export default function ProcessComparison() {
                 </div>
                 
                 <div className="mb-8 flex flex-col items-center justify-center gap-3">
-                  <p className="text-[11px] md:text-[12px] font-medium text-orange-600/80 dark:text-orange-400/80 whitespace-nowrap text-center">
+                  <p className="text-[11px] md:text-[12px] font-medium text-orange-600/80 dark:text-orange-400/80 text-center">
                     Delayed • Error-Prone • Repetitive
                   </p>
                 </div>
@@ -319,7 +319,7 @@ export default function ProcessComparison() {
                 <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full bg-[#65A859]/8 blur-3xl pointer-events-none" />
 
                 {/* Agent Invoice Count Card */}
-                <div className="absolute top-6 right-6 w-20 h-20 rounded-xl bg-[#4C99A0]/10 dark:bg-[#4C99A0]/20 flex flex-col items-center justify-center border border-[#4C99A0]/20 dark:border-[#4C99A0]/30 pointer-events-none z-30 shadow-lg shadow-[#4C99A0]/10">
+                <div className="hidden sm:flex absolute top-6 right-6 w-20 h-20 rounded-xl bg-[#4C99A0]/10 dark:bg-[#4C99A0]/20 flex-col items-center justify-center border border-[#4C99A0]/20 dark:border-[#4C99A0]/30 pointer-events-none z-30 shadow-lg shadow-[#4C99A0]/10">
                   <span className="text-3xl font-bold text-green-600 dark:text-green-400">
                     {Math.min(Math.floor(autoElapsed / 3.6) + 1, 50)}
                   </span>
@@ -340,7 +340,7 @@ export default function ProcessComparison() {
                 </div>
                 
                 <div className="mb-8 flex flex-col items-center justify-center gap-3 relative z-10">
-                  <p className="text-[11px] md:text-[12px] font-medium text-[#65A859] whitespace-nowrap text-center">
+                  <p className="text-[11px] md:text-[12px] font-medium text-[#65A859] text-center">
                     Real-Time • Precise • Scalable
                   </p>
                 </div>

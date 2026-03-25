@@ -31,13 +31,13 @@ export default function ContactUs() {
     >
 
       <div className="relative z-10">
-        <div className="max-w-6xl mx-auto px-6 py-10 md:py-12 grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-8 items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-12 grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
-            className="space-y-3 text-center md:text-left ml-6 md:ml-14 md:translate-x-24 lg:translate-x-40"
+            className="space-y-3 text-center md:text-left md:ml-8 lg:ml-14 md:translate-x-8 lg:translate-x-20"
           >
             <h2 className="text-3xl md:text-4xl section-heading">Contact Us</h2>
             <p className="section-copy text-lg">United Arab Emirates | India</p>
@@ -58,14 +58,14 @@ export default function ContactUs() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.1 }}
-            className="flex justify-center md:justify-start md:translate-x-12"
+            className="flex justify-center md:justify-start md:translate-x-8"
           >
             <img src={qrCode} alt="Ambot365 QR Code" className="w-36 h-36 md:w-40 md:h-40 object-contain" />
           </motion.div>
         </div>
 
         <div className="border-t border-white/70 dark:border-gray-700/60">
-          <div className="max-w-6xl mx-auto px-6 pt-5 pb-2 flex flex-wrap items-center justify-center gap-12 md:gap-20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-5 pb-2 flex flex-wrap items-center justify-center gap-8 md:gap-14">
             {SOCIAL_LINKS.map((social) => (
               <a
                 key={social.label}

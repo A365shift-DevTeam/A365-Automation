@@ -55,7 +55,7 @@ export default function SolutionsOverview() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-[1400px] mx-auto px-6 md:px-8 xl:px-12 relative z-10"
+        className="max-w-[1400px] mx-auto px-4 md:px-8 xl:px-12 relative z-10"
       >
       <div className="text-center mb-16">
         <p className="text-sm font-semibold tracking-[0.2em] text-primary-500 uppercase mb-4">
@@ -86,13 +86,13 @@ export default function SolutionsOverview() {
               <div className="w-12 h-12 rounded-xl bg-primary-500/10 dark:bg-primary-500/20 flex items-center justify-center">
                 <col.icon className="w-6 h-6 text-primary-500" />
               </div>
-              <span className="text-[11px] font-medium tracking-wider uppercase section-badge border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 whitespace-nowrap">
+              <span className="text-[11px] font-medium tracking-wider uppercase section-badge border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 text-center leading-tight">
                 {col.badge}
               </span>
             </div>
 
             {/* Title */}
-            <h3 className="text-lg xl:text-xl  section-subtitle mb-4 whitespace-nowrap overflow-hidden text-ellipsis">
+            <h3 className="text-lg xl:text-xl section-subtitle mb-4 leading-snug break-words">
               {col.title}
             </h3>
 

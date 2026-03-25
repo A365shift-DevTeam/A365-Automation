@@ -67,7 +67,7 @@ export default function Hero() {
     return () => clearInterval(id);
   }, [reduceMotion]);
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-r from-[#EDEEF3] to-[#FFFFFF] dark:from-gray-900 dark:to-gray-950">
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-24 md:pt-20 bg-gradient-to-r from-[#EDEEF3] to-[#FFFFFF] dark:from-gray-900 dark:to-gray-950">
       {/* Soft gradient orbs - subtle enterprise motion (respects reduced motion) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -97,7 +97,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
 
         {/* Floating Bot on the left */}
         <div className="hidden lg:flex absolute left-0 top-1/2 -translate-y-[60%] flex-col items-center justify-center pointer-events-none">
@@ -159,8 +159,8 @@ export default function Hero() {
           className="text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-semibold tracking-tight mb-6 leading-tight" style={{ fontFamily: "var(--font-hero)" }}
         >
           <span className="text-[#002060] dark:text-white block pb-2">Build Once. Run Forever.</span>
-          <span className="text-[#002060] dark:text-white block text-4xl md:text-5xl lg:text-[52px] xl:text-5xl leading-tight font-medium" style={{ fontFamily: "'Dubai', sans-serif" }}>AI | Automation | Agents | Digital</span>
-          <span className="inline-block text-xl md:text-2xl lg:text-3xl mt-1 min-h-[1.2em]">
+          <span className="text-[#002060] dark:text-white block text-2xl sm:text-3xl md:text-5xl lg:text-[52px] xl:text-5xl leading-tight font-medium" style={{ fontFamily: "'Dubai', sans-serif" }}>AI | Automation | Agents | Digital</span>
+          <span className="inline-block text-base sm:text-lg md:text-2xl lg:text-3xl mt-1 min-h-[1.2em]">
             <span className="text-[#002060] dark:text-white mr-2 font-semibold">Our Solution</span>
             <span className="bg-gradient-to-r from-[#4C99A0] to-[#65A859] bg-clip-text text-transparent">{typed}</span>
             {!reduceMotion && (

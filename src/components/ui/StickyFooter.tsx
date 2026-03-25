@@ -101,7 +101,7 @@ export default function StickyFooter() {
             <p className="text-xs uppercase tracking-[0.22em] text-[#9fe3bb] mb-3">Contact Us</p>
             <ul className="space-y-2">
               {footerData.contact.map((item) => (
-                <li key={item.label} className="text-base text-white/90 whitespace-nowrap">
+                <li key={item.label} className="text-base text-white/90 break-words">
                   <span className="text-white/70">{item.label}: </span>
                   {item.href ? (
                     <a

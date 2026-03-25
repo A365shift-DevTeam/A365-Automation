@@ -50,8 +50,8 @@ export default function WebMobileAnimation({ url }: WebMobileAnimationProps) {
       </div>
 
       {/* Morphing Device Container */}
-      <div className="relative flex flex-col items-center justify-center flex-1 w-full mt-4">
-        <div className="max-w-[100vw] w-auto flex items-center justify-center transform origin-center scale-[0.62] sm:scale-[0.78] lg:scale-[0.9] xl:scale-100 transition-transform duration-500">
+      <div className="relative flex flex-col items-center justify-center flex-1 w-full mt-4 overflow-hidden">
+        <div className="max-w-full w-full flex items-center justify-center transform origin-center scale-[0.5] sm:scale-[0.72] lg:scale-[0.9] xl:scale-100 transition-transform duration-500">
           <motion.div
             layout
             initial={false}

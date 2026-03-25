@@ -335,21 +335,33 @@ export default function ShowcaseCarousel() {
         <div className="relative max-w-[1400px] mx-auto bg-white dark:bg-gray-950 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden flex flex-col w-full">
 
           {/* Tabs Inside Card */}
-          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 p-4 lg:p-6 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
+          <div className="flex items-center justify-start md:justify-center gap-2 md:gap-3 p-3 md:p-4 lg:p-6 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50 overflow-x-auto no-scrollbar">
             {TABS.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
                 className={`
-                  relative px-4 py-2.5 md:px-5 md:py-3 rounded-xl font-medium text-xs md:text-sm transition-all duration-300
-                  flex items-center justify-center min-w-[110px]
+                  relative px-4 py-2.5 md:px-5 md:py-3 rounded-xl font-medium text-xs md:text-sm transition-all duration-300 overflow-hidden
+                  flex-none min-w-[104px] md:min-w-[110px]
                   ${activeTab === tab.id
-                    ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/25'
+                    ? 'text-white shadow-lg shadow-[#4C99A0]/25'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
                   }
                 `}
               >
-                {tab.label}
+                {activeTab === tab.id && (
+                  <>
+                    <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700" />
+                    <motion.div
+                      key={`fill-${tab.id}-${activeTab}`}
+                      className="absolute inset-0 bg-gradient-to-r from-[#4C99A0] to-[#65A859]"
+                      initial={{ clipPath: 'inset(0 100% 0 0)' }}
+                      animate={{ clipPath: !isPlaying ? undefined : 'inset(0 0% 0 0)' }}
+                      transition={{ duration: reduceMotion ? 0.01 : 4, ease: 'linear' }}
+                    />
+                  </>
+                )}
+                <span className="relative z-10">{tab.label}</span>
               </button>
             ))}
           </div>
@@ -531,7 +543,7 @@ export default function ShowcaseCarousel() {
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.4 }}
                   className="h-full flex flex-col justify-between overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700"
-                  style={visualCardHeight ? { height: visualCardHeight } : undefined}
+                  style={visualCardHeight ? { height: visualCardHeight, maxHeight: '100%' } : undefined}
                 >
                   {/* WHAT IT DOES */}
                   <div className="px-4 md:px-6 pt-4 md:pt-6 pb-2 flex-auto flex flex-col justify-center">

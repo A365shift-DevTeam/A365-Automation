@@ -35,9 +35,11 @@ const PRODUCTS = [
 export default function AgentsInAction() {
   const [activeTab, setActiveTab] = useState('live');
   const [productPage, setProductPage] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const reduceMotion = useReducedMotion();
   const PRODUCTS_PER_PAGE = 4;
   const totalProductPages = Math.ceil(PRODUCTS.length / PRODUCTS_PER_PAGE);
+  const TAB_SWITCH_MS = 4500;
 
   useEffect(() => {
     if (activeTab !== 'products') return;
@@ -47,8 +49,19 @@ export default function AgentsInAction() {
     return () => clearInterval(timer);
   }, [activeTab, totalProductPages]);
 
+  useEffect(() => {
+    if (isHovered) return;
+    const timer = window.setTimeout(() => {
+      const currentIndex = TABS.findIndex((tab) => tab.id === activeTab);
+      const nextIndex = (currentIndex + 1) % TABS.length;
+      setActiveTab(TABS[nextIndex].id);
+    }, TAB_SWITCH_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [activeTab, isHovered]);
+
   return (
-    <section id="agents-in-action" className="section-bg relative overflow-hidden py-16 md:py-24">
+    <section id="agents-in-action" className="section-bg relative overflow-hidden py-16 md:py-24" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       {/* Professional Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle gradient orbs - matching site theme */}
@@ -96,7 +109,7 @@ export default function AgentsInAction() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-7xl mx-auto px-6 md:px-12 relative z-10"
+        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10"
       >
         <div className="relative z-10">
           <div className="text-center mb-4 px-4">
@@ -114,21 +127,34 @@ export default function AgentsInAction() {
           {/* Tab Navigation */}
           <div className="flex flex-wrap justify-center gap-2 mb-4 px-4">
             {TABS.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-xs md:text-sm transition-colors duration-200 ${activeTab === tab.id
-                  ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
-                  }`}
-              >
-                <tab.icon className={`w-5 h-5 ${activeTab === tab.id ? 'text-white' : ''}`} />
-                <span>{tab.label}</span>
-              </button>
+              <div key={tab.id} className="flex flex-col items-stretch min-w-[120px]">
+                <button
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`relative flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium text-xs md:text-sm overflow-hidden transition-colors duration-200 ${activeTab === tab.id
+                    ? 'text-white'
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
+                    }`}
+                >
+                  {activeTab === tab.id && (
+                    <>
+                      <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700" />
+                      <motion.div
+                        key={`fill-${tab.id}-${activeTab}`}
+                        className="absolute inset-0 bg-gradient-to-r from-[#4C99A0] to-[#65A859]"
+                        initial={{ clipPath: 'inset(0 100% 0 0)' }}
+                        animate={{ clipPath: isHovered ? undefined : 'inset(0 0% 0 0)' }}
+                        transition={{ duration: reduceMotion ? 0.01 : TAB_SWITCH_MS / 1000, ease: 'linear' }}
+                      />
+                    </>
+                  )}
+                  <tab.icon className={`relative z-10 w-5 h-5 ${activeTab === tab.id ? 'text-white' : ''}`} />
+                  <span className="relative z-10">{tab.label}</span>
+                </button>
+              </div>
             ))}
           </div>
 
-          <div className="min-h-[600px] md:min-h-[550px]">
+          <div className="min-h-[660px] md:min-h-[550px]">
             <AnimatePresence mode="wait">
               {activeTab === 'live' && (
                 <motion.div
@@ -151,7 +177,7 @@ export default function AgentsInAction() {
                     {/* Decorative accent line */}
                     <div className="hidden lg:block absolute left-[40%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
                     {/* Left: 40% Info */}
-                    <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
+                    <div className="w-full lg:w-[40%] flex flex-col justify-start px-3 sm:px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
                       <div className="relative z-10 h-full flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
                         <div className="flex items-center gap-3 mb-2">
                           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
@@ -190,10 +216,10 @@ export default function AgentsInAction() {
                       </div>
                     </div>
                     {/* Right: 60% Card Swap */}
-                    <div className="w-full lg:w-[60%] flex justify-center items-center h-[500px] relative">
+                    <div className="w-full lg:w-[60%] flex justify-center items-center h-[420px] sm:h-[500px] relative">
                       {/* Glowing background effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-[#4C99A0]/5 via-transparent to-[#65A859]/5 rounded-3xl blur-2xl" />
-                      <div className="relative z-10 translate-y-10 lg:translate-y-14">
+                      <div className="relative z-10 translate-y-4 sm:translate-y-8 lg:translate-y-14">
                         <CardSwap width={400} height={350} pauseOnHover={true} visibleStack={4}>
                           {AGENTS.map((agent, i) => (
                             <Card
@@ -265,7 +291,7 @@ export default function AgentsInAction() {
                       </div>
                     </div>
                     {/* Right: 40% Info */}
-                    <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
+                    <div className="w-full lg:w-[40%] flex flex-col justify-start px-3 sm:px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
                       <div className="relative z-10 h-full flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
                         <div className="flex items-start md:items-center gap-4 mb-4">
                           <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
@@ -336,7 +362,7 @@ export default function AgentsInAction() {
                       <img src={SuitcaseImage} alt="Office Suite Integration" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     {/* Right: 40% Info */}
-                    <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
+                    <div className="w-full lg:w-[40%] flex flex-col justify-start px-3 sm:px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
                       <div className="relative z-10 h-full flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
                         <div className="flex items-center gap-3 mb-2">
                           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">
@@ -446,7 +472,7 @@ export default function AgentsInAction() {
                       </div>
                     </div>
                     {/* Right: 40% Info */}
-                    <div className="w-full lg:w-[40%] flex flex-col justify-start px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
+                    <div className="w-full lg:w-[40%] flex flex-col justify-start px-3 sm:px-6 lg:px-8 py-6 lg:py-0 relative lg:self-stretch">
                       <div className="relative z-10 h-full flex flex-col gap-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl">
                         <div className="flex items-center gap-3 mb-2">
                           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4C99A0] to-[#65A859] flex items-center justify-center shadow-lg">

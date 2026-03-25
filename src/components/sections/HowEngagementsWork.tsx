@@ -96,8 +96,8 @@ export default function HowEngagementsWork() {
           }}
         />
       </div>
-      <div className="md:sticky md:top-[80px] flex flex-col justify-start pt-8 pb-4 max-w-7xl mx-auto px-6 lg:px-8 overflow-visible">
-        <div className="text-center mb-16">
+      <div className="md:sticky md:top-[80px] flex flex-col justify-start pt-8 pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+        <div className="text-center mb-10 md:mb-16">
           <h2 className="text-2xl md:text-4xl mb-4 section-title">Our Engagement Model</h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light">
             Transparent process. Predictable investment. Every engagement follows the same proven path.
@@ -158,7 +158,7 @@ export default function HowEngagementsWork() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {PHASES.map((phase, i) => (
             <motion.div
               key={phase.step}
@@ -172,14 +172,14 @@ export default function HowEngagementsWork() {
               {/* Colored top bar accent */}
               <div className={`h-1.5 w-full ${phase.bgClass}`} />
 
-              <div className="p-8 flex flex-col h-full">
+              <div className="p-6 md:p-8 flex flex-col h-full">
                 {/* Inline step + title */}
                 <div className="flex items-center gap-3 mb-3">
                   <div className={`min-w-12 h-12 px-3 rounded-2xl flex items-center justify-center font-bold text-white ${phase.bgClass} shadow-lg shadow-${phase.colorClass.split('-')[1]}-200 dark:shadow-none`}>
                     {phase.step}
                   </div>
 
-                  <h3 className="text-2xl font-normal !text-[#002060] dark:!text-gray-50 leading-tight whitespace-nowrap">
+                  <h3 className="text-xl md:text-2xl font-normal !text-[#002060] dark:!text-gray-50 leading-tight">
                     {phase.title}
                   </h3>
                 </div>
@@ -188,7 +188,7 @@ export default function HowEngagementsWork() {
                   {phase.desc}
                 </p>
 
-                <div className="min-h-[180px]">
+                <div className="md:min-h-[180px]">
                   <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${phase.colorClass}`}>
                     Engagement Scope  
                   </p>
@@ -204,7 +204,7 @@ export default function HowEngagementsWork() {
                   </ul>
                 </div>
 
-                <div className={`mt-auto p-5 rounded-2xl ${phase.lightBgClass} dark:bg-gray-800/50 min-h-[105px] flex flex-col justify-center`}>
+                <div className={`mt-auto p-4 md:p-5 rounded-2xl ${phase.lightBgClass} dark:bg-gray-800/50 md:min-h-[105px] flex flex-col justify-center`}>
                   <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${phase.colorClass}`}>
                     Business OUTCOME
                   </p>
