@@ -24,7 +24,7 @@ const footerData = {
   contact: [
     { label: "Email", value: "Info@ambot365.com", href: "mailto:Info@ambot365.com" },
     { label: "Location", value: "Coimbatore - Tamil Nadu" },
-    { label: "WhatsApp", value: "+91 9113602689", href: "https://wa.me/919113602689" },
+    { label: "Contact", value: "+91 9113602689", href: "https://wa.me/919113602689" },
   ],
   legalLinks: [
     { label: "Terms & Conditions", href: "/legal/terms-and-conditions.html" },
@@ -101,7 +101,7 @@ export default function StickyFooter() {
             <p className="text-xs uppercase tracking-[0.22em] text-[#9fe3bb] mb-3">Contact Us</p>
             <ul className="space-y-2">
               {footerData.contact.map((item) => (
-                <li key={item.label} className="text-base text-white/90 break-words">
+                <li key={item.label} className="text-base text-white/90 whitespace-nowrap">
                   <span className="text-white/70">{item.label}: </span>
                   {item.href ? (
                     <a
