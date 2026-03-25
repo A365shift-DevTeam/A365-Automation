@@ -70,21 +70,9 @@ export default function Hero() {
     <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-24 md:pt-20 bg-gradient-to-r from-[#EDEEF3] to-[#FFFFFF] dark:from-gray-900 dark:to-gray-950">
       {/* Soft gradient orbs - subtle enterprise motion (respects reduced motion) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#4C99A0]/20 dark:bg-[#4C99A0]/10 blur-3xl"
-          animate={reduceMotion ? undefined : { y: [0, -12, 0], opacity: [0.9, 1, 0.9] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full bg-[#65A859]/15 dark:bg-[#65A859]/10 blur-3xl"
-          animate={reduceMotion ? undefined : { y: [0, 10, 0], x: [0, 8, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full bg-[#4C99A0]/10 dark:bg-[#4C99A0]/5 blur-3xl"
-          animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        />
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#4C99A0]/20 dark:bg-[#4C99A0]/10 blur-3xl" />
+        <div className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full bg-[#65A859]/15 dark:bg-[#65A859]/10 blur-3xl" />
+        <div className="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full bg-[#4C99A0]/10 dark:bg-[#4C99A0]/5 blur-3xl" />
         {/* World Map background */}
         <div
           className="absolute inset-0 opacity-90 dark:opacity-80 pointer-events-none"

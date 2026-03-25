@@ -43,6 +43,8 @@ const TABS: TabItem[] = [
 type MockupItem = {
   color: string;
   title: string;
+  header: string;
+  oneLine: string;
   pages: number;
   type: 'mock' | 'image' | 'iframe' | 'chatbot' | 'video' | 'mixed';
   images?: string[];
@@ -60,6 +62,8 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
   schedule: {
     color: 'from-primary-100 to-accent-100',
     title: 'Invoice Processing Agent',
+    header: 'Intelligent Automation Agents',
+    oneLine: 'Autonomous agents that execute workflows, reduce manual effort, and run operations 24/7.',
     pages: 1,
     type: 'mock',
     agentName: 'AP Automation Agent',
@@ -76,6 +80,8 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
   attendance: {
     color: 'from-accent-100 to-accent-100',
     title: 'BI Dashboards',
+    header: 'Real-Time Business Intelligence',
+    oneLine: 'Turn data into insights with interactive dashboards and AI-driven analytics.',
     pages: 5,
     type: 'mixed',
     video: biVideo,
@@ -84,124 +90,117 @@ const MOCKUP_DATA: Record<string, MockupItem> = {
     whatItDoes: [
       'AI-powered conversational reporting',
       'Real-time dashboards with auto-refresh',
-      'Smart insights and automated narratives',
-      'Interactive filters and deep drilldowns',
-      'KPI tracking with trend analysis',
-      'Advanced analytics (key drivers & patterns)',
-      'Rich visualizations and storytelling',
-      'Secure sharing and collaboration',
+      'Smart insights & automated narratives',
+      'Interactive filters & drilldowns',
+      'KPI tracking with advanced analytics',
     ],
     outcome: {
-      text: 'From data to decisions—instantly. AI-driven insights that improve visibility, speed, and business performance.',
+      text: 'Data moves from static reports to real-time decision intelligence. Gain instant visibility, faster insights, and improved business performance with interactive, AI-driven analytics that scale across the organization.',
       footer: 'Power BI · Azure AI · Real-time Analytics',
     },
   },
   payroll: {
     color: 'from-white to-white',
     title: 'Excel Automation',
+    header: 'Excel Automation Solutions',
+    oneLine: 'Transform spreadsheets into automated dashboards, reports, and decision systems.',
     pages: 3,
     type: 'mixed',
     video: excelVideo,
     images: [ex1, ex2],
     agentName: 'Excel Automation Agent',
     whatItDoes: [
-      'Data Consolidation – Combine multiple raw data sources into one Excel dashboard',
-      'Interactive Slicers – Real-time filtering and slice & dice analysis',
-      'Dynamic KPI Cards – Live metrics for Sales, Orders, Channels, Performance',
-      'Auto-Refresh Dashboard – Updates automatically when backend data changes',
-      'One-Click Reports – Instantly generate PPT, PDF, and reports',
-      'Email Automation – Send reports directly to stakeholders',
-      'Business Ready – Cost-effective BI solution for small & mid-scale companies',
+      'Data consolidation into unified Excel dashboard',
+      'Interactive slicers for real-time analysis',
+      'Dynamic KPI cards with live metrics',
+      'Auto-refresh dashboards from backend data',
+      'One-click report generation (PPT, PDF)',
     ],
     outcome: {
-      text: 'From raw Excel data to a fully automated, interactive dashboard with real-time insights. Generate reports, share instantly, and make faster decisions — without complex tools.',
+      text: 'Raw Excel data transforms into a fully automated, interactive reporting system. Gain real-time insights, generate reports instantly, and make faster, data-driven decisions without complex BI tools.',
       footer: 'Microsoft 365 · VBA · Office Scripts · Power Automate',
     },
   },
   compliance: {
     color: 'from-white to-white',
     title: 'Your Digital Dreams Delivered',
+    header: 'Automation Product Suite',
+    oneLine: 'Ready-to-deploy tools that automate business processes without coding.',
     pages: 1,
     type: 'image',
     images: [productImg],
     agentName: 'Product Suite',
     whatItDoes: [
-      'Automate routine office tasks within minutes.',
-      'Build bots without coding — no developer needed.',
-      'Save up to 90% of your time on repetitive work.',
-      'Works with Excel, PowerPoint & Microsoft 365.',
-      'Schedule bots with alerts to prevent rework.',
-      'Scale across all verticals and domains.',
-      'Handle higher volumes with streamlined workflows.',
-      'Deploy quickly from concept to execution.',
-      'Fully compatible with desktop and cloud processes.',
+      'No-code automation for office tasks',
+      'Build bots without development effort',
+      'Automate repetitive workflows instantly',
+      'Seamless integration with Microsoft 365',
+      'Scalable bots across teams & processes',
     ],
     outcome: {
-      text: 'Enterprise-grade automation products ready to deploy. From document processing to task allocation — all handled seamlessly.',
+      text: 'Manual work is replaced with intelligent automation, saving up to 90% of time on repetitive tasks. Businesses operate faster, reduce errors, and scale operations efficiently with ready-to-deploy automation products.',
       footer: 'DocCraft · Sheets to Slides · File Splitter · Merge Master',
     },
   },
   webmobile: {
     color: 'from-blue-50 to-indigo-50',
     title: 'Web & Mobile Applications',
+    header: 'Modern Web & Mobile Applications',
+    oneLine: 'Scalable, high-performance apps built for seamless user experience and growth.',
     pages: 1,
     type: 'iframe',
     iframeUrl: 'https://resturant-poc-kohl.vercel.app/',
     agentName: 'Web & Mobile Solutions',
     whatItDoes: [
-      'Custom web applications with modern frameworks — React, Next.js, Angular.',
-      'Cross-platform mobile apps for iOS and Android.',
-      'Progressive Web Apps (PWA) for offline-ready experiences.',
-      'API development and third-party integrations.',
-      'Real-time dashboards and data-driven UIs.',
-      'Cloud-native deployment on Azure, AWS, or GCP.',
-      'Performance-optimized, scalable architecture.',
-      'End-to-end development from design to deployment.',
+      'Custom web apps (React, Next.js)',
+      'Cross-platform mobile apps (iOS & Android)',
+      'API development & system integrations',
+      'Real-time dashboards & data-driven UI',
+      'Scalable cloud deployment & architecture',
     ],
     outcome: {
-      text: 'Enterprise-grade web and mobile applications delivered with modern tech stacks. From concept to production in weeks, not months.',
+      text: 'Businesses launch modern, scalable applications faster with high performance and seamless user experience. From concept to production, solutions are delivered in weeks—enabling faster growth, better engagement, and long-term scalability.',
       footer: 'React · Next.js · React Native · Azure · REST APIs',
     },
   },
   chatbot: {
     color: 'from-cyan-50 to-emerald-50',
     title: 'AI Chatbot Assistant',
+    header: 'AI Conversational Assistants',
+    oneLine: 'Intelligent chatbots that engage users, answer queries, and capture leads instantly.',
     pages: 1,
     type: 'chatbot',
     agentName: 'Conversational Assistant',
     whatItDoes: [
-      'Builds an AI-powered website chatbot for instant visitor interaction',
-      'Uses a trained knowledge base to answer business, service, and product-related questions',
-      'Provides guided responses based on your company content, FAQs, documents, and offerings',
-      'Helps visitors explore services, solutions, pricing, and contact options more easily',
-      'Delivers quick, contextual answers 24/7 without manual support',
-      'Captures leads by directing users to enquiry, demo, or Contact Us actions',
-      'Improves customer engagement and reduces response time on your website',
+      'AI-powered website chatbot',
+      'Knowledge-based intelligent responses',
+      'Guided answers from business content',
+      'Service, pricing & enquiry assistance',
+      'Lead capture & user interaction tracking',
     ],
     outcome: {
-      text: 'Deliver instant, intelligent responses that elevate user experience and build trust. Convert website visitors into high-quality leads with seamless, guided interactions.',
+      text: 'Website interactions become instant, intelligent, and conversion-driven. Visitors get real-time answers, engagement improves, and businesses capture high-quality leads with reduced response time and enhanced user experience.',
       footer: 'AI Chat · Lead Capture · Customer Guidance',
     },
   },
   websites: {
     color: 'from-emerald-50 to-teal-50',
     title: 'Professional Websites',
+    header: 'High-Performance Websites',
+    oneLine: 'Conversion-focused, SEO-ready websites designed for speed, scale, and impact.',
     pages: 5,
     type: 'image',
     images: [gifHome, gifCar, gifJwelery, gifPerfume, gifPC],
     agentName: 'Website Solutions',
     whatItDoes: [
-      'Corporate and brand websites with premium design.',
-      'E-commerce platforms with payment integrations.',
-      'Landing pages optimized for lead generation.',
-      'SEO-optimized content architecture.',
-      'CMS integration — WordPress, Headless CMS.',
-      'Responsive design for all screen sizes.',
-      'Analytics and conversion tracking built-in.',
-      'Fast hosting with CDN and SSL security.',
+      'Corporate & brand website development',
+      'E-commerce with payment integrations',
+      'Conversion-focused landing pages',
+      'SEO-ready content architecture',
+      'Responsive design with analytics tracking',
     ],
     outcome: {
-      text: 'Stunning, high-performance websites that convert visitors into customers. Mobile-first design with enterprise-level security and speed.',
+      text: 'Websites evolve into high-performing digital assets that drive traffic, engagement, and conversions. With fast, secure, and mobile-first design, businesses achieve better visibility, stronger brand presence, and measurable growth.',
       footer: 'WordPress · Headless CMS · SEO · Analytics · E-commerce',
     },
   },
@@ -273,43 +272,17 @@ export default function ShowcaseCarousel() {
     >
       {/* Professional Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
+        <div
           className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
           style={{ backgroundColor: 'rgba(16,185,129,0.08)' }}
-          animate={reduceMotion ? undefined : {
-            y: [0, -12, 0],
-            opacity: [0.9, 1, 0.9],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
         />
-        <motion.div
+        <div
           className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
           style={{ backgroundColor: 'rgba(59,130,246,0.08)' }}
-          animate={reduceMotion ? undefined : {
-            y: [0, 10, 0],
-            x: [0, 8, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
         />
-        <motion.div
+        <div
           className="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full blur-3xl pointer-events-none"
           style={{ backgroundColor: 'rgba(16,185,129,0.08)' }}
-          animate={reduceMotion ? undefined : {
-            y: [0, -8, 0],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
         />
       </div>
 
@@ -327,7 +300,7 @@ export default function ShowcaseCarousel() {
             Digital Solutions
           </motion.h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-xs md:text-sm font-medium">
-            Explore our automated agents and interactive dashboards designed to scale your business.
+            Smart automation and real-time insights powering modern businesses.
           </p>
         </div>
 
@@ -534,20 +507,27 @@ export default function ShowcaseCarousel() {
             </div>
 
             {/* Right Side: 40% — WHAT IT DOES + OUTCOME */}
-            <div className="w-full lg:w-[40%] flex flex-col bg-white dark:bg-gray-900">
+            <div className="w-full lg:w-[40%] bg-white dark:bg-gray-900 grid" style={{ gridTemplateColumns: 'minmax(0, 1fr)' }}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="h-full flex flex-col justify-between overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700"
-                  style={visualCardHeight ? { height: visualCardHeight, maxHeight: '100%' } : undefined}
+                  className="w-full flex flex-col justify-between overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700"
+                  style={visualCardHeight ? { gridArea: '1 / 1', height: visualCardHeight, maxHeight: '100%' } : { gridArea: '1 / 1' }}
                 >
                   {/* WHAT IT DOES */}
-                  <div className="px-4 md:px-6 pt-4 md:pt-6 pb-2 flex-auto flex flex-col justify-center">
-                    <div className="text-[10px] md:text-xs tracking-[0.2em] text-gray-400 dark:text-gray-500 uppercase mb-2 md:mb-3 mt-1">
+                  <div className="px-4 md:px-6 pt-5 md:pt-7 pb-2 flex-auto flex flex-col justify-start">
+                    <h3 className="text-xl md:text-2xl font-medium dark:text-white mb-2 leading-tight" style={{ color: '#002060' }}>
+                      {activeData.header}
+                    </h3>
+                    <p className="text-[13px] md:text-sm text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">
+                      {activeData.oneLine}
+                    </p>
+                    
+                    <div className="text-[10px] md:text-xs tracking-[0.2em] text-[#65A859] font-semibold uppercase mb-2 md:mb-3 mt-1">
                       Our Solution
                     </div>
                     <ul className="space-y-1.5 md:space-y-2">

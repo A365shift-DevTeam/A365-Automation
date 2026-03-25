@@ -109,7 +109,7 @@ export default function WebMobileAnimation({ url }: WebMobileAnimationProps) {
       </div>
 
       {/* Bottom Label updates dynamically */}
-      <motion.div layout className="mb-2 z-10 h-6 shrink-0 text-center flex justify-center w-full">
+      <div className="mb-2 z-10 h-6 shrink-0 text-center flex justify-center w-full">
         <AnimatePresence mode="wait">
           <motion.p
             key={showMobile ? 'mobile' : 'web'}
@@ -122,7 +122,7 @@ export default function WebMobileAnimation({ url }: WebMobileAnimationProps) {
             {showMobile ? "Native Mobile Application" : "Responsive Web Application"}
           </motion.p>
         </AnimatePresence>
-      </motion.div>
+      </div>
     </div>
   );
 }

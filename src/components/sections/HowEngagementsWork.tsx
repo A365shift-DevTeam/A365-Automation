@@ -69,31 +69,13 @@ export default function HowEngagementsWork() {
     >
       {/* Professional Background Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
+        <div
           className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
           style={{ backgroundColor: 'rgba(101,168,89,0.08)' }}
-          animate={{
-            y: [0, -12, 0],
-            opacity: [0.9, 1, 0.9],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
         />
-        <motion.div
+        <div
           className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
           style={{ backgroundColor: 'rgba(76,153,160,0.08)' }}
-          animate={{
-            y: [0, 10, 0],
-            x: [0, 8, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
         />
       </div>
       <div className="md:sticky md:top-[80px] flex flex-col justify-start pt-8 pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">

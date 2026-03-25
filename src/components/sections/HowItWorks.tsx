@@ -397,7 +397,3 @@ export default function HowItWorks() {
     </section>
   );
 }
-      </div >
-    </section >
-  );
-}

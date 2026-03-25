@@ -65,41 +65,9 @@ export default function AgentsInAction() {
       {/* Professional Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle gradient orbs - matching site theme */}
-        <motion.div
-          className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#4C99A0]/45 dark:bg-[#4C99A0]/30 blur-3xl"
-          animate={reduceMotion ? undefined : {
-            y: [0, -12, 0],
-            opacity: [0.9, 1, 0.9],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full bg-[#65A859]/40 dark:bg-[#65A859]/25 blur-3xl"
-          animate={reduceMotion ? undefined : {
-            y: [0, 10, 0],
-            x: [0, 8, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full bg-[#4C99A0]/35 dark:bg-[#4C99A0]/20 blur-3xl"
-          animate={reduceMotion ? undefined : {
-            y: [0, -8, 0],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#4C99A0]/45 dark:bg-[#4C99A0]/30 blur-3xl" />
+        <div className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full bg-[#65A859]/40 dark:bg-[#65A859]/25 blur-3xl" />
+        <div className="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full bg-[#4C99A0]/35 dark:bg-[#4C99A0]/20 blur-3xl" />
 
         {/* Faint lines removed per user request */}
       </div>
@@ -154,14 +122,14 @@ export default function AgentsInAction() {
             ))}
           </div>
 
-          <div className="min-h-[660px] md:min-h-[550px]">
+          <div className="h-[1120px] sm:h-[1050px] md:h-[700px] lg:h-[620px] overflow-hidden">
             <AnimatePresence mode="wait">
               {activeTab === 'live' && (
                 <motion.div
                   key="live"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                   className="w-full max-w-[1400px] mx-auto"
                 >
@@ -266,9 +234,9 @@ export default function AgentsInAction() {
               {activeTab === 'blueprints' && (
                 <motion.div
                   key="blueprints"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                   className="w-full max-w-[1400px] mx-auto"
                 >
@@ -339,9 +307,9 @@ export default function AgentsInAction() {
               {activeTab === 'custom' && (
                 <motion.div
                   key="custom"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                   className="w-full max-w-[1400px] mx-auto"
                 >
@@ -411,9 +379,9 @@ export default function AgentsInAction() {
               {activeTab === 'products' && (
                 <motion.div
                   key="products"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                   className="w-full max-w-[1400px] mx-auto"
                 >
