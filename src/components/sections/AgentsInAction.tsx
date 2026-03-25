@@ -61,7 +61,7 @@ export default function AgentsInAction() {
   }, [activeTab, isHovered]);
 
   return (
-    <section id="agents-in-action" className="section-bg relative overflow-hidden py-16 md:py-24" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <section id="agents-in-action" className="section-bg relative overflow-hidden py-16 md:py-24">
       {/* Professional Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle gradient orbs - matching site theme */}
@@ -92,6 +92,11 @@ export default function AgentsInAction() {
             </motion.h2>
           </div>
 
+          {/* Main Interactive Area */}
+          <div
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
           {/* Tab Navigation */}
           <div className="flex flex-wrap justify-center gap-2 mb-4 px-4">
             {TABS.map((tab) => (
@@ -122,7 +127,7 @@ export default function AgentsInAction() {
             ))}
           </div>
 
-          <div className="h-[1120px] sm:h-[1050px] md:h-[700px] lg:h-[620px] overflow-hidden">
+          <div className="h-[1280px] sm:h-[1160px] md:h-[740px] lg:h-[700px] overflow-hidden">
             <AnimatePresence mode="wait">
               {activeTab === 'live' && (
                 <motion.div
@@ -477,6 +482,7 @@ export default function AgentsInAction() {
                 </motion.div>
               )}
             </AnimatePresence>
+          </div>
           </div>
         </div>
       </motion.div>

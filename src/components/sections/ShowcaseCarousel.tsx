@@ -267,8 +267,6 @@ export default function ShowcaseCarousel() {
   return (
     <section
       className="relative w-full overflow-hidden py-16 md:py-24 bg-[linear-gradient(135deg,#e8f5ee_0%,#f0faf4_30%,#f7fdfa_60%,#ffffff_100%)] dark:bg-none dark:bg-gray-950"
-      onMouseEnter={() => setIsPlaying(false)}
-      onMouseLeave={() => setIsPlaying(true)}
     >
       {/* Professional Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -305,7 +303,11 @@ export default function ShowcaseCarousel() {
         </div>
 
         {/* Unified Card Container */}
-        <div className="relative max-w-[1400px] mx-auto bg-white dark:bg-gray-950 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden flex flex-col w-full">
+        <div 
+          className="relative max-w-[1400px] mx-auto bg-white dark:bg-gray-950 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden flex flex-col w-full"
+          onMouseEnter={() => setIsPlaying(false)}
+          onMouseLeave={() => setIsPlaying(true)}
+        >
 
           {/* Tabs Inside Card */}
           <div className="flex items-center justify-start md:justify-center gap-2 md:gap-3 p-3 md:p-4 lg:p-6 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50 overflow-x-auto no-scrollbar">
