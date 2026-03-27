@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ArrowRight, User, Award, Globe, Handshake } from 'lucide-react';
+import { ArrowRight, User, Award, Globe, Handshake, Volume2, Square } from 'lucide-react';
 import botLogo from '../../assets/Ambot logo png.png';
 import worldMap from '../../assets/World Map.png';
+import heroAudio from '../../assets/Voices/Hero Section.mp3';
 
 const TYPING_TEXTS = [
   'Deployed in Days',
@@ -19,6 +20,35 @@ export default function Hero() {
   const reduceMotion = useReducedMotion();
   const [typed, setTyped] = useState(reduceMotion ? TYPING_TEXTS[0] : '');
   const [cursorOn, setCursorOn] = useState(true);
+  
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    const handleEnded = () => setIsPlayingAudio(false);
+    if (audio) {
+      audio.addEventListener('ended', handleEnded);
+    }
+    return () => {
+      if (audio) {
+        audio.removeEventListener('ended', handleEnded);
+      }
+    };
+  }, []);
+  
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlayingAudio) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        setIsPlayingAudio(false);
+      } else {
+        audioRef.current.play();
+        setIsPlayingAudio(true);
+      }
+    }
+  };
 
   useEffect(() => {
     if (reduceMotion) return;
@@ -190,9 +220,27 @@ export default function Hero() {
             Build Agent
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
           </motion.a>
-          {/* <a href="#agents-in-action" className="text-gray-500 dark:text-gray-400 hover:text-primary-500 font-medium text-sm">
-            Scroll ↓
-          </a> */}
+          <button
+            onClick={toggleAudio}
+            className={`w-full sm:w-auto px-4 py-2 rounded-xl font-medium text-xs md:text-sm flex items-center justify-center gap-2 transition-colors duration-200 overflow-hidden ${
+              isPlayingAudio 
+                ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white animate-pulse' 
+                : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
+            }`}
+          >
+            {isPlayingAudio ? (
+              <>
+                <Square className="w-4 h-4 fill-current" />
+                Stop Audio
+              </>
+            ) : (
+              <>
+                <Volume2 className="w-4 h-4" />
+                Listen to Intro
+              </>
+            )}
+          </button>
+          <audio ref={audioRef} src={heroAudio} />
         </motion.div>
 
         {/* Trust / value pills - adds visual interest */}

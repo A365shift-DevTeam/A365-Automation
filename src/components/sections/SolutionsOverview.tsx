@@ -1,5 +1,7 @@
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { Bot, Sparkles, LayoutTemplate, Package } from 'lucide-react';
+import { Bot, Sparkles, LayoutTemplate, Package, Volume2, Square } from 'lucide-react';
+import aiSolutionsAudio from '../../assets/Voices/Ai Solution.mp3';
 
 const COLUMNS = [
   {
@@ -45,6 +47,35 @@ const COLUMNS = [
 ];
 
 export default function SolutionsOverview() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    const handleEnded = () => setIsPlayingAudio(false);
+    if (audio) {
+      audio.addEventListener('ended', handleEnded);
+    }
+    return () => {
+      if (audio) {
+        audio.removeEventListener('ended', handleEnded);
+      }
+    };
+  }, []);
+  
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlayingAudio) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        setIsPlayingAudio(false);
+      } else {
+        audioRef.current.play();
+        setIsPlayingAudio(true);
+      }
+    }
+  };
+
   return (
     <section
       id="solutions-overview"
@@ -61,9 +92,24 @@ export default function SolutionsOverview() {
         <p className="text-sm font-semibold tracking-[0.2em] text-primary-500 uppercase mb-4">
           What we offer
         </p>
-        <h2 className="text-2xl md:text-4xl mb-5 section-title">
-          AI Solutions & Enterprise Products
-        </h2>
+        <div className="flex items-center justify-center gap-4 mb-5">
+          <h2 className="text-2xl md:text-4xl section-title mb-0">
+            AI Solutions & Enterprise Products
+          </h2>
+          <button
+            onClick={toggleAudio}
+            className={`p-2.5 md:p-3 rounded-full flex items-center justify-center transition-all ${
+              isPlayingAudio 
+                ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white shadow-lg shadow-[#4C99A0]/30 animate-pulse' 
+                : 'bg-white text-[#4C99A0] shadow-md hover:shadow-lg border border-[#4C99A0]/20 hover:bg-[#4C99A0]/5'
+            }`}
+            title={isPlayingAudio ? "Stop Audio" : "Listen to Section Details"}
+            aria-label="Play section audio"
+          >
+            {isPlayingAudio ? <Square className="w-5 h-5 fill-current" /> : <Volume2 className="w-5 h-5" />}
+          </button>
+          <audio ref={audioRef} src={aiSolutionsAudio} />
+        </div>
         <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-base leading-relaxed">
           AI agents, Microsoft automation, business applications, and scalable products
           designed for enterprise-grade operations, visibility, and growth.
