@@ -23,7 +23,7 @@ const TABS = [
 
 const PRODUCTS = [
   { title: "DocCraft", icon: FileText, desc: "Automate Excel to PDF, PPT & Image Like Certificates, Reports.", borderColor: "border-orange-500/40 hover:border-orange-500" },
-  { title: "Image Compressor", icon: Image, desc: "Compress your image up to 90% without compromising quality", borderColor: "border-blue-500/40 hover:border-blue-500" },
+  { title: "Image Compressor", icon: Image, desc: "Compress images by up to 90% without losing quality", borderColor: "border-blue-500/40 hover:border-blue-500" },
   { title: "Consolidation", icon: Database, desc: "Combine multiple files into single file (by Column)", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
   { title: "File Splitter", icon: Scissors, desc: "Split large files into sheets and workbook, based on criteria", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
   { title: "Merge Master", icon: Layers, desc: "Combine multiple files into single file (by Multiple Range)", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
@@ -408,30 +408,30 @@ export default function AgentsInAction() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.4 }}
-                          className="grid grid-cols-1 sm:grid-cols-2 gap-3 xl:gap-4"
+                          className="flex flex-col gap-2.5 sm:gap-3"
                         >
                           {PRODUCTS.map((product, offset) => {
                             return (
                               <motion.div
                                 key={`${product.title}-${offset}`}
-                                initial={{ opacity: 0, y: 16 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, x: -16 }}
+                                animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.05 * offset }}
-                                className="h-[104px] xl:h-[108px] bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 border-2 border-[#4C99A0]/20 hover:border-[#4C99A0]/60 dark:border-[#4C99A0]/20 dark:hover:border-[#4C99A0]/60 flex flex-col justify-center"
+                                className="rounded-lg p-[1.5px] bg-gradient-to-r from-[#4C99A0]/30 to-[#65A859]/30 hover:from-[#4C99A0] hover:to-[#65A859] shadow-[2px_4px_12px_rgba(0,0,0,0.06)] hover:shadow-lg transition-all duration-300 group"
                               >
-                                <div className="flex items-start gap-3">
-                                  <div className="flex-shrink-0 mt-0.5 p-1.5 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                                    <product.icon className="w-4 h-4 text-[#4C99A0] dark:text-[#65A859]" />
-                                  </div>
-                                  <div>
-                                    <h4 className="text-gray-900 dark:text-gray-100 text-[12px] xl:text-[13px] font-bold mb-1">{product.title}</h4>
-                                    <p className="text-gray-500 dark:text-gray-400 text-[10px] xl:text-[11px] leading-snug line-clamp-2 title">{product.desc}</p>
-                                  </div>
+                                <div className="bg-white dark:bg-gray-800/95 rounded-[6.5px] w-full px-4 md:px-5 py-2.5 md:py-3.5 flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-6 lg:gap-8">
+                                  <h4 style={{ color: '#0F4C5C' }} className="dark:text-[#4C99A0] font-bold text-[13px] md:text-[14.5px] sm:min-w-[130px] md:min-w-[150px] shrink-0 tracking-wide">
+                                    {product.title}
+                                  </h4>
+                                  <p className="text-gray-800 dark:text-gray-300 text-[11px] md:text-[12.5px] font-medium leading-relaxed">
+                                    {product.desc}
+                                  </p>
                                 </div>
                               </motion.div>
                             );
                           })}
                         </motion.div>
+
                       </div>
                     </div>
                     {/* Right: 40% Info */}
