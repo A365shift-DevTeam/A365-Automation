@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'motion/react';
-import { Check } from 'lucide-react';
+import { Check, Volume2, Square } from 'lucide-react';
 import botLogo from '../../assets/Ambot logo png.png';
+import engagementAudio from '../../assets/Voices/Engagment Model.mp3';
 
 const PHASES = [
   {
@@ -45,6 +46,34 @@ const PHASES = [
 export default function HowEngagementsWork() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    const handleEnded = () => setIsPlayingAudio(false);
+    if (audio) {
+      audio.addEventListener('ended', handleEnded);
+    }
+    return () => {
+      if (audio) {
+        audio.removeEventListener('ended', handleEnded);
+      }
+    };
+  }, []);
+  
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlayingAudio) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        setIsPlayingAudio(false);
+      } else {
+        audioRef.current.play();
+        setIsPlayingAudio(true);
+      }
+    }
+  };
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -80,7 +109,22 @@ export default function HowEngagementsWork() {
       </div>
       <div className="md:sticky md:top-[20px] flex flex-col justify-start pt-8 pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-2xl md:text-4xl mb-4 section-title">Our Engagement Model</h2>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <h2 className="text-2xl md:text-4xl section-title mb-0">Our Engagement Model</h2>
+            <button
+              onClick={toggleAudio}
+              className={`p-2.5 md:p-3 rounded-full flex items-center justify-center transition-all ${
+                isPlayingAudio 
+                  ? 'bg-[#4C99A0] text-white shadow-lg shadow-[#4C99A0]/30 animate-pulse' 
+                  : 'bg-white text-[#4C99A0] shadow-md hover:shadow-lg border border-[#4C99A0]/20 hover:bg-[#4C99A0]/5'
+              }`}
+              title={isPlayingAudio ? "Stop Audio" : "Listen to Section Details"}
+              aria-label="Play section audio"
+            >
+              {isPlayingAudio ? <Square className="w-5 h-5 fill-current" /> : <Volume2 className="w-5 h-5" />}
+            </button>
+            <audio ref={audioRef} src={engagementAudio} />
+          </div>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light">
             Transparent process. Predictable investment. Every engagement follows the same proven path.
           </p>
