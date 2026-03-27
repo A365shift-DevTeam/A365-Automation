@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { ArrowRight, Zap, LayoutTemplate, Code2, CheckCircle2, Package, Activity, Layers, Box, ShieldCheck, Settings, Cpu, Settings2, LineChart, Clock, Database, TrendingUp, Shield, FileText, Image, Scissors, ArrowRightLeft, Users } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileSignature, faFileCircleCheck, faPhotoFilm, faFolderTree, faTableCells, faClone, faNetworkWired } from '@fortawesome/free-solid-svg-icons';
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import OrbitalApps from './OrbitalApps';
 import CardSwap, { Card } from './CardSwap';
 import SuitcaseImage from '../../assets/Suitcase.jpg';
@@ -22,7 +25,7 @@ const TABS = [
 ];
 
 const PRODUCTS = [
-  { title: "DocCraft", icon: FileText, desc: "Automate Excel to PDF, PPT & Image Like Certificates, Reports.", borderColor: "border-orange-500/40 hover:border-orange-500" },
+  { title: "DocCraft", icon: FileText, desc: "Automate Excel to PDF, PPT & Image Like Certificates", borderColor: "border-orange-500/40 hover:border-orange-500" },
   { title: "Image Compressor", icon: Image, desc: "Compress images by up to 90% without losing quality", borderColor: "border-blue-500/40 hover:border-blue-500" },
   { title: "Consolidation", icon: Database, desc: "Combine multiple files into single file (by Column)", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
   { title: "File Splitter", icon: Scissors, desc: "Split large files into sheets and workbook, based on criteria", borderColor: "border-[#107c41]/50 hover:border-[#107c41]" },
@@ -420,7 +423,28 @@ export default function AgentsInAction() {
                                 className="rounded-lg p-[1.5px] bg-gradient-to-r from-[#4C99A0]/30 to-[#65A859]/30 hover:from-[#4C99A0] hover:to-[#65A859] shadow-[2px_4px_12px_rgba(0,0,0,0.06)] hover:shadow-lg transition-all duration-300 group"
                               >
                                 <div className="bg-white dark:bg-gray-800/95 rounded-[6.5px] w-full px-4 md:px-5 py-2.5 md:py-3.5 flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-6 lg:gap-8">
-                                  <h4 style={{ color: '#0F4C5C' }} className="dark:text-[#4C99A0] font-bold text-[13px] md:text-[14.5px] sm:min-w-[130px] md:min-w-[150px] shrink-0 tracking-wide">
+                                  <h4 style={{ color: '#0F4C5C' }} className="dark:text-[#4C99A0] font-bold text-[13px] md:text-[14.5px] sm:min-w-[130px] md:min-w-[150px] shrink-0 tracking-wide flex items-center gap-2">
+                                    {product.title === 'DocCraft' && (
+                                      <FontAwesomeIcon icon={faFileSignature as IconProp} style={{ color: 'rgb(242, 134, 33)' }} />
+                                    )}
+                                    {product.title === 'Image Compressor' && (
+                                      <FontAwesomeIcon icon={faPhotoFilm as IconProp} style={{ color: 'rgb(89, 170, 232)' }} />
+                                    )}
+                                    {product.title === 'File Splitter' && (
+                                      <FontAwesomeIcon icon={faFolderTree as IconProp} style={{ color: 'rgb(65, 149, 35)' }} />
+                                    )}
+                                    {product.title === 'Consolidation' && (
+                                      <FontAwesomeIcon icon={faFileCircleCheck as IconProp} style={{ color: 'rgb(65, 149, 40)' }} />
+                                    )}
+                                    {product.title === 'Merge Master' && (
+                                      <FontAwesomeIcon icon={faTableCells as IconProp} style={{ color: 'rgb(65, 149, 35)' }} />
+                                    )}
+                                    {product.title === 'File Comparison' && (
+                                      <FontAwesomeIcon icon={faClone as IconProp} style={{ color: 'rgb(65, 149, 35)' }} />
+                                    )}
+                                    {product.title === 'Work Allocation' && (
+                                      <FontAwesomeIcon icon={faNetworkWired as IconProp} style={{ color: 'rgb(65, 149, 40)' }} />
+                                    )}
                                     {product.title}
                                   </h4>
                                   <p className="text-gray-800 dark:text-gray-300 text-[11px] md:text-[12.5px] font-medium leading-relaxed">
