@@ -102,8 +102,8 @@ export default function AgentsInAction() {
               <div key={tab.id} className="flex flex-col items-stretch min-w-[120px]">
                 <button
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium text-xs md:text-sm overflow-hidden transition-colors duration-200 ${activeTab === tab.id
-                    ? 'text-white'
+                  className={`relative flex items-center justify-center gap-2 px-4 py-2.5 md:px-5 md:py-3 rounded-xl font-medium text-xs md:text-sm overflow-hidden transition-all duration-300 ${activeTab === tab.id
+                    ? 'text-white shadow-lg shadow-[#4C99A0]/25'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
                     }`}
                 >

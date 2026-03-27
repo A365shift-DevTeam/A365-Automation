@@ -222,20 +222,20 @@ export default function Hero() {
           </motion.a>
           <button
             onClick={toggleAudio}
-            className={`w-full sm:w-auto px-4 py-2 rounded-xl font-medium text-xs md:text-sm flex items-center justify-center gap-2 transition-colors duration-200 overflow-hidden ${
+            className={`w-full sm:w-auto px-6 py-4 rounded-2xl font-medium text-[15px] flex items-center justify-center gap-2.5 transition-all shadow-sm hover:shadow-md ${
               isPlayingAudio 
                 ? 'bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white animate-pulse' 
-                : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
+                : 'bg-[#EAECEE] dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-[#E2E4E7] dark:hover:bg-gray-700'
             }`}
           >
             {isPlayingAudio ? (
               <>
-                <Square className="w-4 h-4 fill-current" />
+                <Square className="w-5 h-5 fill-current" />
                 Stop Audio
               </>
             ) : (
               <>
-                <Volume2 className="w-4 h-4" />
+                <Volume2 className="w-5 h-5" />
                 Listen to Intro
               </>
             )}
