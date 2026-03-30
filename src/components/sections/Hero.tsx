@@ -254,7 +254,7 @@ export default function Hero() {
             { icon: User, label: 'Ambrose Denny', sub: 'Founder of Ambot365' },
             { icon: Award, label: '40+ Years', sub: 'Combined Digital Expertise' },
             { icon: Globe, label: '50+ Clients', sub: 'Global Experience' },
-            { icon: Handshake, label: 'Digital Partners', sub: 'Ambot365 & CoreShift' },
+            { icon: Handshake, label: 'Digital Partners', sub: <><a href="https://ambot365.com/" target="_blank" rel="noopener noreferrer" className="text-[#4C99A0] hover:text-[#65A859] underline underline-offset-2 transition-colors">Ambot365</a> & <a href="https://www.cshift.io/" target="_blank" rel="noopener noreferrer" className="text-[#4C99A0] hover:text-[#65A859] underline underline-offset-2 transition-colors">CShift</a></> },
           ].map((item, i) => (
             <motion.div
               key={i}
