@@ -90,6 +90,12 @@ export default function Navbar() {
                     >
                         Get in Touch
                     </a>
+                    <a
+                        href="mailto:Info@ambot365.com"
+                        className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 transition-colors"
+                    >
+                        Info@ambot365.com
+                    </a>
                 </div>
 
                 {/* Mobile Menu Toggle */}
