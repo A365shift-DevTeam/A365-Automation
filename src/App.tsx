@@ -12,6 +12,7 @@ import HowEngagementsWork from './components/sections/HowEngagementsWork';
 import WhyAmbot365 from './components/sections/WhyAmbot365';
 import StickyFooter from './components/ui/StickyFooter';
 import Navbar from './components/layout/Navbar';
+import FloatingWhatsApp from './components/ui/FloatingWhatsApp';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Separator from './components/ui/Separator';
 
@@ -39,6 +40,7 @@ export default function App() {
           {/* <CTA /> */}
         </main>
         <StickyFooter />
+        <FloatingWhatsApp />
       </div>
     </ThemeProvider>
   );

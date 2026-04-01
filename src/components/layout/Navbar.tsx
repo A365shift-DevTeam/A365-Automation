@@ -90,15 +90,6 @@ export default function Navbar() {
                     >
                         Get in Touch
                     </a>
-                    <a
-                        href="https://api.whatsapp.com/send/?phone=919113602689&text=0&type=phone_number&app_absent=0"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Chat on WhatsApp"
-                        className="text-2xl transition-all hover:-translate-y-0.5 flex items-center"
-                    >
-                        <FontAwesomeIcon icon={faWhatsapp} style={{ color: "rgb(40, 209, 70)" }} />
-                    </a>
                 </div>
 
                 {/* Mobile Menu Toggle */}
