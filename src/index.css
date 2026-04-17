@@ -228,6 +228,46 @@ h6 {
   outline-offset: 2px;
 }
 
+.field-input {
+  width: 100%;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.78rem 0.9rem;
+  color: #0f172a;
+  font-size: 0.95rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.field-input::placeholder {
+  color: #64748b;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: rgba(76, 153, 160, 0.75);
+  box-shadow: 0 0 0 3px rgba(76, 153, 160, 0.15);
+  background: #ffffff;
+}
+
+.dark .field-input {
+  background: rgba(31, 41, 55, 0.82);
+  border-color: rgba(75, 85, 99, 0.8);
+  color: #f8fafc;
+  box-shadow: none;
+}
+
+.dark .field-input::placeholder {
+  color: #94a3b8;
+}
+
+.dark .field-input:focus {
+  border-color: rgba(101, 168, 89, 0.8);
+  box-shadow: 0 0 0 3px rgba(101, 168, 89, 0.2);
+  background: rgba(31, 41, 55, 0.95);
+}
+
 .panel-surface {
   background: rgba(255, 255, 255, 0.84);
   border: 1px solid rgba(255, 255, 255, 0.6);
