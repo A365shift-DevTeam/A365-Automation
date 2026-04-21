@@ -140,7 +140,9 @@ export default function StickyFooter() {
 
           <div className="flex items-center gap-3 flex-wrap justify-center md:justify-end">
             {footerData.social.map((social) => (
-              <SocialLink key={social.label} href={social.href} label={social.label} icon={social.icon} />
+              <React.Fragment key={social.label}>
+                <SocialLink href={social.href} label={social.label} icon={social.icon} />
+              </React.Fragment>
             ))}
           </div>
         </div>

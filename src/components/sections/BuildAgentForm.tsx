@@ -1,6 +1,15 @@
 import { FormEvent, useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Mail, Phone, Shield } from 'lucide-react';
+import {
+  ArrowRight,
+  Check,
+  Clock3,
+  Mail,
+  MessageSquareText,
+  Phone,
+  Shield,
+  Sparkles,
+} from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
 type RegisterFormData = {
@@ -29,6 +38,12 @@ const SERVICE_OPTIONS = [
   'CRM / Business OS',
   'Website / App',
   'Consulting',
+];
+
+const FORM_HIGHLIGHTS = [
+  'Solution direction within 24 hours',
+  'No obligation discovery call',
+  'Built around Microsoft 365 workflows',
 ];
 
 export default function BuildAgentForm() {
@@ -96,18 +111,12 @@ export default function BuildAgentForm() {
       id="build-agent-form"
       className="scroll-mt-28 relative overflow-hidden"
     >
-      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] to-[#eef2f7]" />
-        <div className="absolute -top-40 -left-24 h-[500px] w-[500px] rounded-full bg-[#2563eb]/[0.06] blur-[100px]" />
-        <div className="absolute -bottom-40 right-0 h-[400px] w-[400px] rounded-full bg-[#1d4ed8]/[0.05] blur-[100px]" />
+        <div className="absolute inset-0 contact-section-bg" />
       </div>
 
-      {/* Dark mode background */}
       <div className="absolute inset-0 pointer-events-none hidden dark:block">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950" />
-        <div className="absolute -top-40 -left-24 h-[500px] w-[500px] rounded-full bg-[#2563eb]/[0.08] blur-[100px]" />
-        <div className="absolute -bottom-40 right-0 h-[400px] w-[400px] rounded-full bg-[#1d4ed8]/[0.06] blur-[100px]" />
+        <div className="absolute inset-0 contact-section-bg contact-section-bg--dark" />
       </div>
 
       <div className="relative z-10 flex items-center justify-center min-h-[calc(100vh-80px)] py-16 md:py-24 px-5">
@@ -118,8 +127,18 @@ export default function BuildAgentForm() {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="contact-shell"
         >
-          {/* ───── Left Column: Headline ───── */}
           <div className="flex flex-col justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.1 }}
+              className="contact-eyebrow"
+            >
+              <Sparkles className="h-4 w-4" />
+              Register your automation idea
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +147,7 @@ export default function BuildAgentForm() {
               className="contact-headline"
             >
               Discuss Your
-              <span className="block font-normal text-[#475467] dark:text-gray-400">
+              <span className="block">
                 AI &amp; Business Solution Needs
               </span>
             </motion.h1>
@@ -140,29 +159,48 @@ export default function BuildAgentForm() {
               transition={{ duration: 0.5, delay: 0.25 }}
               className="contact-desc"
             >
-              Tell us what you want to build. We help you design AI, automation,
-              CRM, and business systems.
+              Share the business process you want to improve. Ambot365 will map
+              the right path across AI agents, automation, CRM, apps, and Microsoft
+              365 systems.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="contact-proof-list"
+            >
+              {FORM_HIGHLIGHTS.map((item) => (
+                <div key={item} className="contact-proof-item">
+                  <Check className="h-4 w-4" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.35 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               className="contact-info"
             >
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-[#2563eb] dark:text-blue-400" />
+              <div className="contact-info-item">
+                <Mail className="h-4 w-4" />
                 <span>info@ambot365.in</span>
               </div>
-              <div className="flex items-center gap-2 mt-1">
-                <Phone className="h-4 w-4 text-[#2563eb] dark:text-blue-400" />
+              <div className="contact-info-item">
+                <Phone className="h-4 w-4" />
                 <span>+91 9113602689</span>
+              </div>
+              <div className="contact-info-item">
+                <Clock3 className="h-4 w-4" />
+                <span>Mon - Sat, 9 AM - 7 PM</span>
               </div>
             </motion.div>
           </div>
 
-          {/* ───── Right Column: Form Card ───── */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -170,73 +208,117 @@ export default function BuildAgentForm() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="contact-card"
           >
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
-              <input
-                value={formData.fullName}
-                onChange={(e) => handleFieldChange('fullName', e.target.value)}
-                type="text"
-                placeholder="Full Name"
-                className={inputBase(formErrors.fullName)}
-              />
-              {formErrors.fullName && <p className="contact-field-error">{formErrors.fullName}</p>}
+            <div className="contact-card-header">
+              <div>
+                <p className="contact-form-kicker">Free consultation</p>
+                <h2>Tell us where work slows down.</h2>
+              </div>
+              <div className="contact-card-icon">
+                <MessageSquareText className="h-5 w-5" />
+              </div>
+            </div>
 
-              <input
-                value={formData.email}
-                onChange={(e) => handleFieldChange('email', e.target.value)}
-                type="email"
-                placeholder="Work Email"
-                className={inputBase(formErrors.email)}
-              />
-              {formErrors.email && <p className="contact-field-error">{formErrors.email}</p>}
+            <form onSubmit={handleSubmit} className="contact-form">
+              <div className="contact-form-grid">
+                <label className="contact-field">
+                  <span>Full name</span>
+                  <input
+                    value={formData.fullName}
+                    onChange={(e) => handleFieldChange('fullName', e.target.value)}
+                    type="text"
+                    placeholder="Your name"
+                    className={inputBase(formErrors.fullName)}
+                    autoComplete="name"
+                  />
+                  {formErrors.fullName && <p className="contact-field-error">{formErrors.fullName}</p>}
+                </label>
 
-              <input
-                value={formData.mobileNumber}
-                onChange={(e) => {
-                  const nextValue = e.target.value.replace(/[^\d+\s-]/g, '');
-                  handleFieldChange('mobileNumber', nextValue);
-                }}
-                type="tel"
-                placeholder="Phone Number"
-                className={inputBase(formErrors.mobileNumber)}
-              />
-              {formErrors.mobileNumber && <p className="contact-field-error">{formErrors.mobileNumber}</p>}
+                <label className="contact-field">
+                  <span>Work email</span>
+                  <input
+                    value={formData.email}
+                    onChange={(e) => handleFieldChange('email', e.target.value)}
+                    type="email"
+                    placeholder="you@company.com"
+                    className={inputBase(formErrors.email)}
+                    autoComplete="email"
+                  />
+                  {formErrors.email && <p className="contact-field-error">{formErrors.email}</p>}
+                </label>
 
-              <select
-                value={formData.selectedService}
-                onChange={(e) => handleFieldChange('selectedService', e.target.value)}
-                className={inputBase(formErrors.selectedService)}
-              >
-                <option value="">I'm Interested In</option>
-                {SERVICE_OPTIONS.map((s) => (
-                  <option key={s} value={s}>{s}</option>
-                ))}
-              </select>
-              {formErrors.selectedService && <p className="contact-field-error">{formErrors.selectedService}</p>}
+                <label className="contact-field">
+                  <span>Phone number</span>
+                  <input
+                    value={formData.mobileNumber}
+                    onChange={(e) => {
+                      const nextValue = e.target.value.replace(/[^\d+\s-]/g, '');
+                      handleFieldChange('mobileNumber', nextValue);
+                    }}
+                    type="tel"
+                    placeholder="+91 98765 43210"
+                    className={inputBase(formErrors.mobileNumber)}
+                    autoComplete="tel"
+                  />
+                  {formErrors.mobileNumber && <p className="contact-field-error">{formErrors.mobileNumber}</p>}
+                </label>
 
-              <input
-                value={formData.companyName}
-                onChange={(e) => handleFieldChange('companyName', e.target.value)}
-                type="text"
-                placeholder="Company Name"
-                className={inputBase()}
-              />
+                <label className="contact-field">
+                  <span>Company</span>
+                  <input
+                    value={formData.companyName}
+                    onChange={(e) => handleFieldChange('companyName', e.target.value)}
+                    type="text"
+                    placeholder="Company name"
+                    className={inputBase()}
+                    autoComplete="organization"
+                  />
+                </label>
+              </div>
 
-              <textarea
-                value={formData.projectGoal}
-                onChange={(e) => handleFieldChange('projectGoal', e.target.value)}
-                placeholder="Brief Project Description"
-                rows={4}
-                className={`${inputBase(formErrors.projectGoal)} resize-none`}
-              />
-              {formErrors.projectGoal && <p className="contact-field-error">{formErrors.projectGoal}</p>}
+              <fieldset className="contact-service-field">
+                <legend>Area of interest</legend>
+                <div className="contact-service-grid">
+                  {SERVICE_OPTIONS.map((service) => {
+                    const isSelected = formData.selectedService === service;
+                    return (
+                      <label
+                        key={service}
+                        className={`contact-service-chip ${isSelected ? 'contact-service-chip--selected' : ''}`}
+                      >
+                        <input
+                          type="radio"
+                          name="selectedService"
+                          value={service}
+                          checked={isSelected}
+                          onChange={(e) => handleFieldChange('selectedService', e.target.value)}
+                        />
+                        <span>{service}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+                {formErrors.selectedService && <p className="contact-field-error">{formErrors.selectedService}</p>}
+              </fieldset>
+
+              <label className="contact-field">
+                <span>Project goal</span>
+                <textarea
+                  value={formData.projectGoal}
+                  onChange={(e) => handleFieldChange('projectGoal', e.target.value)}
+                  placeholder="Example: automate invoice approvals, build a sales CRM, or create an AI support agent."
+                  rows={4}
+                  className={`${inputBase(formErrors.projectGoal)} resize-none`}
+                />
+                {formErrors.projectGoal && <p className="contact-field-error">{formErrors.projectGoal}</p>}
+              </label>
 
               {statusMessage && (
-                <div className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 dark:bg-green-900/30 dark:border-green-800 dark:text-green-300">
+                <div className="contact-alert contact-alert--success">
                   {statusMessage}
                 </div>
               )}
               {errorMessage && (
-                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-900/30 dark:border-red-800 dark:text-red-300">
+                <div className="contact-alert contact-alert--error">
                   {errorMessage}
                 </div>
               )}
@@ -246,13 +328,13 @@ export default function BuildAgentForm() {
                 disabled={isSubmitting}
                 className="contact-btn group"
               >
-                {isSubmitting ? 'Submitting…' : 'Get Free Consultation'}
+                {isSubmitting ? 'Submitting...' : 'Get Free Consultation'}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </button>
 
-              <p className="flex items-center justify-center gap-1.5 text-xs text-[#667085] dark:text-gray-500 mt-1">
+              <p className="contact-privacy-note">
                 <Shield className="h-3.5 w-3.5" />
-                100% confidential
+                100% confidential. Your details stay with Ambot365.
               </p>
             </form>
           </motion.div>
@@ -262,7 +344,6 @@ export default function BuildAgentForm() {
   );
 }
 
-/* ─── Validation ─── */
 function validateForm(data: RegisterFormData): FormErrors {
   const errors: FormErrors = {};
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
