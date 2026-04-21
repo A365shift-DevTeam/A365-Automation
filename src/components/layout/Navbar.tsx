@@ -15,11 +15,21 @@ const NAV_LINKS = [
     { name: 'Why Us', href: '#about' },
 ];
 
-export default function Navbar() {
+type NavbarProps = {
+    currentRoute?: string;
+};
+
+export default function Navbar({ currentRoute = '/' }: NavbarProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isAIChatOpen, setIsAIChatOpen] = useState(false);
     const [aiInitialMenu, setAiInitialMenu] = useState<string | null>(null);
+    const isBuildAgentPage = currentRoute === '/build-agent';
+    const useCompactHeader = isBuildAgentPage || isScrolled;
+
+    const navLinks = isBuildAgentPage
+        ? [{ name: 'Home', href: '#/' }]
+        : NAV_LINKS;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,20 +41,29 @@ export default function Navbar() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${useCompactHeader
                 ? 'bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm py-3 md:py-4'
                 : 'bg-transparent py-4 md:py-6'
                 }`}
         >
             <div className="site-container flex items-center justify-between">
                 {/* Logo */}
-                <a href="#" className="flex items-center gap-2 text-xl  tracking-tight text-gray-900 dark:text-gray-50">
+                <a href="#/" className="flex items-center gap-2 text-xl  tracking-tight text-gray-900 dark:text-gray-50">
                     <img src={logoPath} alt="AmBot 365 Logo" className="h-8 w-auto" />
                 </a>
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
-                    {NAV_LINKS.map((link) => (
+                    {!isBuildAgentPage && (
+                        <a
+                            href="#/build-agent"
+                            className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 transition-colors relative group"
+                        >
+                            Build Agent
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover:w-full rounded-full" />
+                        </a>
+                    )}
+                    {navLinks.map((link) => (
                         link.openInAI ? (
                             <button
                                 key={link.name}
@@ -74,43 +93,49 @@ export default function Navbar() {
                 {/* Desktop Actions */}
                 <div className="hidden md:flex items-center gap-4">
                     <ThemeToggle />
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setAiInitialMenu(null);
-                            setIsAIChatOpen(true);
-                        }}
-                        className="btn-brand"
-                    >
-                        Ask AI
-                    </button>
-                    <a
-                        href="mailto:Info@ambot365.com"
-                        className="btn-brand"
-                    >
-                        Get in Touch
-                    </a>
-                    <a
-                        href="mailto:Info@ambot365.com"
-                        className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 transition-colors"
-                    >
-                        Info@ambot365.com
-                    </a>
+                    {!isBuildAgentPage && (
+                        <>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setAiInitialMenu(null);
+                                    setIsAIChatOpen(true);
+                                }}
+                                className="btn-brand"
+                            >
+                                Ask AI
+                            </button>
+                            <a
+                                href="mailto:Info@ambot365.com"
+                                className="btn-brand"
+                            >
+                                Get in Touch
+                            </a>
+                            <a
+                                href="mailto:Info@ambot365.com"
+                                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 transition-colors"
+                            >
+                                Info@ambot365.com
+                            </a>
+                        </>
+                    )}
                 </div>
 
                 {/* Mobile Menu Toggle */}
                 <div className="md:hidden flex items-center gap-4">
                     <ThemeToggle />
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setAiInitialMenu(null);
-                            setIsAIChatOpen(true);
-                        }}
-                        className="inline-flex btn-brand text-xs px-3 py-1.5 whitespace-nowrap"
-                    >
-                        Ask AI
-                    </button>
+                    {!isBuildAgentPage && (
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setAiInitialMenu(null);
+                                setIsAIChatOpen(true);
+                            }}
+                            className="inline-flex btn-brand text-xs px-3 py-1.5 whitespace-nowrap"
+                        >
+                            Ask AI
+                        </button>
+                    )}
                     <button
                         className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -132,7 +157,16 @@ export default function Navbar() {
                         className="absolute top-full left-0 right-0 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800 shadow-xl overflow-hidden md:hidden"
                     >
                         <div className="px-6 py-4 flex flex-col gap-4">
-                            {NAV_LINKS.map((link) => (
+                            {!isBuildAgentPage && (
+                                <a
+                                    href="#/build-agent"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="text-base font-medium text-gray-900 dark:text-gray-100 py-3 border-b border-gray-100 dark:border-gray-800 hover:text-primary-600 dark:hover:text-primary-500 transition-colors"
+                                >
+                                    Build Agent
+                                </a>
+                            )}
+                            {navLinks.map((link) => (
                                 link.openInAI ? (
                                     <button
                                         key={link.name}

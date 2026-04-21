@@ -211,7 +211,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.a
-            href="#agents-in-action"
+            href="#/build-agent"
             className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-white rounded-2xl font-medium flex items-center justify-center gap-2 group shadow-lg shadow-[#4C99A0]/25"
             whileHover={{ scale: 1.02, y: -2, boxShadow: '0 20px 40px -12px rgba(76, 153, 160, 0.35)' }}
             whileTap={{ scale: 0.98 }}
