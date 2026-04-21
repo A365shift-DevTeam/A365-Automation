@@ -17,7 +17,6 @@ type RegisterFormData = {
   email: string;
   mobileNumber: string;
   selectedService: string;
-  companyName: string;
   projectGoal: string;
 };
 
@@ -28,7 +27,6 @@ const INITIAL_FORM: RegisterFormData = {
   email: '',
   mobileNumber: '',
   selectedService: '',
-  companyName: '',
   projectGoal: '',
 };
 
@@ -73,7 +71,6 @@ export default function BuildAgentForm() {
         email: formData.email,
         mobile_number: formData.mobileNumber,
         service_type: formData.selectedService,
-        company_name: formData.companyName,
         project_goal: formData.projectGoal,
       });
 
@@ -262,17 +259,6 @@ export default function BuildAgentForm() {
                   {formErrors.mobileNumber && <p className="contact-field-error">{formErrors.mobileNumber}</p>}
                 </label>
 
-                <label className="contact-field">
-                  <span>Company</span>
-                  <input
-                    value={formData.companyName}
-                    onChange={(e) => handleFieldChange('companyName', e.target.value)}
-                    type="text"
-                    placeholder="Company name"
-                    className={inputBase()}
-                    autoComplete="organization"
-                  />
-                </label>
               </div>
 
               <fieldset className="contact-service-field">
