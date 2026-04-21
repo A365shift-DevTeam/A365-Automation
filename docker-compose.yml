@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  ambot365-website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ambot365-website:latest
+    container_name: ambot365-website
+    ports:
+      - "5050:80"
+    restart: unless-stopped
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
