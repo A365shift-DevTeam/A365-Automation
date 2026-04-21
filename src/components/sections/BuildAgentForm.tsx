@@ -1,7 +1,6 @@
-import { FormEvent, ReactNode, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Globe2, Phone, UserRound } from 'lucide-react';
-import worldMap from '../../assets/World Map.png';
+import { ArrowRight, Mail, Phone, Shield } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
 type RegisterFormData = {
@@ -9,6 +8,7 @@ type RegisterFormData = {
   email: string;
   mobileNumber: string;
   selectedService: string;
+  companyName: string;
   projectGoal: string;
 };
 
@@ -19,15 +19,16 @@ const INITIAL_FORM: RegisterFormData = {
   email: '',
   mobileNumber: '',
   selectedService: '',
+  companyName: '',
   projectGoal: '',
 };
 
 const SERVICE_OPTIONS = [
-  'Agents',
-  'Microsoft Apps',
-  'Websites',
-  'Products',
-  'Web & Mobile App',
+  'AI Agents',
+  'Microsoft Automation',
+  'CRM / Business OS',
+  'Website / App',
+  'Consulting',
 ];
 
 export default function BuildAgentForm() {
@@ -57,6 +58,7 @@ export default function BuildAgentForm() {
         email: formData.email,
         mobile_number: formData.mobileNumber,
         service_type: formData.selectedService,
+        company_name: formData.companyName,
         project_goal: formData.projectGoal,
       });
 
@@ -76,145 +78,165 @@ export default function BuildAgentForm() {
     }
   };
 
+  function handleFieldChange(field: keyof RegisterFormData, value: string) {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormErrors((prev) => {
+      if (!prev[field]) return prev;
+      const { [field]: _, ...rest } = prev;
+      return rest;
+    });
+    if (errorMessage) setErrorMessage(null);
+  }
+
+  const inputBase = (fieldError?: string) =>
+    `contact-input ${fieldError ? 'contact-input--error' : ''}`;
+
   return (
     <section
       id="build-agent-form"
-      className="scroll-mt-28 relative overflow-hidden py-20 md:py-24 bg-gradient-to-br from-[#eaf0f6] via-white to-[#eef8ef] dark:from-gray-950 dark:via-gray-900 dark:to-gray-900"
+      className="scroll-mt-28 relative overflow-hidden"
     >
+      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url(${worldMap})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        />
-        <div className="absolute -top-32 -left-20 h-80 w-80 rounded-full bg-[#4C99A0]/20 blur-3xl" />
-        <div className="absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-[#65A859]/25 blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] to-[#eef2f7]" />
+        <div className="absolute -top-40 -left-24 h-[500px] w-[500px] rounded-full bg-[#2563eb]/[0.06] blur-[100px]" />
+        <div className="absolute -bottom-40 right-0 h-[400px] w-[400px] rounded-full bg-[#1d4ed8]/[0.05] blur-[100px]" />
       </div>
 
-      <div className="site-container relative z-10">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] items-start">
+      {/* Dark mode background */}
+      <div className="absolute inset-0 pointer-events-none hidden dark:block">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950" />
+        <div className="absolute -top-40 -left-24 h-[500px] w-[500px] rounded-full bg-[#2563eb]/[0.08] blur-[100px]" />
+        <div className="absolute -bottom-40 right-0 h-[400px] w-[400px] rounded-full bg-[#1d4ed8]/[0.06] blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 flex items-center justify-center min-h-[calc(100vh-80px)] py-16 md:py-24 px-5">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="contact-shell"
+        >
+          {/* ───── Left Column: Headline ───── */}
+          <div className="flex flex-col justify-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="contact-headline"
+            >
+              Discuss Your
+              <span className="block font-normal text-[#475467] dark:text-gray-400">
+                AI &amp; Business Solution Needs
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="contact-desc"
+            >
+              Tell us what you want to build. We help you design AI, automation,
+              CRM, and business systems.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="contact-info"
+            >
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-[#2563eb] dark:text-blue-400" />
+                <span>info@ambot365.in</span>
+              </div>
+              <div className="flex items-center gap-2 mt-1">
+                <Phone className="h-4 w-4 text-[#2563eb] dark:text-blue-400" />
+                <span>+91 9113602689</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ───── Right Column: Form Card ───── */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="panel-surface p-7 md:p-10"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="contact-card"
           >
-            <p className="inline-flex rounded-full border border-[#4C99A0]/30 bg-white/80 px-3 py-1 text-xs font-semibold tracking-wide text-[#1f5a6e]">
-              Build Agent Registration
-            </p>
-            <h2 className="mt-4 text-2xl md:text-4xl font-semibold tracking-tight text-[#002060] dark:text-white">
-              Tell us what you need. We will build your agent.
-            </h2>
-            <p className="mt-3 text-sm md:text-base text-gray-600 dark:text-gray-300">
-              Fill in your details and we will schedule your onboarding.
-            </p>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
+              <input
+                value={formData.fullName}
+                onChange={(e) => handleFieldChange('fullName', e.target.value)}
+                type="text"
+                placeholder="Full Name"
+                className={inputBase(formErrors.fullName)}
+              />
+              {formErrors.fullName && <p className="contact-field-error">{formErrors.fullName}</p>}
 
-            <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-              <div className="grid gap-5 md:grid-cols-2">
-                <Field
-                  label="Full Name"
-                  required
-                  icon={<UserRound className="h-4 w-4" />}
-                  input={
-                    <input
-                      value={formData.fullName}
-                      onChange={(e) => handleFieldChange('fullName', e.target.value)}
-                      type="text"
-                      required
-                      placeholder="Enter your full name"
-                      className={inputClassName(formErrors.fullName)}
-                    />
-                  }
-                  error={formErrors.fullName}
-                />
-                <Field
-                  label="Work Email"
-                  required
-                  icon={<Globe2 className="h-4 w-4" />}
-                  input={
-                    <input
-                      value={formData.email}
-                      onChange={(e) => handleFieldChange('email', e.target.value)}
-                      type="email"
-                      required
-                      placeholder="name@company.com"
-                      className={inputClassName(formErrors.email)}
-                    />
-                  }
-                  error={formErrors.email}
-                />
-                <Field
-                  label="Mobile Number"
-                  required
-                  icon={<Phone className="h-4 w-4" />}
-                  input={
-                    <input
-                      value={formData.mobileNumber}
-                      onChange={(e) => {
-                        const nextValue = e.target.value.replace(/[^\d+]/g, '');
-                        handleFieldChange('mobileNumber', nextValue);
-                      }}
-                      type="number"
-                      inputMode="numeric"
-                      required
-                      placeholder="+919876543210"
-                      className={inputClassName(formErrors.mobileNumber)}
-                    />
-                  }
-                  error={formErrors.mobileNumber}
-                />
-                <Field
-                  label="Select a Service"
-                  required
-                  input={
-                    <select
-                      value={formData.selectedService}
-                      onChange={(e) => handleFieldChange('selectedService', e.target.value)}
-                      required
-                      className={inputClassName(formErrors.selectedService)}
-                    >
-                      <option value="">Select a service</option>
-                      {SERVICE_OPTIONS.map((service) => (
-                        <option key={service} value={service}>
-                          {service}
-                        </option>
-                      ))}
-                    </select>
-                  }
-                  error={formErrors.selectedService}
-                />
-              </div>
+              <input
+                value={formData.email}
+                onChange={(e) => handleFieldChange('email', e.target.value)}
+                type="email"
+                placeholder="Work Email"
+                className={inputBase(formErrors.email)}
+              />
+              {formErrors.email && <p className="contact-field-error">{formErrors.email}</p>}
 
-              <div className="grid gap-5">
-                <Field
-                  label="Project Goal"
-                  required
-                  input={
-                    <textarea
-                      value={formData.projectGoal}
-                      onChange={(e) => handleFieldChange('projectGoal', e.target.value)}
-                      rows={4}
-                      required
-                      placeholder="What do you want this agent to automate?"
-                      className={`${inputClassName(formErrors.projectGoal)} resize-none`}
-                    />
-                  }
-                  error={formErrors.projectGoal}
-                />
-              </div>
+              <input
+                value={formData.mobileNumber}
+                onChange={(e) => {
+                  const nextValue = e.target.value.replace(/[^\d+\s-]/g, '');
+                  handleFieldChange('mobileNumber', nextValue);
+                }}
+                type="tel"
+                placeholder="Phone Number"
+                className={inputBase(formErrors.mobileNumber)}
+              />
+              {formErrors.mobileNumber && <p className="contact-field-error">{formErrors.mobileNumber}</p>}
+
+              <select
+                value={formData.selectedService}
+                onChange={(e) => handleFieldChange('selectedService', e.target.value)}
+                className={inputBase(formErrors.selectedService)}
+              >
+                <option value="">I'm Interested In</option>
+                {SERVICE_OPTIONS.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+              {formErrors.selectedService && <p className="contact-field-error">{formErrors.selectedService}</p>}
+
+              <input
+                value={formData.companyName}
+                onChange={(e) => handleFieldChange('companyName', e.target.value)}
+                type="text"
+                placeholder="Company Name"
+                className={inputBase()}
+              />
+
+              <textarea
+                value={formData.projectGoal}
+                onChange={(e) => handleFieldChange('projectGoal', e.target.value)}
+                placeholder="Brief Project Description"
+                rows={4}
+                className={`${inputBase(formErrors.projectGoal)} resize-none`}
+              />
+              {formErrors.projectGoal && <p className="contact-field-error">{formErrors.projectGoal}</p>}
 
               {statusMessage && (
-                <div className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+                <div className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 dark:bg-green-900/30 dark:border-green-800 dark:text-green-300">
                   {statusMessage}
                 </div>
               )}
               {errorMessage && (
-                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-900/30 dark:border-red-800 dark:text-red-300">
                   {errorMessage}
                 </div>
               )}
@@ -222,81 +244,25 @@ export default function BuildAgentForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-brand w-full sm:w-auto px-8 py-3 text-sm disabled:opacity-70 disabled:cursor-not-allowed"
+                className="contact-btn group"
               >
-                {isSubmitting ? 'Submitting...' : 'Submit'}
-                <ArrowRight className="h-4 w-4" />
+                {isSubmitting ? 'Submitting…' : 'Get Free Consultation'}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </button>
+
+              <p className="flex items-center justify-center gap-1.5 text-xs text-[#667085] dark:text-gray-500 mt-1">
+                <Shield className="h-3.5 w-3.5" />
+                100% confidential
+              </p>
             </form>
           </motion.div>
-
-          <motion.aside
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-            className="panel-surface p-7 md:p-10"
-          >
-            <h3 className="text-xl md:text-2xl font-semibold text-[#002060] dark:text-white">What happens next</h3>
-            <div className="mt-6 space-y-4">
-              {[
-                'We validate your requirement and use case.',
-                'We schedule a quick discovery call.',
-                'We propose a secure agent architecture.',
-                'We begin pilot build and onboarding.',
-              ].map((step, index) => (
-                <div key={step} className="flex gap-3 rounded-2xl border border-white/70 bg-white/70 p-4 dark:border-gray-700 dark:bg-gray-800/80">
-                  <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#4C99A0] to-[#65A859] text-xs font-semibold text-white">
-                    {index + 1}
-                  </span>
-                  <p className="text-sm text-gray-700 dark:text-gray-200">{step}</p>
-                </div>
-              ))}
-            </div>
-          </motion.aside>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-
-  function handleFieldChange(field: keyof RegisterFormData, value: string) {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    setFormErrors((prev) => {
-      if (!prev[field]) {
-        return prev;
-      }
-      const { [field]: _, ...rest } = prev;
-      return rest;
-    });
-  }
 }
 
-type FieldProps = {
-  label: string;
-  input: ReactNode;
-  required?: boolean;
-  icon?: ReactNode;
-  error?: string;
-};
-
-function Field({ label, input, required, icon, error }: FieldProps) {
-  return (
-    <label className="block space-y-2">
-      <span className="text-sm font-semibold text-[#123157] dark:text-gray-100 flex items-center gap-2">
-        {icon ? <span className="text-[#4C99A0]">{icon}</span> : null}
-        {label}
-        {required ? <span className="text-red-500">*</span> : null}
-      </span>
-      {input}
-      {error ? <span className="text-xs text-red-600 dark:text-red-400">{error}</span> : null}
-    </label>
-  );
-}
-
-function inputClassName(error?: string) {
-  return `field-input ${error ? 'border-red-400 focus:border-red-500 focus:shadow-[0_0_0_3px_rgba(239,68,68,0.2)]' : ''}`;
-}
-
+/* ─── Validation ─── */
 function validateForm(data: RegisterFormData): FormErrors {
   const errors: FormErrors = {};
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -315,9 +281,9 @@ function validateForm(data: RegisterFormData): FormErrors {
   }
 
   if (!data.mobileNumber.trim()) {
-    errors.mobileNumber = 'Mobile number is required.';
-  } else if (!mobileRegex.test(data.mobileNumber.trim().replace(/\s|-/g, ''))) {
-    errors.mobileNumber = 'Enter a valid mobile number (example: +919876543210).';
+    errors.mobileNumber = 'Phone number is required.';
+  } else if (!mobileRegex.test(data.mobileNumber.trim().replace(/[\s-]/g, ''))) {
+    errors.mobileNumber = 'Enter a valid phone number (e.g. +919876543210).';
   }
 
   if (!data.selectedService.trim()) {
@@ -325,7 +291,7 @@ function validateForm(data: RegisterFormData): FormErrors {
   }
 
   if (!data.projectGoal.trim()) {
-    errors.projectGoal = 'Project goal is required.';
+    errors.projectGoal = 'Project description is required.';
   }
 
   return errors;
